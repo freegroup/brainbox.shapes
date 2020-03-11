@@ -19,11 +19,7 @@ jobs:
     - name: Checkout shape files
       uses: actions/checkout@v2
 
-    - name: Get Git Version
-      uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
-      with:
-        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_MajorMinorPatch > /github/workspace/version.txt\""
-    - run: echo /github/workspace/version.txt
+    - run: ./script/incrementVersion.sh
 
     - name: Setup the PhantomJS enviroment
       uses: actions/setup-node@v1
@@ -45,9 +41,10 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION: $(cat version.txt)
       with:
-        tag_name: Tag ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: Tag ${{ env.VERSION }}
+        release_name: Release ${{ env.VERSION }}
         draft: false
         prerelease: false
 
