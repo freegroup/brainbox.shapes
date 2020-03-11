@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "name": "circuit_alu_FullAdder",
+    "tags": [
+      "circuit",
+      "alu",
+      "FullAdder"
+    ],
+    "filePath": "circuit_alu_FullAdder.shape"
+  }
+]
