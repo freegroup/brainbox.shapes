@@ -17,4 +17,4 @@ function increment() {
 
 VERSION=`cat version.txt`
 VERSION=$(increment $VERSION)
-echo $VERSION > version.txt
+echo -n $VERSION > version.txt
