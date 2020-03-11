@@ -27,6 +27,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      env:
+        VERSION: ${{ env.VERSION }}
     - run: npm ci
     - run: phantomjs --version
     - run: find ./shapes/ -name '*.shape' -exec ./scripts/generateShape.sh {} \;
@@ -39,9 +41,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VERSION: ${{ env.VERSION }}
       run: |
-        echo brainbox-shapes_$VERSION
-        zip -r brainbox-shapes_$VERSION.zip ./shapes
-        ls -la
+        zip -r brainbox-shapes.zip ./shapes
 
 
     - name: Create Release
@@ -63,8 +63,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./brainbox-shapes_${{ env.VERSION }}.zip
-        asset_name: brainbox-shapes_${{ env.VERSION }}.zip
+        asset_path: ./brainbox-shapes.zip
+        asset_name: brainbox-shapes.zip
         asset_content_type: application/zip
 
 
