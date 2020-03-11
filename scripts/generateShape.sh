@@ -15,6 +15,6 @@ echo $shapeFile
 
 ./node_modules/.bin/brainbox &
 last_pid=$!
-sleep 3
+sleep 1
 phantomjs  ./src/index.js $shapeFile $srcDir $shapeDir
 kill -KILL $last_pid
