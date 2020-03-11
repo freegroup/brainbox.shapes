@@ -19,7 +19,9 @@ jobs:
     - name: Checkout shape files
       uses: actions/checkout@v2
 
-    - run: ./scripts/incrementVersion.sh
+    - run: |
+        ./scripts/incrementVersion.sh
+        echo ::set-env name=VERSION::$(cat ./version.txt)
 
     - name: Setup the PhantomJS enviroment
       uses: actions/setup-node@v1
@@ -35,7 +37,6 @@ jobs:
     - name: Generate Release ZIP file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VERSION: $(cat version.txt)
       run: |
         echo brainbox-shapes_$VERSION
         zip -r brainbox-shapes_$VERSION ./shapes
@@ -46,7 +47,6 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VERSION: $(cat version.txt)
       with:
         tag_name: ${{ env.VERSION }}
         release_name: v${{ env.VERSION }}
