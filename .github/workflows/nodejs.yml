@@ -19,7 +19,7 @@ jobs:
     - name: Checkout shape files
       uses: actions/checkout@v2
 
-    - run: ./script/incrementVersion.sh
+    - run: ./scripts/incrementVersion.sh
 
     - name: Setup the PhantomJS enviroment
       uses: actions/setup-node@v1
