@@ -26,6 +26,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: phantomjs --version
-    - run: find ./shapes/ -name '*.shape' -exec echo {} \;
+    - run: find ./shapes/ -name '*.shape' -exec ./scripts/generateShape.sh {} \;
       env:
         CI: true
