@@ -1,0 +1,38 @@
+{
+  "name": "brainbox.shapes",
+  "version": "1.1.18",
+  "description": "Shapes for BrainBox",
+  "main": "index.html",
+  "scripts": {
+    "build": "webpack --env dev && webpack --env build",
+    "dev": "webpack --progress --colors --watch --env dev"
+  },
+  "repository": "git+https://github.com/freegroup/brainbox.shapes.git",
+  "keywords": [
+    "diagramming",
+    "canvas",
+    "HTML5",
+    "js"
+  ],
+  "author": "Andreas Herz (FreeGroup)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freegroup/brainbox.shapes/issues"
+  },
+  "devDependencies": {
+    "autolinker": "^3.13.0",
+    "yargs": "^10.0.3",
+    "body-parser": "1.18.3",
+    "glob": "7.0.3",
+    "jsdom": "9.0.0",
+    "n": "2.1.0",
+    "node-ttl": "0.0.5",
+    "phantomjs": "2.1.7",
+    "phantomjs-prebuilt": "^2.1.16",
+    "prompt": "1.0.0",
+    "sanitize-filename": "^1.6.1",
+    "system": "2.0.1",
+    "webpage": "0.3.0"
+  },
+  "homepage": "https://github.com/freegroup/brainbox.shapes#readme"
+}
