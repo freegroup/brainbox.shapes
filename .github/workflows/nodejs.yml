@@ -74,7 +74,7 @@ jobs:
         author_name: Andreas Herz
         author_email: a.herz@freegroup.de
         message: "Generate JS, Documentation and thumbnail from .shape file"
-        add: "shapes"
+        add: "shapes version.txt"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
