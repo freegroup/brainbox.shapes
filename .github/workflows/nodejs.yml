@@ -19,7 +19,13 @@ jobs:
     - name: Checkout shape files
       uses: actions/checkout@v2
 
-    - name: Generate js, markdown and thumbnail for shape definition
+    - name: Get Git Version
+      uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
+      with:
+        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_MajorMinorPatch > /github/workspace/version.txt\""
+    - run: echo /github/workspace/version.txt
+
+    - name: Setup the PhantomJS enviroment
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
