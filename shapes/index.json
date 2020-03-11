@@ -6,6 +6,7 @@
       "alu",
       "FullAdder"
     ],
-    "filePath": "circuit_alu_FullAdder.shape"
+    "filePath": "circuit/alu/FullAdder.shape",
+    "image": "circuit/alu/FullAdder.png"
   }
 ]
