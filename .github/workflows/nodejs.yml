@@ -61,8 +61,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./brainbox-shapes.zip
-        asset_name: brainbox-shapes.zip
+        asset_path: ./brainbox-shapes_${{ env.VERSION }}.zip
+        asset_name: brainbox-shapes_${{ env.VERSION }}.zip
         asset_content_type: application/zip
 
 
