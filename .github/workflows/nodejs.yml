@@ -37,8 +37,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VERSION: $(cat version.txt)
       run: |
-        echo brainbox-shapes_$(VERSION)
-        zip -r brainbox-shapes_$(VERSION) ./shapes
+        echo brainbox-shapes_$VERSION
+        zip -r brainbox-shapes_$VERSION ./shapes
 
 
     - name: Create Release
