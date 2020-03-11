@@ -9,4 +9,4 @@ shapeFile=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
 echo "=========================================================================="
 echo $shapeFile
 
-phantomjs  ./src/index.js $shapeFile ./src ./shapes/
+# phantomjs  ./src/index.js $shapeFile ./src ./shapes/
