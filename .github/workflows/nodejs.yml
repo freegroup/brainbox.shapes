@@ -43,8 +43,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VERSION: $(cat version.txt)
       with:
-        tag_name: Tag ${{ env.VERSION }}
-        release_name: Release ${{ env.VERSION }}
+        tag_name: ${{ env.VERSION }}
+        release_name: v${{ env.VERSION }}
         draft: false
         prerelease: false
 
