@@ -29,3 +29,14 @@ jobs:
     - run: find ./shapes/ -name '*.shape' -exec ./scripts/generateShape.sh {} \;
       env:
         CI: true
+
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        author_name: Andreas Herz
+        author_email: a.herz@freegroup.de
+        message: "Generate JS, Documentation and thumbnail from .shape file"
+        add: "*.js"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
