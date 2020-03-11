@@ -32,7 +32,8 @@
     "prompt": "1.0.0",
     "sanitize-filename": "^1.6.1",
     "system": "2.0.1",
-    "webpage": "0.3.0"
+    "webpage": "0.3.0",
+    "brainbox": "1.1.20"
   },
   "homepage": "https://github.com/freegroup/brainbox.shapes#readme"
 }

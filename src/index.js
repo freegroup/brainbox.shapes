@@ -13,7 +13,10 @@ var shapeDir = system.args[3]
 
 
 function fileToPackage(file){
-  return file.replace(shapeDir,"").replace(".shape","");
+  return file
+      .replace(shapeDir,"")
+      .replace(".shape","")
+      .replace(/\//g,"_");
 }
 
 function shape2CodePath(file){
@@ -64,14 +67,13 @@ function waitFor ($config) {
     setTimeout(waitFor, $config.interval || 0, $config);
 }
 
-page.onConsoleMessage = function(msg, lineNum, sourceId) {
-    console.log('CONSOLE: ' + msg + ' (from line #' + lineNum + ' in "' + sourceId + '")');
+page.onConsoleMessage = function(msg) {
+    console.log('CONSOLE: ' + msg);
 };
 
 page.viewportSize = { width: 900, height: 900 };
 
 page.open('http://localhost:7400/designer', function(status) {
-
 
   console.log(status)
   if (status === "success") {
@@ -92,27 +94,33 @@ page.open('http://localhost:7400/designer', function(status) {
         waitFor({
           check: function () {
             return page.evaluate(function () {
-              console.log("check...",img!==null)
-              return img !== null;
+              console.log("check img...",img!==null)
+              console.log("check app...",app!==null)
+              return img !== null && app !==null;
             });
           },
           success: function () {
             try {
-              var jsCode     = page.evaluate(function()  { return  code});
+              var jsCode     = page.evaluate(function()  { return code});
               var customCode = page.evaluate(function () { return customCode; });
               var markdown   = page.evaluate(function () { return markdown;});
               var img        = page.evaluate(function () { return img; });
 
-              var pngFilePath      = file.replace(".shape", ".png");
-              var jsFilePath       = file.replace(".shape", ".js");
-              var customFilePath   = file.replace(".shape", ".custom");
-              var markdownFilePath = file.replace(".shape", ".md");
+              var pngFilePath      = file.replace(/\.shape$/, ".png");
+              var jsFilePath       = file.replace(/\.shape$/, ".js");
+              var customFilePath   = file.replace(/\.shape$/, ".custom");
+              var markdownFilePath = file.replace(/\.shape$/, ".md");
 
               // replace the generated "testShape" with the real figure name
               //
+              console.log("-----",jsCode)
               jsCode = jsCode.replace(/testShape/g, pkg);
               customCode = customCode.replace(/testShape/g, pkg);
 
+              console.log(jsFilePath)
+              console.log(customFilePath)
+              console.log(markdownFilePath)
+              console.log(pngFilePath)
               fs.write(jsFilePath, jsCode);
               fs.write(customFilePath, customCode);
               fs.write(markdownFilePath, markdown);

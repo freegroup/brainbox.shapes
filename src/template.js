@@ -1,3 +1,4 @@
+console.log("App",app)
 app.fileNew();
 
 var reader = new draw2d.io.json.Reader();
@@ -11,12 +12,16 @@ markdown = markdown?markdown:"";
 var writer = new shape_designer.FigureWriter();
 try {
     writer.marshal(app.view, pkg, function (js) {
+        console.log("setting 'code'")
         code = js;
         try {
             eval(js);
         }
         catch (exc) {
             console.log("Error in shape code. \nRemove error and try it again:\n\n>>    " + exc);
+            console.log("--------------------------")
+            console.log(code)
+            console.log("--------------------------")
             throw exc;
         }
         var splash = $(
