@@ -58,6 +58,7 @@ function concatFiles(dirname) {
             list.push({
                 name: name,
                 tags: tags,
+                version: version,
                 filePath: basenamePath + ".shape",
                 image: basenamePath + ".png"
             });
