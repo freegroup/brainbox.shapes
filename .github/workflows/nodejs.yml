@@ -41,7 +41,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VERSION: ${{ env.VERSION }}
       run: |
-        zip -r brainbox-shapes.zip ./shapes
+        cd ./shapes
+        zip -r ../brainbox-shapes.zip .
+        cd ..
 
 
     - name: Create Release
