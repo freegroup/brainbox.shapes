@@ -54,7 +54,7 @@ function concatFiles(dirname) {
             var relativePath = filename.replace(dirname, "")
             var basenamePath = relativePath.replace(".js", "")
             var name = basenamePath.replace(/\//g , "_")
-            var basename = relativePath.split('/').pop()
+            var basename = basenamePath.split('/').pop()
             var tags = name.split("_")
             list.push({
                 name: name,
