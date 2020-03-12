@@ -54,11 +54,13 @@ function concatFiles(dirname) {
             var relativePath = filename.replace(dirname, "")
             var basenamePath = relativePath.replace(".js", "")
             var name = basenamePath.replace(/\//g , "_");
+            var basename = name.split("_").pop();
             var tags = name.split("_");
             list.push({
                 name: name,
                 tags: tags,
                 version: version,
+                basename: basename,
                 filePath: basenamePath + ".shape",
                 image: basenamePath + ".png"
             });
