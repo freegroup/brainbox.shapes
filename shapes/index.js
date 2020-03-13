@@ -7,7 +7,7 @@
 var circuit_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_alu_FullAdder",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -177,7 +177,7 @@ circuit_alu_FullAdder = circuit_alu_FullAdder.extend({
 var circuit_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_alu_FullAdder4Bit",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -493,7 +493,7 @@ circuit_alu_FullAdder4Bit = circuit_alu_FullAdder4Bit.extend({
 var circuit_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_counter_BCDCounter",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -667,7 +667,7 @@ circuit_counter_BCDCounter = circuit_counter_BCDCounter.extend({
 var circuit_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_decoder_BCDto7Seg",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -906,7 +906,7 @@ circuit_decoder_BCDto7Seg = circuit_decoder_BCDto7Seg.extend({
 var circuit_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_display_7Segment",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1068,7 +1068,7 @@ circuit_display_7Segment = circuit_display_7Segment.extend({
 var circuit_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_display_Led",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1169,7 +1169,7 @@ circuit_display_Led = circuit_display_Led.extend({
 var circuit_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_DFlipFlop",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1307,7 +1307,7 @@ circuit_flipflop_DFlipFlop = circuit_flipflop_DFlipFlop.extend({
 var circuit_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_JKFlipFlop",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1474,7 +1474,7 @@ circuit_flipflop_JKFlipFlop = circuit_flipflop_JKFlipFlop.extend({
 var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_SRFlipFlop",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1622,7 +1622,7 @@ circuit_flipflop_SRFlipFlop = circuit_flipflop_SRFlipFlop.extend({
 var circuit_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_TFlipFlop",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1749,7 +1749,7 @@ circuit_flipflop_TFlipFlop = circuit_flipflop_TFlipFlop.extend({
 var circuit_gate_AND = CircuitFigure.extend({
 
    NAME: "circuit_gate_AND",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1847,7 +1847,7 @@ circuit_gate_AND = circuit_gate_AND.extend({
 var circuit_gate_NAND = CircuitFigure.extend({
 
    NAME: "circuit_gate_NAND",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -1950,7 +1950,7 @@ circuit_gate_NAND = circuit_gate_NAND.extend({
 var circuit_gate_NOR = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOR",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -2053,7 +2053,7 @@ circuit_gate_NOR = circuit_gate_NOR.extend({
 var circuit_gate_NOT = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOT",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -2150,7 +2150,7 @@ circuit_gate_NOT = circuit_gate_NOT.extend({
 var circuit_gate_OR = CircuitFigure.extend({
 
    NAME: "circuit_gate_OR",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -2248,7 +2248,7 @@ circuit_gate_OR = circuit_gate_OR.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -2746,10 +2746,132 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 // created with http://www.draw2d.org
 //
 //
+var circuit_hardware_arduino_Led = CircuitFigure.extend({
+
+   NAME: "circuit_hardware_arduino_Led",
+   VERSION: "1.0.18",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:30,height:32},attr), setter, getter);
+     var port;
+     // Port
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 1.063333333334716, y: 50 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#1C9BAB");
+     port.setName("Port");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 30;
+      this.originalHeight= 32;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L30,0 L30,32 L0,32");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // circle
+       shape = this.canvas.paper.ellipse();
+       shape.attr({"rx":15,"ry":16,"cx":15,"cy":16,"stroke":"rgba(27,27,27,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","circle");
+       
+       // Line_shadow
+       shape = this.canvas.paper.path('M25.94430000000102 5.062700000001314L5.283199999999852,27.963700000000244');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"#000000","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line_shadow");
+       
+       // Line
+       shape = this.canvas.paper.path('M25.94430000000102 5.062700000001314L5.283199999999852,27.963700000000244');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+       // Line_shadow
+       shape = this.canvas.paper.path('M5.3521000000100685 4.786000000009153L24.888199999999415,27.673900000004323');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"#000000","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line_shadow");
+       
+       // Line
+       shape = this.canvas.paper.path('M5.3521000000100685 4.786000000009153L24.888199999999415,27.673900000004323');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custome code and event handler here.
+ *
+ *
+ */
+circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
+
+    init: function(attr, setter, getter){
+         this._super(attr, setter, getter);
+
+         this.attr({resizeable:false});
+         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+         
+         var _this= this;
+         this.onChangeCallback = function(emitter, event){
+            if(event.value){
+                _this.layerAttr("circle",{fill:"#C21B7A"});
+            }
+            else{
+                _this.layerAttr("circle",{fill:"#f0f0f0"});
+            }
+            // set the LED on the Arduino on/off
+            hardware.arduino.set(3, !!event.value);
+         }
+    },
+    
+    calculate:function(){
+    },
+    
+    /**
+     *  Called if the simulation mode is starting
+     **/
+    onStart:function(){
+        this.getInputPort(0).on("change:value", this.onChangeCallback);
+
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     **/
+    onStop:function(){
+        this.getInputPort(0).off("change:value", this.onChangeCallback);
+    }
+    
+});
+
+
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
 var circuit_hardware_raspi_RaspiGPIO = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiGPIO",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -3118,7 +3240,7 @@ circuit_hardware_raspi_RaspiGPIO = circuit_hardware_raspi_RaspiGPIO.extend({
 var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiINPUT",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -3402,7 +3524,7 @@ circuit_hardware_raspi_RaspiINPUT = circuit_hardware_raspi_RaspiINPUT.extend({
 var circuit_hardware_raspi_RaspiOUTPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiOUTPUT",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -3691,7 +3813,7 @@ circuit_hardware_raspi_RaspiOUTPUT = circuit_hardware_raspi_RaspiOUTPUT.extend({
 var circuit_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_10hz",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -3804,7 +3926,7 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
 var circuit_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_50hz",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -3912,7 +4034,7 @@ circuit_pulse_50hz = circuit_pulse_50hz.extend({
 var circuit_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_pulse_Delay",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -4124,7 +4246,7 @@ circuit_pulse_Delay = circuit_pulse_Delay.extend({
 var circuit_switch_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLow",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -4246,7 +4368,7 @@ circuit_switch_HighLow = circuit_switch_HighLow.extend({
 var circuit_switch_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLowArray",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -4411,7 +4533,7 @@ circuit_switch_HighLowArray = circuit_switch_HighLowArray.extend({
 var circuit_switch_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_switch_PushButton",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -4535,7 +4657,7 @@ circuit_switch_PushButton = circuit_switch_PushButton.extend({
 var circuit_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_timer_Delay",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {
@@ -4746,7 +4868,7 @@ circuit_timer_Delay = circuit_timer_Delay.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.17",
+   VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
    {

@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_display_Led = CircuitFigure.extend({
+var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
-   NAME: "circuit_display_Led",
+   NAME: "circuit_hardware_arduino_Led",
    VERSION: "1.0.18",
 
    init:function(attr, setter, getter)
@@ -16,7 +16,7 @@ var circuit_display_Led = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:30,height:32},attr), setter, getter);
      var port;
      // Port
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -3.3333333333333335, y: 51.5625 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 1.063333333334716, y: 50 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#1C9BAB");
      port.setName("Port");
@@ -46,22 +46,22 @@ var circuit_display_Led = CircuitFigure.extend({
        shape.data("name","circle");
        
        // Line_shadow
-       shape = this.canvas.paper.path('M5.522100000000137 5.682400000001508L15.138100000001941,16.496800000000803L24.754100000001927,27.31119999999919');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"none","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M25.94430000000102 5.062700000001314L5.283199999999852,27.963700000000244');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"#000000","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line_shadow");
        
        // Line
-       shape = this.canvas.paper.path('M5.522100000000137 5.682400000001508L15.138100000001941,16.496800000000803L24.754100000001927,27.31119999999919');
+       shape = this.canvas.paper.path('M25.94430000000102 5.062700000001314L5.283199999999852,27.963700000000244');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
        // Line_shadow
-       shape = this.canvas.paper.path('M25.94430000000102 5.062700000001314L5.283199999999852,27.963700000000244');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"none","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M5.3521000000100685 4.786000000009153L24.888199999999415,27.673900000004323');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"#000000","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line_shadow");
        
        // Line
-       shape = this.canvas.paper.path('M25.94430000000102 5.062700000001314L5.283199999999852,27.963700000000244');
+       shape = this.canvas.paper.path('M5.3521000000100685 4.786000000009153L24.888199999999415,27.673900000004323');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
@@ -78,22 +78,43 @@ var circuit_display_Led = CircuitFigure.extend({
  *
  *
  */
-circuit_display_Led = circuit_display_Led.extend({
+circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
          this.attr({resizeable:false});
          this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+         
+         var _this= this;
+         this.onChangeCallback = function(emitter, event){
+            if(event.value){
+                _this.layerAttr("circle",{fill:"#C21B7A"});
+            }
+            else{
+                _this.layerAttr("circle",{fill:"#f0f0f0"});
+            }
+            // set the LED on the Arduino on/off
+            hardware.arduino.set(3, !!event.value);
+         }
     },
     
-    calculate: function()
-    {
-        if(this.getInputPort(0).getValue()){
-            this.layerAttr("circle",{fill:"#C21B7A"});
-        }
-        else{
-            this.layerAttr("circle",{fill:"#f0f0f0"});
-        }
+    calculate:function(){
+    },
+    
+    /**
+     *  Called if the simulation mode is starting
+     **/
+    onStart:function(){
+        this.getInputPort(0).on("change:value", this.onChangeCallback);
+
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     **/
+    onStop:function(){
+        this.getInputPort(0).off("change:value", this.onChangeCallback);
     }
+    
 });
