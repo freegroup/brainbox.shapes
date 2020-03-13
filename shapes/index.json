@@ -6,7 +6,7 @@
       "alu",
       "FullAdder"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "FullAdder",
     "basedir": "circuit/alu",
     "filePath": "circuit/alu/FullAdder.shape",
@@ -19,7 +19,7 @@
       "alu",
       "FullAdder4Bit"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "FullAdder4Bit",
     "basedir": "circuit/alu",
     "filePath": "circuit/alu/FullAdder4Bit.shape",
@@ -32,7 +32,7 @@
       "counter",
       "BCDCounter"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "BCDCounter",
     "basedir": "circuit/counter",
     "filePath": "circuit/counter/BCDCounter.shape",
@@ -45,7 +45,7 @@
       "decoder",
       "BCDto7Seg"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "BCDto7Seg",
     "basedir": "circuit/decoder",
     "filePath": "circuit/decoder/BCDto7Seg.shape",
@@ -58,7 +58,7 @@
       "display",
       "7Segment"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "7Segment",
     "basedir": "circuit/display",
     "filePath": "circuit/display/7Segment.shape",
@@ -71,7 +71,7 @@
       "display",
       "Led"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "Led",
     "basedir": "circuit/display",
     "filePath": "circuit/display/Led.shape",
@@ -84,24 +84,11 @@
       "flipflop",
       "DFlipFlop"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "DFlipFlop",
     "basedir": "circuit/flipflop",
     "filePath": "circuit/flipflop/DFlipFlop.shape",
     "image": "circuit/flipflop/DFlipFlop.png"
-  },
-  {
-    "name": "circuit_flipflop_drDFlipFlop",
-    "tags": [
-      "circuit",
-      "flipflop",
-      "drDFlipFlop"
-    ],
-    "version": "1.0.12",
-    "basename": "drDFlipFlop",
-    "basedir": "circuit/flipflop",
-    "filePath": "circuit/flipflop/drDFlipFlop.shape",
-    "image": "circuit/flipflop/drDFlipFlop.png"
   },
   {
     "name": "circuit_flipflop_JKFlipFlop",
@@ -110,7 +97,7 @@
       "flipflop",
       "JKFlipFlop"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "JKFlipFlop",
     "basedir": "circuit/flipflop",
     "filePath": "circuit/flipflop/JKFlipFlop.shape",
@@ -123,7 +110,7 @@
       "flipflop",
       "SRFlipFlop"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "SRFlipFlop",
     "basedir": "circuit/flipflop",
     "filePath": "circuit/flipflop/SRFlipFlop.shape",
@@ -136,7 +123,7 @@
       "flipflop",
       "TFlipFlop"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "TFlipFlop",
     "basedir": "circuit/flipflop",
     "filePath": "circuit/flipflop/TFlipFlop.shape",
@@ -149,7 +136,7 @@
       "gate",
       "AND"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "AND",
     "basedir": "circuit/gate",
     "filePath": "circuit/gate/AND.shape",
@@ -162,7 +149,7 @@
       "gate",
       "NAND"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "NAND",
     "basedir": "circuit/gate",
     "filePath": "circuit/gate/NAND.shape",
@@ -175,7 +162,7 @@
       "gate",
       "NOR"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "NOR",
     "basedir": "circuit/gate",
     "filePath": "circuit/gate/NOR.shape",
@@ -188,7 +175,7 @@
       "gate",
       "NOT"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "NOT",
     "basedir": "circuit/gate",
     "filePath": "circuit/gate/NOT.shape",
@@ -201,7 +188,7 @@
       "gate",
       "OR"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "OR",
     "basedir": "circuit/gate",
     "filePath": "circuit/gate/OR.shape",
@@ -215,7 +202,7 @@
       "raspi",
       "RaspiGPIO"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "RaspiGPIO",
     "basedir": "circuit/hardware/raspi",
     "filePath": "circuit/hardware/raspi/RaspiGPIO.shape",
@@ -229,7 +216,7 @@
       "raspi",
       "RaspiINPUT"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "RaspiINPUT",
     "basedir": "circuit/hardware/raspi",
     "filePath": "circuit/hardware/raspi/RaspiINPUT.shape",
@@ -243,7 +230,7 @@
       "raspi",
       "RaspiOUTPUT"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "RaspiOUTPUT",
     "basedir": "circuit/hardware/raspi",
     "filePath": "circuit/hardware/raspi/RaspiOUTPUT.shape",
@@ -256,7 +243,7 @@
       "pulse",
       "10hz"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "10hz",
     "basedir": "circuit/pulse",
     "filePath": "circuit/pulse/10hz.shape",
@@ -269,7 +256,7 @@
       "pulse",
       "50hz"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "50hz",
     "basedir": "circuit/pulse",
     "filePath": "circuit/pulse/50hz.shape",
@@ -282,7 +269,7 @@
       "pulse",
       "Delay"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "Delay",
     "basedir": "circuit/pulse",
     "filePath": "circuit/pulse/Delay.shape",
@@ -295,7 +282,7 @@
       "switch",
       "HighLow"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "HighLow",
     "basedir": "circuit/switch",
     "filePath": "circuit/switch/HighLow.shape",
@@ -308,7 +295,7 @@
       "switch",
       "HighLowArray"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "HighLowArray",
     "basedir": "circuit/switch",
     "filePath": "circuit/switch/HighLowArray.shape",
@@ -321,7 +308,7 @@
       "switch",
       "PushButton"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "PushButton",
     "basedir": "circuit/switch",
     "filePath": "circuit/switch/PushButton.shape",
@@ -334,7 +321,7 @@
       "timer",
       "Delay"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "Delay",
     "basedir": "circuit/timer",
     "filePath": "circuit/timer/Delay.shape",
@@ -346,7 +333,7 @@
       "messaging",
       "HiveMQ"
     ],
-    "version": "1.0.12",
+    "version": "1.0.13",
     "basename": "HiveMQ",
     "basedir": "messaging",
     "filePath": "messaging/HiveMQ.shape",
