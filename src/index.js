@@ -24,11 +24,11 @@ function shape2CodePath(file) {
     return shape2CodeDir + file;
 }
 
-var walk = function(dir) {
+var walk = function (dir) {
     var results = [];
     var list = fs.list(dir);
-    list.forEach(function(file) {
-        if(file !== "." && file !== ".."){
+    list.forEach(function (file) {
+        if (file !== "." && file !== "..") {
             filePath = dir + '/' + file;
             if (fs.isDirectory(filePath)) {
                 results = results.concat(walk(filePath));
