@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
+var circuit_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
-   NAME: "circuit_flipflop_SRFlipFlop",
+   NAME: "circuit_flipflop_JKRFlipFlop",
    VERSION: "1.0.28",
 
    init:function(attr, setter, getter)
@@ -27,17 +27,23 @@ var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
      port.setBackgroundColor("#1C9BAB");
      port.setName("output_q_not");
      port.setMaxFanOut(20);
-     // input_s
+     // input_t
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -5.052799999996296, y: 48.8296626870959 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#1C9BAB");
+     port.setName("input_t");
+     port.setMaxFanOut(1);
+     // input_j
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -3.717999999996664, y: 16.919013694029815 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#1C9BAB");
-     port.setName("input_s");
+     port.setName("input_j");
      port.setMaxFanOut(1);
-     // input_r
+     // input_k
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -5.052799999996296, y: 81.57637779932148 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#1C9BAB");
-     port.setName("input_r");
+     port.setName("input_k");
      port.setMaxFanOut(1);
    },
 
@@ -65,27 +71,32 @@ var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Q');
-       shape.attr({"x":26.28125,"y":51.43056749999869,"text-anchor":"start","text":"Q","font-family":"\"Arial\"","font-size":10,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":26.28125,"y":51.43056749999869,"text-anchor":"start","text":"Q","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0 25.69345499999781L12.041999999999462 30.59945499999685L0 35.95145499999762Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(0,0,0,0)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
        // Label
        shape = this.canvas.paper.text(0,0,'Q');
-       shape.attr({"x":26.28125,"y":10.736967499998173,"text-anchor":"start","text":"Q","font-family":"\"Arial\"","font-size":10,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":26.28125,"y":10.736967499998173,"text-anchor":"start","text":"Q","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'S');
-       shape.attr({"x":8.0078125,"y":10.6796875,"text-anchor":"start","text":"S","font-family":"\"Arial\"","font-size":10,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'J');
+       shape.attr({"x":8.0078125,"y":10.6796875,"text-anchor":"start","text":"J","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'R');
-       shape.attr({"x":7.978880000001482,"y":51.43056749999869,"text-anchor":"start","text":"R","font-family":"\"Arial\"","font-size":10,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'K');
+       shape.attr({"x":7.978880000001482,"y":51.43056749999869,"text-anchor":"start","text":"K","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Line_shadow
        shape = this.canvas.paper.path('M26.347999999999956 45.555679999995846L33.874799999999595,45.555679999995846');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"none","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"#000000","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line_shadow");
        
        // Line
@@ -106,41 +117,49 @@ var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
  *
  *
  */
-circuit_flipflop_SRFlipFlop = circuit_flipflop_SRFlipFlop.extend({
+circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+
+        this.last_t = false;
     },
     
     calculate:function()
     {
-        var s = !!this.getInputPort("input_s").getValue();
-        var r = !!this.getInputPort("input_r").getValue();
-
+        var j = this.getInputPort("input_j").getValue();
+        var k = this.getInputPort("input_k").getValue();
+        var t = this.getInputPort("input_t").getValue();
+        
         var q = this.getOutputPort("output_q");
         var q_ = this.getOutputPort("output_q_not");
-        console.log(s,r);
-        // do nothing
-        if(s===false && r===false){
-           
+        
+        var rising = this.last_t===false && t===true; 
+        
+        if(rising===true){
+            // do nothing
+            if(j===false && k ===false){
+               
+            }
+            // reset
+            else if(j===false && k===true){
+                q.setValue(false);
+                q_.setValue(true);
+            }
+            // set
+            else if(j===true && k===false){
+                q.setValue(true);
+                q_.setValue(false);
+            }
+            // toggle
+            else if(j===true && k===true){
+                q.setValue( !q.getValue());
+                q_.setValue( q.getValue());
+            }
         }
-        // reset
-        else if(s===false && r===true){
-            q.setValue(false);
-            q_.setValue(true);
-        }
-        // set
-        else if(s===true && r===false){
-            q.setValue(true);
-            q_.setValue(false);
-        }
-        // invalid
-        else if(s===true && r===true){
-            q.setValue( false);
-            q_.setValue( false);
-        }
+        this.last_t = t;
     }
 });
