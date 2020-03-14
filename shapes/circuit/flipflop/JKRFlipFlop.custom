@@ -29,7 +29,7 @@ circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
         
         var rising = this.last_t===false && t===true; 
         
-        if(r === true){
+        if(r === false){
             q.setValue(false);
             q_.setValue(true);
         }
