@@ -39,7 +39,6 @@ jobs:
     - name: Generate Release ZIP file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VERSION: ${{ env.VERSION }}_${{env.GITHUB_RUN_NUMBER}}
       run: |
         cd ./shapes
         zip -r ../brainbox-shapes.zip .
@@ -52,8 +51,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ env.VERSION }}_${{env.GITHUB_RUN_NUMBER}}
-        release_name: v${{ env.VERSION }}_${{env.GITHUB_RUN_NUMBER}}
+        tag_name: ${{ env.VERSION }}_${{ github.GITHUB_RUN_NUMBER }}
+        release_name: v${{ env.VERSION }}_${{ github.RUN_NUMBER }}
         draft: false
         prerelease: false
 
