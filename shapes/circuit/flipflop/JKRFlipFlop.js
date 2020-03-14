@@ -7,7 +7,7 @@
 var circuit_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_JKRFlipFlop",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -174,8 +174,9 @@ circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
             }
             // toggle
             else if(j===true && k===true){
-                q.setValue( !q.getValue());
-                q_.setValue( q.getValue());
+                var v = q.getValue();
+                q.setValue( !v);
+                q_.setValue( v);
             }
         }
         this.last_t = t;

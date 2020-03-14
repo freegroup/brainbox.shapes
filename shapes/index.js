@@ -7,7 +7,7 @@
 var circuit_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_alu_FullAdder",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -177,7 +177,7 @@ circuit_alu_FullAdder = circuit_alu_FullAdder.extend({
 var circuit_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_alu_FullAdder4Bit",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -493,7 +493,7 @@ circuit_alu_FullAdder4Bit = circuit_alu_FullAdder4Bit.extend({
 var circuit_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_counter_BCDCounter",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -667,7 +667,7 @@ circuit_counter_BCDCounter = circuit_counter_BCDCounter.extend({
 var circuit_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_decoder_BCDto7Seg",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -906,7 +906,7 @@ circuit_decoder_BCDto7Seg = circuit_decoder_BCDto7Seg.extend({
 var circuit_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_display_7Segment",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1068,7 +1068,7 @@ circuit_display_7Segment = circuit_display_7Segment.extend({
 var circuit_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_display_Led",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1169,7 +1169,7 @@ circuit_display_Led = circuit_display_Led.extend({
 var circuit_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_DFlipFlop",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1307,7 +1307,7 @@ circuit_flipflop_DFlipFlop = circuit_flipflop_DFlipFlop.extend({
 var circuit_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_JKFlipFlop",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1474,7 +1474,7 @@ circuit_flipflop_JKFlipFlop = circuit_flipflop_JKFlipFlop.extend({
 var circuit_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_JKRFlipFlop",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1641,8 +1641,9 @@ circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
             }
             // toggle
             else if(j===true && k===true){
-                q.setValue( !q.getValue());
-                q_.setValue( q.getValue());
+                var v = q.getValue();
+                q.setValue( !v);
+                q_.setValue( v);
             }
         }
         this.last_t = t;
@@ -1659,7 +1660,7 @@ circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
 var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_SRFlipFlop",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1807,7 +1808,7 @@ circuit_flipflop_SRFlipFlop = circuit_flipflop_SRFlipFlop.extend({
 var circuit_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_TFlipFlop",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -1934,7 +1935,7 @@ circuit_flipflop_TFlipFlop = circuit_flipflop_TFlipFlop.extend({
 var circuit_gate_AND = CircuitFigure.extend({
 
    NAME: "circuit_gate_AND",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -2032,7 +2033,7 @@ circuit_gate_AND = circuit_gate_AND.extend({
 var circuit_gate_NAND = CircuitFigure.extend({
 
    NAME: "circuit_gate_NAND",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -2135,7 +2136,7 @@ circuit_gate_NAND = circuit_gate_NAND.extend({
 var circuit_gate_NOR = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOR",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -2238,7 +2239,7 @@ circuit_gate_NOR = circuit_gate_NOR.extend({
 var circuit_gate_NOT = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOT",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -2335,7 +2336,7 @@ circuit_gate_NOT = circuit_gate_NOT.extend({
 var circuit_gate_OR = CircuitFigure.extend({
 
    NAME: "circuit_gate_OR",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -2433,7 +2434,7 @@ circuit_gate_OR = circuit_gate_OR.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -2934,7 +2935,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Led",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -3056,7 +3057,7 @@ circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 var circuit_hardware_raspi_RaspiGPIO = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiGPIO",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -3425,7 +3426,7 @@ circuit_hardware_raspi_RaspiGPIO = circuit_hardware_raspi_RaspiGPIO.extend({
 var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiINPUT",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -3709,7 +3710,7 @@ circuit_hardware_raspi_RaspiINPUT = circuit_hardware_raspi_RaspiINPUT.extend({
 var circuit_hardware_raspi_RaspiOUTPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiOUTPUT",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -3998,7 +3999,7 @@ circuit_hardware_raspi_RaspiOUTPUT = circuit_hardware_raspi_RaspiOUTPUT.extend({
 var circuit_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_10hz",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -4111,7 +4112,7 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
 var circuit_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_50hz",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -4219,7 +4220,7 @@ circuit_pulse_50hz = circuit_pulse_50hz.extend({
 var circuit_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_pulse_Delay",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -4431,7 +4432,7 @@ circuit_pulse_Delay = circuit_pulse_Delay.extend({
 var circuit_switch_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLow",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -4553,7 +4554,7 @@ circuit_switch_HighLow = circuit_switch_HighLow.extend({
 var circuit_switch_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLowArray",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -4718,7 +4719,7 @@ circuit_switch_HighLowArray = circuit_switch_HighLowArray.extend({
 var circuit_switch_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_switch_PushButton",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -4842,7 +4843,7 @@ circuit_switch_PushButton = circuit_switch_PushButton.extend({
 var circuit_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_timer_Delay",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
@@ -5053,7 +5054,7 @@ circuit_timer_Delay = circuit_timer_Delay.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.31",
+   VERSION: "1.0.32",
 
    init:function(attr, setter, getter)
    {
