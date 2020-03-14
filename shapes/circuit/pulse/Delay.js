@@ -7,7 +7,7 @@
 var circuit_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_pulse_Delay",
-   VERSION: "1.0.28",
+   VERSION: "1.0.29",
 
    init:function(attr, setter, getter)
    {
