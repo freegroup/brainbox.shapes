@@ -99,7 +99,6 @@ page.viewportSize = {width: 900, height: 900};
 
 page.open('http://localhost:7400/designer', function (status) {
 
-    console.log(status)
     if (status === "success") {
         console.log("Processing: " + file);
         var json = JSON.parse(fs.read(file));

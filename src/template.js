@@ -12,7 +12,6 @@ markdown = markdown ? markdown : "";
 var writer = new shape_designer.FigureWriter();
 try {
     writer.marshal(app.view, pkg, function (js) {
-        console.log("setting 'code'")
         code = js;
         try {
             eval(js);
