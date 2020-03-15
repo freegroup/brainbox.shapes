@@ -84,6 +84,37 @@
       ]
     },
     {
+      "type": "shape_designer.figure.PolyCircle",
+      "id": "ebdd310c-c836-43a2-bb4f-0e3e8e631fb6",
+      "x": 8015,
+      "y": 7997.5,
+      "width": 6,
+      "height": 7,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Circle"
+      },
+      "cssClass": "shape_designer_figure_PolyCircle",
+      "ports": [],
+      "bgColor": "rgba(0,0,0,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 0,
+      "radius": 0,
+      "dasharray": null,
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
       "type": "shape_designer.figure.ExtPort",
       "id": "91f5e31e-98a2-25ae-2ec2-64ecb245e1ce",
       "x": 8015.5,
@@ -117,37 +148,6 @@
         },
         {
           "name": "shape_designer.filter.PortTypeFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.PolyCircle",
-      "id": "ebdd310c-c836-43a2-bb4f-0e3e8e631fb6",
-      "x": 8015,
-      "y": 7997.5,
-      "width": 6,
-      "height": 7,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Circle"
-      },
-      "cssClass": "shape_designer_figure_PolyCircle",
-      "ports": [],
-      "bgColor": "rgba(0,0,0,1)",
-      "color": "rgba(27,27,27,1)",
-      "stroke": 0,
-      "radius": 0,
-      "dasharray": null,
-      "blur": 0,
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.FillColorFilter"
         }
       ]
     },
