@@ -21,7 +21,7 @@ jobs:
 
     - run: |
         ./scripts/incrementVersion.sh
-        echo ::set-env name=VERSION::$(cat ./version.txt&&echo $GITHUB_RUN_NUMBER)
+        echo ::set-env name=VERSION::$(cat ./version.txt&&echo _$GITHUB_RUN_NUMBER)
 
     - name: Setup the PhantomJS enviroment
       uses: actions/setup-node@v1
