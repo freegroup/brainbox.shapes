@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiINPUT",
-   VERSION: "1.0.42_75",
+   VERSION: "1.0.43_78",
 
    init:function(attr, setter, getter)
    {
@@ -15,53 +15,53 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:106.25999999999931,height:259.5},attr), setter, getter);
      var port;
-     // gpo_9
+     // gpio_9
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 27.028901734104174 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_9");
+     port.setName("gpio_9");
      port.setMaxFanOut(20);
-     // gpo_10
+     // gpio_10
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 36.80154142581888 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_10");
+     port.setName("gpio_10");
      port.setMaxFanOut(20);
-     // gpo_11
+     // gpio_11
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 45.96548169556837 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_11");
+     port.setName("gpio_11");
      port.setMaxFanOut(20);
-     // gpo_12
+     // gpio_12
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 55.202764932562395 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_12");
+     port.setName("gpio_12");
      port.setMaxFanOut(20);
-     // gpo_13
+     // gpio_13
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 63.99802504816965 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_13");
+     port.setName("gpio_13");
      port.setMaxFanOut(20);
-     // gpo_14
+     // gpio_14
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 73.60308285163777 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_14");
+     port.setName("gpio_14");
      port.setMaxFanOut(20);
-     // gpo_15
+     // gpio_15
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 83.00871868978798 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_15");
+     port.setName("gpio_15");
      port.setMaxFanOut(20);
-     // gpo_16
+     // gpio_16
      port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 91.9045568400768 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpo_16");
+     port.setName("gpio_16");
      port.setMaxFanOut(20);
    },
 
@@ -89,7 +89,7 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Input GPIO');
-       shape.attr({"x":8.433599999999387,"y":20.0078125,"text-anchor":"start","text":"Input GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"none","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":8.433599999999387,"y":20.0078125,"text-anchor":"start","text":"Input GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -164,42 +164,42 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'9');
-       shape.attr({"x":70.67006024419516,"y":70.10027499999978,"text-anchor":"start","text":"9","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":70.67006024419516,"y":70.10027499999978,"text-anchor":"start","text":"9","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'10');
-       shape.attr({"x":65.57360637047532,"y":95.5,"text-anchor":"start","text":"10","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":65.57360637047532,"y":95.5,"text-anchor":"start","text":"10","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'11');
-       shape.attr({"x":66.57360637047532,"y":119.3588749999999,"text-anchor":"start","text":"11","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":66.57360637047532,"y":119.3588749999999,"text-anchor":"start","text":"11","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'12');
-       shape.attr({"x":66.67006024419516,"y":142.3588749999999,"text-anchor":"start","text":"12","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":66.67006024419516,"y":142.3588749999999,"text-anchor":"start","text":"12","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'13');
-       shape.attr({"x":66.67006024419516,"y":165.7332749999996,"text-anchor":"start","text":"13","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":66.67006024419516,"y":165.7332749999996,"text-anchor":"start","text":"13","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'14');
-       shape.attr({"x":66.57360637047532,"y":189.50137499999983,"text-anchor":"start","text":"14","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":66.57360637047532,"y":189.50137499999983,"text-anchor":"start","text":"14","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'15');
-       shape.attr({"x":67.57360637047532,"y":215.5,"text-anchor":"start","text":"15","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":67.57360637047532,"y":215.5,"text-anchor":"start","text":"15","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'16');
-       shape.attr({"x":67.57360637047532,"y":238.05374999999913,"text-anchor":"start","text":"16","font-family":"\"Arial\"","font-size":16,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":67.57360637047532,"y":238.05374999999913,"text-anchor":"start","text":"16","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Line
