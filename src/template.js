@@ -1,25 +1,21 @@
-console.log("App", app)
-app.fileNew();
-
+app.view.clear()
 var reader = new draw2d.io.json.Reader();
-reader.unmarshal(app.view, json);
+reader.unmarshal(app.view,json);
 
 var code = null;
-var img = null;
-var customCode = app.getConfiguration("code");
+var img  = null;
+var customCode=app.getConfiguration("code");
 var markdown = app.getConfiguration("markdown");
-markdown = markdown ? markdown : "";
+markdown = markdown?markdown:"";
 var writer = new shape_designer.FigureWriter();
 try {
     writer.marshal(app.view, pkg, function (js) {
         code = js;
         try {
             eval(js);
-        } catch (exc) {
+        }
+        catch (exc) {
             console.log("Error in shape code. \nRemove error and try it again:\n\n>>    " + exc);
-            console.log("--------------------------")
-            console.log(code)
-            console.log("--------------------------")
             throw exc;
         }
         var splash = $(
@@ -33,7 +29,7 @@ try {
         // zufrieden.
         $("body").append(splash);
         var canvas = new draw2d.Canvas("test_canvas");
-        var test = eval("new " + pkg + "()");
+        var test = eval("new "+pkg+"()");
         canvas.add(test, 400, 160);
         canvas.commonPorts.each(function (i, p) {
             p.setVisible(false);
@@ -60,10 +56,11 @@ try {
             splash.remove();
         }, canvas.getBoundingBox().scale(10, 10));
     });
-} catch (e) {
+}
+catch(e){
     console.log(e);
-    code = "";
-    img = "";
+    code="";
+    img="";
 }
 
 

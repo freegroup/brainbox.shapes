@@ -20,14 +20,8 @@
     "url": "https://github.com/freegroup/brainbox.shapes/issues"
   },
   "devDependencies": {
-    "autolinker": "^3.13.0",
-    "body-parser": "1.18.3",
-    "brainbox": "1.1.22",
-    "jsdom": "9.0.0",
-    "phantomjs": "2.1.7",
-    "phantomjs-prebuilt": "^2.1.16",
-    "system": "2.0.1",
-    "webpage": "0.3.0"
+    "brainbox": "1.1.31",
+    "puppeteer": "^2.1.1"
   },
   "homepage": "https://github.com/freegroup/brainbox.shapes#readme"
 }
