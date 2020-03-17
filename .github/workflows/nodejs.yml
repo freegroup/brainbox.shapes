@@ -23,14 +23,13 @@ jobs:
         ./scripts/incrementVersion.sh
         echo ::set-env name=VERSION::$(cat ./version.txt&&echo _$GITHUB_RUN_NUMBER)
 
-    - name: Setup the PhantomJS enviroment
+    - name: Setup the NodeJS enviroment
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
       env:
         VERSION: ${{ env.VERSION }}
     - run: npm ci
-    - run: phantomjs --version
     - run: find ./shapes/ -name '*.shape' -exec ./scripts/generateShape.sh {} \;
       env:
         CI: true
