@@ -220,62 +220,7 @@
           "name": "shape_designer.filter.FontColorFilter"
         }
       ]
-    },
-    {
-      "type": "shape_designer.figure.PolyRect",
-      "id": "0b76109e-7dbf-6303-f1fe-8be335729c10",
-      "x": 7990.5,
-      "y": 8006,
-      "width": 27.753600000000006,
-      "height": 10.407600000000457,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Rectangle"
-      },
-      "cssClass": "shape_designer_figure_PolyRect",
-      "ports": [],
-      "bgColor": "rgba(255,255,255,1)",
-      "color": "rgba(48,48,48,1)",
-      "stroke": 1,
-      "radius": 0,
-      "dasharray": null,
-      "vertices": [
-        {
-          "x": 7990.5,
-          "y": 8006
-        },
-        {
-          "x": 8018.2536,
-          "y": 8006
-        },
-        {
-          "x": 8018.2536,
-          "y": 8016.4076000000005
-        },
-        {
-          "x": 7990.5,
-          "y": 8016.4076000000005
-        }
-      ],
-      "blur": 0,
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.SizeFilter"
-        },
-        {
-          "name": "shape_designer.filter.StrokeFilter"
-        },
-        {
-          "name": "shape_designer.filter.FillColorFilter"
-        }
-      ]
     }
   ],
-  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAA8CAYAAADG6fK4AAAAqElEQVRoQ+2SwQkAMAyEkv2X7gy+pMG+hSPanYNvD940HfVL1UpVSjTQ9xPlo+lKIV0iXClRPpquFNIlwpUS5aPpSiFdIlwpUT6arhTSJcKVEuWj6UohXSJcKVE+mq4U0iXClRLlo+lKIV0iXClRPpquFNIlwpUS5aPpSiFdIlwpUT6arhTSJcKVEuWj6UohXSJcKVE+mq4U0iXClRLlo+lKIV0ifLLUAyTkAD1ObWmoAAAAAElFTkSuQmCC"
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAA8CAYAAAAkNenBAAAAqElEQVRoQ+2SwQkAMAyEkv2X7g6CUIL9exDtzpG3R+6YDvmtZEUqIhnoa0li8WxFsDoJrIgkFs9WBKuTwIpIYvFsRbA6CayIJBbPVgSrk8CKSGLxbEWwOgmsiCQWz1YEq5PAikhi8WxFsDoJrIgkFs9WBKuTwIpIYvFsRbA6CayIJBbPVgSrk8CKSGLxbEWwOgmsiCQWz1YEq5PAikhi8WxFsDoJPFPkAcw9AD1JvT1RAAAAAElFTkSuQmCC"
 }
