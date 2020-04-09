@@ -7,7 +7,7 @@
 var circuit_switch_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLowArray",
-   VERSION: "1.0.46_83",
+   VERSION: "1.0.47_86",
 
    init:function(attr, setter, getter)
    {
