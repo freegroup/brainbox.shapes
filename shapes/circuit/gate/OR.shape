@@ -3,11 +3,13 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "c55dd135-15db-7c71-5efa-f6761c073e66",
-      "x": 7984.6015625,
+      "x": 7984.59375,
       "y": 7980,
       "width": 30,
       "height": 40,
       "alpha": 1,
+      "selectable": true,
+      "draggable": true,
       "angle": 0,
       "userData": {
         "baseClass": "draw2d.SetFigure",
@@ -17,26 +19,26 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "#FFFFFF",
-      "color": "#303030",
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(48,48,48,1)",
       "stroke": 1,
       "radius": 3,
       "dasharray": null,
       "vertices": [
         {
-          "x": 7984.6015625,
+          "x": 7984.59375,
           "y": 7980
         },
         {
-          "x": 8014.6015625,
+          "x": 8014.59375,
           "y": 7980
         },
         {
-          "x": 8014.6015625,
+          "x": 8014.59375,
           "y": 8020
         },
         {
-          "x": 7984.6015625,
+          "x": 7984.59375,
           "y": 8020
         }
       ],
@@ -62,11 +64,13 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "592a8604-e0a9-8913-445d-621078e5ae97",
-      "x": 7978.6015625,
+      "x": 7978.59375,
       "y": 7984,
       "width": 10,
       "height": 10,
       "alpha": 1,
+      "selectable": true,
+      "draggable": true,
       "angle": 0,
       "userData": {
         "name": "input01",
@@ -75,8 +79,8 @@
       },
       "cssClass": "shape_designer_figure_ExtPort",
       "ports": [],
-      "bgColor": "#1C9BAB",
-      "color": "#1B1B1B",
+      "bgColor": "rgba(28,155,171,1)",
+      "color": "rgba(27,27,27,1)",
       "stroke": 1,
       "dasharray": null,
       "filters": [
@@ -100,11 +104,13 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "5fc48f01-fecb-0d5f-ed4f-81a4bc26ae63",
-      "x": 7978.6015625,
+      "x": 7978.59375,
       "y": 8006.5,
       "width": 10,
       "height": 10,
       "alpha": 1,
+      "selectable": true,
+      "draggable": true,
       "angle": 0,
       "userData": {
         "name": "input02",
@@ -113,8 +119,8 @@
       },
       "cssClass": "shape_designer_figure_ExtPort",
       "ports": [],
-      "bgColor": "#1C9BAB",
-      "color": "#1B1B1B",
+      "bgColor": "rgba(28,155,171,1)",
+      "color": "rgba(27,27,27,1)",
       "stroke": 1,
       "dasharray": null,
       "filters": [
@@ -138,11 +144,13 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "7c8a6215-ce17-6a10-c85b-b97fd0de466c",
-      "x": 8015.6015625,
+      "x": 8015.59375,
       "y": 7995,
       "width": 10,
       "height": 10,
       "alpha": 1,
+      "selectable": true,
+      "draggable": true,
       "angle": 0,
       "userData": {
         "name": "output",
@@ -151,8 +159,8 @@
       },
       "cssClass": "shape_designer_figure_ExtPort",
       "ports": [],
-      "bgColor": "#1C9BAB",
-      "color": "#1B1B1B",
+      "bgColor": "rgba(28,155,171,1)",
+      "color": "rgba(27,27,27,1)",
       "stroke": 1,
       "dasharray": null,
       "filters": [
@@ -176,27 +184,29 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "0a4705bb-c6fd-7a26-332f-6972e8683949",
-      "x": 7984.6015625,
-      "y": 7984.5,
+      "x": 7984.59375,
+      "y": 7983.5,
       "width": 30.350000381469727,
       "height": 23,
       "alpha": 1,
+      "selectable": true,
+      "draggable": true,
       "angle": 0,
       "userData": {
         "name": "Label"
       },
       "cssClass": "shape_designer_figure_ExtLabel",
       "ports": [],
-      "bgColor": "none",
-      "color": "#1B1B1B",
+      "bgColor": "rgba(0,0,0,0)",
+      "color": "rgba(27,27,27,1)",
       "stroke": 0,
       "radius": 0,
       "dasharray": null,
       "text": ">1",
       "outlineStroke": 0,
-      "outlineColor": "none",
+      "outlineColor": "rgba(0,0,0,0)",
       "fontSize": 20,
-      "fontColor": "#080808",
+      "fontColor": "rgba(8,8,8,1)",
       "fontFamily": null,
       "editor": "LabelInplaceEditor",
       "filters": [
@@ -208,6 +218,44 @@
         },
         {
           "name": "shape_designer.filter.FontColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLine",
+      "id": "99a59964-70b5-c203-204f-f928608a4bac",
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Line"
+      },
+      "cssClass": "shape_designer_figure_ExtLine",
+      "stroke": 2,
+      "color": "rgba(0,0,0,1)",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 7999.5864,
+          "y": 8005.1686
+        },
+        {
+          "x": 7994.8856,
+          "y": 8005.315500000001
+        },
+        {
+          "x": 7990.1848,
+          "y": 8005.4624
+        }
+      ],
+      "router": "draw2d.layout.connection.VertexRouter",
+      "radius": "",
+      "filters": [
+        {
+          "name": "shape_designer.filter.StrokeFilter"
         }
       ]
     }
