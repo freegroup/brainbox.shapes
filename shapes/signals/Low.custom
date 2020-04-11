@@ -17,6 +17,7 @@ signals_Low = signals_Low.extend({
 
          // your special code here
         this.getOutputPort(0).setValue(0)
+        this.layerAttr("outline", { fill:"#C21B00" });
     },
 
     /**

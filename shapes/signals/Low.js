@@ -7,7 +7,7 @@
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.61_112",
+   VERSION: "1.0.62_113",
 
    init:function(attr, setter, getter)
    {
@@ -40,10 +40,10 @@ var signals_Low = CircuitFigure.extend({
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
-       // Rectangle
+       // outline
        shape = this.canvas.paper.path('M0 3.4296875L65 3.4296875L82.96399999999267 13.9296875L65 24.4296875L0 24.4296875Z');
        shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":1,"fill":"rgba(38,23,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
+       shape.data("name","outline");
        
        // Label
        shape = this.canvas.paper.text(0,0,'LOW');
@@ -74,6 +74,7 @@ signals_Low = signals_Low.extend({
 
          // your special code here
         this.getOutputPort(0).setValue(0)
+        this.layerAttr("outline", { fill:"#C21B00" });
     },
 
     /**
