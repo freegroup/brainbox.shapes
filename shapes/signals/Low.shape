@@ -1,4 +1,144 @@
 {
-  "draw2d": [],
-  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAPklEQVRIS+3TsQ0AMAgEMdh/afr0D0XMACBZR9fR9NHdcnhNHjXqmIC4YrTvYtSoYwLiitH6Y3GJKybwX1wD6fcAH1bniBkAAAAASUVORK5CYII="
+  "draw2d": [
+    {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "722d9720-c010-73b7-4026-b9e994a271b3",
+      "x": 8957,
+      "y": 8239,
+      "width": 82.96399999999267,
+      "height": 21,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "baseClass": "draw2d.SetFigure",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n         this._super(attr, setter, getter);\n\n         // your special code here\n        this.getOutputPort(0).setValue(0)\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @required\n     **/\n    calculate:function()\n    {\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function()\n    {\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function()\n    {\n    },\n\n    /**\n     * Get the simulator a hint which kind of hardware the shapes requires or supports\n     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost\n     * and your are running a circuit which needs this kind of hardware...\n     **/\n    getRequiredHardware: function(){\n      return {\n        raspi: false,\n        arduino: false\n      }\n    }\n\n});",
+        "name": "Rectangle"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(38,23,255,1)",
+      "color": "rgba(255,255,255,1)",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 8957,
+          "y": 8239
+        },
+        {
+          "x": 9022,
+          "y": 8239
+        },
+        {
+          "x": 9039.963999999993,
+          "y": 8249.5
+        },
+        {
+          "x": 9022,
+          "y": 8260
+        },
+        {
+          "x": 8957,
+          "y": 8260
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLabel",
+      "id": "2369ca87-43d5-837d-cc3e-448f9f9747e4",
+      "x": 8965.513,
+      "y": 8235.5703125,
+      "width": 28.34375,
+      "height": 21.25,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Label"
+      },
+      "cssClass": "shape_designer_figure_ExtLabel",
+      "ports": [],
+      "bgColor": "rgba(0,0,0,0)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 0,
+      "radius": 0,
+      "dasharray": null,
+      "text": "LOW",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "fontSize": 16,
+      "fontColor": "rgba(255,255,255,1)",
+      "fontFamily": null,
+      "editor": "LabelInplaceEditor",
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FontSizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FontColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "fd38272c-22f5-46fb-3f8d-2d70036a8113",
+      "x": 9033.147500000001,
+      "y": 8244.5,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Port",
+        "type": "Output",
+        "direction": 1,
+        "fanout": 20
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(55,177,222,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
+        }
+      ]
+    }
+  ],
+  "image": "data:image/png;base64,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"
 }
