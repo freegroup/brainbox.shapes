@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var signals_Low = CircuitFigure.extend({
+var signals_SignalSource = CircuitFigure.extend({
 
-   NAME: "signals_Low",
+   NAME: "signals_SignalSource",
    VERSION: "1.0.71_132",
 
    init:function(attr, setter, getter)
@@ -67,7 +67,7 @@ var signals_Low = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-signals_Low = signals_Low.extend({
+signals_SignalSource = signals_SignalSource.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
@@ -76,6 +76,11 @@ signals_Low = signals_Low.extend({
         this.getOutputPort(0).setValue(0)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        
+        var _this = this;
+        this.on("change:userData.signalId",function(emitter, event){
+            console.log(event)
+        });
     },
 
     /**
@@ -104,6 +109,19 @@ signals_Low = signals_Low.extend({
     {
     },
 
+
+    getParameterSettings: function()
+    {
+        return [
+        {
+            name:"signalId",
+            label:"Signal Id",
+            property:{
+                type: "string"
+            }
+        }];
+    },
+    
     /**
      * Get the simulator a hint which kind of hardware the shapes requires or supports
      * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
