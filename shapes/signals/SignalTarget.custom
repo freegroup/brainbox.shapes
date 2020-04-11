@@ -31,8 +31,8 @@ signals_SignalTarget = signals_SignalTarget.extend({
                 _this.attr("userData.signalId", signalId)
             }            
             _this.layerAttr("label", {text: signalId})
-            console.log(_this.layerGet("outline"))
-            _this.layerAttr("outline", { path: 'M0 10 L13 0 L169 0 L169 20 L13 20 Z'})
+            var width = _this.layerGet("label").getBBox().width+15
+            _this.layerAttr("outline", { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
         })
     },
 
