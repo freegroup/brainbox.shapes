@@ -7,7 +7,7 @@
 var signals_SignalSource = CircuitFigure.extend({
 
    NAME: "signals_SignalSource",
-   VERSION: "1.0.74_135",
+   VERSION: "1.0.75_136",
 
    init:function(attr, setter, getter)
    {
@@ -95,7 +95,15 @@ signals_SignalSource = signals_SignalSource.extend({
     calculate:function(context)
     {
         var signalId = this.attr("userData.signalId")
-     console.log(signalId)
+        // first check if any object already create the signal context
+        if(!context.signals){
+            context.signals = { };
+        }
+        // check if my signal slot is available
+        if(!(signalId in context.signals)){
+            context.signals[signalId] = false;
+        }
+        this.getOutputPort(0).setValue( context.signals[signalId])
     },
 
 
