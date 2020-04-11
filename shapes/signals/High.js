@@ -7,7 +7,7 @@
 var signals_High = CircuitFigure.extend({
 
    NAME: "signals_High",
-   VERSION: "1.0.67_124",
+   VERSION: "1.0.68_125",
 
    init:function(attr, setter, getter)
    {
@@ -42,12 +42,12 @@ var signals_High = CircuitFigure.extend({
        
        // outline
        shape = this.canvas.paper.path('M0 0L31.33889397811072 0L40 10L31.33889397811072 20L0 20Z');
-       shape.attr({"stroke":"rgba(255,0,0,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke":"rgba(194,27,122,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // label
        shape = this.canvas.paper.text(0,0,'High');
-       shape.attr({"x":4,"y":11,"text-anchor":"start","text":"High","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#FF0000","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":4,"y":11,"text-anchor":"start","text":"High","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#C21B7A","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -76,9 +76,6 @@ signals_High = signals_High.extend({
         this.getOutputPort(0).setValue(1)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-        debugger
-       this.layerAttr("outline", { stroke: "#FF0000" });
-       this.layerAttr("label", { stroke: "#FF0000" });
     },
 
     /**

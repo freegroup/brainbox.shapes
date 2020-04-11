@@ -19,9 +19,6 @@ signals_High = signals_High.extend({
         this.getOutputPort(0).setValue(1)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-        debugger
-       this.layerAttr("outline", { stroke: "#FF0000" });
-       this.layerAttr("label", { stroke: "#FF0000" });
     },
 
     /**
