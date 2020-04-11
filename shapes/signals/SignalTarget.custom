@@ -20,8 +20,15 @@ signals_SignalTarget = signals_SignalTarget.extend({
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         
         var _this = this;
+        
+        var adjustWidth = function(){
+            var width = _this.layerGet("label").getBBox().width+15
+            _this.layerAttr("outline", { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
+        }
+
         this.on("change:userData.signalId",function(emitter, event){
             _this.layerAttr("label", {text: event.value})
+            adjustWidth()
         });
         
         this.on("added", function(){
@@ -30,9 +37,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
                 signalId = "Signal_Id"
                 _this.attr("userData.signalId", signalId)
             }            
-            _this.layerAttr("label", {text: signalId})
-            var width = _this.layerGet("label").getBBox().width+15
-            _this.layerAttr("outline", { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
+            adjustWidth()
         })
     },
 
