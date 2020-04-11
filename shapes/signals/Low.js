@@ -7,16 +7,16 @@
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.62_113",
+   VERSION: "1.0.63_115",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:82.96399999999267,height:25},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:40,height:22},attr), setter, getter);
      var port;
      // Port
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 97.81049611880829, y: 55.71875 }));
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 102.69275000000107, y: 45.45454545454546 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("Port");
@@ -26,8 +26,8 @@ var signals_Low = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 82.96399999999267;
-      this.originalHeight= 25;
+      this.originalWidth = 40;
+      this.originalHeight= 22;
       return shape;
    },
 
@@ -36,18 +36,18 @@ var signals_Low = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L82.96399999999267,0 L82.96399999999267,25 L0,25");
+       shape = this.canvas.paper.path("M0,0 L40,0 L40,22 L0,22");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // outline
-       shape = this.canvas.paper.path('M0 3.4296875L65 3.4296875L82.96399999999267 13.9296875L65 24.4296875L0 24.4296875Z');
-       shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":1,"fill":"rgba(38,23,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M0 0L31.33889397811072 0L40 10L31.33889397811072 20L0 20Z');
+       shape.attr({"stroke":"rgba(15,15,255,1)","stroke-width":1,"fill":"rgba(0,0,0,0)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // Label
        shape = this.canvas.paper.text(0,0,'LOW');
-       shape.attr({"x":12.51300000000083,"y":12.5,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#FFFFFF","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":4,"y":11,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#3300FF","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
 
