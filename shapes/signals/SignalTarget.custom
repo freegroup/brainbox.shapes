@@ -16,7 +16,6 @@ signals_SignalTarget = signals_SignalTarget.extend({
          this._super(attr, setter, getter);
 
          // your special code here
-        this.getOutputPort(0).setValue(0)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         
