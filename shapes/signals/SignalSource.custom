@@ -23,6 +23,7 @@ signals_SignalSource = signals_SignalSource.extend({
         var _this = this;
         this.on("change:userData.signalId",function(emitter, event){
             console.log(event)
+            _this.layerAttr("label", {text: event.value})
         });
     },
 
