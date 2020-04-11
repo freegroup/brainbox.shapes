@@ -16,6 +16,7 @@ signals_Low = signals_Low.extend({
          this._super(attr, setter, getter);
 
          // your special code here
+        this.getOutputPort(0).setValue(0)
     },
 
     /**

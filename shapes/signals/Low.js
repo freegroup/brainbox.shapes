@@ -7,21 +7,27 @@
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.60_111",
+   VERSION: "1.0.61_112",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:10,height:10},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:82.96399999999267,height:25},attr), setter, getter);
      var port;
+     // Port
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 97.81049611880829, y: 55.71875 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("Port");
+     port.setMaxFanOut(20);
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 10;
-      this.originalHeight= 10;
+      this.originalWidth = 82.96399999999267;
+      this.originalHeight= 25;
       return shape;
    },
 
@@ -30,9 +36,19 @@ var signals_Low = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L10,0 L10,10 L0,10");
+       shape = this.canvas.paper.path("M0,0 L82.96399999999267,0 L82.96399999999267,25 L0,25");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0 3.4296875L65 3.4296875L82.96399999999267 13.9296875L65 24.4296875L0 24.4296875Z');
+       shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":1,"fill":"rgba(38,23,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'LOW');
+       shape.attr({"x":12.51300000000083,"y":12.5,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#FFFFFF","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
        
 
        return this.canvas.paper.setFinish();
@@ -57,6 +73,7 @@ signals_Low = signals_Low.extend({
          this._super(attr, setter, getter);
 
          // your special code here
+        this.getOutputPort(0).setValue(0)
     },
 
     /**
