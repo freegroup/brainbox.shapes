@@ -24,9 +24,9 @@ signals_SignalSource = signals_SignalSource.extend({
         this.on("change:userData.signalId",function(emitter, event){
             _this.layerAttr("label", {text: event.value})
         });
-        var signalId = this.getUserData("signalId")
+        var signalId = this.attr("userData.signalId")
         if(!signalId){
-            this.setUserData({signalId : "signalId"})
+            this.attr("userData.signalId", "signalId")
         }
     },
 
@@ -37,7 +37,7 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     calculate:function(context)
     {
-        var signalId = this.getUserData("signalId")
+        var signalId = this.attr("userData.signalId")
      console.log(signalId)
     },
 
