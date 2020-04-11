@@ -7,7 +7,7 @@
 var signals_SignalSource = CircuitFigure.extend({
 
    NAME: "signals_SignalSource",
-   VERSION: "1.0.72_133",
+   VERSION: "1.0.73_134",
 
    init:function(attr, setter, getter)
    {
@@ -79,9 +79,12 @@ signals_SignalSource = signals_SignalSource.extend({
         
         var _this = this;
         this.on("change:userData.signalId",function(emitter, event){
-            console.log(event)
             _this.layerAttr("label", {text: event.value})
         });
+        var signalId = this.getUserData("signalId")
+        if(!signalId){
+            this.setUserData({signalId : "signalId"})
+        }
     },
 
     /**
@@ -89,8 +92,10 @@ signals_SignalSource = signals_SignalSource.extend({
      *  loop
      *  @required
      **/
-    calculate:function()
+    calculate:function(context)
     {
+        var signalId = this.getUserData("signalId")
+     console.log(signalId)
     },
 
 
