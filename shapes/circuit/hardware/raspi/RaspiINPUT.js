@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiINPUT",
-   VERSION: "1.0.80_145",
+   VERSION: "1.0.81_147",
 
    init:function(attr, setter, getter)
    {

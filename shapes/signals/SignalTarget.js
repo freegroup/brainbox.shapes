@@ -7,16 +7,16 @@
 var signals_SignalTarget = CircuitFigure.extend({
 
    NAME: "signals_SignalTarget",
-   VERSION: "1.0.80_145",
+   VERSION: "1.0.81_147",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:55.182800000005955,height:22},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:69.55780000000595,height:22},attr), setter, getter);
      var port;
      // Port
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.350007611055563, y: 48.86363636363637 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8643487861801238, y: 48.86363636363637 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("Port");
@@ -26,7 +26,7 @@ var signals_SignalTarget = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 55.182800000005955;
+      this.originalWidth = 69.55780000000595;
       this.originalHeight= 22;
       return shape;
    },
@@ -36,18 +36,18 @@ var signals_SignalTarget = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L55.182800000005955,0 L55.182800000005955,22 L0,22");
+       shape = this.canvas.paper.path("M0,0 L69.55780000000595,0 L69.55780000000595,22 L0,22");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // outline
-       shape = this.canvas.paper.path('M0 9.932800000005955L10.477999999996428 0.75L55.182800000005955 0.75L55.182800000005955 20.75L9.182800000005955 20.75Z');
+       shape = this.canvas.paper.path('M0 9.932800000005955L13.10158237711039 0.75L69 0.75L69 20.75L11.482077748871234 20.75Z');
        shape.attr({"stroke":"rgba(0,120,242,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // label
-       shape = this.canvas.paper.text(0,0,'LOW');
-       shape.attr({"x":13.182800000005955,"y":11,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0078F2","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Signal_ID');
+       shape.attr({"x":13.182800000005955,"y":11,"text-anchor":"start","text":"Signal_ID","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0078F2","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -78,19 +78,16 @@ signals_SignalTarget = signals_SignalTarget.extend({
         
         var _this = this;
         this.on("change:userData.signalId",function(emitter, event){
-            console.log("dddddd")
-            console.log(event)
             _this.layerAttr("label", {text: event.value})
         });
         
         this.on("added", function(){
-            console.log("added")
             var signalId = _this.attr("userData.signalId")
-            console.log(signalId)
             if(!signalId){
-                console.log("set data")
-                _this.attr("userData.signalId", "signalId")
+                signalId = "signalId"
+                _this.attr("userData.signalId", signalId)
             }            
+            _this.layerAttr("label", {text: signalId})
         })
     },
 

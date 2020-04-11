@@ -21,19 +21,16 @@ signals_SignalTarget = signals_SignalTarget.extend({
         
         var _this = this;
         this.on("change:userData.signalId",function(emitter, event){
-            console.log("dddddd")
-            console.log(event)
             _this.layerAttr("label", {text: event.value})
         });
         
         this.on("added", function(){
-            console.log("added")
             var signalId = _this.attr("userData.signalId")
-            console.log(signalId)
             if(!signalId){
-                console.log("set data")
-                _this.attr("userData.signalId", "signalId")
+                signalId = "signalId"
+                _this.attr("userData.signalId", signalId)
             }            
+            _this.layerAttr("label", {text: signalId})
         })
     },
 
