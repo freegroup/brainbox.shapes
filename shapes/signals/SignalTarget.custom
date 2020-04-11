@@ -27,7 +27,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
             
             _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
             _this.layerAttr("outline",     { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
-            debugger
+            _this.width = width;
         }
 
         this.on("change:userData.signalId",function(emitter, event){
