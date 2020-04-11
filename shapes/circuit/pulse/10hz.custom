@@ -13,18 +13,14 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
 
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-
+        
         this.currentTimer=0;
     },
     
-    /**
-     * called every '10 [ms]' from the application. do a little bit calculation
-     * to change the state every 100ms (10Hz)
-     * 
-     **/
     calculate:function()
     {
-       // 10 ticks every 10ms => 10Hz    
+       // 2  ticks => 50Hz   
+       // 10 ticks => 10Hz 
        this.currentTimer = (this.currentTimer+1)%10; 
        if(this.currentTimer===0){
            this.value = !this.value;
@@ -34,7 +30,7 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
     
     onStart:function()
     {
-        this.currentTimer=0;
+         this.currentTimer=0;
     },
     
     onStop:function()

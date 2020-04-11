@@ -7,27 +7,27 @@
 var circuit_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_10hz",
-   VERSION: "1.0.56_104",
+   VERSION: "1.0.57_106",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:34.1875,height:49.5},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:31.6640625,height:48.60950000000048},attr), setter, getter);
      var port;
-     // Port
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 102.87934186471664, y: 69.67272727272601 }));
+     // outputPort
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 103.15815445349125, y: 69.87543587158933 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#1C9BAB");
-     port.setName("Port");
+     port.setName("outputPort");
      port.setMaxFanOut(20);
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 34.1875;
-      this.originalHeight= 49.5;
+      this.originalWidth = 31.6640625;
+      this.originalHeight= 48.60950000000048;
       return shape;
    },
 
@@ -36,22 +36,22 @@ var circuit_pulse_10hz = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L34.1875,0 L34.1875,49.5 L0,49.5");
+       shape = this.canvas.paper.path("M0,0 L31.6640625,0 L31.6640625,48.60950000000048 L0,48.60950000000048");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M33.671875 49.5L3.671875 49.5L3.671875 19.5L33.671875 19.5Z');
+       shape = this.canvas.paper.path('M1.6640625 18.60950000000048L31.6640625 18.60950000000048L31.6640625 48.60950000000048L1.6640625 48.60950000000048Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Label
        shape = this.canvas.paper.text(0,0,'10Hz');
-       shape.attr({"x":4,"y":10.5,"text-anchor":"start","text":"10Hz","font-family":"\"Arial\"","font-size":11,"stroke":"none","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":4,"y":10.578125,"text-anchor":"start","text":"10Hz","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Line
-       shape = this.canvas.paper.path('M6.119575000000623 41.67239999999947L13.426774999999907,41.67239999999947L13.426774999999907,28.884799999999814L24.387574999999742,28.884799999999814L24.387574999999742,41.21569999999974L30.324674999999843,41.21569999999974');
+       shape = this.canvas.paper.path('M3.393662499999664 41.239300000000185L10.575662499999453,41.239300000000185L10.575662499999453,30.979299999999967L22.066862499999843,30.979299999999967L22.066862499999843,40.82889999999952L28.633262499999546,40.82889999999952');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
@@ -75,18 +75,14 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
 
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-
+        
         this.currentTimer=0;
     },
     
-    /**
-     * called every '10 [ms]' from the application. do a little bit calculation
-     * to change the state every 100ms (10Hz)
-     * 
-     **/
     calculate:function()
     {
-       // 10 ticks every 10ms => 10Hz    
+       // 2  ticks => 50Hz   
+       // 10 ticks => 10Hz 
        this.currentTimer = (this.currentTimer+1)%10; 
        if(this.currentTimer===0){
            this.value = !this.value;
@@ -96,7 +92,7 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
     
     onStart:function()
     {
-        this.currentTimer=0;
+         this.currentTimer=0;
     },
     
     onStop:function()
