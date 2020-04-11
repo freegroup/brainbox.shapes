@@ -7,7 +7,7 @@
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.68_125",
+   VERSION: "1.0.69_128",
 
    init:function(attr, setter, getter)
    {
@@ -42,12 +42,12 @@ var signals_Low = CircuitFigure.extend({
        
        // outline
        shape = this.canvas.paper.path('M0 0L31.33889397811072 0L40 10L31.33889397811072 20L0 20Z');
-       shape.attr({"stroke":"rgba(15,15,255,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke":"rgba(0,120,242,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // label
        shape = this.canvas.paper.text(0,0,'LOW');
-       shape.attr({"x":4,"y":11,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0000FF","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":4,"y":11,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0078F2","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -76,8 +76,6 @@ signals_Low = signals_Low.extend({
         this.getOutputPort(0).setValue(0)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-       this.layerAttr("outline", { stroke: "#0000FF" });
-       this.layerAttr("label", { stroke: "#0000FF" });
     },
 
     /**
@@ -96,8 +94,6 @@ signals_Low = signals_Low.extend({
      **/
     onStart:function()
     {
-       this.layerAttr("outline", { stroke: "#0000FF" });
-       this.layerAttr("label", { stroke: "#0000FF" });
     },
 
     /**
