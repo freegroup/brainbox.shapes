@@ -23,7 +23,10 @@ signals_SignalTarget = signals_SignalTarget.extend({
         
         var adjustWidth = function(){
             var width = _this.layerGet("label").getBBox().width+15
-            _this.layerAttr("outline", { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
+            "M0,0 L69.21405000000595,0 L69.21405000000595,22 L0,22"
+            
+            _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
+            _this.layerAttr("outline",     { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
         }
 
         this.on("change:userData.signalId",function(emitter, event){
@@ -37,6 +40,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
                 signalId = "Signal_Id"
                 _this.attr("userData.signalId", signalId)
             }            
+            _this.layerAttr("label", {text: signalId})
             adjustWidth()
         })
     },
