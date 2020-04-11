@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_pulse_10hz = CircuitFigure.extend({
+var circuit_pulse_1hz = CircuitFigure.extend({
 
-   NAME: "circuit_pulse_10hz",
+   NAME: "circuit_pulse_1hz",
    VERSION: "1.0.58_107",
 
    init:function(attr, setter, getter)
@@ -46,8 +46,8 @@ var circuit_pulse_10hz = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'10Hz');
-       shape.attr({"x":4,"y":10.578125,"text-anchor":"start","text":"10Hz","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'1Hz');
+       shape.attr({"x":4,"y":10.578125,"text-anchor":"start","text":"1Hz","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Line
@@ -68,7 +68,7 @@ var circuit_pulse_10hz = CircuitFigure.extend({
  *
  *
  */
-circuit_pulse_10hz = circuit_pulse_10hz.extend({
+circuit_pulse_1hz = circuit_pulse_1hz.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -81,9 +81,10 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
     
     calculate:function()
     {
-       // 2  ticks => 50Hz   
-       // 10 ticks => 10Hz 
-       this.currentTimer = (this.currentTimer+1)%10; 
+       // 2   ticks => 50Hz   
+       // 10  ticks => 10Hz 
+       // 100 ticks => 1Hz
+       this.currentTimer = (this.currentTimer+1)%100; 
        if(this.currentTimer===0){
            this.value = !this.value;
            this.getOutputPort(0).setValue(this.value);
