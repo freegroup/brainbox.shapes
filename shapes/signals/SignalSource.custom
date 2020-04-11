@@ -21,13 +21,31 @@ signals_SignalSource = signals_SignalSource.extend({
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         
         var _this = this;
+        
+                
+        var adjustWidth = function(){
+            var width = _this.layerGet("label").getBBox().width+15
+
+            _this.setWidth(width+5);
+            _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
+            _this.layerAttr("outline",     { path: `M0 0 L${width-13} 0 L${width} 10 L${width-13} 20 L0 20 Z`})
+          
+        }
+
         this.on("change:userData.signalId",function(emitter, event){
             _this.layerAttr("label", {text: event.value})
+            adjustWidth()
         });
-        var signalId = this.attr("userData.signalId")
-        if(!signalId){
-            this.attr("userData.signalId", "signalId")
-        }
+        
+        this.on("added", function(){
+            var signalId = _this.attr("userData.signalId")
+            if(!signalId){
+                signalId = "Signal_Id"
+                _this.attr("userData.signalId", signalId)
+            }            
+            _this.layerAttr("label", {text: signalId})
+            adjustWidth()
+        })
     },
 
     /**
@@ -89,6 +107,30 @@ signals_SignalSource = signals_SignalSource.extend({
         raspi: false,
         arduino: false
       }
+    },
+    
+  /**
+   * @private
+   */
+  applyTransformation: function () {
+    let s =
+      // override the base implementation and do not scale the internal SVG elements....this let the arrow looks a like streche...we
+      // calculate the path in the event handler. A lot more code....but the result is much cleaner
+      //"S" + this.scaleX + "," + this.scaleY + ",0,0 " +
+      "R" + this.rotationAngle + "," + ((this.getWidth() / 2) | 0) + "," + ((this.getHeight() / 2) | 0) +
+      "T" + this.getAbsoluteX() + "," + this.getAbsoluteY() +
+      ""
+    this.svgNodes.transform(s)
+    if (this.rotationAngle === 90 || this.rotationAngle === 270) {
+      let before = this.svgNodes.getBBox(true)
+      let ratio = before.height / before.width
+      let reverseRatio = before.width / before.height
+      let rs = "...S" + ratio + "," + reverseRatio + "," + (this.getAbsoluteX() + this.getWidth() / 2) + "," + (this.getAbsoluteY() + this.getHeight() / 2)
+      this.svgNodes.transform(rs)
     }
+
+    return this
+  }
+
 
 });
