@@ -37,7 +37,7 @@ signals_Low = signals_Low.extend({
      **/
     onStart:function()
     {
-                this.layerAttr("outline", { fill:"#C21B00" });
+       this.layerAttr("outline", { stroke: "#0000FF" });
     },
 
     /**

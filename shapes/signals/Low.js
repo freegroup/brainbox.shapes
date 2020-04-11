@@ -7,7 +7,7 @@
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.64_116",
+   VERSION: "1.0.65_119",
 
    init:function(attr, setter, getter)
    {
@@ -42,7 +42,7 @@ var signals_Low = CircuitFigure.extend({
        
        // outline
        shape = this.canvas.paper.path('M0 0L31.33889397811072 0L40 10L31.33889397811072 20L0 20Z');
-       shape.attr({"stroke":"rgba(15,15,255,1)","stroke-width":1,"fill":"rgba(0,0,0,0)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke":"rgba(15,15,255,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // Label
@@ -94,7 +94,7 @@ signals_Low = signals_Low.extend({
      **/
     onStart:function()
     {
-                this.layerAttr("outline", { fill:"#C21B00" });
+       this.layerAttr("outline", { stroke: "#0000FF" });
     },
 
     /**
