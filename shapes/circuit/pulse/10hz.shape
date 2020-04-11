@@ -1,49 +1,6 @@
 {
   "draw2d": [
     {
-      "type": "shape_designer.figure.ExtPort",
-      "id": "f4d5683a-7c42-8771-5df4-e4e9da5b8b46",
-      "x": 8011.83203125,
-      "y": 8004.66135,
-      "width": 10,
-      "height": 10,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custome code and event handler here.\n *\n *\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n        this.attr({resizeable:false});\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n        \n        this.currentTimer=0;\n    },\n    \n    calculate:function()\n    {\n       // 2  ticks => 50Hz   \n       // 10 ticks => 10Hz \n       this.currentTimer = (this.currentTimer+1)%10; \n       if(this.currentTimer===0){\n           this.value = !this.value;\n           this.getOutputPort(0).setValue(this.value);\n       }\n    },\n    \n    onStart:function()\n    {\n         this.currentTimer=0;\n    },\n    \n    onStop:function()\n    {\n    }\n\n});",
-        "name": "circle",
-        "markdown": "# Clock Signal\n\nIn electronics and especially synchronous digital circuits, \na clock signal is a particular type of signal that \noscillates between a `high` and a `low` state and is \nutilized like a metronome to coordinate actions \nof digital circuits.\n\nThe hertz (symbol `Hz`) is the unit of frequency in the \nInternational System of Units (SI) and is defined as \none cycle per second. \n\nIt is named for Heinrich Rudolf Hertz, the first person \nto provide conclusive proof of the existence of \nelectromagnetic waves.\n\n",
-        "type": "Output",
-        "direction": 1
-      },
-      "cssClass": "shape_designer_figure_ExtPort",
-      "ports": [],
-      "bgColor": "rgba(28,155,171,1)",
-      "color": "rgba(27,27,27,1)",
-      "stroke": 1,
-      "dasharray": null,
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.FanoutFilter"
-        },
-        {
-          "name": "shape_designer.filter.PortDirectionFilter"
-        },
-        {
-          "name": "shape_designer.filter.PortTypeFilter"
-        },
-        {
-          "name": "shape_designer.filter.FillColorFilter"
-        }
-      ]
-    },
-    {
       "type": "shape_designer.figure.PolyRect",
       "id": "a62502cd-0a35-6f21-e7e3-b97974233a1e",
       "x": 7985.83203125,
@@ -55,7 +12,12 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "Rectangle"
+        "baseClass": "draw2d.SetFigure",
+        "code": "/**\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custome code and event handler here.\n *\n *\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n        this.attr({resizeable:false});\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n        \n        this.currentTimer=0;\n    },\n    \n    calculate:function()\n    {\n       // 2  ticks => 50Hz   \n       // 10 ticks => 10Hz \n       this.currentTimer = (this.currentTimer+1)%10; \n       if(this.currentTimer===0){\n           this.value = !this.value;\n           this.getOutputPort(0).setValue(this.value);\n       }\n    },\n    \n    onStart:function()\n    {\n         this.currentTimer=0;\n    },\n    \n    onStop:function()\n    {\n    }\n\n});",
+        "name": "Rectangle",
+        "markdown": "# Clock Signal\n\nIn electronics and especially synchronous digital circuits, \na clock signal is a particular type of signal that \noscillates between a `high` and a `low` state and is \nutilized like a metronome to coordinate actions \nof digital circuits.\n\nThe hertz (symbol `Hz`) is the unit of frequency in the \nInternational System of Units (SI) and is defined as \none cycle per second. \n\nIt is named for Heinrich Rudolf Hertz, the first person \nto provide conclusive proof of the existence of \nelectromagnetic waves.\n\n",
+        "type": "Output",
+        "direction": 1
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
@@ -139,6 +101,49 @@
       ]
     },
     {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "f4d5683a-7c42-8771-5df4-e4e9da5b8b46",
+      "x": 8011.83203125,
+      "y": 8004.66135,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "baseClass": "draw2d.SetFigure",
+        "code": "/**\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custome code and event handler here.\n *\n *\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n        this.attr({resizeable:false});\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n        \n        this.currentTimer=0;\n    },\n    \n    calculate:function()\n    {\n       // 2  ticks => 50Hz   \n       // 10 ticks => 10Hz \n       this.currentTimer = (this.currentTimer+1)%10; \n       if(this.currentTimer===0){\n           this.value = !this.value;\n           this.getOutputPort(0).setValue(this.value);\n       }\n    },\n    \n    onStart:function()\n    {\n         this.currentTimer=0;\n    },\n    \n    onStop:function()\n    {\n    }\n\n});",
+        "name": "outputPort",
+        "markdown": "# Clock Signal\n\nIn electronics and especially synchronous digital circuits, \na clock signal is a particular type of signal that \noscillates between a `high` and a `low` state and is \nutilized like a metronome to coordinate actions \nof digital circuits.\n\nThe hertz (symbol `Hz`) is the unit of frequency in the \nInternational System of Units (SI) and is defined as \none cycle per second. \n\nIt is named for Heinrich Rudolf Hertz, the first person \nto provide conclusive proof of the existence of \nelectromagnetic waves.\n\n",
+        "type": "Output",
+        "direction": 1
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(28,155,171,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
       "type": "shape_designer.figure.ExtLine",
       "id": "927cebb7-405f-4e28-fb67-1762432650a1",
       "alpha": 1,
@@ -189,5 +194,5 @@
       ]
     }
   ],
-  "image": "data:image/png;base64,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"
+  "image": "data:image/png;base64,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"
 }
