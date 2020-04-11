@@ -7,7 +7,7 @@
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.63_115",
+   VERSION: "1.0.64_116",
 
    init:function(attr, setter, getter)
    {
@@ -74,7 +74,8 @@ signals_Low = signals_Low.extend({
 
          // your special code here
         this.getOutputPort(0).setValue(0)
-        this.layerAttr("outline", { fill:"#C21B00" });
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -93,6 +94,7 @@ signals_Low = signals_Low.extend({
      **/
     onStart:function()
     {
+                this.layerAttr("outline", { fill:"#C21B00" });
     },
 
     /**
