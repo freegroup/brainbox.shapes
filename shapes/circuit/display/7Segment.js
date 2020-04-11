@@ -7,7 +7,7 @@
 var circuit_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_display_7Segment",
-   VERSION: "1.0.55_102",
+   VERSION: "1.0.56_104",
 
    init:function(attr, setter, getter)
    {
@@ -134,9 +134,6 @@ circuit_display_7Segment = circuit_display_7Segment.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
 
-      //  this.attr({resizeable:false});
-    //    this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-
         // ensure that the ports has the same order as the segments
         //
         this.portLockup = [];
@@ -153,7 +150,10 @@ circuit_display_7Segment = circuit_display_7Segment.extend({
     {
         var _this = this;
         this.portLockup.forEach(function(element, index){
-            _this.layerAttr(element.s, { fill:element.p.getValue()?"#C21B7A":null});
+            _this.layerAttr(element.s, { 
+                fill:element.p.getValue()?"#C21B7A":null,
+                stroke:element.p.getValue()?"#000000":"#f4f4f9"
+            });
         });
     }
 
