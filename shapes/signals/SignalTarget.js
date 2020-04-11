@@ -7,7 +7,7 @@
 var signals_SignalTarget = CircuitFigure.extend({
 
    NAME: "signals_SignalTarget",
-   VERSION: "1.0.79_143",
+   VERSION: "1.0.80_145",
 
    init:function(attr, setter, getter)
    {
@@ -77,7 +77,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         
         var _this = this;
-        this.on("change",function(emitter, event){
+        this.on("change:userData.signalId",function(emitter, event){
             console.log("dddddd")
             console.log(event)
             _this.layerAttr("label", {text: event.value})

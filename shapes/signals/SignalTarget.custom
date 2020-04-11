@@ -20,7 +20,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         
         var _this = this;
-        this.on("change",function(emitter, event){
+        this.on("change:userData.signalId",function(emitter, event){
             console.log("dddddd")
             console.log(event)
             _this.layerAttr("label", {text: event.value})
