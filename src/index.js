@@ -79,6 +79,7 @@ module.exports = {
       await page.goto('http://localhost:7400/designer')
       await page.setViewport({width: 900, height: 1024})
       await page.waitForFunction(() => 'app' in window)
+      await page.waitForFunction(() => window.app !== null)
       await page.mainFrame().evaluate(injectedCode)
       await page.waitForFunction(() => img !== null)
 
@@ -101,7 +102,7 @@ module.exports = {
       fs.writeFileSync(jsFilePath, jsCode, 'utf8');
       fs.writeFileSync(customFilePath, customCode, 'utf8');
       fs.writeFileSync(markdownFilePath, markdown, 'utf8');
-      fs.writeFileSync(pngFilePath, new Buffer(img, 'base64'), 'binary');
+      fs.writeFileSync(pngFilePath, Buffer.from(img, 'base64'), 'binary');
 
       browser.close()
 

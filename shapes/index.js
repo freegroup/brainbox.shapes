@@ -7,7 +7,7 @@
 var circuit_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_alu_FullAdder",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -177,94 +177,94 @@ circuit_alu_FullAdder = circuit_alu_FullAdder.extend({
 var circuit_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_alu_FullAdder4Bit",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80.234375,height:200},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80.015625,height:200},attr), setter, getter);
      var port;
      // output_as
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.08036611489784, y: 9.43359375 }));
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.35670376879524, y: 9.43359375 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_as");
      port.setMaxFanOut(20);
      // output_c
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 100.95423563777995, y: 89.72807499999999 }));
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.23022847100175, y: 89.72807499999999 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_c");
      port.setMaxFanOut(20);
      // input_a1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9028549172347385, y: 9.78125 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9053231790666632, y: 9.78125 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_a1");
      port.setMaxFanOut(20);
      // input_b1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.8071353456672887, y: 19.785025000000132 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.8093419254054925, y: 19.785025000000132 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_b1");
      port.setMaxFanOut(20);
      // input_c1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9028549172347385, y: 29.687149999999747 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9053231790666632, y: 29.687149999999747 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_c1");
      port.setMaxFanOut(20);
      // input_d1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.8071353456672887, y: 39.673375000000306 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.8093419254054925, y: 39.673375000000306 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_d1");
      port.setMaxFanOut(20);
      // input_a2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9028549172347385, y: 49.61467499999981 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9053231790666632, y: 49.61467499999981 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_a2");
      port.setMaxFanOut(20);
      // input_b2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9068432327168573, y: 59.663724999999886 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.909322397969354, y: 59.663724999999886 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_b2");
      port.setMaxFanOut(20);
      // input_c2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9068432327168573, y: 69.671875 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.909322397969354, y: 69.671875 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_c2");
      port.setMaxFanOut(20);
      // input_d2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9068432327168573, y: 79.671875 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.909322397969354, y: 79.671875 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_d2");
      port.setMaxFanOut(20);
      // input_cin
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9068432327168573, y: 89.72807499999999 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.909322397969354, y: 89.72807499999999 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_cin");
      port.setMaxFanOut(20);
      // output_bs
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.08036611489784, y: 19.6171875 }));
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.35670376879524, y: 19.6171875 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_bs");
      port.setMaxFanOut(20);
      // output_cs
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.08036611489784, y: 29.687149999999747 }));
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.35670376879524, y: 29.687149999999747 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_cs");
      port.setMaxFanOut(20);
      // output_ds
-     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.08036611489784, y: 39.673375000000306 }));
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 101.35670376879524, y: 39.673375000000306 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_ds");
@@ -274,7 +274,7 @@ var circuit_alu_FullAdder4Bit = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80.234375;
+      this.originalWidth = 80.015625;
       this.originalHeight= 200;
       return shape;
    },
@@ -284,7 +284,7 @@ var circuit_alu_FullAdder4Bit = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80.234375,0 L80.234375,200 L0,200");
+       shape = this.canvas.paper.path("M0,0 L80.015625,0 L80.015625,200 L0,200");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -493,7 +493,7 @@ circuit_alu_FullAdder4Bit = circuit_alu_FullAdder4Bit.extend({
 var circuit_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_counter_BCDCounter",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -667,7 +667,7 @@ circuit_counter_BCDCounter = circuit_counter_BCDCounter.extend({
 var circuit_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_decoder_BCDto7Seg",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -906,7 +906,7 @@ circuit_decoder_BCDto7Seg = circuit_decoder_BCDto7Seg.extend({
 var circuit_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_display_7Segment",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1068,7 +1068,7 @@ circuit_display_7Segment = circuit_display_7Segment.extend({
 var circuit_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_display_Led",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1159,7 +1159,7 @@ circuit_display_Led = circuit_display_Led.extend({
 var circuit_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_DFlipFlop",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1292,7 +1292,7 @@ circuit_flipflop_DFlipFlop = circuit_flipflop_DFlipFlop.extend({
 var circuit_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_JKFlipFlop",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1455,7 +1455,7 @@ circuit_flipflop_JKFlipFlop = circuit_flipflop_JKFlipFlop.extend({
 var circuit_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_JKRFlipFlop",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1636,7 +1636,7 @@ circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
 var circuit_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_SRFlipFlop",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1779,7 +1779,7 @@ circuit_flipflop_SRFlipFlop = circuit_flipflop_SRFlipFlop.extend({
 var circuit_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_flipflop_TFlipFlop",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1901,7 +1901,7 @@ circuit_flipflop_TFlipFlop = circuit_flipflop_TFlipFlop.extend({
 var circuit_gate_AND = CircuitFigure.extend({
 
    NAME: "circuit_gate_AND",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -1999,7 +1999,7 @@ circuit_gate_AND = circuit_gate_AND.extend({
 var circuit_gate_NAND = CircuitFigure.extend({
 
    NAME: "circuit_gate_NAND",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -2102,7 +2102,7 @@ circuit_gate_NAND = circuit_gate_NAND.extend({
 var circuit_gate_NOR = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOR",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -2210,7 +2210,7 @@ circuit_gate_NOR = circuit_gate_NOR.extend({
 var circuit_gate_NOT = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOT",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -2307,7 +2307,7 @@ circuit_gate_NOT = circuit_gate_NOT.extend({
 var circuit_gate_OR = CircuitFigure.extend({
 
    NAME: "circuit_gate_OR",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -2410,7 +2410,7 @@ circuit_gate_OR = circuit_gate_OR.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -2911,7 +2911,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Led",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -3023,7 +3023,7 @@ circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 var circuit_hardware_raspi_RaspiGPIO = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiGPIO",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -3382,7 +3382,7 @@ circuit_hardware_raspi_RaspiGPIO = circuit_hardware_raspi_RaspiGPIO.extend({
 var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiINPUT",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -3464,7 +3464,7 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Input GPIO');
-       shape.attr({"x":8.433599999999387,"y":20.0078125,"text-anchor":"start","text":"Input GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":8.433599999999387,"y":20,"text-anchor":"start","text":"Input GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -3656,7 +3656,7 @@ circuit_hardware_raspi_RaspiINPUT = circuit_hardware_raspi_RaspiINPUT.extend({
 var circuit_hardware_raspi_RaspiOUTPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiOUTPUT",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -3743,7 +3743,7 @@ var circuit_hardware_raspi_RaspiOUTPUT = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Output GPIO');
-       shape.attr({"x":4,"y":21.94793749999917,"text-anchor":"start","text":"Output GPIO","font-family":"\"Arial\"","font-size":17,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":4,"y":21.94012499999917,"text-anchor":"start","text":"Output GPIO","font-family":"\"Arial\"","font-size":17,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
@@ -3936,7 +3936,7 @@ circuit_hardware_raspi_RaspiOUTPUT = circuit_hardware_raspi_RaspiOUTPUT.extend({
 var circuit_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_10hz",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4040,7 +4040,7 @@ circuit_pulse_10hz = circuit_pulse_10hz.extend({
 var circuit_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_1hz",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4145,7 +4145,7 @@ circuit_pulse_1hz = circuit_pulse_1hz.extend({
 var circuit_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_50hz",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4248,7 +4248,7 @@ circuit_pulse_50hz = circuit_pulse_50hz.extend({
 var circuit_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_pulse_Delay",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4420,7 +4420,7 @@ circuit_pulse_Delay = circuit_pulse_Delay.extend({
 var circuit_switch_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLow",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4533,7 +4533,7 @@ circuit_switch_HighLow = circuit_switch_HighLow.extend({
 var circuit_switch_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_switch_HighLowArray",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4698,7 +4698,7 @@ circuit_switch_HighLowArray = circuit_switch_HighLowArray.extend({
 var circuit_switch_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_switch_PushButton",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4817,7 +4817,7 @@ circuit_switch_PushButton = circuit_switch_PushButton.extend({
 var circuit_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_timer_Delay",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -4979,8 +4979,8 @@ circuit_timer_Delay = circuit_timer_Delay.extend({
 });
 
 
-var documentation_MarkdownFigure = draw2d.shape.basic.Rectangle.extend({
-    NAME: "documentation_MarkdownFigure",
+var documentation_Markdown = draw2d.shape.basic.Rectangle.extend({
+    NAME: "documentation_Markdown",
     VERSION: "1.0.0",
 
     init: function (attr) {
@@ -5076,7 +5076,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -5200,7 +5200,7 @@ messaging_HiveMQ = messaging_HiveMQ.extend({
 var signals_High = CircuitFigure.extend({
 
    NAME: "signals_High",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -5321,7 +5321,7 @@ signals_High = signals_High.extend({
 var signals_Low = CircuitFigure.extend({
 
    NAME: "signals_Low",
-   VERSION: "1.0.108_195",
+   VERSION: "local-version",
 
    init:function(attr, setter, getter)
    {
@@ -5433,10 +5433,193 @@ signals_Low = signals_Low.extend({
 });
 
 
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
+var signals_SignalSource = CircuitFigure.extend({
+
+   NAME: "signals_SignalSource",
+   VERSION: "local-version",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:65.72720000000481,height:22},attr), setter, getter);
+     var port;
+     // Port
+     port = this.createPort("output", new draw2d.layout.locator.XYRelPortLocator({x: 98.47855986562651, y: 46.56272727272815 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("Port");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 65.72720000000481;
+      this.originalHeight= 22;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L65.72720000000481,0 L65.72720000000481,22 L0,22");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // outline
+       shape = this.canvas.paper.path('M0 0L53.81817921990478 0L65.72720000000481 10L53.81817921990478 20L0.24380000000201107 20.243800000000192Z');
+       shape.attr({"stroke":"rgba(0,120,242,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","outline");
+       
+       // label
+       shape = this.canvas.paper.text(0,0,'Signal_ID');
+       shape.attr({"x":4.773050000005242,"y":11,"text-anchor":"start","text":"Signal_ID","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0078F2","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","label");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * Generated Code for the Draw2D touch HTML5 lib.
+ * File will be generated if you save the *.shape file.
+ *
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custom code and event handler here.
+ *
+ * Looks disconcerting - extending my own class. But this is a good method to
+ * merge basic code and override them with custom methods.
+ */
+signals_SignalSource = signals_SignalSource.extend({
+
+    init: function(attr, setter, getter){
+         this._super(attr, setter, getter);
+
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        
+        var _this = this;
+             
+        // calculate the outer frame/shape in the correct size in relation to the length of the text
+        //
+        var adjustWidth = function(){
+            var width = _this.layerGet("label").getBBox().width+15
+
+            _this.setWidth(width+5);
+            _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
+            _this.layerAttr("outline",     { path: `M0 0 L${width-13} 0 L${width} 10 L${width-13} 20 L0 20 Z`})
+        }
+        this.on("change:userData.signalId",function(emitter, event){
+            _this.layerAttr("label", {text: event.value})
+            adjustWidth()
+        });
+        this.on("added", function(){
+            var signalId = _this.attr("userData.signalId")
+            if(!signalId){
+                signalId = "Signal_Id"
+                _this.attr("userData.signalId", signalId)
+            }            
+            _this.layerAttr("label", {text: signalId})
+            adjustWidth()
+        })
+        
+        // override the "getValue" method of the port and delegate them to the related party (SourceTarget port)
+        this.originalGetValue = this.getOutputPort(0).getValue
+    },
+
+    /**
+     *  Called by the simulator for every calculation
+     *  loop
+     *  @required
+     **/
+    calculate:function(context)
+    {
+        var signalId = this.attr("userData.signalId")
+        if(context.signalPorts && context.signalPorts[signalId]){
+            this.getOutputPort(0).getValue = function(){ 
+                return context.signalPorts[signalId].getValue()
+            }
+        }
+    },
+
+    /**
+     *  Called if the simulation mode is starting
+     *  @required
+     **/
+    onStart:function(context)
+    {
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     *  @required
+     **/
+    onStop:function(context)
+    {
+    },
 
 
+    getParameterSettings: function()
+    {
+        return [
+        {
+            name:"signalId",
+            label:"Signal Id",
+            property:{
+                type: "string"
+            }
+        }];
+    },
+    
+    /**
+     * Get the simulator a hint which kind of hardware the shapes requires or supports
+     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
+     * and your are running a circuit which needs this kind of hardware...
+     **/
+    getRequiredHardware: function(){
+      return {
+        raspi: false,
+        arduino: false
+      }
+    },
+    
+  /**
+   * @private
+   */
+  applyTransformation: function () {
+    let s =
+      // override the base implementation and do not scale the internal SVG elements....this let the arrow looks a like streche...we
+      // calculate the path in the event handler. A lot more code....but the result is much cleaner
+      //"S" + this.scaleX + "," + this.scaleY + ",0,0 " +
+      "R" + this.rotationAngle + "," + ((this.getWidth() / 2) | 0) + "," + ((this.getHeight() / 2) | 0) +
+      "T" + this.getAbsoluteX() + "," + this.getAbsoluteY() +
+      ""
+    this.svgNodes.transform(s)
+    if (this.rotationAngle === 90 || this.rotationAngle === 270) {
+      let before = this.svgNodes.getBBox(true)
+      let ratio = before.height / before.width
+      let reverseRatio = before.width / before.height
+      let rs = "...S" + ratio + "," + reverseRatio + "," + (this.getAbsoluteX() + this.getWidth() / 2) + "," + (this.getAbsoluteY() + this.getHeight() / 2)
+      this.svgNodes.transform(rs)
+    }
+
+    return this
+  }
 
 
+});
 
 
 
