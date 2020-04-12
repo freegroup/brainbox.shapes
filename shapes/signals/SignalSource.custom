@@ -60,7 +60,9 @@ signals_SignalSource = signals_SignalSource.extend({
     getOutputPort(index){
         // forward the call to the related/binded port of the SignalTarget object
         //
+        console.log(index)
         if(this.context){
+            console.log("get from context")
             var signalId = this.attr("userData.signalId")
             // first check if any object already create the signal context
             if(!this.context.signals){
@@ -85,6 +87,7 @@ signals_SignalSource = signals_SignalSource.extend({
     onStart:function(context)
     {
         this.context = context
+        console.log(context)
     },
 
     /**
