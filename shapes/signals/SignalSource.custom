@@ -60,20 +60,22 @@ signals_SignalSource = signals_SignalSource.extend({
     getOutputPort(index){
         // forward the call to the related/binded port of the SignalTarget object
         //
-        var signalId = this.attr("userData.signalId")
-        // first check if any object already create the signal context
-        if(!context.signals){
-            context.signals = { };
-        }
-        
-        // check if my signal slot is available
-        if(!(signalId in context.signals)){
-            return context.signals[signalId];
+        if(this.context){
+            var signalId = this.attr("userData.signalId")
+            // first check if any object already create the signal context
+            if(!this.context.signals){
+                this.context.signals = { };
+            }
+            
+            // check if my signal slot is available
+            if(!(signalId in this.context.signals)){
+                return this.context.signals[signalId];
+            }
         }
         
         // fallback if no related party (SignalTarget) is available
         //
-        super.getOutputPort(index)
+        this._super.getOutputPort(index)
     },
     
     /**
@@ -82,6 +84,7 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     onStart:function(context)
     {
+        this.context = context
     },
 
     /**
@@ -90,6 +93,7 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     onStop:function(context)
     {
+        delete this.context
     },
 
 
