@@ -47,7 +47,12 @@ signals_SignalTarget = signals_SignalTarget.extend({
         
         // get the connected port and forward the port to the related party ( SignalSource shape)
         //
-        
+        this.getInputPort(0).on("connect", function(emitter, event){
+           _this.signalPort = event.connection.getSource()
+        })
+        this.getInputPort(0).on("disconnect", function(emitter, event){
+            delete _this.signalPort
+        })
     },
 
     /**
@@ -59,14 +64,19 @@ signals_SignalTarget = signals_SignalTarget.extend({
     {
         var signalId = this.attr("userData.signalId")
         // first check if any object already create the signal context
-        if(!context.signals){
+        if(!context.signalPorts){
             context.signals = { };
         }
-        // check if my signal slot is available
-        if(!(signalId in context.signals)){
-            context.signals[signalId] = false;
+        
+        // check if my signal port is set 
+        if(this.signalPort){
+            if(!(signalId in context.signalPorts)){
+                context.signalPorts[signalId] = this.signalPort;
+            }
         }
-        context.signals[signalId] = this.getInputPort(0).getValue()
+        else{
+            delete context.signals[signalId]
+        }
     },
 
 
