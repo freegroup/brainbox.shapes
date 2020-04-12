@@ -1,6 +1,6 @@
-var common_Text = draw2d.shape.basic.Text.extend({
+var documentation_Text = draw2d.shape.basic.Text.extend({
 
-    NAME: "common_Text",
+    NAME: "documentation_Text",
     VERSION: "1.0.0",
 
     init: function () {
