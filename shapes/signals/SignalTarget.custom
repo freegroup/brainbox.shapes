@@ -86,6 +86,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
      **/
     onStart:function()
     {
+        console.log("start")
     },
 
     /**
@@ -94,6 +95,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
      **/
     onStop:function()
     {
+        console.log("end")
     },
 
 
