@@ -65,7 +65,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
         var signalId = this.attr("userData.signalId")
         // first check if any object already create the signal context
         if(!context.signalPorts){
-            context.signals = { };
+            context.signalPorts = { };
         }
         
         // check if my signal port is set 
@@ -75,7 +75,7 @@ signals_SignalTarget = signals_SignalTarget.extend({
             }
         }
         else{
-            delete context.signals[signalId]
+            delete context.signalPorts[signalId]
         }
     },
 

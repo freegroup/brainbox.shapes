@@ -75,7 +75,7 @@ signals_SignalSource = signals_SignalSource.extend({
         
         // fallback if no related party (SignalTarget) is available
         //
-        this._super.getOutputPort(index)
+        return this._super(index)
     },
     
     /**
