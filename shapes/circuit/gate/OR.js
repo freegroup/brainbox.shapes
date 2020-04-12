@@ -7,7 +7,7 @@
 var circuit_gate_OR = CircuitFigure.extend({
 
    NAME: "circuit_gate_OR",
-   VERSION: "1.0.104_188",
+   VERSION: "1.0.105_191",
 
    init:function(attr, setter, getter)
    {
@@ -90,7 +90,7 @@ circuit_gate_OR = circuit_gate_OR.extend({
 
     },
     
-    calculate:function()
+    calculate:function(context)
     {
         var i1 = this.getInputPort(0);
         var i2 = this.getInputPort(1);
