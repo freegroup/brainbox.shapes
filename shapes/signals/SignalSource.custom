@@ -58,6 +58,11 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     calculate:function(context)
     {
+        var signalId = this.attr("userData.signalId")
+        debugger
+        if(context.signalPorts && context.signalPorts[signalId]){
+            this.getOutputPort(0).getValue = context.signalPorts[signalId].getValue
+        }
     },
 
     /**
@@ -66,10 +71,7 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     onStart:function(context)
     {
-        var signalId = this.attr("userData.signalId")
-        if(context.signalPorts && context.signalPorts[signalId]){
-            this.getOutputPort(0).getValue = context.signalPorts[signalId].getValue
-        }
+
     },
 
     /**
