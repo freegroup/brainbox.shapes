@@ -7,7 +7,7 @@
 var signals_High = CircuitFigure.extend({
 
    NAME: "signals_High",
-   VERSION: "1.0.103_185",
+   VERSION: "1.0.104_188",
 
    init:function(attr, setter, getter)
    {
@@ -73,7 +73,7 @@ signals_High = signals_High.extend({
          this._super(attr, setter, getter);
 
          // your special code here
-        this.getOutputPort(0).setValue(1)
+        this.getOutputPort(0).setValue(true)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },

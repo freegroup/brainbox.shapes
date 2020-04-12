@@ -7,7 +7,7 @@
 var circuit_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_pulse_1hz",
-   VERSION: "1.0.103_185",
+   VERSION: "1.0.104_188",
 
    init:function(attr, setter, getter)
    {
@@ -79,7 +79,7 @@ circuit_pulse_1hz = circuit_pulse_1hz.extend({
         this.currentTimer=0;
     },
     
-    calculate:function()
+    calculate:function(context)
     {
        // 2   ticks => 50Hz   
        // 10  ticks => 10Hz 
@@ -91,12 +91,12 @@ circuit_pulse_1hz = circuit_pulse_1hz.extend({
        }
     },
     
-    onStart:function()
+    onStart:function(context)
     {
          this.currentTimer=0;
     },
     
-    onStop:function()
+    onStop:function(context)
     {
     }
 

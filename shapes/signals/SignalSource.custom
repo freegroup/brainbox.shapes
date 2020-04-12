@@ -15,13 +15,10 @@ signals_SignalSource = signals_SignalSource.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-         // your special code here
-        this.getOutputPort(0).setValue(0)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
         
         var _this = this;
-        
              
         // calculate the outer frame/shape in the correct size in relation to the length of the text
         //
@@ -48,7 +45,6 @@ signals_SignalSource = signals_SignalSource.extend({
         
         // override the "getValue" method of the port and delegate them to the related party (SourceTarget port)
         this.originalGetValue = this.getOutputPort(0).getValue
-        
     },
 
     /**
@@ -60,7 +56,6 @@ signals_SignalSource = signals_SignalSource.extend({
     {
         var signalId = this.attr("userData.signalId")
         if(context.signalPorts && context.signalPorts[signalId]){
-            console.log("initialPort", context.signalPorts[signalId])
             this.getOutputPort(0).getValue = function(){ 
                 return context.signalPorts[signalId].getValue()
             }
@@ -73,7 +68,6 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     onStart:function(context)
     {
-
     },
 
     /**
