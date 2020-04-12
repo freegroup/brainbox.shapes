@@ -21,6 +21,8 @@ signals_SignalTarget = signals_SignalTarget.extend({
         
         var _this = this;
         
+        // handle the size of the shape if the label has changed
+        //
         var adjustWidth = function(){
             var width = _this.layerGet("label").getBBox().width+15
 
@@ -29,12 +31,10 @@ signals_SignalTarget = signals_SignalTarget.extend({
             _this.layerAttr("outline",     { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
           
         }
-
         this.on("change:userData.signalId",function(emitter, event){
             _this.layerAttr("label", {text: event.value})
             adjustWidth()
         });
-        
         this.on("added", function(){
             var signalId = _this.attr("userData.signalId")
             if(!signalId){
@@ -44,6 +44,10 @@ signals_SignalTarget = signals_SignalTarget.extend({
             _this.layerAttr("label", {text: signalId})
             adjustWidth()
         })
+        
+        // get the connected port and forward the port to the related party ( SignalSource shape)
+        //
+        
     },
 
     /**
