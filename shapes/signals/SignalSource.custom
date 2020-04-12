@@ -45,6 +45,10 @@ signals_SignalSource = signals_SignalSource.extend({
             _this.layerAttr("label", {text: signalId})
             adjustWidth()
         })
+        
+        // override the "getValue" method of the port and delegate them to the related party (SourceTarget port)
+        this.originalGetValue = this.getOutputPort(0).getValue
+        
     },
 
     /**
@@ -56,38 +60,16 @@ signals_SignalSource = signals_SignalSource.extend({
     {
     },
 
-
-    getOutputPort(index){
-        // forward the call to the related/binded port of the SignalTarget object
-        //
-        console.log(index)
-        if(this.context){
-            console.log("get from context")
-            var signalId = this.attr("userData.signalId")
-            // first check if any object already create the signal context
-            if(!this.context.signals){
-                this.context.signals = { };
-            }
-            
-            // check if my signal slot is available
-            if(!(signalId in this.context.signals)){
-                return this.context.signals[signalId];
-            }
-        }
-        
-        // fallback if no related party (SignalTarget) is available
-        //
-        return this._super(index)
-    },
-    
     /**
      *  Called if the simulation mode is starting
      *  @required
      **/
     onStart:function(context)
     {
-        this.context = context
-        console.log(context)
+        var signalId = this.attr("userData.signalId")
+        if(context.signalPorts && context.signalPorts[signalId]){
+            this.getOutputPort(0).getValue = context.signalPorts[signalId].getValue
+        }
     },
 
     /**
@@ -96,7 +78,6 @@ signals_SignalSource = signals_SignalSource.extend({
      **/
     onStop:function(context)
     {
-        delete this.context
     },
 
 
