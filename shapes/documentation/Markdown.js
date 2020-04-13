@@ -4,7 +4,7 @@ var documentation_Markdown = draw2d.shape.basic.Rectangle.extend({
     VERSION: "1.0.0",
 
     init: function (attr) {
-        this._super($.extend({bgColor: "#00a3f6", color: "#1B1B1B"}, attr));
+        this._super($.extend({bgColor: "#FDFDFD", color: "#1B1B1B"}, attr));
 
         this
             .on("change:userData.text", (figure, event) => {
@@ -15,7 +15,7 @@ var documentation_Markdown = draw2d.shape.basic.Rectangle.extend({
             })
             .on("added", (emitter, event) => {
                 let rendered = markdown.render(this.attr("userData.text"))
-                this.overlay = $(`<div id="${this.id}" style="overflow:hidden;border:1px solid black;position:absolute; top:${this.getY()}px;left:${this.getY()}px">
+                this.overlay = $(`<div id="${this.id}" style="padding:5px;font-size:80%;overflow:hidden;position:absolute; top:${this.getY()}px;left:${this.getY()}px">
                         ${rendered}
                         </div>`)
                 event.canvas.html.append(this.overlay)
