@@ -7,7 +7,7 @@
 var circuit_gate_NOR = CircuitFigure.extend({
 
    NAME: "circuit_gate_NOR",
-   VERSION: "1.0.112_199",
+   VERSION: "1.0.113_200",
 
    init:function(attr, setter, getter)
    {
