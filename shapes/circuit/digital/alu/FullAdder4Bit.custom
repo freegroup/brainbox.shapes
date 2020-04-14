@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_alu_FullAdder4Bit = circuit_alu_FullAdder4Bit.extend({
+circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

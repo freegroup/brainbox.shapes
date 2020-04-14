@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_gate_NAND = circuit_gate_NAND.extend({
+circuit_digital_gate_NAND = circuit_digital_gate_NAND.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

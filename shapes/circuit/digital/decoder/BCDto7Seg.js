@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_decoder_BCDto7Seg = CircuitFigure.extend({
+var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
-   NAME: "circuit_decoder_BCDto7Seg",
-   VERSION: "1.0.113_200",
+   NAME: "circuit_digital_decoder_BCDto7Seg",
+   VERSION: "1.0.114_202",
 
    init:function(attr, setter, getter)
    {
@@ -188,7 +188,7 @@ var circuit_decoder_BCDto7Seg = CircuitFigure.extend({
  *
  *
  */
-circuit_decoder_BCDto7Seg = circuit_decoder_BCDto7Seg.extend({
+circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

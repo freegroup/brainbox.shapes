@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_display_Led = circuit_display_Led.extend({
+circuit_digital_display_Led = circuit_digital_display_Led.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_switch_PushButton = circuit_switch_PushButton.extend({
+circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

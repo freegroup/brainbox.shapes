@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_pulse_1hz = circuit_pulse_1hz.extend({
+circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

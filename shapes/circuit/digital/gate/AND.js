@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_gate_AND = CircuitFigure.extend({
+var circuit_digital_gate_AND = CircuitFigure.extend({
 
-   NAME: "circuit_gate_AND",
-   VERSION: "1.0.113_200",
+   NAME: "circuit_digital_gate_AND",
+   VERSION: "1.0.114_202",
 
    init:function(attr, setter, getter)
    {
@@ -75,7 +75,7 @@ var circuit_gate_AND = CircuitFigure.extend({
  *
  *
  */
-circuit_gate_AND = circuit_gate_AND.extend({
+circuit_digital_gate_AND = circuit_digital_gate_AND.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

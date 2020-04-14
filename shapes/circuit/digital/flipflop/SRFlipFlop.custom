@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_flipflop_SRFlipFlop = circuit_flipflop_SRFlipFlop.extend({
+circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

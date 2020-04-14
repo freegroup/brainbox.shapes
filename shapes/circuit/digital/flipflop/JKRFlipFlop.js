@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_flipflop_JKRFlipFlop = CircuitFigure.extend({
+var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
-   NAME: "circuit_flipflop_JKRFlipFlop",
-   VERSION: "1.0.113_200",
+   NAME: "circuit_digital_flipflop_JKRFlipFlop",
+   VERSION: "1.0.114_202",
 
    init:function(attr, setter, getter)
    {
@@ -123,7 +123,7 @@ var circuit_flipflop_JKRFlipFlop = CircuitFigure.extend({
  *
  *
  */
-circuit_flipflop_JKRFlipFlop = circuit_flipflop_JKRFlipFlop.extend({
+circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

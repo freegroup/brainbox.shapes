@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_decoder_BCDto7Seg = circuit_decoder_BCDto7Seg.extend({
+circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

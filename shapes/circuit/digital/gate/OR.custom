@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_gate_OR = circuit_gate_OR.extend({
+circuit_digital_gate_OR = circuit_digital_gate_OR.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

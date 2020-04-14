@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_timer_Delay = CircuitFigure.extend({
+var circuit_digital_timer_Delay = CircuitFigure.extend({
 
-   NAME: "circuit_timer_Delay",
-   VERSION: "1.0.113_200",
+   NAME: "circuit_digital_timer_Delay",
+   VERSION: "1.0.114_202",
 
    init:function(attr, setter, getter)
    {
@@ -109,7 +109,7 @@ var circuit_timer_Delay = CircuitFigure.extend({
  *
  *
  */
-circuit_timer_Delay = circuit_timer_Delay.extend({
+circuit_digital_timer_Delay = circuit_digital_timer_Delay.extend({
 
     init: function(attr, setter, getter){
         var _this = this;

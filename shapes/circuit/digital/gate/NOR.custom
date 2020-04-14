@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_gate_NOR = circuit_gate_NOR.extend({
+circuit_digital_gate_NOR = circuit_digital_gate_NOR.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

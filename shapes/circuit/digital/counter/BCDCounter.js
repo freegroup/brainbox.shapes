@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_counter_BCDCounter = CircuitFigure.extend({
+var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
-   NAME: "circuit_counter_BCDCounter",
-   VERSION: "1.0.113_200",
+   NAME: "circuit_digital_counter_BCDCounter",
+   VERSION: "1.0.114_202",
 
    init:function(attr, setter, getter)
    {
@@ -117,7 +117,7 @@ var circuit_counter_BCDCounter = CircuitFigure.extend({
  *
  *
  */
-circuit_counter_BCDCounter = circuit_counter_BCDCounter.extend({
+circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

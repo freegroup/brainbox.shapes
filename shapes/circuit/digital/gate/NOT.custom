@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_gate_NOT = circuit_gate_NOT.extend({
+circuit_digital_gate_NOT = circuit_digital_gate_NOT.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
