@@ -7,7 +7,7 @@
 var circuit_digital_gate_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_NAND",
-   VERSION: "1.0.114_202",
+   VERSION: "1.0.115_203",
 
    init:function(attr, setter, getter)
    {
