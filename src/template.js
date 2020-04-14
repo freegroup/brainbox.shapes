@@ -27,6 +27,7 @@ try {
         // fadeTo MUSS leider sein. Man kann mit raphael keine paper.text elemente einfügen
         // wenn das canvas nicht sichtbar ist. In diesen Fall mach ich das Canvas "leicht" sichtbar und raphael ist
         // zufrieden.
+        /*
         $("body").append(splash);
         var canvas = new draw2d.Canvas("test_canvas");
         var test = eval("new "+pkg+"()");
@@ -50,6 +51,8 @@ try {
 
             return new draw2d.geo.Rectangle(minX, minY, width, height);
         };
+        */
+        var canvas = app.view
 
         new draw2d.io.png.Writer().marshal(canvas, function (imageDataUrl, base64) {
             img = base64;
