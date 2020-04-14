@@ -15,7 +15,7 @@
     "url": "https://github.com/freegroup/brainbox.shapes/issues"
   },
   "devDependencies": {
-    "brainbox": "1.1.37",
+    "brainbox": "1.1.39",
     "puppeteer": "^2.1.1"
   },
   "homepage": "https://github.com/freegroup/brainbox.shapes"

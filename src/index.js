@@ -1,3 +1,5 @@
+const DEBUGGING = false;
+
 const puppeteer = require('puppeteer');
 const path = require("path")
 const fs = require("fs")
@@ -69,13 +71,10 @@ module.exports = {
         "let pkg='" + pkg + "';\n" +
         code;
         
-      const browser = await puppeteer.launch()
+      const browser = await puppeteer.launch( DEBUGGING ? { headless: false, devtools: true,slowMo: 250}: {})
       
       const page = await browser.newPage()
-      page.on('console', msg => {
-        for (let i = 0; i < msg._args.length; ++i)
-          console.log(`${i}: ${msg._args[i]}`);
-      });
+      page.on('console', msg => console.log('PAGE LOG:', msg.text()));
       await page.goto('http://localhost:7400/designer')
       await page.setViewport({width: 900, height: 1024})
       await page.waitForFunction(() => 'app' in window)
@@ -104,9 +103,10 @@ module.exports = {
       fs.writeFileSync(markdownFilePath, markdown, 'utf8');
       fs.writeFileSync(pngFilePath, Buffer.from(img, 'base64'), 'binary');
 
-      browser.close()
-
-      concatFiles(shapeAppDir)
+      if(!DEBUGGING) {
+        browser.close()
+        concatFiles(shapeAppDir)
+      }
     }
     catch(e){
       console.log(e)
