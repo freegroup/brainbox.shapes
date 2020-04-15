@@ -31,7 +31,7 @@ function concatFiles(dirname) {
     files.forEach( (filename)=>  {
       let relativePath = filename.replace(dirname, "")
       let basenamePath = relativePath.replace(".js", "")
-      let name = basenamePath.replace(/\//g , "_")
+      let name = basenamePath.replace(/\//g , "_").replace(/-/g , "_")
       let basename = relativePath.split('/').pop()
       let displayName = basename.replace(".js", "")
       let tags = name.split("_")
