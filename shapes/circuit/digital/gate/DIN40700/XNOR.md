@@ -1,21 +1,20 @@
-# XOR Gate
+# XNOR Gate
 
 ## Description
-`XOR gate` (sometimes EOR, or EXOR and pronounced as Exclusive OR) is 
-a digital logic gate that gives a true (1 or HIGH) output when the 
-number of true inputs is odd. An XOR gate implements an exclusive 
-or; that is, a true output results if one, and only one, of the 
-inputs to the gate is true. If both inputs are false (0/LOW) or 
-both are true, a false output results.
- 
-
+The `XNOR gate` (pronounced as Exclusive NOR) is a digital logic gate 
+whose function is the logical complement of the exclusive OR (XOR) 
+gate[1]. The two-input version implements logical equality, behaving 
+according to the truth table to the right, and hence the gate is 
+sometimes called an "equivalence gate". A high output (1) results 
+if both of the inputs to the gate are the same. If one but not both 
+inputs are high (1), a low output (0) results.
 
 ## Logic table
 
 | INPUT 1   | INPUT   |  OUTPUT    |
 |:---------:|:-------:|:----------:|
-| Low       | Low     |  Low       |
-| `High`      | Low     |  `High`       |
-| Low       | `High`    |  `High`       |
-| `High`      | `High`    |  Low    |
+| Low       | Low     |  `High`       |
+| `High`      | Low     |  Low       |
+| Low       | `High`    |  Low       |
+| `High`      | `High`    |  `High`    |
 
