@@ -15,6 +15,7 @@ function fileToPackage(file) {
   return file
     .replace(shapeAppDir, "")
     .replace(/\.shape$/g, "")
+    .replace(/-/g, "_")
     .replace(/\//g, "_");
 }
 
