@@ -3,7 +3,7 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "c55dd135-15db-7c71-5efa-f6761c073e66",
-      "x": 7984.59375,
+      "x": 7985.09375,
       "y": 7980,
       "width": 30,
       "height": 40,
@@ -15,7 +15,7 @@
         "baseClass": "draw2d.SetFigure",
         "code": "/**\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custome code and event handler here.\n *\n *\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n        this.attr({resizeable:false});\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n\n    },\n    \n    calculate:function(context)\n    {\n        var i1 = this.getInputPort(0);\n        var i2 = this.getInputPort(1);\n        var o1 = this.getOutputPort(0);\n        \n        o1.setValue( (i1.getValue() && !i2.getValue() ) || ( !i1.getValue() && i2.getValue() ));\n    }\n});",
         "name": "Rectangle",
-        "markdown": "# OR Gate\n\n## Description\nThe `OR gate` is a digital logic gate that implements logical \ndisjunction - it behaves according to the truth table to the\n \n \n\n**Therefore, A `High` output results if one or both the \ninputs to the gate are `High`**\n\n## Logic table\n\n| INPUT 1   | INPUT   |  OUTPUT    |\n|:---------:|:-------:|:----------:|\n| Low       | Low     |  Low       |\n| `High`      | Low     |  `High`       |\n| Low       | `High`    |  `High`       |\n| `High`      | `High`    |  `High`    |\n\n"
+        "markdown": "# XOR Gate\n\n## Description\n`XOR gate` (sometimes EOR, or EXOR and pronounced as Exclusive OR) is \na digital logic gate that gives a true (1 or HIGH) output when the \nnumber of true inputs is odd. An XOR gate implements an exclusive \nor; that is, a true output results if one, and only one, of the \ninputs to the gate is true. If both inputs are false (0/LOW) or \nboth are true, a false output results.\n \n\n\n## Logic table\n\n| INPUT 1   | INPUT   |  OUTPUT    |\n|:---------:|:-------:|:----------:|\n| Low       | Low     |  Low       |\n| `High`      | Low     |  `High`       |\n| Low       | `High`    |  `High`       |\n| `High`      | `High`    |  Low    |\n\n"
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
@@ -26,19 +26,19 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7984.59375,
+          "x": 7985.09375,
           "y": 7980
         },
         {
-          "x": 8014.59375,
+          "x": 8015.09375,
           "y": 7980
         },
         {
-          "x": 8014.59375,
+          "x": 8015.09375,
           "y": 8020
         },
         {
-          "x": 7984.59375,
+          "x": 7985.09375,
           "y": 8020
         }
       ],
@@ -64,7 +64,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "592a8604-e0a9-8913-445d-621078e5ae97",
-      "x": 7978.59375,
+      "x": 7979.09375,
       "y": 7984,
       "width": 10,
       "height": 10,
@@ -104,7 +104,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "5fc48f01-fecb-0d5f-ed4f-81a4bc26ae63",
-      "x": 7978.59375,
+      "x": 7979.09375,
       "y": 8006.5,
       "width": 10,
       "height": 10,
@@ -144,7 +144,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "7c8a6215-ce17-6a10-c85b-b97fd0de466c",
-      "x": 8009.7304,
+      "x": 8010.2304,
       "y": 7995,
       "width": 10,
       "height": 10,
@@ -199,15 +199,15 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7999.5864,
+          "x": 8000.0864,
           "y": 8005.1686
         },
         {
-          "x": 7994.8856,
+          "x": 7995.3856,
           "y": 8005.315500000001
         },
         {
-          "x": 7990.1848,
+          "x": 7990.6848,
           "y": 8005.4624
         }
       ],
@@ -222,7 +222,7 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "0a4705bb-c6fd-7a26-332f-6972e8683949",
-      "x": 7984.09375,
+      "x": 7984.59375,
       "y": 7985,
       "width": 30.350000381469727,
       "height": 23,
@@ -260,5 +260,5 @@
       ]
     }
   ],
-  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAA8CAYAAAAkNenBAAAEnElEQVRoQ+1aS0hrVxTd5ybPJE1rkmv9oqAkIEZBq2BUSrHFOtCKUj8TwQ6eCoqgw3ZQoyConUlBoepA8EMHz9fOlFYEDTqxYBIHrQ+02GiI+q4m0ubmd085oSnyNObmpybcAxmEs8/ee+299vleBEnSUJLgAAHIc8ukkBEhI3GKgECtOAU2YrXhZITSarW5KSkpXyKEPgOAvXCsYox520IIYYzxW4zxL0aj8ZCPHV7KKyoqXiCEamUy2SudTkdhjN9Tq9W8xvJx4l0ZguL09NS1vr7+t9vtfmk2m38OpYeXM9XV1XR6evrr7u7uT5qamkLpjEm/x+OB7e1tTq/XmwwGw0ehlPICUlNTk0HT9B9LS0vK1NTUUDpj1s8wDG5sbDxjWfbj/f39Px9SzAuITqfLTEtLe7O4uPiBSqWKmaOhFBEgzc3NJw6Ho9JkMp0LQAIRSOiMaLXaFIZh6kQi0QgAVCgUChgdHaXa2tpCMSJm/bGgFpWdnV2IENq5vr6mnE5nqkwmA61WC3Nzc1BaWhozZx9SFDWQ3NxcGcdxL1mW/ZZhmAxijKIoyMvLg6GhIf/vMZoA5FaUg1JrdnYWysrKHiMhEHVGiJek2O12++cY4xGEECl2PDIyQrW3tz8KCGIkJkBuexuP6dfr9YLJZIKFhQXo7e2F4uLiOwF69kA4joPj42NoaGgAh8MBKysrUFtbm1hAfD4fHBwcwMDAAOzt7YFSqUw8IDc3NzAzMwN6vf7/6D85ELfbDbu7u0BoEqyRtScrKwsKCwuB1ASRr6+vB7lcDj09PXB4eAg7OztPmxGbzQb5+fkPzmBSqRS6urpgamoKApSanp72L6g5OTnQ19cHm5ubd4AEZCcnJ2Fra4tE6ggh9J3FYpkNZjDibTyhycTEBGCMg4IRi8VQXl4OLS0td2TsdntQIAzDQGtrK5ycnMDR0RFIJBKOpuk3CKGvz87OfrrPYMRAol1MggEhJ8ONjQ0YHBz0U480hBDIZDKXQqH40Wq1fiUAuW9BPD8/h5KSkpA10tnZCePj4zGhFgB8Y7VaX8c0IxcXF37+u1yuoGACxT42NhYWkECxkxokFxBxLfZ41chtvc9+i0KcfWjWCoARgASjSzx2vyQj/f39/gVxeXk58TaN4dRWzKil0WgkLMt+IRKJagoKCvpXV1elCXdBR9N0qkQi+d7n89W7XC5aoVCI6+rqqPn5+XCCGpVs1Bkhx9yrq6tGjuN+sNlsHxJvyL6psrLSv3Xo6OiIykG+g6MGQgxlZGRkchz31+Xl5Qvyn2zJ1Wo1WaAgMzOTry9RyUUNJKkyolKpFFKplNRIHcuyaUqlMvFqJMAHMms5nc4msVhMZq2+hJy1bpM7Hgsin+KJukbeNZI0QJLm6e2pHkMNBgM3PDxsNhgMIS+beZ3ZyfM0AHwql8tfVVVVkSug9zUaDR+aRyRDnqctFotrbW3tH6/X2200Gu89Fd5WzgvIfwOooqKiPPLBgEgkIh8M/BaRl/wGkauZtx6P51ez2fw7nyHhAOGj78lkBCBPFvoghoWMCBmJUwQEasUpsBGrTZqM/AuEwspqVfrzYQAAAABJRU5ErkJggg=="
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAA8CAYAAAAkNenBAAAFGUlEQVRoQ+1aS0grZxQ+M9qMkkbNwoqJBh+rtkiaiGBivApSKrb4qIIoXszKTbwLaXxwxVvFWnxuxOrChcsaEVpstfiA+khUfMQWlYIoaSUXtIqFRG8kM5Mp/2DAqk0mNxO9Cfkhm8z5/3O+853zv86PQYg0LERwQBjIu8ZkmJEwIwHyQDi0AuTYtx7WJ0bkcvnHAKDBcfwDAN+mboZhOOvCMCzK5XK9pmn6l729vSMu6DgPrlarn4tEoga5XP6hTCYjcBzn3JeLIbdlSJIEi8Xy5ujo6E+73d66uLj4o7cxOBmTmZmZLhKJuvR6/ZdFRUXvYRinbt50e/0+Pj7umJyc/N5isfSbzeY/PHXgZJFCochTqVRtWq02LysrK9KrBTwJbG9vw8TExOrq6mqr0Whc9BtIRkbGs/z8/Fe1tbV5mZmZjwbEbDaDwWBYN5lML00m069hIG4PBD0jEomkFAD0APBJQkKCoK2tLaKkpATHcZynLPA8DC+hJZVKP6dpWmez2XKur69jxGIxo1KpsKamJsjNzQ0qIF02m+3F1dWVyOVysYaLxWLo6uoCrVYL0dHRAQfDFyMhA+QLkiR1l5eXandoZWdnY83NzcEVWihuEhMTyzAM+woAFDfJjhcXF+MREREBDyukgJfQum1poKbf2dlZQKt3YWEhKJXKe84JCiArKyvQ3t4Ox8fH0NvbC2VlZcEFhGEYMBqN0NHRASaTCZKSkoIPyNnZGYyMjMDY2BicnJywDDw5kIuLC3RmAJvN5jHxU1NTWWMjIyNZAP39/WyfyspK2N/fh8PDw6dlZGFhATo7O2FjY8MjkNbWVqivr4e4uDiYmppiDS8oKID4+HhoaWmBtbW1B4EsLy/D0NAQbG5uMiRJ/sYwTJ/T6fz5/Pzc/pBCTueRh2atg4MDQGCsVqtHIMhotVp9bydwenoKjY2NDwLZ2tpiQ3B6ehpQOBIE8Y9IJLIKBIKvrVbrD7wC8Xch8QRkdHQUBgYGWPZommZVxcbGvhEKhf00TX93enr69139b81IyABZWlqCnp4eQGHgqaHwqaurQx79j5i30BoeHoaZmZnbofVaIBC84j20UDIiIJubmx6BoG0/AhITE8MZCBK8k+y/3yT7T7wneyBDyz32o2xR0N0Tmk7X19fB4XDA9fX1//7QGoJ2zaWlpeC+SvIUWo8KZGdnh10H5ubmOJHT3d3NridCoZCVf2eAIGPm5+dhd3cXzfMQFRV17+f+H50mpVIpuyi6G1of9Ho9yyjKNcTW3fYoocWJBj+FeAMik8nEFEVpCIIoVCqVnzY0NKTl5OQ8zqmKr4OVTCZLoyjqW4qiCkiSjCQI4v3q6upInU4HaWlpfvqaW3deGJFIJPUOh0Nnt9tTKYoi0MyDdrFo91peXs7NEj+leAECAM8wDPsGAHLRYQg1dB00ODgINTU1fprIrTsvQCQSyYsbRlJuM9LX1wcVFRXcLPFTihcgycnJ6TRNu3MkAuVIVVUVmyPp6el+msitOy9AkKqbWSuXIIjPFAoFO2tpNJrgmrVu+yxQ10HeeOGNEbeikAHylKU3g8GwhkpvvFSs3MXQxsZGthjqLST4+s57MRQZptFonguFQlSe/iglJUUQyPK00+lky9OHh4d/2e32l7yVp90eRg8GcBzPxTAswdcHA76wxDCM+8HADO8PBnwx5ClkOd2iPIVhvuoMA/HVY4GWDzMSaA/7On6YEV89Fmj5kGHkX65W72pCYtquAAAAAElFTkSuQmCC"
 }
