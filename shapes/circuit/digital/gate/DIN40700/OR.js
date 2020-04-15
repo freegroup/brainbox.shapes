@@ -7,7 +7,7 @@
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "1.0.122_214",
+   VERSION: "1.0.123_217",
 
    init:function(attr, setter, getter)
    {
@@ -58,12 +58,12 @@ var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
        shape.data("name","");
        
        // Line
-       shape = this.canvas.paper.path('M19.70780000000468 8.13890000000356L1.0128000000049724,8.13890000000356');
+       shape = this.canvas.paper.path('M19.442399999998997 31.555299999987255L0.7473999999992884,31.555299999987255');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
        // Line
-       shape = this.canvas.paper.path('M19.442399999998997 31.555299999987255L0.7473999999992884,31.555299999987255');
+       shape = this.canvas.paper.path('M19.70780000000468 8.13890000000356L1.0128000000049724,8.13890000000356');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
