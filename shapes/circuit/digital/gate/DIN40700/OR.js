@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
+var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
-   NAME: "circuit_digital_gate_DIN40700_AND",
+   NAME: "circuit_digital_gate_DIN40700_OR",
    VERSION: "1.0.121_212",
 
    init:function(attr, setter, getter)
@@ -21,17 +21,17 @@ var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
      port.setBackgroundColor("#37B1DE");
      port.setName("output");
      port.setMaxFanOut(20);
-     // input0
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.4128000000018801, y: 21.25 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input0");
-     port.setMaxFanOut(20);
      // input1
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.4128000000018801, y: 80 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input1");
+     port.setMaxFanOut(20);
+     // input0
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.4128000000018801, y: 21.25 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input0");
      port.setMaxFanOut(20);
    },
 
@@ -57,6 +57,16 @@ var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
        shape.attr({"stroke":"rgba(27,27,27,1)","stroke-width":1,"fill":"rgba(252,252,252,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","");
        
+       // Line
+       shape = this.canvas.paper.path('M19.70780000000468 8.13890000000356L1.0128000000049724,8.13890000000356');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+       // Line
+       shape = this.canvas.paper.path('M19.442399999998997 31.555299999987255L0.7473999999992884,31.555299999987255');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
 
        return this.canvas.paper.setFinish();
    }
@@ -74,7 +84,7 @@ var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
+circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
