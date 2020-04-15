@@ -7,7 +7,7 @@
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.143_261",
+   VERSION: "1.0.144_262",
 
    init:function(attr, setter, getter)
    {
