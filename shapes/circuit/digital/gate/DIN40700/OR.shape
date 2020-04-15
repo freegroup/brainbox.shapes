@@ -131,6 +131,74 @@
       ]
     },
     {
+      "type": "shape_designer.figure.ExtLine",
+      "id": "324bc5bd-9b79-67f1-c45a-fb367513d4b4",
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Line"
+      },
+      "cssClass": "shape_designer_figure_ExtLine",
+      "stroke": 1,
+      "color": "rgba(0,0,0,1)",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 8006.942399999999,
+          "y": 8011.555299999987
+        },
+        {
+          "x": 7988.247399999999,
+          "y": 8011.555299999987
+        }
+      ],
+      "router": "draw2d.layout.connection.VertexRouter",
+      "radius": "",
+      "filters": [
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLine",
+      "id": "5c1944ab-18cf-eafe-deaf-14e41e03157d",
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Line"
+      },
+      "cssClass": "shape_designer_figure_ExtLine",
+      "stroke": 1,
+      "color": "rgba(0,0,0,1)",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 8007.207800000005,
+          "y": 7988.138900000004
+        },
+        {
+          "x": 7988.512800000005,
+          "y": 7988.138900000004
+        }
+      ],
+      "router": "draw2d.layout.connection.VertexRouter",
+      "radius": "",
+      "filters": [
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        }
+      ]
+    },
+    {
       "type": "shape_designer.figure.ExtPort",
       "id": "19fd1dcb-f9e4-190d-a717-7444122d9964",
       "x": 8007.0424,
@@ -241,74 +309,6 @@
         },
         {
           "name": "shape_designer.filter.PortTypeFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.ExtLine",
-      "id": "5c1944ab-18cf-eafe-deaf-14e41e03157d",
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Line"
-      },
-      "cssClass": "shape_designer_figure_ExtLine",
-      "stroke": 1,
-      "color": "rgba(0,0,0,1)",
-      "outlineStroke": 0,
-      "outlineColor": "rgba(0,0,0,0)",
-      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
-      "vertex": [
-        {
-          "x": 8007.207800000005,
-          "y": 7988.138900000004
-        },
-        {
-          "x": 7988.512800000005,
-          "y": 7988.138900000004
-        }
-      ],
-      "router": "draw2d.layout.connection.VertexRouter",
-      "radius": "",
-      "filters": [
-        {
-          "name": "shape_designer.filter.StrokeFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.ExtLine",
-      "id": "324bc5bd-9b79-67f1-c45a-fb367513d4b4",
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Line"
-      },
-      "cssClass": "shape_designer_figure_ExtLine",
-      "stroke": 1,
-      "color": "rgba(0,0,0,1)",
-      "outlineStroke": 0,
-      "outlineColor": "rgba(0,0,0,0)",
-      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
-      "vertex": [
-        {
-          "x": 8006.942399999999,
-          "y": 8011.555299999987
-        },
-        {
-          "x": 7988.247399999999,
-          "y": 8011.555299999987
-        }
-      ],
-      "router": "draw2d.layout.connection.VertexRouter",
-      "radius": "",
-      "filters": [
-        {
-          "name": "shape_designer.filter.StrokeFilter"
         }
       ]
     }
