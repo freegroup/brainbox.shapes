@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "6e834d54-6700-ad9b-ab50-0faefeaea483",
-      "x": 7987.552300000007,
-      "y": 7980.4517000000005,
+      "x": 7993.476150000002,
+      "y": 7980,
       "width": 26.300000000002,
       "height": 40,
       "alpha": 1,
@@ -14,7 +14,7 @@
       "userData": {
         "baseClass": "draw2d.SetFigure",
         "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n         this._super(attr, setter, getter);\n\n        this.attr({resizeable:false});\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var i1 = this.getInputPort(0);\n        var i2 = this.getInputPort(1);\n        var o1 = this.getOutputPort(0);\n        \n         o1.setValue( (i1.getValue() && !i2.getValue() ) || ( !i1.getValue() && i2.getValue() ));\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function(context)\n    {\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function(context)\n    {\n    },\n\n    /**\n     * Get the simulator a hint which kind of hardware the shapes requires or supports\n     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost\n     * and your are running a circuit which needs this kind of hardware...\n     **/\n    getRequiredHardware: function(){\n      return {\n        raspi: false,\n        arduino: false\n      }\n    }\n\n});",
-        "markdown": "# OR Gate\n\n## Description\nThe `OR gate` is a digital logic gate that implements logical \ndisjunction - it behaves according to the truth table to the\n \n \n\n**Therefore, A `High` output results if one or both the \ninputs to the gate are `High`**\n\n## Logic table\n\n| INPUT 1   | INPUT   |  OUTPUT    |\n|:---------:|:-------:|:----------:|\n| Low       | Low     |  Low       |\n| `High`      | Low     |  `High`       |\n| Low       | `High`    |  `High`       |\n| `High`      | `High`    |  `High`    |\n\n",
+        "markdown": "# XOR Gate\n\n## Description\n`XOR gate` (sometimes EOR, or EXOR and pronounced as Exclusive OR) is \na digital logic gate that gives a true (1 or HIGH) output when the \nnumber of true inputs is odd. An XOR gate implements an exclusive \nor; that is, a true output results if one, and only one, of the \ninputs to the gate is true. If both inputs are false (0/LOW) or \nboth are true, a false output results.\n \n\n\n## Logic table\n\n| INPUT 1   | INPUT   |  OUTPUT    |\n|:---------:|:-------:|:----------:|\n| Low       | Low     |  Low       |\n| `High`      | Low     |  `High`       |\n| Low       | `High`    |  `High`       |\n| `High`      | `High`    |  Low    |\n\n",
         "name": "shape"
       },
       "cssClass": "shape_designer_figure_PolyCircle",
@@ -26,136 +26,136 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7987.552300000007,
-          "y": 8020.444566146254
+          "x": 7993.476150000002,
+          "y": 8019.992866146254
         },
         {
-          "x": 7987.653811537642,
-          "y": 8020.4517000000005
+          "x": 7993.577661537637,
+          "y": 8020
         },
         {
-          "x": 7991.977388685792,
-          "y": 8020.147855060245
+          "x": 7997.901238685788,
+          "y": 8019.696155060245
         },
         {
-          "x": 7996.169596130132,
-          "y": 8019.2455524157185
+          "x": 8002.093446130128,
+          "y": 8018.793852415718
         },
         {
-          "x": 8000.103055768824,
-          "y": 8017.772208075689
+          "x": 8006.026905768819,
+          "y": 8017.320508075689
         },
         {
-          "x": 8003.658251421173,
-          "y": 8015.77258886238
+          "x": 8009.582101421169,
+          "y": 8015.320888862379
         },
         {
-          "x": 8006.727160266299,
-          "y": 8013.3074521937315
+          "x": 8012.651010266294,
+          "y": 8012.855752193731
         },
         {
-          "x": 8009.216535061883,
-          "y": 8010.4517000000005
+          "x": 8015.140385061879,
+          "y": 8010
         },
         {
-          "x": 8011.050737414449,
-          "y": 8007.292102866514
+          "x": 8016.974587414445,
+          "y": 8006.840402866514
         },
         {
-          "x": 8012.774036013666,
-          "y": 8004.024663553339
+          "x": 8018.697886013661,
+          "y": 8003.572963553339
         },
         {
-          "x": 8013.852300000009,
-          "y": 8000.4517000000005
+          "x": 8019.776150000004,
+          "y": 8000
         },
         {
-          "x": 8012.6740360136655,
-          "y": 7996.778736446661
+          "x": 8018.597886013661,
+          "y": 7996.327036446661
         },
         {
-          "x": 8011.050737414449,
-          "y": 7993.611297133487
+          "x": 8016.974587414445,
+          "y": 7993.159597133486
         },
         {
-          "x": 8009.216535061883,
-          "y": 7990.4517000000005
+          "x": 8015.140385061879,
+          "y": 7990
         },
         {
-          "x": 8006.727160266299,
-          "y": 7987.59594780627
+          "x": 8012.651010266294,
+          "y": 7987.144247806269
         },
         {
-          "x": 8003.658251421173,
-          "y": 7985.130811137621
+          "x": 8009.582101421169,
+          "y": 7984.679111137621
         },
         {
-          "x": 8000.103055768824,
-          "y": 7983.131191924312
+          "x": 8006.026905768819,
+          "y": 7982.679491924311
         },
         {
-          "x": 7996.169596130132,
-          "y": 7981.6578475842825
+          "x": 8002.093446130128,
+          "y": 7981.206147584282
         },
         {
-          "x": 7991.977388685792,
-          "y": 7980.755544939756
+          "x": 7997.901238685788,
+          "y": 7980.303844939755
         },
         {
-          "x": 7987.653811537642,
-          "y": 7980.4517000000005
+          "x": 7993.577661537637,
+          "y": 7980
         },
         {
-          "x": 7987.552300000007,
-          "y": 7980.458833853747
+          "x": 7993.476150000002,
+          "y": 7980.007133853746
         },
         {
-          "x": 7987.552300000007,
-          "y": 7981.443075003781
+          "x": 7993.476150000002,
+          "y": 7980.99137500378
         },
         {
-          "x": 7988.346320798219,
-          "y": 7982.453646928778
+          "x": 7994.270170798214,
+          "y": 7982.001946928777
         },
         {
-          "x": 7990.545901932859,
-          "y": 7986.4517000000005
+          "x": 7996.469751932855,
+          "y": 7986
         },
         {
-          "x": 7992.166580706891,
-          "y": 7990.875135986882
+          "x": 7998.090430706887,
+          "y": 7990.4234359868815
         },
         {
-          "x": 7993.1591136158695,
-          "y": 7995.589551025327
+          "x": 7999.082963615865,
+          "y": 7995.137851025326
         },
         {
-          "x": 7993.493343049601,
-          "y": 8000.4517000000005
+          "x": 7999.417193049597,
+          "y": 8000
         },
         {
-          "x": 7993.1591136158695,
-          "y": 8005.313848974674
+          "x": 7999.082963615865,
+          "y": 8004.862148974674
         },
         {
-          "x": 7992.166580706891,
-          "y": 8010.028264013119
+          "x": 7998.090430706887,
+          "y": 8009.5765640131185
         },
         {
-          "x": 7990.545901932859,
-          "y": 8014.4517000000005
+          "x": 7996.469751932855,
+          "y": 8014
         },
         {
-          "x": 7988.346320798219,
-          "y": 8018.449753071223
+          "x": 7994.270170798214,
+          "y": 8017.998053071223
         },
         {
-          "x": 7987.552300000007,
-          "y": 8019.46032499622
+          "x": 7993.476150000002,
+          "y": 8019.00862499622
         },
         {
-          "x": 7987.552300000007,
-          "y": 8020.444566146254
+          "x": 7993.476150000002,
+          "y": 8019.992866146254
         }
       ],
       "blur": 0,
@@ -192,32 +192,32 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7980.078000000007,
-          "y": 7980.4517000000005
+          "x": 7986.001850000002,
+          "y": 7980
         },
         {
-          "x": 7983.220350000009,
-          "y": 7985.818049999997
+          "x": 7989.144200000004,
+          "y": 7985.366349999997
         },
         {
-          "x": 7985.362700000007,
-          "y": 7991.784399999997
+          "x": 7991.2865500000025,
+          "y": 7991.332699999996
         },
         {
-          "x": 7986.552300000007,
-          "y": 7999.5219999999945
+          "x": 7992.476150000002,
+          "y": 7999.070299999994
         },
         {
-          "x": 7985.631200000003,
-          "y": 8006.406700000002
+          "x": 7991.555049999999,
+          "y": 8005.955000000002
         },
         {
-          "x": 7983.478300000008,
-          "y": 8013.839099999998
+          "x": 7989.4021500000035,
+          "y": 8013.387399999998
         },
         {
-          "x": 7980.251700000007,
-          "y": 8020.229
+          "x": 7986.175550000003,
+          "y": 8019.7773
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -249,12 +249,12 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7990.400000000001,
-          "y": 7986.8
+          "x": 7996.323849999996,
+          "y": 7986.3483
         },
         {
-          "x": 7974.3,
-          "y": 7986.8
+          "x": 7980.223849999996,
+          "y": 7986.3483
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -283,12 +283,12 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7991.1,
-          "y": 8012.1
+          "x": 7997.023849999996,
+          "y": 8011.6483
         },
         {
-          "x": 7974.5,
-          "y": 8012.1
+          "x": 7980.423849999996,
+          "y": 8011.6483
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -302,8 +302,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "19fd1dcb-f9e4-190d-a717-7444122d9964",
-      "x": 8009.852300000009,
-      "y": 7995.5,
+      "x": 8015.776150000004,
+      "y": 7995.0482999999995,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -340,8 +340,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "7297563e-896e-648c-d774-7e1a662d65a4",
-      "x": 7968.3,
-      "y": 7981.9517000000005,
+      "x": 7974.223849999996,
+      "y": 7981.5,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -378,8 +378,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "31c229c7-f64e-5b82-2349-767cb9cd57be",
-      "x": 7967.8,
-      "y": 8007,
+      "x": 7973.723849999996,
+      "y": 8006.5482999999995,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -414,5 +414,5 @@
       ]
     }
   ],
-  "image": "data:image/png;base64,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"
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA8CAYAAADYIMILAAAKRklEQVRoQ+1ae1BU5xX/7V3urkC6EGDBx7qgbrQEa20kY8jU1A6kxcRMtDEmprGCNZPIxGBtrA7WKj7iK9UGGbXmIUbI0GbSTsKoTWibSnR8pCKR5REMPuDeCwvLQ9kFlt29t3N0obsrC7vsok7CmdnZP+75znd+3/m+853HJ8N3iGTfIawYAftttfaIZUcs+y1YgZFt/C0wYr8Q/LVsBICpAErcpavV6tEsyy6Qy+USgFb62e32pqCgoKt1dXVtd2NB/QFLQH8J4GEAv3JTnhk/fvyP1Wr1v5OTk8XW1tYeo9EoGgwGudFoBMuyAoDTJpPprCRJVziOO3YnwPsDlvSbDCALwD8B5DsrPG3atKlRUVEF8+fPT1i+fLm891t3dzeqqqpw4cIF24kTJzro3263l3d2dr7Dsuyxy5cvXx8u4P6CDQHwEwBPAcgBUN2r6NixY0PkcvnTCQkJ7x84cCBIo9H0i+HGjRv47LPPrIWFhR3nz58XWZY9YjKZdjQ1NRkCDXogsPKYmBitXC6fyzAMI0nSCZ7ny/pRQAtgBYAmALucv+t0Oo1arV4/d+7cF9asWXPfQMrbbDZcunTJlpub23X06NF2URSzBUE4BEAMFOh+wep0OqXJZEqWyWT7LBaLQpKk+0JCQq4B2Mnz/BG3yWmLPgZgs+MME18fTZkyJXHy5MnFmzdvDp86lXzZwGSxWFBaWmrNyckxVFZWlre3t2/ief7MYOO8+d4v2NjY2Ak9PT1bOzo6Ukwmk1omk0GpVCIyMlLf2tr6666urnY34aMBvACAztu7zt+Cg4Mjx4wZszg1NXVxTk7OgNZ1Htfc3Iy3335bzMvL+8Zisaznef6v3gAaiMfTNg5nWTaNYZg9tNJECoUCYWFh3c3NzXX9CCQ5dH4jAXDuW49hGOWMGTPG5efnB02aNMlrncmZnTp1yr5ly5a62tra/YIguBwTrwU5GD1atru7e6vJZEoxm819lo2KivqvJEmpPM+39DORDsAqAP8B4GKF+Pj42PHjx29dsGDBs0uXLlX4qmR1dTUyMzMNVVVVf/QH8EBnNsXpzIYOcGZ7dQ8H8AyARwC85AyIPHNoaOjTM2fOfC8vL2+Ur2CJv6amxr5ixYpvqqqqdgqC8N5QZAzmjWMZhrnpjcliHryx87wzAOwAsBSAy3afPn36dJ1O9/Hq1au1M2YQm29ktVpx9uxZ+8qVK68Yjca3OI7L9U0CAl6poAO50rGVP3JWZsKECVMiIiIOzJkz57GNGzfS4vlMbW1tKCgoEHNyck4DeNLXAMTfoMJd4SgAiwBEA1jv/DEmJiY0JibmmUcfffRAbm5usM9IHQM4jhN3797dWFJScrCsrCzbFzmBBqsEkOI4s/PcFYmLi3tk2rRppwoKCpjg4KHhtdvt+PLLL8W0tLTKrq6u13ie/9xbwIEGS/MmAtjuCDBcQr7ExMQfTZw48ZOsrCyNNwGGJxBXrlxBdnb2ja+++upIeXn5q3cT7IMA1gLYT5mNsyJJSUm6cePG7X3++edT5827zfDe6nyTT6/X25csWXK+qalpeUNDQ6k3g4fDshMAZAA4B+BDZyVGjx4dFxsb+8bChQufy8zMHJKT6pVHqWJ+fn5HXl7eB3q9/pW7BXYsgCUAzI5MqE8PjUYTodVqX0pNTd2QlZU1tEPrhKq6utq6bNmyk/X19a/wPF8zGODhsCx55OcAqAFsdFZAp9OpwsLCXpg9e/auHTt2eB0newJRX19vz87Obi0uLm6VJInmq2AY5k8cx/2tvzHDAfZ+AL8AMAXA79yvn+jo6HlJSUkH9u3b5zdYKgK8/PLLkl6vF81ms1ypVPaoVKrzLMtm19fXf+oOeDjAUthI3ucHAH7rPKFGowkeNWrUUzNnzjx0+PBhShyGTJ2dnTh+/DhWr16NurpbwRoFeiEhIddVKtVhQRAy7wRYsizFyFSycbFsIMGazWYcO3YMa9euxbVrt1JoAhscHHxDpVJ90NDQsPxOgKWzQ1GUCsCW4dzGFRUVSE9Pl2pqaiSz2cwoFApLeHg4beM3OY77+50AS8UmSgQooPjzMDsobNu2rfv48ePXJUmKEEWxFsCbgiC4FBB6dRiOM0t5LZ2XfwA46nZmA3312DIyMkovX768RpKkcg95dp8KwwGWHNMfAFCQrncGO2bMmFitVrstEEFFS0sLCgsLzYcOHfqorKyM7vVBaTjAJgHYDWA2gFs1HQc99NBDuri4uLcWLVr0xPz58wdVbiCGiooKe1paWmlDQ8OrjY2NFK0NSoEGS3cn1ZB/BiDdfXZK4B944IGP161bp/U3Edi0aRMlAgUXL16k0NQrCjRYChUJZCeAPe4aBDLFS09PrzSbzb8RBIG6EV6RR7Bqtfo+lmVpS36fKv2CIBR7IZF41wB4H4BLnknJe1RU1DOzZs3yK3nnef5m8v7FF18cLC0t9T9512g040RRXGu321/s6emRWJZtZ1m2RJKkDEEQyGr9ES0cLQ6VO+cAuOHM5CjL7HeUZfp6P14sYB+LU1nmjCiKT169etW9fj2guNssS90As9n8hM1m+7ClpUUuiiKCgoLosi5XKpXv8Dzvcnc6SafIaaGjhUntEBfqLbi9/vrr2sREyu99Iyq4nTt3Tly1atU1g8Gwh+O4vb5J8FBwi4yMfFgUxX+1tbV9jwTK5XKEhoaKcrm8o62trdHDJCwAAtwFoMONh6Kb0OTk5OiioqIgX5Uk/kuXLolUWSwvL9/mKWgYTO5tlqX4VZKkp3p6eg4bjcZRkiQRWKtKpfpGoVB8ZDAYXFqTThP80BELvwbApYgeHh4+NiEhYeXixYt/vmzZMqpT+URff/31zSJ5ZWXlbkEQdvo02Im5XwdFlz/DMBusVutci8VCjsqoVCov2my2pQaDgbp17kTx8GIA1PNxCf6JkZpb8fHxn27fvj1Cp6MAyzui9sfJkydtGzZsqK2vr3/Xn24AzejRG2u12vvJCUiS9KBMJqtQqVQfV1ZWmjyomeCImvYBOOHMExMTEx0dHf1qSkpK5q5duyg58IqosXXw4EFqbNVYLJaNgiD8xauBAzAF4p4NA7AAwE8BvOg+11BalhcuXLjZsqyoqNA7WpYuhbuhgg4E2FgAlDtSHOxynh3N6N87mtE3nZ0nomZ0bW2tbe/evV1FRUXtMplsE8dx1NMZ3ma0DytHVn0WQLIjh+0bSo5OJpPRM4Mjgz0zKC4u7ntmoFAo8q9fv76jubnZk9f3QT1XVn8tGw9gnaNF+YmzaHpAEhkZSQ9IHszIyOi7bsjpUAuSHo6UlJSYaMtarVa92Wx+Jygo6JivgYIvyP0BS1alIIKyG3oi5Ey9T4M+f/zxx+lpkNVoNNobGxsZx9OgRoZhTre3t5+hp0E8z7vkvb4A8IXXH7C985AMetjlQr2Pvm51O///6Esul1/lOI4egd1xCgTYO670UCccATvUlbvXx41Y9l630FD1G7HsUFfuXh83Ytl73UJD1e9/41gueYKq+loAAAAASUVORK5CYII="
 }
