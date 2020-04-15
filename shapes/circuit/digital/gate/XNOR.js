@@ -7,7 +7,7 @@
 var circuit_digital_gate_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_XNOR",
-   VERSION: "1.0.137_245",
+   VERSION: "1.0.138_248",
 
    init:function(attr, setter, getter)
    {
@@ -28,7 +28,7 @@ var circuit_digital_gate_XNOR = CircuitFigure.extend({
      port.setName("input02");
      port.setMaxFanOut(20);
      // output
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.33740740740832, y: 50 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 102.80654320987746, y: 50 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output");
