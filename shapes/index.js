@@ -7,7 +7,7 @@
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -177,7 +177,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -493,7 +493,7 @@ circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 var circuit_digital_buttons_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLow",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -606,7 +606,7 @@ circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -771,7 +771,7 @@ circuit_digital_buttons_HighLowArray = circuit_digital_buttons_HighLowArray.exte
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -890,7 +890,7 @@ circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -1064,7 +1064,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -1303,7 +1303,7 @@ circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -1465,7 +1465,7 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
 var circuit_digital_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_Led",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -1556,7 +1556,7 @@ circuit_digital_display_Led = circuit_digital_display_Led.extend({
 var circuit_digital_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_DFlipFlop",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -1689,7 +1689,7 @@ circuit_digital_flipflop_DFlipFlop = circuit_digital_flipflop_DFlipFlop.extend({
 var circuit_digital_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKFlipFlop",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -1852,7 +1852,7 @@ circuit_digital_flipflop_JKFlipFlop = circuit_digital_flipflop_JKFlipFlop.extend
 var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKRFlipFlop",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2033,7 +2033,7 @@ circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.exte
 var circuit_digital_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_SRFlipFlop",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2176,7 +2176,7 @@ circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2298,7 +2298,7 @@ circuit_digital_flipflop_TFlipFlop = circuit_digital_flipflop_TFlipFlop.extend({
 var circuit_digital_gate_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_AND",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2396,7 +2396,7 @@ circuit_digital_gate_AND = circuit_digital_gate_AND.extend({
 var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_AND",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2528,7 +2528,7 @@ circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
 var circuit_digital_gate_DIN40700_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NAND",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2665,7 +2665,7 @@ circuit_digital_gate_DIN40700_NAND = circuit_digital_gate_DIN40700_NAND.extend({
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2812,7 +2812,7 @@ circuit_digital_gate_DIN40700_NOR = circuit_digital_gate_DIN40700_NOR.extend({
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -2954,7 +2954,7 @@ circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 var circuit_digital_gate_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_NAND",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3057,7 +3057,7 @@ circuit_digital_gate_NAND = circuit_digital_gate_NAND.extend({
 var circuit_digital_gate_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_NOR",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3165,7 +3165,7 @@ circuit_digital_gate_NOR = circuit_digital_gate_NOR.extend({
 var circuit_digital_gate_NOT = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_NOT",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3262,7 +3262,7 @@ circuit_digital_gate_NOT = circuit_digital_gate_NOT.extend({
 var circuit_digital_gate_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_OR",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3362,10 +3362,113 @@ circuit_digital_gate_OR = circuit_digital_gate_OR.extend({
 // created with http://www.draw2d.org
 //
 //
+var circuit_digital_gate_XNOR = CircuitFigure.extend({
+
+   NAME: "circuit_digital_gate_XNOR",
+   VERSION: "1.0.137_245",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:40.5,height:40},attr), setter, getter);
+     var port;
+     // input01
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.2345679012345678, y: 22.5 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input01");
+     port.setMaxFanOut(20);
+     // input02
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.2345679012345678, y: 78.75 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input02");
+     port.setMaxFanOut(20);
+     // output
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.33740740740832, y: 50 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 40.5;
+      this.originalHeight= 40;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L40.5,0 L40.5,40 L0,40");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0.5,3Q0.5,0 3.5, 0L27.5,0Q30.5,0 30.5, 3L30.5,37Q30.5,40 27.5, 40L3.5,40Q0.5,40 0.5, 37L0.5,3');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'=1');
+       shape.attr({"x":4,"y":20,"text-anchor":"start","text":"=1","font-family":"\"Arial\"","font-size":20,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Circle
+       shape = this.canvas.paper.ellipse();
+       shape.attr({"rx":5,"ry":5,"cx":35.5,"cy":20,"stroke":"rgba(27,27,27,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Circle");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custome code and event handler here.
+ *
+ *
+ */
+circuit_digital_gate_XNOR = circuit_digital_gate_XNOR.extend({
+
+    init: function(attr, setter, getter){
+        this._super(attr, setter, getter);
+
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+
+    },
+    
+    calculate:function(context)
+    {
+        var i1 = this.getInputPort(0);
+        var i2 = this.getInputPort(1);
+        var o1 = this.getOutputPort(0);
+        
+        o1.setValue(!( (i1.getValue() && !i2.getValue() ) || ( !i1.getValue() && i2.getValue() )));
+    }
+});
+
+
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
 var circuit_digital_gate_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_XOR",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3420,11 +3523,6 @@ var circuit_digital_gate_XOR = CircuitFigure.extend({
        shape.attr({"x":4,"y":20,"text-anchor":"start","text":"=1","font-family":"\"Arial\"","font-size":20,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
-       // Line
-       shape = this.canvas.paper.path('M15.49265000000014 25.16859999999997L10.791849999999613,25.31550000000061L6.091049999999996,25.462400000000343');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
 
        return this.canvas.paper.setFinish();
    }
@@ -3468,7 +3566,7 @@ circuit_digital_gate_XOR = circuit_digital_gate_XOR.extend({
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3572,7 +3670,7 @@ circuit_digital_pulse_10hz = circuit_digital_pulse_10hz.extend({
 var circuit_digital_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_1hz",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3677,7 +3775,7 @@ circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 var circuit_digital_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_50hz",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3780,7 +3878,7 @@ circuit_digital_pulse_50hz = circuit_digital_pulse_50hz.extend({
 var circuit_digital_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_Delay",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -3952,7 +4050,7 @@ circuit_digital_pulse_Delay = circuit_digital_pulse_Delay.extend({
 var circuit_digital_signals_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_High",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -4073,7 +4171,7 @@ circuit_digital_signals_High = circuit_digital_signals_High.extend({
 var circuit_digital_signals_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_Low",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -4194,7 +4292,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
 var circuit_digital_signals_SignalSource = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_SignalSource",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -4388,7 +4486,7 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
 var circuit_digital_signals_SignalTarget = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_SignalTarget",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -4597,7 +4695,7 @@ circuit_digital_signals_SignalTarget = circuit_digital_signals_SignalTarget.exte
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -4768,7 +4866,7 @@ circuit_digital_timer_Delay = circuit_digital_timer_Delay.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -5269,7 +5367,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Led",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -5381,7 +5479,7 @@ circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 var circuit_hardware_raspi_RaspiGPIO = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiGPIO",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -5740,7 +5838,7 @@ circuit_hardware_raspi_RaspiGPIO = circuit_hardware_raspi_RaspiGPIO.extend({
 var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiINPUT",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -6014,7 +6112,7 @@ circuit_hardware_raspi_RaspiINPUT = circuit_hardware_raspi_RaspiINPUT.extend({
 var circuit_hardware_raspi_RaspiOUTPUT = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_RaspiOUTPUT",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -6413,7 +6511,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {

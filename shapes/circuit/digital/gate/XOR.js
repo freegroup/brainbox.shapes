@@ -7,7 +7,7 @@
 var circuit_digital_gate_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_XOR",
-   VERSION: "1.0.136_239",
+   VERSION: "1.0.137_245",
 
    init:function(attr, setter, getter)
    {
@@ -61,11 +61,6 @@ var circuit_digital_gate_XOR = CircuitFigure.extend({
        shape = this.canvas.paper.text(0,0,'=1');
        shape.attr({"x":4,"y":20,"text-anchor":"start","text":"=1","font-family":"\"Arial\"","font-size":20,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
-       
-       // Line
-       shape = this.canvas.paper.path('M15.49265000000014 25.16859999999997L10.791849999999613,25.31550000000061L6.091049999999996,25.462400000000343');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
        
 
        return this.canvas.paper.setFinish();
