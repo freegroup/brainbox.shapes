@@ -48,7 +48,6 @@ function concatFiles(dirname) {
       content += (fs.readFileSync(filename, 'utf8') + "\n\n\n")
     });
 
-
     fs.writeFileSync(jsonFile, JSON.stringify(list, undefined, 2))
     fs.writeFileSync(indexFile, content)
   })
