@@ -7,28 +7,28 @@
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "1.0.134_234",
+   VERSION: "1.0.135_237",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:29.70780000000468,height:40},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:30.5,height:40},attr), setter, getter);
      var port;
      // output
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 90.88522206287826, y: 50 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 88.52459016393443, y: 50 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output");
      port.setMaxFanOut(20);
      // input1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.3473835154419168, y: 80 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.338360655739246, y: 80 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input1");
      port.setMaxFanOut(20);
      // input0
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.3473835154419168, y: 21.25 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.338360655739246, y: 21.25 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input0");
@@ -38,7 +38,7 @@ var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 29.70780000000468;
+      this.originalWidth = 30.5;
       this.originalHeight= 40;
       return shape;
    },
@@ -48,7 +48,7 @@ var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L29.70780000000468,0 L29.70780000000468,40 L0,40");
+       shape = this.canvas.paper.path("M0,0 L30.5,0 L30.5,40 L0,40");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -59,7 +59,7 @@ var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
        
        // Circle
        shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":3,"ry":3,"cx":26.70780000000468,"cy":20,"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"rx":4.5,"ry":4.5,"cx":26,"cy":20,"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
        // Line
