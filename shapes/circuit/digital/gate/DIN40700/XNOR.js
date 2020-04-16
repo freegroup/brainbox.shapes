@@ -7,7 +7,7 @@
 var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XNOR",
-   VERSION: "1.0.145_263",
+   VERSION: "1.0.146_265",
 
    init:function(attr, setter, getter)
    {
@@ -57,6 +57,21 @@ var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
        shape.attr({"stroke":"rgba(27,27,27,1)","stroke-width":1,"fill":"rgba(252,252,252,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","");
        
+       // Line
+       shape = this.canvas.paper.path('M2.9285999999992782 15.418200000002798L18.521099999999933,15.210300000003372L18.313199999999597,15.210300000003372');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+       // Line
+       shape = this.canvas.paper.path('M2.9389999999948486 20.002400000002126L18.531499999995503,19.7945000000027L18.323599999995167,19.7945000000027');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+       // Line
+       shape = this.canvas.paper.path('M2.9493999999931475 24.79450000000179L18.541899999993802,24.586600000002363L18.333999999993466,24.586600000002363');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
 
        return this.canvas.paper.setFinish();
    }
@@ -95,7 +110,7 @@ circuit_digital_gate_DIN40700_XNOR = circuit_digital_gate_DIN40700_XNOR.extend({
         var i2 = this.getInputPort(1);
         var o1 = this.getOutputPort(0);
         
-        o1.setValue(i1.getValue() && i2.getValue());
+        o1.setValue(!( (i1.getValue() && !i2.getValue() ) || ( !i1.getValue() && i2.getValue() )));
     },
 
 
