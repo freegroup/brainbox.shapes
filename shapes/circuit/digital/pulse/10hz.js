@@ -7,7 +7,7 @@
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "1.0.150_272",
+   VERSION: "1.0.151_273",
 
    init:function(attr, setter, getter)
    {

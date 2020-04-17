@@ -7,105 +7,105 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "1.0.150_272",
+   VERSION: "1.0.151_273",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:62,height:160},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:8031,height:8080},attr), setter, getter);
      var port;
-     // pin_1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 11.522499999999987 }));
+     // pin_ckb
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 98.24797029702971 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_1");
+     port.setName("pin_ckb");
      port.setMaxFanOut(20);
-     // pin_2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 24.022499999999987 }));
+     // pin_r01
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 98.49549504950495 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_2");
+     port.setName("pin_r01");
      port.setMaxFanOut(20);
-     // pin_3
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 37.01124999999999 }));
+     // pin_r02
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 98.75269801980198 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_3");
+     port.setName("pin_r02");
      port.setMaxFanOut(20);
-     // pin_4
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 50 }));
-     port.setConnectionDirection();
+     // pin_nc1
+     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 99.00990099009901 }));
+     port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_4");
+     port.setName("pin_nc1");
      port.setMaxFanOut(20);
-     // pin_5
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 61.85062500000001 }));
-     port.setConnectionDirection();
+     // pin_vcc
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 99.24456683168316 }));
+     port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_5");
+     port.setName("pin_vcc");
      port.setMaxFanOut(20);
-     // pin_6
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 74.83937499999999 }));
-     port.setConnectionDirection();
+     // pin_r91
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 99.5017698019802 }));
+     port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_6");
+     port.setName("pin_r91");
      port.setMaxFanOut(20);
-     // pin_7
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 1.575645161290415, y: 87.06937499999998 }));
-     port.setConnectionDirection();
+     // pin_r92
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.24015564686839, y: 99.74394801980198 }));
+     port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_7");
+     port.setName("pin_r92");
      port.setMaxFanOut(20);
-     // pin_8
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 87.06937499999998 }));
+     // pin_qc
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 99.74394801980198 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_8");
+     port.setName("pin_qc");
      port.setMaxFanOut(20);
-     // pin_9
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 74.64749999999998 }));
+     // pin_qb
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 99.49797029702971 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_9");
+     port.setName("pin_qb");
      port.setMaxFanOut(20);
-     // pin_10
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 61.85062500000001 }));
+     // pin_gnd
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 99.24456683168316 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_10");
+     port.setName("pin_gnd");
      port.setMaxFanOut(20);
-     // pin_11
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 50 }));
+     // pin_qd
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 99.00990099009901 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_11");
+     port.setName("pin_qd");
      port.setMaxFanOut(20);
-     // pin_12
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 37.01124999999999 }));
+     // pin_qa
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 98.75269801980198 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_12");
+     port.setName("pin_qa");
      port.setMaxFanOut(20);
-     // pin_13
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 24.022499999999987 }));
-     port.setConnectionDirection();
-     port.setBackgroundColor("#37B1DE");
-     port.setName("pin_13");
-     port.setMaxFanOut(20);
-     // pin_14
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.04983870967756, y: 11.522499999999987 }));
+     // pin_nc2
+     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 98.49549504950495 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("pin_14");
+     port.setName("pin_nc2");
+     port.setMaxFanOut(20);
+     // cka
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.00038475905865, y: 98.24797029702971 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("cka");
      port.setMaxFanOut(20);
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 62;
-      this.originalHeight= 160;
+      this.originalWidth = 8031;
+      this.originalHeight= 8080;
       return shape;
    },
 
@@ -114,14 +114,24 @@ var circuit_74LSXX_74LS90 = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L62,0 L62,160 L0,160");
+       shape = this.canvas.paper.path("M0,0 L8031,0 L8031,8080 L0,8080");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 0L62 0L62 160L0 160Z');
+       shape = this.canvas.paper.path('M7969 7920L8031 7920L8031 8080L7969 8080Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
+       
+       // Circle
+       shape = this.canvas.paper.path('M7991.125745685458 7920L7991.086165814079 7920.4524L7991.229183108134 7922.087095151244L7991.653889482188 7923.672120917513L7992.347380447978 7925.159317092961L7993.288584633432 7926.503495974353L7994.448904025647 7927.663815366568L7995.793082907039 7928.605019552022L7997.280279082487 7929.298510517812L7998.865304848756 7929.723216891866L8000.5 7929.866234185921L8002.134695151244 7929.723216891866L8003.719720917513 7929.298510517812L8005.206917092961 7928.605019552022L8006.551095974353 7927.663815366568L8007.711415366568 7926.503495974353L8008.652619552022 7925.159317092961L8009.346110517812 7923.672120917513L8009.770816891866 7922.087095151244L8009.913834185921 7920.4524L8009.874254314542 7920L7991.125745685458 7920Z');
+       shape.attr({"stroke":"rgba(27,27,27,1)","stroke-width":1,"fill":"rgba(245,245,245,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Circle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'Text');
+       shape.attr({"x":4,"y":12.5,"text-anchor":"start","text":"Text","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
        
 
        return this.canvas.paper.setFinish();
