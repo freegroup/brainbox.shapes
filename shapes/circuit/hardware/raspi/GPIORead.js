@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
+var circuit_hardware_raspi_GPIORead = CircuitFigure.extend({
 
-   NAME: "circuit_hardware_raspi_RaspiINPUT",
+   NAME: "circuit_hardware_raspi_GPIORead",
    VERSION: "1.0.154_277",
 
    init:function(attr, setter, getter)
@@ -86,11 +86,6 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
        shape = this.canvas.paper.path('M92.80000000000018,48Q92.80000000000018,46 94.80000000000018, 46L104.25999999999931,46Q106.25999999999931,46 106.25999999999931, 44L106.25999999999931,2Q106.25999999999931,0 104.25999999999931, 0L3.259999999999309,0Q1.2599999999993088,0 1.2599999999993088, 2L1.2599999999993088,44Q1.2599999999993088,46 1.2481969268556656, 47.99996517156282L0.01180307314364315,257.50003482843715Q0,259.5 2, 259.5L90.80000000000018,259.5Q92.80000000000018,259.5 92.80000000000018, 257.5L92.80000000000018,48');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'Input GPIO');
-       shape.attr({"x":8.433599999999387,"y":20.0078125,"text-anchor":"start","text":"Input GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
        
        // Circle
        shape = this.canvas.paper.ellipse();
@@ -202,6 +197,11 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
        shape.attr({"x":67.57360637047532,"y":238.05374999999913,"text-anchor":"start","text":"16","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
+       // Label
+       shape = this.canvas.paper.text(0,0,'Read GPIO');
+       shape.attr({"x":8.433599999999387,"y":20.0078125,"text-anchor":"start","text":"Read GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
        // Line
        shape = this.canvas.paper.path('M53.863852052198126 48.47225227999843L52.30737205219884,49.31412773599868Q50.75089205219956,50.156003191998934 49.55103049750114, 51.75610701661679L48.20626024419653,53.549457272001746');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
@@ -225,7 +225,7 @@ var circuit_hardware_raspi_RaspiINPUT = CircuitFigure.extend({
  *
  *
  */
-circuit_hardware_raspi_RaspiINPUT = circuit_hardware_raspi_RaspiINPUT.extend({
+circuit_hardware_raspi_GPIORead = circuit_hardware_raspi_GPIORead.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
