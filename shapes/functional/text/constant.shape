@@ -3,10 +3,10 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "b3f6713e-68b2-e562-4766-49a6ac0da5b6",
-      "x": 322,
-      "y": 277,
-      "width": 81,
-      "height": 24,
+      "x": 354.1875,
+      "y": 280,
+      "width": 48,
+      "height": 21,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -25,19 +25,19 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 322,
-          "y": 277
+          "x": 354.1875,
+          "y": 280
         },
         {
-          "x": 403,
-          "y": 277
+          "x": 402.1875,
+          "y": 280
         },
         {
-          "x": 403,
+          "x": 402.1875,
           "y": 301
         },
         {
-          "x": 322,
+          "x": 354.1875,
           "y": 301
         }
       ],
@@ -98,8 +98,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "b712c08a-ced6-5243-3d9e-a3d1e7ade77e",
-      "x": 340.59375,
-      "y": 275,
+      "x": 355.28125,
+      "y": 277,
       "width": 28.34375,
       "height": 21,
       "alpha": 1,
@@ -119,7 +119,7 @@
       "text": "label",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
-      "fontSize": 16,
+      "fontSize": 13,
       "fontColor": "rgba(8,8,8,1)",
       "fontFamily": null,
       "editor": "LabelInplaceEditor",
