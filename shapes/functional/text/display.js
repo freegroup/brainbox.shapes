@@ -7,16 +7,16 @@
 var functional_text_display = CircuitFigure.extend({
 
    NAME: "functional_text_display",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:60.334100000000035,height:26.334100000000035},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:66.6820000000007,height:26.334100000000035},attr), setter, getter);
      var port;
      // port_a
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.21099179402559284, y: 50.63434862023011 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.6940103776107176, y: 50 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("port_a");
@@ -26,7 +26,7 @@ var functional_text_display = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 60.334100000000035;
+      this.originalWidth = 66.6820000000007;
       this.originalHeight= 26.334100000000035;
       return shape;
    },
@@ -36,18 +36,18 @@ var functional_text_display = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L60.334100000000035,0 L60.334100000000035,26.334100000000035 L0,26.334100000000035");
+       shape = this.canvas.paper.path("M0,0 L66.6820000000007,0 L66.6820000000007,26.334100000000035 L0,26.334100000000035");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 11.025300000001153L10.455149999997957 0L60.334100000000035 0.3341000000000349L60.334100000000035 26.334100000000035L9.688900000001013 26.334100000000035Z');
+       shape = this.canvas.paper.path('M0 13.029900000001362L16.80304999999862 0L66.6820000000007 0.3341000000000349L66.6820000000007 26.334100000000035L16.036800000001676 26.334100000000035Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // label
        shape = this.canvas.paper.text(0,0,'label');
-       shape.attr({"x":12.427850000000035,"y":12.834100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":18.7757500000007,"y":12.834100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 

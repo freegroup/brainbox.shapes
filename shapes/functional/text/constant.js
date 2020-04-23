@@ -4,20 +4,20 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_digital_signals_SignalSource = CircuitFigure.extend({
+var functional_text_constant = CircuitFigure.extend({
 
-   NAME: "circuit_digital_signals_SignalSource",
+   NAME: "functional_text_constant",
    VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:65.72720000000481,height:22},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:81,height:26},attr), setter, getter);
      var port;
      // Port
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.47855986562651, y: 46.56272727272815 }));
-     port.setConnectionDirection(1);
+     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 101.23456790123456, y: 53.84615384615385 }));
+     port.setConnectionDirection();
      port.setBackgroundColor("#37B1DE");
      port.setName("Port");
      port.setMaxFanOut(20);
@@ -26,8 +26,8 @@ var circuit_digital_signals_SignalSource = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 65.72720000000481;
-      this.originalHeight= 22;
+      this.originalWidth = 81;
+      this.originalHeight= 26;
       return shape;
    },
 
@@ -36,18 +36,18 @@ var circuit_digital_signals_SignalSource = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L65.72720000000481,0 L65.72720000000481,22 L0,22");
+       shape = this.canvas.paper.path("M0,0 L81,0 L81,26 L0,26");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // outline
-       shape = this.canvas.paper.path('M0 0L53.81817921990478 0L65.72720000000481 10L53.81817921990478 20L0.24380000000201107 20.243800000000192Z');
-       shape.attr({"stroke":"rgba(0,120,242,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M0 2L81 2L81 26L0 26Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // label
-       shape = this.canvas.paper.text(0,0,'Signal_ID');
-       shape.attr({"x":4.773050000005242,"y":11,"text-anchor":"start","text":"Signal_ID","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0078F2","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'label');
+       shape.attr({"x":22.59375,"y":12.5,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -67,7 +67,7 @@ var circuit_digital_signals_SignalSource = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.extend({
+functional_text_constant = functional_text_constant.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
@@ -86,22 +86,21 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
             _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
             _this.layerAttr("outline",     { path: `M0 0 L${width-13} 0 L${width} 10 L${width-13} 20 L0 20 Z`})
         }
-        this.on("change:userData.signalId",function(emitter, event){
+        
+        this.on("change:userData.constant",function(emitter, event){
             _this.layerAttr("label", {text: event.value})
             adjustWidth()
         });
+        
         this.on("added", function(){
-            var signalId = _this.attr("userData.signalId")
+            var signalId = _this.attr("userData.constant")
             if(!signalId){
-                signalId = "Signal_Id"
-                _this.attr("userData.signalId", signalId)
+                signalId = "Value"
+                _this.attr("userData.constant", signalId)
             }            
             _this.layerAttr("label", {text: signalId})
             adjustWidth()
         })
-        
-        // override the "getValue" method of the port and delegate them to the related party (SourceTarget port)
-        this.originalGetValue = this.getOutputPort(0).getValue
     },
 
     /**
@@ -111,17 +110,7 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
      **/
     calculate:function(context)
     {
-        var signalId = this.attr("userData.signalId")
-        if(context.signalPorts && context.signalPorts[signalId]){
-            this.getOutputPort(0).getValue = function(){ 
-                if(context.signalPorts[signalId] instanceof draw2d.Port){
-                    return context.signalPorts[signalId].getValue()
-                }
-                else {
-                    return false
-                }
-            }
-        }
+        this.getOutputPort(0).setValue(this.attr("userData.constant")) 
     },
 
     /**
@@ -145,8 +134,8 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
     {
         return [
         {
-            name:"signalId",
-            label:"Signal Id",
+            name:"constant",
+            label:"Constant",
             property:{
                 type: "string"
             }
@@ -187,6 +176,5 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
 
     return this
   }
-
 
 });

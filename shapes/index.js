@@ -7,7 +7,7 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -311,7 +311,7 @@ circuit_74LSXX_74LS90 = circuit_74LSXX_74LS90.extend({
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -481,7 +481,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -797,7 +797,7 @@ circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 var circuit_digital_buttons_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLow",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -910,7 +910,7 @@ circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -1075,7 +1075,7 @@ circuit_digital_buttons_HighLowArray = circuit_digital_buttons_HighLowArray.exte
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -1194,7 +1194,7 @@ circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -1378,7 +1378,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -1617,7 +1617,7 @@ circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -1779,7 +1779,7 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
 var circuit_digital_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_Led",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -1870,7 +1870,7 @@ circuit_digital_display_Led = circuit_digital_display_Led.extend({
 var circuit_digital_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_DFlipFlop",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2003,7 +2003,7 @@ circuit_digital_flipflop_DFlipFlop = circuit_digital_flipflop_DFlipFlop.extend({
 var circuit_digital_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKFlipFlop",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2166,7 +2166,7 @@ circuit_digital_flipflop_JKFlipFlop = circuit_digital_flipflop_JKFlipFlop.extend
 var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKRFlipFlop",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2347,7 +2347,7 @@ circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.exte
 var circuit_digital_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_SRFlipFlop",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2490,7 +2490,7 @@ circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2612,7 +2612,7 @@ circuit_digital_flipflop_TFlipFlop = circuit_digital_flipflop_TFlipFlop.extend({
 var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_AND",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2744,7 +2744,7 @@ circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
 var circuit_digital_gate_DIN40700_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NAND",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -2881,7 +2881,7 @@ circuit_digital_gate_DIN40700_NAND = circuit_digital_gate_DIN40700_NAND.extend({
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3028,7 +3028,7 @@ circuit_digital_gate_DIN40700_NOR = circuit_digital_gate_DIN40700_NOR.extend({
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3170,7 +3170,7 @@ circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XNOR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3317,7 +3317,7 @@ circuit_digital_gate_DIN40700_XNOR = circuit_digital_gate_DIN40700_XNOR.extend({
 var circuit_digital_gate_DIN40700_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XOR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3469,7 +3469,7 @@ circuit_digital_gate_DIN40700_XOR = circuit_digital_gate_DIN40700_XOR.extend({
 var circuit_digital_gate_IEC60617_12_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_AND",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3567,7 +3567,7 @@ circuit_digital_gate_IEC60617_12_AND = circuit_digital_gate_IEC60617_12_AND.exte
 var circuit_digital_gate_IEC60617_12_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NAND",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3670,7 +3670,7 @@ circuit_digital_gate_IEC60617_12_NAND = circuit_digital_gate_IEC60617_12_NAND.ex
 var circuit_digital_gate_IEC60617_12_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3778,7 +3778,7 @@ circuit_digital_gate_IEC60617_12_NOR = circuit_digital_gate_IEC60617_12_NOR.exte
 var circuit_digital_gate_IEC60617_12_NOT = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOT",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3875,7 +3875,7 @@ circuit_digital_gate_IEC60617_12_NOT = circuit_digital_gate_IEC60617_12_NOT.exte
 var circuit_digital_gate_IEC60617_12_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_OR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -3978,7 +3978,7 @@ circuit_digital_gate_IEC60617_12_OR = circuit_digital_gate_IEC60617_12_OR.extend
 var circuit_digital_gate_IEC60617_12_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XNOR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4081,7 +4081,7 @@ circuit_digital_gate_IEC60617_12_XNOR = circuit_digital_gate_IEC60617_12_XNOR.ex
 var circuit_digital_gate_IEC60617_12_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XOR",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4179,7 +4179,7 @@ circuit_digital_gate_IEC60617_12_XOR = circuit_digital_gate_IEC60617_12_XOR.exte
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4283,7 +4283,7 @@ circuit_digital_pulse_10hz = circuit_digital_pulse_10hz.extend({
 var circuit_digital_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_1hz",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4388,7 +4388,7 @@ circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 var circuit_digital_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_50hz",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4491,7 +4491,7 @@ circuit_digital_pulse_50hz = circuit_digital_pulse_50hz.extend({
 var circuit_digital_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_Delay",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4663,7 +4663,7 @@ circuit_digital_pulse_Delay = circuit_digital_pulse_Delay.extend({
 var circuit_digital_signals_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_High",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4784,7 +4784,7 @@ circuit_digital_signals_High = circuit_digital_signals_High.extend({
 var circuit_digital_signals_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_Low",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -4905,7 +4905,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
 var circuit_digital_signals_SignalSource = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_SignalSource",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -5099,7 +5099,7 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
 var circuit_digital_signals_SignalTarget = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_SignalTarget",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -5308,7 +5308,7 @@ circuit_digital_signals_SignalTarget = circuit_digital_signals_SignalTarget.exte
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -5479,7 +5479,7 @@ circuit_digital_timer_Delay = circuit_digital_timer_Delay.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -5980,7 +5980,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Led",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -6092,7 +6092,7 @@ circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 var circuit_hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIORead",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -6366,7 +6366,7 @@ circuit_hardware_raspi_GPIORead = circuit_hardware_raspi_GPIORead.extend({
 var circuit_hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIOWrite",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -6765,7 +6765,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var functional_text_concatenate = CircuitFigure.extend({
 
    NAME: "functional_text_concatenate",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
@@ -6897,19 +6897,201 @@ functional_text_concatenate = functional_text_concatenate.extend({
 // created with http://www.draw2d.org
 //
 //
-var functional_text_display = CircuitFigure.extend({
+var functional_text_constant = CircuitFigure.extend({
 
-   NAME: "functional_text_display",
-   VERSION: "1.0.164_298",
+   NAME: "functional_text_constant",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:60.334100000000035,height:26.334100000000035},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:81,height:26},attr), setter, getter);
+     var port;
+     // Port
+     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 101.23456790123456, y: 53.84615384615385 }));
+     port.setConnectionDirection();
+     port.setBackgroundColor("#37B1DE");
+     port.setName("Port");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 81;
+      this.originalHeight= 26;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L81,0 L81,26 L0,26");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // outline
+       shape = this.canvas.paper.path('M0 2L81 2L81 26L0 26Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","outline");
+       
+       // label
+       shape = this.canvas.paper.text(0,0,'label');
+       shape.attr({"x":22.59375,"y":12.5,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","label");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * Generated Code for the Draw2D touch HTML5 lib.
+ * File will be generated if you save the *.shape file.
+ *
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custom code and event handler here.
+ *
+ * Looks disconcerting - extending my own class. But this is a good method to
+ * merge basic code and override them with custom methods.
+ */
+functional_text_constant = functional_text_constant.extend({
+
+    init: function(attr, setter, getter){
+         this._super(attr, setter, getter);
+
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        
+        var _this = this;
+             
+        // calculate the outer frame/shape in the correct size in relation to the length of the text
+        //
+        var adjustWidth = function(){
+            var width = _this.layerGet("label").getBBox().width+15
+
+            _this.setWidth(width+5);
+            _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
+            _this.layerAttr("outline",     { path: `M0 0 L${width-13} 0 L${width} 10 L${width-13} 20 L0 20 Z`})
+        }
+        
+        this.on("change:userData.constant",function(emitter, event){
+            _this.layerAttr("label", {text: event.value})
+            adjustWidth()
+        });
+        
+        this.on("added", function(){
+            var signalId = _this.attr("userData.constant")
+            if(!signalId){
+                signalId = "Value"
+                _this.attr("userData.constant", signalId)
+            }            
+            _this.layerAttr("label", {text: signalId})
+            adjustWidth()
+        })
+    },
+
+    /**
+     *  Called by the simulator for every calculation
+     *  loop
+     *  @required
+     **/
+    calculate:function(context)
+    {
+        this.getOutputPort(0).setValue(this.attr("userData.constant")) 
+    },
+
+    /**
+     *  Called if the simulation mode is starting
+     *  @required
+     **/
+    onStart:function(context)
+    {
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     *  @required
+     **/
+    onStop:function(context)
+    {
+    },
+
+
+    getParameterSettings: function()
+    {
+        return [
+        {
+            name:"constant",
+            label:"Constant",
+            property:{
+                type: "string"
+            }
+        }];
+    },
+    
+    /**
+     * Get the simulator a hint which kind of hardware the shapes requires or supports
+     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
+     * and your are running a circuit which needs this kind of hardware...
+     **/
+    getRequiredHardware: function(){
+      return {
+        raspi: false,
+        arduino: false
+      }
+    },
+    
+  /**
+   * @private
+   */
+  applyTransformation: function () {
+    let s =
+      // override the base implementation and do not scale the internal SVG elements....this let the arrow looks a like streche...we
+      // calculate the path in the event handler. A lot more code....but the result is much cleaner
+      //"S" + this.scaleX + "," + this.scaleY + ",0,0 " +
+      "R" + this.rotationAngle + "," + ((this.getWidth() / 2) | 0) + "," + ((this.getHeight() / 2) | 0) +
+      "T" + this.getAbsoluteX() + "," + this.getAbsoluteY() +
+      ""
+    this.svgNodes.transform(s)
+    if (this.rotationAngle === 90 || this.rotationAngle === 270) {
+      let before = this.svgNodes.getBBox(true)
+      let ratio = before.height / before.width
+      let reverseRatio = before.width / before.height
+      let rs = "...S" + ratio + "," + reverseRatio + "," + (this.getAbsoluteX() + this.getWidth() / 2) + "," + (this.getAbsoluteY() + this.getHeight() / 2)
+      this.svgNodes.transform(rs)
+    }
+
+    return this
+  }
+
+});
+
+
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
+var functional_text_display = CircuitFigure.extend({
+
+   NAME: "functional_text_display",
+   VERSION: "1.0.165_301",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:66.6820000000007,height:26.334100000000035},attr), setter, getter);
      var port;
      // port_a
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.21099179402559284, y: 50.63434862023011 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.6940103776107176, y: 50 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("port_a");
@@ -6919,7 +7101,7 @@ var functional_text_display = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 60.334100000000035;
+      this.originalWidth = 66.6820000000007;
       this.originalHeight= 26.334100000000035;
       return shape;
    },
@@ -6929,18 +7111,18 @@ var functional_text_display = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L60.334100000000035,0 L60.334100000000035,26.334100000000035 L0,26.334100000000035");
+       shape = this.canvas.paper.path("M0,0 L66.6820000000007,0 L66.6820000000007,26.334100000000035 L0,26.334100000000035");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 11.025300000001153L10.455149999997957 0L60.334100000000035 0.3341000000000349L60.334100000000035 26.334100000000035L9.688900000001013 26.334100000000035Z');
+       shape = this.canvas.paper.path('M0 13.029900000001362L16.80304999999862 0L66.6820000000007 0.3341000000000349L66.6820000000007 26.334100000000035L16.036800000001676 26.334100000000035Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // label
        shape = this.canvas.paper.text(0,0,'label');
-       shape.attr({"x":12.427850000000035,"y":12.834100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":18.7757500000007,"y":12.834100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -7063,7 +7245,7 @@ functional_text_display = functional_text_display.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.164_298",
+   VERSION: "1.0.165_301",
 
    init:function(attr, setter, getter)
    {
