@@ -7,7 +7,7 @@
 var functional_text_display = CircuitFigure.extend({
 
    NAME: "functional_text_display",
-   VERSION: "1.0.166_305",
+   VERSION: "1.0.167_307",
 
    init:function(attr, setter, getter)
    {
@@ -40,14 +40,14 @@ var functional_text_display = CircuitFigure.extend({
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
-       // Rectangle
+       // outline
        shape = this.canvas.paper.path('M0 13.029900000001362L16.80304999999862 0L66.6820000000007 0.3341000000000349L66.6820000000007 26.334100000000035L16.036800000001676 26.334100000000035Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
+       shape.data("name","outline");
        
        // label
        shape = this.canvas.paper.text(0,0,'label');
-       shape.attr({"x":18.7757500000007,"y":12.834100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":18.7757500000007,"y":12.334100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
