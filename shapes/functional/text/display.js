@@ -7,16 +7,16 @@
 var functional_text_display = CircuitFigure.extend({
 
    NAME: "functional_text_display",
-   VERSION: "1.0.163_295",
+   VERSION: "1.0.164_298",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:60,height:41},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:60.334100000000035,height:26.334100000000035},attr), setter, getter);
      var port;
      // port_a
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.768999999998717, y: 50 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.21099179402559284, y: 50.63434862023011 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("port_a");
@@ -26,8 +26,8 @@ var functional_text_display = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 60;
-      this.originalHeight= 41;
+      this.originalWidth = 60.334100000000035;
+      this.originalHeight= 26.334100000000035;
       return shape;
    },
 
@@ -36,18 +36,18 @@ var functional_text_display = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L60,0 L60,41 L0,41");
+       shape = this.canvas.paper.path("M0,0 L60.334100000000035,0 L60.334100000000035,26.334100000000035 L0,26.334100000000035");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 0L60 0L60 41L0 41Z');
+       shape = this.canvas.paper.path('M0 11.025300000001153L10.455149999997957 0L60.334100000000035 0.3341000000000349L60.334100000000035 26.334100000000035L9.688900000001013 26.334100000000035Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // label
        shape = this.canvas.paper.text(0,0,'label');
-       shape.attr({"x":12.09375,"y":20,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":12.427850000000035,"y":12.834100000000035,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -133,6 +133,29 @@ functional_text_display = functional_text_display.extend({
         raspi: false,
         arduino: false
       }
+    },
+    
+  /**
+   * @private
+   */
+  applyTransformation: function () {
+    let s =
+      // override the base implementation and do not scale the internal SVG elements....this let the arrow looks a like streche...we
+      // calculate the path in the event handler. A lot more code....but the result is much cleaner
+      //"S" + this.scaleX + "," + this.scaleY + ",0,0 " +
+      "R" + this.rotationAngle + "," + ((this.getWidth() / 2) | 0) + "," + ((this.getHeight() / 2) | 0) +
+      "T" + this.getAbsoluteX() + "," + this.getAbsoluteY() +
+      ""
+    this.svgNodes.transform(s)
+    if (this.rotationAngle === 90 || this.rotationAngle === 270) {
+      let before = this.svgNodes.getBBox(true)
+      let ratio = before.height / before.width
+      let reverseRatio = before.width / before.height
+      let rs = "...S" + ratio + "," + reverseRatio + "," + (this.getAbsoluteX() + this.getWidth() / 2) + "," + (this.getAbsoluteY() + this.getHeight() / 2)
+      this.svgNodes.transform(rs)
     }
+
+    return this
+  }
 
 });

@@ -7,7 +7,7 @@
 var functional_text_concatenate = CircuitFigure.extend({
 
    NAME: "functional_text_concatenate",
-   VERSION: "1.0.163_295",
+   VERSION: "1.0.164_298",
 
    init:function(attr, setter, getter)
    {
