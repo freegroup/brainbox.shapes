@@ -1,3 +1,139 @@
 {
-  "draw2d": []
+  "draw2d": [
+    {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "b3f6713e-68b2-e562-4766-49a6ac0da5b6",
+      "x": 322,
+      "y": 277,
+      "width": 81,
+      "height": 24,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "outline",
+        "baseClass": "draw2d.SetFigure",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n         this._super(attr, setter, getter);\n\n        this.attr({resizeable:false});\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n        \n        var _this = this;\n             \n        // calculate the outer frame/shape in the correct size in relation to the length of the text\n        //\n        var adjustWidth = function(){\n            var width = _this.layerGet(\"label\").getBBox().width+15\n\n            _this.setWidth(width+5);\n            _this.layerAttr(\"BoundingBox\", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})\n            _this.layerAttr(\"outline\",     { path: `M0 0 L${width-13} 0 L${width} 10 L${width-13} 20 L0 20 Z`})\n        }\n        \n        this.on(\"change:userData.constant\",function(emitter, event){\n            _this.layerAttr(\"label\", {text: event.value})\n            adjustWidth()\n        });\n        \n        this.on(\"added\", function(){\n            var signalId = _this.attr(\"userData.constant\")\n            if(!signalId){\n                signalId = \"Value\"\n                _this.attr(\"userData.constant\", signalId)\n            }            \n            _this.layerAttr(\"label\", {text: signalId})\n            adjustWidth()\n        })\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @required\n     **/\n    calculate:function(context)\n    {\n        this.getOutputPort(0).setValue(this.attr(\"userData.constant\")) \n    },\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function(context)\n    {\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function(context)\n    {\n    },\n\n\n    getParameterSettings: function()\n    {\n        return [\n        {\n            name:\"constant\",\n            label:\"Constant\",\n            property:{\n                type: \"string\"\n            }\n        }];\n    },\n    \n    /**\n     * Get the simulator a hint which kind of hardware the shapes requires or supports\n     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost\n     * and your are running a circuit which needs this kind of hardware...\n     **/\n    getRequiredHardware: function(){\n      return {\n        raspi: false,\n        arduino: false\n      }\n    },\n    \n  /**\n   * @private\n   */\n  applyTransformation: function () {\n    let s =\n      // override the base implementation and do not scale the internal SVG elements....this let the arrow looks a like streche...we\n      // calculate the path in the event handler. A lot more code....but the result is much cleaner\n      //\"S\" + this.scaleX + \",\" + this.scaleY + \",0,0 \" +\n      \"R\" + this.rotationAngle + \",\" + ((this.getWidth() / 2) | 0) + \",\" + ((this.getHeight() / 2) | 0) +\n      \"T\" + this.getAbsoluteX() + \",\" + this.getAbsoluteY() +\n      \"\"\n    this.svgNodes.transform(s)\n    if (this.rotationAngle === 90 || this.rotationAngle === 270) {\n      let before = this.svgNodes.getBBox(true)\n      let ratio = before.height / before.width\n      let reverseRatio = before.width / before.height\n      let rs = \"...S\" + ratio + \",\" + reverseRatio + \",\" + (this.getAbsoluteX() + this.getWidth() / 2) + \",\" + (this.getAbsoluteY() + this.getHeight() / 2)\n      this.svgNodes.transform(rs)\n    }\n\n    return this\n  }\n\n});"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(48,48,48,1)",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 322,
+          "y": 277
+        },
+        {
+          "x": 403,
+          "y": 277
+        },
+        {
+          "x": 403,
+          "y": 301
+        },
+        {
+          "x": 322,
+          "y": 301
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "29c2c3cf-16d0-f753-55b7-442a2be702bb",
+      "x": 399,
+      "y": 284,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Port",
+        "type": "Hybrid",
+        "direction": null,
+        "fanout": 20
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(55,177,222,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLabel",
+      "id": "b712c08a-ced6-5243-3d9e-a3d1e7ade77e",
+      "x": 340.59375,
+      "y": 275,
+      "width": 28.34375,
+      "height": 21,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "label"
+      },
+      "cssClass": "shape_designer_figure_ExtLabel",
+      "ports": [],
+      "bgColor": "rgba(0,0,0,0)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 0,
+      "radius": 0,
+      "dasharray": null,
+      "text": "label",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "fontSize": 16,
+      "fontColor": "rgba(8,8,8,1)",
+      "fontFamily": null,
+      "editor": "LabelInplaceEditor",
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FontSizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FontColorFilter"
+        }
+      ]
+    }
+  ]
 }
