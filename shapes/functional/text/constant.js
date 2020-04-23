@@ -7,17 +7,17 @@
 var functional_text_constant = CircuitFigure.extend({
 
    NAME: "functional_text_constant",
-   VERSION: "1.0.165_301",
+   VERSION: "1.0.166_305",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:81,height:26},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:48,height:24},attr), setter, getter);
      var port;
      // Port
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 101.23456790123456, y: 53.84615384615385 }));
-     port.setConnectionDirection();
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 103.77604166666667, y: 50 }));
+     port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("Port");
      port.setMaxFanOut(20);
@@ -26,8 +26,8 @@ var functional_text_constant = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 81;
-      this.originalHeight= 26;
+      this.originalWidth = 48;
+      this.originalHeight= 24;
       return shape;
    },
 
@@ -36,18 +36,18 @@ var functional_text_constant = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L81,0 L81,26 L0,26");
+       shape = this.canvas.paper.path("M0,0 L48,0 L48,24 L0,24");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // outline
-       shape = this.canvas.paper.path('M0 2L81 2L81 26L0 26Z');
+       shape = this.canvas.paper.path('M0 3L48 3L48 24L0 24Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","outline");
        
        // label
        shape = this.canvas.paper.text(0,0,'label');
-       shape.attr({"x":22.59375,"y":12.5,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":5.09375,"y":11.5,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":13,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
