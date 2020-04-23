@@ -4,30 +4,30 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_digital_signals_Low = CircuitFigure.extend({
+var functional_text_display = CircuitFigure.extend({
 
-   NAME: "circuit_digital_signals_Low",
+   NAME: "functional_text_display",
    VERSION: "1.0.163_295",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:40,height:22},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:60,height:41},attr), setter, getter);
      var port;
-     // Port
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 102.69275000000107, y: 45.45454545454546 }));
-     port.setConnectionDirection(1);
+     // port_a
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.768999999998717, y: 50 }));
+     port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("Port");
+     port.setName("port_a");
      port.setMaxFanOut(20);
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 40;
-      this.originalHeight= 22;
+      this.originalWidth = 60;
+      this.originalHeight= 41;
       return shape;
    },
 
@@ -36,18 +36,18 @@ var circuit_digital_signals_Low = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L40,0 L40,22 L0,22");
+       shape = this.canvas.paper.path("M0,0 L60,0 L60,41 L0,41");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
-       // outline
-       shape = this.canvas.paper.path('M0 0L31.33889397811072 0L40 10L31.33889397811072 20L0 20Z');
-       shape.attr({"stroke":"rgba(0,120,242,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","outline");
+       // Rectangle
+       shape = this.canvas.paper.path('M0 0L60 0L60 41L0 41Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
        // label
-       shape = this.canvas.paper.text(0,0,'LOW');
-       shape.attr({"x":4,"y":11,"text-anchor":"start","text":"LOW","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#0078F2","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'label');
+       shape.attr({"x":12.09375,"y":20,"text-anchor":"start","text":"label","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","label");
        
 
@@ -67,15 +67,34 @@ var circuit_digital_signals_Low = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
+functional_text_display = functional_text_display.extend({
 
     init: function(attr, setter, getter){
-         this._super(attr, setter, getter);
+        this._super(attr, setter, getter);
 
          // your special code here
-        this.getOutputPort(0).setValue(0)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        
+        var _this = this;
+        
+        // handle the size of the shape if the label has changed
+        //
+        var adjustWidth = function(){
+            var width = _this.layerGet("label").getBBox().width+15
+
+            _this.setWidth(width+5);
+            _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
+            _this.layerAttr("outline",     { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
+          
+        }
+
+        // get the connected port and forward the port to the related party ( SignalSource shape)
+        //
+        this.getInputPort(0).on("change:value", function(emitter, event){
+           _this.layerAttr("label", {text: event.value})
+           adjustWidth()
+        })
     },
 
     /**
@@ -83,7 +102,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
      *  loop
      *  @required
      **/
-    calculate:function()
+    calculate:function(context)
     {
     },
 
@@ -92,7 +111,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
      *  Called if the simulation mode is starting
      *  @required
      **/
-    onStart:function()
+    onStart:function( context )
     {
     },
 
@@ -100,7 +119,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
      *  Called if the simulation mode is stopping
      *  @required
      **/
-    onStop:function()
+    onStop:function( context )
     {
     },
 

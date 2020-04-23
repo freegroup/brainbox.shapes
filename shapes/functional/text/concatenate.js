@@ -7,7 +7,7 @@
 var functional_text_concatenate = CircuitFigure.extend({
 
    NAME: "functional_text_concatenate",
-   VERSION: "1.0.162_291",
+   VERSION: "1.0.163_295",
 
    init:function(attr, setter, getter)
    {
@@ -59,7 +59,7 @@ var functional_text_concatenate = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'A+B');
-       shape.attr({"x":16.20584999999994,"y":20.0625,"text-anchor":"start","text":"A+B","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":15.205849999999941,"y":19.0625,"text-anchor":"start","text":"A+B","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
 
@@ -84,7 +84,6 @@ functional_text_concatenate = functional_text_concatenate.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-         // your special code here
     },
 
     /**
@@ -98,7 +97,8 @@ functional_text_concatenate = functional_text_concatenate.extend({
         let a = this.getInputPort("port_a")
         let b = this.getInputPort("port_b")
         let c = this.getOutputPort("port_c")
-        
+      
+        c.setValue(a.getValue()+ b.getValue())  
     },
 
 

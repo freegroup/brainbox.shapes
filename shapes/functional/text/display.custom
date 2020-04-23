@@ -10,26 +10,43 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-functional_text_concatenate = functional_text_concatenate.extend({
+functional_text_display = functional_text_display.extend({
 
     init: function(attr, setter, getter){
-         this._super(attr, setter, getter);
+        this._super(attr, setter, getter);
 
+         // your special code here
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        
+        var _this = this;
+        
+        // handle the size of the shape if the label has changed
+        //
+        var adjustWidth = function(){
+            var width = _this.layerGet("label").getBBox().width+15
+
+            _this.setWidth(width+5);
+            _this.layerAttr("BoundingBox", { path: `M0 0 L${width} 0 L${width} 20 L0 20 Z`})
+            _this.layerAttr("outline",     { path: `M0 10 L13 0 L${width} 0 L${width} 20 L13 20 Z`})
+          
+        }
+
+        // get the connected port and forward the port to the related party ( SignalSource shape)
+        //
+        this.getInputPort(0).on("change:value", function(emitter, event){
+           _this.layerAttr("label", {text: event.value})
+           adjustWidth()
+        })
     },
 
     /**
      *  Called by the simulator for every calculation
      *  loop
-     *  @param {Object} context context where objects can store or handover global variables to other objects.
      *  @required
      **/
-    calculate:function( context)
+    calculate:function(context)
     {
-        let a = this.getInputPort("port_a")
-        let b = this.getInputPort("port_b")
-        let c = this.getOutputPort("port_c")
-      
-        c.setValue(a.getValue()+ b.getValue())  
     },
 
 
