@@ -26,6 +26,10 @@ functional_text_concatenate = functional_text_concatenate.extend({
      **/
     calculate:function( context)
     {
+        let a = this.getInputPort("port_a")
+        let b = this.getInputPort("port_b")
+        let c = this.getOutputPort("port_c")
+        
     },
 
 
