@@ -7,7 +7,7 @@
 var circuit_digital_gate_IEC60617_12_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_OR",
-   VERSION: "1.0.179_347",
+   VERSION: "1.0.180_349",
 
    init:function(attr, setter, getter)
    {
