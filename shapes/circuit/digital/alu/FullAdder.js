@@ -7,7 +7,7 @@
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "1.0.169_310",
+   VERSION: "1.0.170_313",
 
    init:function(attr, setter, getter)
    {
@@ -138,9 +138,9 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      **/
     calculate:function()
     {
-        var a = this.getInputPort("input_a").getValue();
-        var b = this.getInputPort("input_b").getValue();
-        var c = this.getInputPort("input_c").getValue();
+        var a = this.getInputPort("input_a").getBooleanValue();
+        var b = this.getInputPort("input_b").getBooleanValue();
+        var c = this.getInputPort("input_c").getBooleanValue();
         
         // s = a XOR b XOR  c
         this.getOutputPort("output_s").setValue(a ^ b ^ c);
