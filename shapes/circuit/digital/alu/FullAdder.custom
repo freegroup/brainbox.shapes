@@ -20,7 +20,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      *  loop
      *  @required
      **/
-    calculate:function()
+    calculate:function(context)
     {
         var a = this.getInputPort("input_a").getBooleanValue();
         var b = this.getInputPort("input_b").getBooleanValue();
@@ -38,7 +38,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      *  Called if the simulation mode is starting
      *  @required
      **/
-    onStart:function()
+    onStart:function(context)
     {
     },
 
@@ -46,7 +46,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      *  Called if the simulation mode is stopping
      *  @required
      **/
-    onStop:function()
+    onStop:function(context)
     {
     }
 });

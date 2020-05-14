@@ -7,7 +7,7 @@
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "1.0.181_352",
+   VERSION: "1.0.182_354",
 
    init:function(attr, setter, getter)
    {
@@ -136,7 +136,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      *  loop
      *  @required
      **/
-    calculate:function()
+    calculate:function(context)
     {
         var a = this.getInputPort("input_a").getBooleanValue();
         var b = this.getInputPort("input_b").getBooleanValue();
@@ -154,7 +154,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      *  Called if the simulation mode is starting
      *  @required
      **/
-    onStart:function()
+    onStart:function(context)
     {
     },
 
@@ -162,7 +162,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
      *  Called if the simulation mode is stopping
      *  @required
      **/
-    onStop:function()
+    onStop:function(context)
     {
     }
 });
