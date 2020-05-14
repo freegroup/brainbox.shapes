@@ -7,7 +7,7 @@
 var circuit_digital_signals_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_Low",
-   VERSION: "1.0.175_339",
+   VERSION: "1.0.176_342",
 
    init:function(attr, setter, getter)
    {
@@ -73,7 +73,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
          this._super(attr, setter, getter);
 
          // your special code here
-        this.getOutputPort(0).setValue(0)
+        this.getOutputPort(0).setValue(false)
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
@@ -83,7 +83,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
      *  loop
      *  @required
      **/
-    calculate:function()
+    calculate:function(context)
     {
     },
 
@@ -92,7 +92,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
      *  Called if the simulation mode is starting
      *  @required
      **/
-    onStart:function()
+    onStart:function(context)
     {
     },
 
@@ -100,7 +100,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
      *  Called if the simulation mode is stopping
      *  @required
      **/
-    onStop:function()
+    onStop:function(context)
     {
     },
 

@@ -7,7 +7,7 @@
 var circuit_digital_signals_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_High",
-   VERSION: "1.0.175_339",
+   VERSION: "1.0.176_342",
 
    init:function(attr, setter, getter)
    {
@@ -83,7 +83,7 @@ circuit_digital_signals_High = circuit_digital_signals_High.extend({
      *  loop
      *  @required
      **/
-    calculate:function()
+    calculate:function(context)
     {
     },
 
@@ -92,7 +92,7 @@ circuit_digital_signals_High = circuit_digital_signals_High.extend({
      *  Called if the simulation mode is starting
      *  @required
      **/
-    onStart:function()
+    onStart:function(context)
     {
     },
 
@@ -100,7 +100,7 @@ circuit_digital_signals_High = circuit_digital_signals_High.extend({
      *  Called if the simulation mode is stopping
      *  @required
      **/
-    onStop:function()
+    onStop:function(context)
     {
     },
 
