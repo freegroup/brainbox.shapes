@@ -7,7 +7,7 @@
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "1.0.170_313",
+   VERSION: "1.0.171_316",
 
    init:function(attr, setter, getter)
    {
@@ -146,7 +146,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
      **/
     calculate:function()
     {
-        var t = this.getInputPort(0).getValue();
+        var t = this.getInputPort(0).getBooleanValue();
 
         var rising = this.last_t===false && t===true; 
         if(rising===true){
