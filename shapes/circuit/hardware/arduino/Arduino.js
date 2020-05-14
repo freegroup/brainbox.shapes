@@ -7,7 +7,7 @@
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "2.0.5_363",
+   VERSION: "2.0.6_364",
 
    init:function(attr, setter, getter)
    {
@@ -435,7 +435,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
             var con = port.getConnections().first();
             var other = con.getSource()===port?con.getTarget():con.getSource()
             if(other instanceof draw2d.InputPort){
-                var d =  hardware.arduino.get(index)
+                port.setValue(hardware.arduino.get(index))
             }
             else {
                 hardware.arduino.set(index,other.getBooleanValue())
