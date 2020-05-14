@@ -7,7 +7,7 @@
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "1.0.171_316",
+   VERSION: "1.0.172_320",
 
    init:function(attr, setter, getter)
    {
@@ -151,8 +151,8 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
         var _this = this;
         this.portLockup.forEach(function(element, index){
             _this.layerAttr(element.s, { 
-                fill:element.p.getValue()?"#C21B7A":null,
-                stroke:element.p.getValue()?"#000000":"#f4f4f9"
+                fill  : element.p.getBooleanValue()?"#C21B7A":null,
+                stroke: element.p.getBooleanValue()?"#000000":"#f4f4f9"
             });
         });
     }
