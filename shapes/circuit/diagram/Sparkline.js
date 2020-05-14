@@ -35,6 +35,9 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
             this.outputPort.getValue = ()=>{
                 return signalPort.getValue()
             }
+            this.outputPort.getBooleanValue = ()=>{
+                return signalPort.getBooleanValue()
+            }
         })
         this.inputPort.on("disconnect", (emitter, event)=>{
             this.outputPort.getValue = this.outputPort.originalGetValue
