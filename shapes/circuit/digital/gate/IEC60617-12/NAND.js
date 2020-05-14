@@ -7,7 +7,7 @@
 var circuit_digital_gate_IEC60617_12_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NAND",
-   VERSION: "1.0.174_328",
+   VERSION: "1.0.175_339",
 
    init:function(attr, setter, getter)
    {
@@ -96,6 +96,6 @@ circuit_digital_gate_IEC60617_12_NAND = circuit_digital_gate_IEC60617_12_NAND.ex
         var i2 = this.getInputPort(1);
         var o1 = this.getOutputPort(0);
         
-        o1.setValue(!(i1.getValue() && i2.getValue()));
+        o1.setValue(!(i1.getBooleanValue() && i2.getBooleanValue()));
     }
 });
