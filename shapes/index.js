@@ -7,7 +7,7 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -314,7 +314,7 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
 
         this.setBackgroundColor("#FF765E")
         this.setRadius(5)
-        this.createPort("input")
+        this.addPort(new DecoratedInputPort())
         this.setDimension(250,50)
     },
 
@@ -323,9 +323,64 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
         this._super(data)
 
         this.min = 0
-        this.max = 100
+        this.max = 5
+        this.padding=4
         this.cache= {}
         this.repaint()
+    },
+
+
+    /**
+     * @inheritdoc
+     */
+    repaint: function (attributes) {
+        if (this.repaintBlocked === true || this.shape === null) {
+            return
+        }
+
+        attributes = attributes || {}
+
+        attributes.fill = "90-#000:5-#4d4d4d:95"
+
+        let padding = this.padding
+        let width = this.getWidth() - 2 * padding
+        let height = this.getHeight() - 2 * padding
+        let length = this.data.length
+        let min = this.min
+        let max = this.max
+        let toCoords = function (value, idx) {
+            let step = 1
+            // avoid divisionByZero
+            if (length > 1) {
+                step = (width / (length - 1))
+            }
+
+            return {
+                y: parseInt(-((value - min) / (max - min) * height) + height + padding),
+                x: parseInt(padding + idx * step)
+            }
+        }
+
+        if (this.svgNodes !== null && (typeof this.cache.pathString === "undefined")) {
+            let prev_pt = null
+            this.data.forEach((item, idx) => {
+                let pt = toCoords(item, idx)
+                console.log(JSON.stringify(pt), item, height, min, max)
+                if (prev_pt === null) {
+                    this.cache.pathString = ["M", pt.x, pt.y].join(" ")
+                }
+                else {
+                    this.cache.pathString = [this.cache.pathString, "L", pt.x, pt.y].join(" ")
+                }
+                prev_pt = pt
+            })
+
+            this.svgNodes.attr({path: this.cache.pathString, stroke: "#f0f0f0"})
+
+        }
+        this._super(attributes)
+
+        return this
     },
 
     /**
@@ -338,11 +393,40 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
     {
         let port = this.getInputPort(0)
         let value=port.getValue()
+        console.log(value)
         this.data.push(value===null?0:value)
         if(this.data.length>this.maxValues) {
             this.data.shift()
         }
         this.setData(this.data)
+    },
+
+    /**
+     *  Called if the simulation mode is starting
+     *  @required
+     **/
+    onStart:function( context )
+    {
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     *  @required
+     **/
+    onStop:function( context )
+    {
+    },
+
+    /**
+     * Get the simulator a hint which kind of hardware the shapes requires or supports
+     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
+     * and your are running a circuit which needs this kind of hardware...
+     **/
+    getRequiredHardware: function(){
+        return {
+            raspi: false,
+            arduino: false
+        }
     }
 });
 
@@ -357,7 +441,7 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -527,7 +611,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -843,7 +927,7 @@ circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 var circuit_digital_buttons_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLow",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -954,7 +1038,7 @@ circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -1119,7 +1203,7 @@ circuit_digital_buttons_HighLowArray = circuit_digital_buttons_HighLowArray.exte
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -1235,7 +1319,7 @@ circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -1419,7 +1503,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -1658,7 +1742,7 @@ circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -1820,7 +1904,7 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
 var circuit_digital_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_Led",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -1909,7 +1993,7 @@ circuit_digital_display_Led = circuit_digital_display_Led.extend({
 var circuit_digital_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_DFlipFlop",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2042,7 +2126,7 @@ circuit_digital_flipflop_DFlipFlop = circuit_digital_flipflop_DFlipFlop.extend({
 var circuit_digital_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKFlipFlop",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2205,7 +2289,7 @@ circuit_digital_flipflop_JKFlipFlop = circuit_digital_flipflop_JKFlipFlop.extend
 var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKRFlipFlop",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2386,7 +2470,7 @@ circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.exte
 var circuit_digital_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_SRFlipFlop",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2528,7 +2612,7 @@ circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2650,7 +2734,7 @@ circuit_digital_flipflop_TFlipFlop = circuit_digital_flipflop_TFlipFlop.extend({
 var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_AND",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2782,7 +2866,7 @@ circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
 var circuit_digital_gate_DIN40700_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NAND",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -2919,7 +3003,7 @@ circuit_digital_gate_DIN40700_NAND = circuit_digital_gate_DIN40700_NAND.extend({
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3066,7 +3150,7 @@ circuit_digital_gate_DIN40700_NOR = circuit_digital_gate_DIN40700_NOR.extend({
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3208,7 +3292,7 @@ circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XNOR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3355,7 +3439,7 @@ circuit_digital_gate_DIN40700_XNOR = circuit_digital_gate_DIN40700_XNOR.extend({
 var circuit_digital_gate_DIN40700_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XOR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3507,7 +3591,7 @@ circuit_digital_gate_DIN40700_XOR = circuit_digital_gate_DIN40700_XOR.extend({
 var circuit_digital_gate_IEC60617_12_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_AND",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3605,7 +3689,7 @@ circuit_digital_gate_IEC60617_12_AND = circuit_digital_gate_IEC60617_12_AND.exte
 var circuit_digital_gate_IEC60617_12_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NAND",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3708,7 +3792,7 @@ circuit_digital_gate_IEC60617_12_NAND = circuit_digital_gate_IEC60617_12_NAND.ex
 var circuit_digital_gate_IEC60617_12_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3816,7 +3900,7 @@ circuit_digital_gate_IEC60617_12_NOR = circuit_digital_gate_IEC60617_12_NOR.exte
 var circuit_digital_gate_IEC60617_12_NOT = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOT",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -3913,7 +3997,7 @@ circuit_digital_gate_IEC60617_12_NOT = circuit_digital_gate_IEC60617_12_NOT.exte
 var circuit_digital_gate_IEC60617_12_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_OR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4016,7 +4100,7 @@ circuit_digital_gate_IEC60617_12_OR = circuit_digital_gate_IEC60617_12_OR.extend
 var circuit_digital_gate_IEC60617_12_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XNOR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4119,7 +4203,7 @@ circuit_digital_gate_IEC60617_12_XNOR = circuit_digital_gate_IEC60617_12_XNOR.ex
 var circuit_digital_gate_IEC60617_12_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XOR",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4217,7 +4301,7 @@ circuit_digital_gate_IEC60617_12_XOR = circuit_digital_gate_IEC60617_12_XOR.exte
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4322,7 +4406,7 @@ circuit_digital_pulse_10hz = circuit_digital_pulse_10hz.extend({
 var circuit_digital_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_1hz",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4427,7 +4511,7 @@ circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 var circuit_digital_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_50hz",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4530,7 +4614,7 @@ circuit_digital_pulse_50hz = circuit_digital_pulse_50hz.extend({
 var circuit_digital_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_Delay",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4701,7 +4785,7 @@ circuit_digital_pulse_Delay = circuit_digital_pulse_Delay.extend({
 var circuit_digital_signals_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_High",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4783,7 +4867,7 @@ circuit_digital_signals_High = circuit_digital_signals_High.extend({
 var circuit_digital_signals_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_Low",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -4866,7 +4950,7 @@ circuit_digital_signals_Low = circuit_digital_signals_Low.extend({
 var circuit_digital_signals_SignalSource = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_SignalSource",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -5030,7 +5114,7 @@ circuit_digital_signals_SignalSource = circuit_digital_signals_SignalSource.exte
 var circuit_digital_signals_SignalTarget = CircuitFigure.extend({
 
    NAME: "circuit_digital_signals_SignalTarget",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -5204,7 +5288,7 @@ circuit_digital_signals_SignalTarget = circuit_digital_signals_SignalTarget.exte
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -5373,7 +5457,7 @@ circuit_digital_timer_Delay = circuit_digital_timer_Delay.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -5864,7 +5948,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Led",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -5968,7 +6052,7 @@ circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 var circuit_hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIORead",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -6225,7 +6309,7 @@ circuit_hardware_raspi_GPIORead = circuit_hardware_raspi_GPIORead.extend({
 var circuit_hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIOWrite",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
@@ -6606,7 +6690,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "1.0.184_356",
+   VERSION: "1.0.185_357",
 
    init:function(attr, setter, getter)
    {
