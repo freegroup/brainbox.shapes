@@ -7,77 +7,44 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
     {
         this._super(attr)
         this.maxValues = 100
+        this.min = 0
+        this.max = 5
+        this.padding=4
+        this.persistPorts = false
+
+        this.inputPort = new DecoratedInputPort()
+        this.outputPort = new DecoratedOutputPort()
 
         this.setBackgroundColor("#FF765E")
         this.setRadius(5)
-        this.addPort(new DecoratedInputPort())
+        this.addPort(this.inputPort)
+        this.addPort(this.outputPort)
         this.setDimension(250,50)
+
+        // get the connected port and forward the port to the related party ( SignalSource shape)
+        // The Sparkline forwards the original signal without any delay. The signal runtime is the same if the
+        // Sparkline in between a connect or not
+        this.inputPort.on("connect", (emitter, event)=>{
+            let signalPort = event.connection.getSource()
+            this.outputPort.originalGetValue = this.outputPort.getValue
+            this.outputPort.originalGetBooleanValue = this.outputPort.getBooleanValue
+            this.outputPort.getValue = ()=>{
+                return signalPort.getValue()
+            }
+        })
+        this.inputPort.on("disconnect", (emitter, event)=>{
+            this.outputPort.getValue = this.outputPort.originalGetValue
+            this.outputPort.getBooleanValue = this.outputPort.originalGetBooleanValue
+        })
     },
 
     setData:function( data)
     {
         this._super(data)
-
-        this.min = 0
-        this.max = 5
-        this.padding=4
         this.cache= {}
         this.repaint()
     },
 
-
-    /**
-     * @inheritdoc
-     */
-    repaint: function (attributes) {
-        if (this.repaintBlocked === true || this.shape === null) {
-            return
-        }
-
-        attributes = attributes || {}
-
-        attributes.fill = "90-#000:5-#4d4d4d:95"
-
-        let padding = this.padding
-        let width = this.getWidth() - 2 * padding
-        let height = this.getHeight() - 2 * padding
-        let length = this.data.length
-        let min = this.min
-        let max = this.max
-        let toCoords = function (value, idx) {
-            let step = 1
-            // avoid divisionByZero
-            if (length > 1) {
-                step = (width / (length - 1))
-            }
-
-            return {
-                y: parseInt(-((value - min) / (max - min) * height) + height + padding),
-                x: parseInt(padding + idx * step)
-            }
-        }
-
-        if (this.svgNodes !== null && (typeof this.cache.pathString === "undefined")) {
-            let prev_pt = null
-            this.data.forEach((item, idx) => {
-                let pt = toCoords(item, idx)
-                console.log(JSON.stringify(pt), item, height, min, max)
-                if (prev_pt === null) {
-                    this.cache.pathString = ["M", pt.x, pt.y].join(" ")
-                }
-                else {
-                    this.cache.pathString = [this.cache.pathString, "L", pt.x, pt.y].join(" ")
-                }
-                prev_pt = pt
-            })
-
-            this.svgNodes.attr({path: this.cache.pathString, stroke: "#f0f0f0"})
-
-        }
-        this._super(attributes)
-
-        return this
-    },
 
     /**
      * @method
@@ -89,7 +56,6 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
     {
         let port = this.getInputPort(0)
         let value=port.getValue()
-        console.log(value)
         this.data.push(value===null?0:value)
         if(this.data.length>this.maxValues) {
             this.data.shift()
