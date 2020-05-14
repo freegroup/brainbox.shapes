@@ -13,7 +13,11 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
         this.persistPorts = false
 
         this.inputPort = new DecoratedInputPort()
+        this.inputPort.setName("input")
+        this.inputPort.setMaxFanOut(1)
+
         this.outputPort = new DecoratedOutputPort()
+        this.outputPort.setName("output")
 
         this.setBackgroundColor("#FF765E")
         this.setRadius(5)
