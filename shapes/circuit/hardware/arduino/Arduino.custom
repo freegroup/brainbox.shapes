@@ -46,7 +46,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
             var con = port.getConnections().first();
             var other = con.getSource()===port?con.getTarget():con.getSource()
             if(other instanceof draw2d.InputPort){
-                console.log("s", hardware.arduino.get(index))
+                var d =  hardware.arduino.get(index)
             }
             else {
                 hardware.arduino.set(index,other.getBooleanValue())
