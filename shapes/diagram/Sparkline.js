@@ -1,7 +1,7 @@
 
-circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
+var diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
 
-    NAME : "circuit_diagram_Sparkline",
+    NAME : "diagram_Sparkline",
 
     init : function(attr)
     {
@@ -49,6 +49,8 @@ circuit_diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
     {
         this._super(data)
         this.cache= {}
+        this.min = 0
+        this.max = 5
         this.repaint()
     },
 
