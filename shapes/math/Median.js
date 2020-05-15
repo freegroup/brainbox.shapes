@@ -7,7 +7,7 @@
 var math_Median = CircuitFigure.extend({
 
    NAME: "math_Median",
-   VERSION: "2.0.16_375",
+   VERSION: "2.0.17_376",
 
    init:function(attr, setter, getter)
    {
@@ -115,7 +115,7 @@ math_Median = math_Median.extend({
     calculate:function( context)
     {
         this.total = this.total - this.readings[this.readIndex];
-        this.readings[this.readIndex] = this.getInputPort(0).getValue();
+        this.readings[this.readIndex] = this.getInputPort(0).getValue() || 0;
         this.total = this.total + this.readings[this.readIndex];
         this.readIndex = (this.readIndex+1)%this.readings.length;
         this.average = this.total / this.readings.length;
