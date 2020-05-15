@@ -64,7 +64,7 @@ var diagram_Sparkline = draw2d.shape.diagram.Sparkline.extend({
     calculate:function(context)
     {
         let port = this.getInputPort(0)
-        let value=port.getValue()
+        let value=port.getValue() || 0.0
         this.data.push(value===null?0:value)
         if(this.data.length>this.maxValues) {
             this.data.shift()
