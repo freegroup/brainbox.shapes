@@ -7,7 +7,7 @@
 var math_Median = CircuitFigure.extend({
 
    NAME: "math_Median",
-   VERSION: "2.0.18_377",
+   VERSION: "2.0.19_378",
 
    init:function(attr, setter, getter)
    {
@@ -92,6 +92,8 @@ math_Median = math_Median.extend({
         this.on("change:userData.numReadings",(emitter, event)=>{
             this.numReadings = parseInt(event.value);
             this.readings = []; 
+            this.total =0;
+            this.average = 0;
             this.readings.length = this.numReadings;
             this.pointer=0;
             this.readIndex = 0;
