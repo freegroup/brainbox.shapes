@@ -7,7 +7,7 @@
 var math_Median = CircuitFigure.extend({
 
    NAME: "math_Median",
-   VERSION: "2.0.15_374",
+   VERSION: "2.0.16_375",
 
    init:function(attr, setter, getter)
    {
@@ -15,17 +15,17 @@ var math_Median = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:40,height:42},attr), setter, getter);
      var port;
-     // Port
+     // input_port1
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.5, y: 50.43247767857143 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("Port");
+     port.setName("input_port1");
      port.setMaxFanOut(20);
-     // Port
+     // output_port1
      port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 105, y: 50 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("Port");
+     port.setName("output_port1");
      port.setMaxFanOut(20);
    },
 
