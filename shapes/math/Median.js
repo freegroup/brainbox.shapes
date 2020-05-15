@@ -7,7 +7,7 @@
 var math_Median = CircuitFigure.extend({
 
    NAME: "math_Median",
-   VERSION: "2.0.12_371",
+   VERSION: "2.0.13_372",
 
    init:function(attr, setter, getter)
    {
@@ -81,9 +81,25 @@ var math_Median = CircuitFigure.extend({
 math_Median = math_Median.extend({
 
     init: function(attr, setter, getter){
-         this._super(attr, setter, getter);
+        this._super(attr, setter, getter);
 
-         // your special code here
+        this.total   = 0;    // the running total
+        this.average = 0;    // the average
+
+        this.on("change:userData.numReadings",(emitter, event)=>{
+            var value = event.value;
+            this.delayedValues = []; 
+            this.delayedValues.length = parseInt(value);
+            this.pointer=0;
+            
+        });
+        
+        this.attr({
+            resizeable:false,
+            "userData.numReadings":10
+        });
+        
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -123,6 +139,21 @@ math_Median = math_Median.extend({
         raspi: false,
         arduino: false
       }
+    },
+    
+    getParameterSettings:function()
+    {
+        return [
+        {
+            name:"numReadings",
+            label:"Number of Readings for the average",
+            property:{
+                type: "integer",
+                min: 10,
+                max: 150,
+                increment:1
+        }
+        }];
     }
 
 });
