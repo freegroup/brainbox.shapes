@@ -17,20 +17,24 @@ math_Median = math_Median.extend({
 
         this.total   = 0;    // the running total
         this.average = 0;    // the average
-
+        this.readings = []; 
+        this.readIndex = 0;
+        this.numReadings =0;
+        
         this.on("change:userData.numReadings",(emitter, event)=>{
-            var value = event.value;
-            this.delayedValues = []; 
-            this.delayedValues.length = parseInt(value);
+            this.numReadings = this.numReadings(event.value);
+            this.readings = []; 
+            this.readings.length = this.numReadings;
             this.pointer=0;
-            
+            this.readIndex = 0;
+            this.readings.fill(0)
         });
         
         this.attr({
             resizeable:false,
             "userData.numReadings":10
         });
-        
+
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
@@ -42,8 +46,12 @@ math_Median = math_Median.extend({
      **/
     calculate:function( context)
     {
+        this.total = this.total - this.readings[this.readIndex];
+        this.readings[this.readIndex] = this.getInputPort(0).getValue();
+        this.total = this.total + this.readings[this.readIndex];
+        this.readIndex = (this.readIndex+1)%this.readings.length;
+        this.getOutputPort(0).setValue(this.average);
     },
-
 
     /**
      *  Called if the simulation mode is starting
@@ -60,18 +68,6 @@ math_Median = math_Median.extend({
     onStop:function( context )
     {
     },
-
-    /**
-     * Get the simulator a hint which kind of hardware the shapes requires or supports
-     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
-     * and your are running a circuit which needs this kind of hardware...
-     **/
-    getRequiredHardware: function(){
-      return {
-        raspi: false,
-        arduino: false
-      }
-    },
     
     getParameterSettings:function()
     {
@@ -87,5 +83,4 @@ math_Median = math_Median.extend({
         }
         }];
     }
-
 });
