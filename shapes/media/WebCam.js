@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.24_386",
+   VERSION: "2.0.25_387",
 
    init:function(attr, setter, getter)
    {
@@ -73,17 +73,18 @@ media_WebCam = media_WebCam.extend({
     
                 const mediaRecorder = new MediaRecorder(stream, options);
 
-                mediaRecorder.addEventListener('dataavailable', function(e) {
+                mediaRecorder.ondataavailable= function(e) {
                     console.log(e)
                     if (e.data.size > 0) {
                        console.log(e.data);
                     }
-                });
-
-                mediaRecorder.addEventListener('stop', function() {
-                });
-
+                };
+                try {
                 mediaRecorder.start();
+                }
+                catch(e){
+                    console.log(e)
+                }
             })
             .catch(function(err) {
                  /* handle the error */
