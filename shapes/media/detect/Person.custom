@@ -52,7 +52,7 @@ media_detect_Person = media_detect_Person.extend({
         var image = this.getInputPort("input_port1").getValue()
         this.img.attr("path", image.src)
         if (image instanceof HTMLImageElement) {
-            this.model.detect(image).then(predictions => {
+            this.model.detect(image, 1).then(predictions => {
                 console.log('Predictions: ', predictions);
             });
         }

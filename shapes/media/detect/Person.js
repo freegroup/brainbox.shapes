@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.44_421",
+   VERSION: "2.0.45_422",
 
    init:function(attr, setter, getter)
    {
@@ -110,7 +110,7 @@ media_detect_Person = media_detect_Person.extend({
         var image = this.getInputPort("input_port1").getValue()
         this.img.attr("path", image.src)
         if (image instanceof HTMLImageElement) {
-            this.model.detect(image).then(predictions => {
+            this.model.detect(image, 1).then(predictions => {
                 console.log('Predictions: ', predictions);
             });
         }
