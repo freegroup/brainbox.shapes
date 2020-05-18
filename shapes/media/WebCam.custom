@@ -26,6 +26,7 @@ media_WebCam = media_WebCam.extend({
         });
         
         this.imageCapture = null;
+        this.track = null;
     },
 
     /**
@@ -51,9 +52,9 @@ media_WebCam = media_WebCam.extend({
                     image.src = e.target.result
                 }
                 a.readAsDataURL(blob);
-        }).catch((error) =>{
-            console.log('takePhoto() error: ', error);
-        });
+            }).catch((error) =>{
+                //console.log('takePhoto() error: ', error);
+            });
     },
 
 
@@ -66,8 +67,8 @@ media_WebCam = media_WebCam.extend({
         try{
             navigator.mediaDevices.getUserMedia({ audio: false, video: true })
                .then((stream) =>{
-                    const track = stream.getVideoTracks()[0];
-                    this.imageCapture = new ImageCapture(track);
+                    this.track = stream.getVideoTracks()[0];
+                    this.imageCapture = new ImageCapture(this.track);
                 })
                 .catch((err) =>{
                     console.log("no permission to use VideoCam");
@@ -85,6 +86,11 @@ media_WebCam = media_WebCam.extend({
      **/
     onStop:function( context )
     {
+        if(this.track !==null){
+            this.track.stop();
+            this.track = null;
+            this.imageCapture = null;
+        }
     },
 
     /**
