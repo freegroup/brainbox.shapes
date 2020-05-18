@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.52_434",
+   VERSION: "2.0.53_436",
 
    init:function(attr, setter, getter)
    {
@@ -121,18 +121,23 @@ media_detect_Person = media_detect_Person.extend({
     calculate:function( context)
     {
         if(this.model===null){
-            return
+            return;
         }
         
-        var image = this.getInputPort("input_port1").getValue()
+        var image = this.getInputPort("input_port1").getValue();
         if (image instanceof HTMLImageElement) {
-            this.img.attr("path", image.src)
+            this.img.attr("path", image.src);
             this.model.detect(image, 1).then(predictions => {
                 if(predictions.length>0){
                     let pre = predictions[0];
                     let bbox = pre.bbox;
-                    let x_percent = 100/image.naturalWidth * bbox[0]
-                    console.log(bbox[0],x_percent)
+                    let x_percent = 100/image.naturalWidth * bbox[0];
+                    let y_percent = 100/image.naturalHeight * bbox[1];
+                    
+                    this.rectangleLocator.setX(this.getWidth()/100*x_percent);
+                    this.rectangleLocator.setY(this.getHeight()/100*y_percent);
+                    this.rectangleLocator.relocate(0, this.rectangle)
+                    console.log(bbox[0],x_percent);
                 }
             });
         }
@@ -156,9 +161,9 @@ media_detect_Person = media_detect_Person.extend({
     },
     
     setPersistentAttributes: function (memento) {
-        this._super(memento)
-        this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle)
-        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
+        this._super(memento);
+        this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
         this.on("change:dimension", (emitter, event)=>{
             this.img.attr(event);
         });
