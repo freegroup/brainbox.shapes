@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.47_427",
+   VERSION: "2.0.48_428",
 
    init:function(attr, setter, getter)
    {
@@ -78,6 +78,7 @@ media_WebCam = media_WebCam.extend({
         });
         
         this.imageCapture = null;
+        this.track = null;
     },
 
     /**
@@ -118,8 +119,8 @@ media_WebCam = media_WebCam.extend({
         try{
             navigator.mediaDevices.getUserMedia({ audio: false, video: true })
                .then((stream) =>{
-                    const track = stream.getVideoTracks()[0];
-                    this.imageCapture = new ImageCapture(track);
+                    this.track = stream.getVideoTracks()[0];
+                    this.imageCapture = new ImageCapture(this.track);
                 })
                 .catch((err) =>{
                     console.log("no permission to use VideoCam");
@@ -137,6 +138,11 @@ media_WebCam = media_WebCam.extend({
      **/
     onStop:function( context )
     {
+        if(this.track !==null){
+            this.track.stop();
+            this.track = null;
+            this.imageCapture = null;
+        }
     },
 
     /**
