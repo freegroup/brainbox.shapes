@@ -1,3 +1,61 @@
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
+var media_detect_Person = CircuitFigure.extend({
+
+   NAME: "media_detect_Person",
+   VERSION: "2.0.40_412",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:97,height:91},attr), setter, getter);
+     var port;
+     // Port
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.0618556701030926, y: 50.00000000000001 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("Port");
+     port.setMaxFanOut(20);
+     // Port
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 103.09278350515463, y: 50.00000000000001 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("Port");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 97;
+      this.originalHeight= 91;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L97,0 L97,91 L0,91");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0 0L97 0L97 91L0 91Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
 /**
  * Generated Code for the Draw2D touch HTML5 lib.
  * File will be generated if you save the *.shape file.
@@ -10,7 +68,7 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-media_WebCam = media_WebCam.extend({
+media_detect_Person = media_detect_Person.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -92,18 +150,6 @@ media_WebCam = media_WebCam.extend({
      **/
     onStop:function( context )
     {
-    },
-
-    /**
-     * Get the simulator a hint which kind of hardware the shapes requires or supports
-     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
-     * and your are running a circuit which needs this kind of hardware...
-     **/
-    getRequiredHardware: function(){
-      return {
-        raspi: false,
-        arduino: false
-      }
     }
 
 });
