@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.46_425",
+   VERSION: "2.0.47_426",
 
    init:function(attr, setter, getter)
    {
@@ -72,12 +72,7 @@ media_detect_Person = media_detect_Person.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
-        debugger
-        this.img = this.getChildren().find( (value) => {
-            console.log(value)
-            return value instanceof draw2d.shape.basic.Image
-            })
-        console.log(this.img)
+
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth(), 
             height: this.getHeight(),
