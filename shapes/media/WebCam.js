@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.31_396",
+   VERSION: "2.0.32_397",
 
    init:function(attr, setter, getter)
    {
@@ -16,8 +16,8 @@ var media_WebCam = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:100,height:100},attr), setter, getter);
      var port;
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
-     port.setConnectionDirection(1);
+     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
+     port.setConnectionDirection();
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
      port.setMaxFanOut(20);
@@ -76,7 +76,9 @@ media_WebCam = media_WebCam.extend({
           console.log('Reeeejected!', e);
         };
 
+
         this.imageCapture = null;
+        try{
         // Not showing vendor prefixes.
         navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             .then((stream) =>{
@@ -95,6 +97,10 @@ media_WebCam = media_WebCam.extend({
                  /* handle the error */
                  console.log("catched")
             })
+        }
+        catch(e){
+            console.log("didn't support mediaDevices")
+        }
     },
 
     /**

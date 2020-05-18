@@ -24,7 +24,9 @@ media_WebCam = media_WebCam.extend({
           console.log('Reeeejected!', e);
         };
 
+
         this.imageCapture = null;
+        try{
         // Not showing vendor prefixes.
         navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             .then((stream) =>{
@@ -43,6 +45,10 @@ media_WebCam = media_WebCam.extend({
                  /* handle the error */
                  console.log("catched")
             })
+        }
+        catch(e){
+            console.log("didn't support mediaDevices")
+        }
     },
 
     /**
