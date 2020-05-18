@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.40_412",
+   VERSION: "2.0.41_415",
 
    init:function(attr, setter, getter)
    {
@@ -15,17 +15,17 @@ var media_detect_Person = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:97,height:91},attr), setter, getter);
      var port;
-     // Port
+     // input_port1
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.0618556701030926, y: 50.00000000000001 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("Port");
+     port.setName("input_port1");
      port.setMaxFanOut(20);
-     // Port
+     // output_port1
      port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 103.09278350515463, y: 50.00000000000001 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("Port");
+     port.setName("output_port1");
      port.setMaxFanOut(20);
    },
 
@@ -83,20 +83,12 @@ media_detect_Person = media_detect_Person.extend({
             this.img.attr(event);
         });
         
-        this.imageCapture = null;
+        this.model = null
         try{
             // Initialize the Image Classifier method with MobileNet
             cocoSsd.load().then(model =>{
                 this.model = model;
                 console.log("model loaded");
-                navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-                   .then((stream) =>{
-                        const track = stream.getVideoTracks()[0];
-                        this.imageCapture = new ImageCapture(track);
-                    })
-                    .catch((err) =>{
-                        console.log("no permission to use VideoCam");
-                    })
             });
         }
         catch(e){
@@ -112,27 +104,15 @@ media_detect_Person = media_detect_Person.extend({
      **/
     calculate:function( context)
     {
-        if(this.imageCapture===null){
+        if(this.model===null){
             return
         }
-        this.imageCapture.takePhoto()
-            .then((blob) =>{
-                var a = new FileReader();
-                a.onload = (e) => {
-                    this.img.attr("path", e.target.result)
-                    var image = new Image()
-                    image.onload = () => {
-                        this.getOuputPort("output_port1").setValue(image)
-                        //this.model.detect(image).then(predictions => {
-                        //    console.log('Predictions: ', predictions);
-                        //});
-                    }
-                    image.src = e.target.result
-                }
-                a.readAsDataURL(blob);
-        }).catch((error) =>{
-            console.log('takePhoto() error: ', error);
-        });
+        var image = this.getInputPort("input_port1").getValue()
+        if (image) {
+            this.model.detect(image).then(predictions => {
+                console.log('Predictions: ', predictions);
+            });
+        }
     },
 
 
