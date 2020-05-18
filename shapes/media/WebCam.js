@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.48_428",
+   VERSION: "2.0.49_430",
 
    init:function(attr, setter, getter)
    {
@@ -104,9 +104,9 @@ media_WebCam = media_WebCam.extend({
                     image.src = e.target.result
                 }
                 a.readAsDataURL(blob);
-        }).catch((error) =>{
-            console.log('takePhoto() error: ', error);
-        });
+            }).catch((error) =>{
+                //console.log('takePhoto() error: ', error);
+            });
     },
 
 
@@ -144,17 +144,14 @@ media_WebCam = media_WebCam.extend({
             this.imageCapture = null;
         }
     },
-
-    /**
-     * Get the simulator a hint which kind of hardware the shapes requires or supports
-     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
-     * and your are running a circuit which needs this kind of hardware...
-     **/
-    getRequiredHardware: function(){
-      return {
-        raspi: false,
-        arduino: false
-      }
+    
+    setPersistentAttributes: function (memento) {
+        this._super(memento)
+        
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
+        this.on("change:dimension", (emitter, event)=>{
+            this.img.attr(event);
+        });
     }
 
 });
