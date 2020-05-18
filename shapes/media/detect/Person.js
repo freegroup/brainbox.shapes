@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.51_432",
+   VERSION: "2.0.52_433",
 
    init:function(attr, setter, getter)
    {
@@ -87,16 +87,17 @@ media_detect_Person = media_detect_Person.extend({
             this.img.attr(event);
         });
 
+        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0})
         this.rectangle = new draw2d.shape.basic.Rectangle({
-                        x: 100,
-                        y: 10,
-                        bgColor: "#f0f000",
+                        x: 0, y: 0,
+                        color: "#ff0000",
+                        bgColor: null,
                         alpha  : 0.7,
                         width: 100,
                         height: 60,
-                        radius: 10
+                        radius: 5
                 });
-        this.add(this.rectangle,  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))  
+        this.add(this.rectangle, this.rectangleLocator)  
         
         this.model = null;
         try{
@@ -127,7 +128,12 @@ media_detect_Person = media_detect_Person.extend({
         if (image instanceof HTMLImageElement) {
             this.img.attr("path", image.src)
             this.model.detect(image, 1).then(predictions => {
-                console.log('Predictions: ', predictions);
+                if(predictions.length>0){
+                    let pre = predictions[0];
+                    let bbox = pre.bbox;
+                    let x_percent = 100/image.naturalWidth * bbox[x]
+                    console.log(bbox[0],x_percent)
+                }
             });
         }
     },
