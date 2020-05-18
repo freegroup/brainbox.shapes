@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.53_436",
+   VERSION: "2.0.54_439",
 
    init:function(attr, setter, getter)
    {
@@ -133,7 +133,10 @@ media_detect_Person = media_detect_Person.extend({
                     let bbox = pre.bbox;
                     let x_percent = 100/image.naturalWidth * bbox[0];
                     let y_percent = 100/image.naturalHeight * bbox[1];
-                    
+                    let w_percent = 100/image.naturalWidth * bbox[2];
+                    let h_percent = 100/image.naturalHeight * bbox[3];
+                     
+                    this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})
                     this.rectangleLocator.setX(this.getWidth()/100*x_percent);
                     this.rectangleLocator.setY(this.getHeight()/100*y_percent);
                     this.rectangleLocator.relocate(0, this.rectangle)
