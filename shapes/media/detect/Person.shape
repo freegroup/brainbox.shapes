@@ -3,10 +3,10 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "76ffcb86-e5f1-e89a-46e3-43d4a7132980",
-      "x": 7951.5,
-      "y": 7954.5,
-      "width": 97,
-      "height": 91,
+      "x": 7960.5,
+      "y": 7941.5,
+      "width": 60,
+      "height": 63,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -14,7 +14,7 @@
       "userData": {
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n        this.img = new draw2d.shape.basic.Image({\n            width: this.getWidth(), \n            height: this.getHeight(),\n            selectable: false,\n            deleteable: false,\n            resizeable:false,\n            draggable: false,\n            path: \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==\"\n        });\n        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));\n        this.on(\"change:dimension\", (emitter, event)=>{\n            this.img.attr(event);\n        });\n\n        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0})\n        this.rectangle = new draw2d.shape.basic.Rectangle({\n                        x: 0, y: 0,\n                        color: \"#ff0000\",\n                        bgColor: null,\n                        alpha  : 0.7,\n                        width: 100,\n                        height: 60,\n                        radius: 5\n                });\n        this.add(this.rectangle, this.rectangleLocator)  \n        \n        this.model = null;\n        try{\n            // Initialize the Image Classifier method with MobileNet\n            cocoSsd.load().then(model =>{\n                this.model = model;\n                console.log(\"model loaded\");\n            });\n        }\n        catch(e){\n            console.log(\"didn't support mediaDevices\")\n        }\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        if(this.model===null){\n            return;\n        }\n        \n        var image = this.getInputPort(\"input_port1\").getValue();\n        if (image instanceof HTMLImageElement) {\n            this.img.attr(\"path\", image.src);\n            this.model.detect(image, 1).then(predictions => {\n                if(predictions.length>0){\n                    let pre = predictions[0];\n                    if(pre.class===\"person\"){\n                       this.rectangle.setVisible(true)    \n                       let bbox = pre.bbox;\n                       let x_percent = 100/image.naturalWidth * bbox[0];\n                       let y_percent = 100/image.naturalHeight * bbox[1];\n                       let w_percent = 100/image.naturalWidth * bbox[2];\n                       let h_percent = 100/image.naturalHeight * bbox[3];\n                     \n                       this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})\n                       this.rectangleLocator.setX(this.getWidth()/100*x_percent);\n                       this.rectangleLocator.setY(this.getHeight()/100*y_percent);\n                       this.rectangleLocator.relocate(0, this.rectangle)\n                       this.getOutputPort(\"output_port1\").setValue(true)\n                    }\n                    else{\n                        this.rectangle.setVisible(false)\n                        this.getOutputPort(\"output_port1\").setValue(false)\n                    }\n                }\n                else{\n                    this.rectangle.setVisible(false)\n                    this.getOutputPort(\"output_port1\").setValue(false)\n                }\n            });\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n    },\n    \n    setPersistentAttributes: function (memento) {\n        this._super(memento);\n        this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);\n        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);\n        this.on(\"change:dimension\", (emitter, event)=>{\n            this.img.attr(event);\n        });\n    }\n\n});"
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n        this.img = new draw2d.shape.basic.Image({\n            width: this.getWidth(), \n            height: this.getHeight(),\n            selectable: false,\n            deleteable: false,\n            resizeable:false,\n            draggable: false,\n            path: \"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"\n        });\n        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));\n        this.on(\"change:dimension\", (emitter, event)=>{\n            this.img.attr(event);\n        });\n\n        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0})\n        this.rectangle = new draw2d.shape.basic.Rectangle({\n                        x: 0, y: 0,\n                        color: \"#ff0000\",\n                        bgColor: null,\n                        alpha  : 0.7,\n                        width: 100,\n                        height: 60,\n                        radius: 5\n                });\n        this.add(this.rectangle, this.rectangleLocator)  \n        \n        this.model = null;\n        try{\n            // Initialize the Image Classifier method with MobileNet\n            cocoSsd.load().then(model =>{\n                this.model = model;\n                console.log(\"model loaded\");\n            });\n        }\n        catch(e){\n            console.log(\"didn't support mediaDevices\")\n        }\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        if(this.model===null){\n            return;\n        }\n        \n        var image = this.getInputPort(\"input_port1\").getValue();\n        if (image instanceof HTMLImageElement) {\n            this.img.attr(\"path\", image.src);\n            this.model.detect(image, 1).then(predictions => {\n                if(predictions.length>0){\n                    let pre = predictions[0];\n                    if(pre.class===\"person\"){\n                       this.rectangle.setVisible(true)    \n                       let bbox = pre.bbox;\n                       let x_percent = 100/image.naturalWidth * bbox[0];\n                       let y_percent = 100/image.naturalHeight * bbox[1];\n                       let w_percent = 100/image.naturalWidth * bbox[2];\n                       let h_percent = 100/image.naturalHeight * bbox[3];\n                     \n                       this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})\n                       this.rectangleLocator.setX(this.getWidth()/100*x_percent);\n                       this.rectangleLocator.setY(this.getHeight()/100*y_percent);\n                       this.rectangleLocator.relocate(0, this.rectangle)\n                       this.getOutputPort(\"output_port1\").setValue(true)\n                    }\n                    else{\n                        this.rectangle.setVisible(false)\n                        this.getOutputPort(\"output_port1\").setValue(false)\n                    }\n                }\n                else{\n                    this.rectangle.setVisible(false)\n                    this.getOutputPort(\"output_port1\").setValue(false)\n                }\n            });\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n    },\n    \n    setPersistentAttributes: function (memento) {\n        this._super(memento);\n        this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);\n        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);\n        this.on(\"change:dimension\", (emitter, event)=>{\n            this.img.attr(event);\n        });\n    }\n\n});"
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
@@ -25,20 +25,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7951.5,
-          "y": 7954.5
+          "x": 7960.5,
+          "y": 7941.5
         },
         {
-          "x": 8048.5,
-          "y": 7954.5
+          "x": 8020.5,
+          "y": 7941.5
         },
         {
-          "x": 8048.5,
-          "y": 8045.5
+          "x": 8020.5,
+          "y": 8004.5
         },
         {
-          "x": 7951.5,
-          "y": 8045.5
+          "x": 7960.5,
+          "y": 8004.5
         }
       ],
       "blur": 0,
@@ -60,8 +60,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "aed420e8-7e2c-067e-cbb9-1e44941a1591",
-      "x": 7944.5,
-      "y": 7995,
+      "x": 7953.5,
+      "y": 7968,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -98,8 +98,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "3548f6ee-a9b6-8668-ed35-73c74ee9ca5c",
-      "x": 8046.5,
-      "y": 7995,
+      "x": 8017.5,
+      "y": 7968,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -130,6 +130,224 @@
         },
         {
           "name": "shape_designer.filter.PortTypeFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPolygon",
+      "id": "6cd97bb4-e30c-3c23-b0db-106d14602587",
+      "x": 7981,
+      "y": 7971.200000000001,
+      "width": 19,
+      "height": 27,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Rectangle"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(149,192,106,1)",
+      "color": "rgba(48,48,48,1)",
+      "stroke": 0,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 7981.172197764577,
+          "y": 7978.8288618920815
+        },
+        {
+          "x": 7981,
+          "y": 7978.8288618920815
+        },
+        {
+          "x": 7981,
+          "y": 7998.200000000001
+        },
+        {
+          "x": 8000,
+          "y": 7998.200000000001
+        },
+        {
+          "x": 8000,
+          "y": 7978.8288618920815
+        },
+        {
+          "x": 7999.827802235423,
+          "y": 7978.8288618920815
+        },
+        {
+          "x": 7999.699734838533,
+          "y": 7977.612823593753
+        },
+        {
+          "x": 7999.278284811949,
+          "y": 7976.306189198179
+        },
+        {
+          "x": 7998.59011104338,
+          "y": 7975.0802017617925
+        },
+        {
+          "x": 7997.656123344551,
+          "y": 7973.9721122924575
+        },
+        {
+          "x": 7996.504700459072,
+          "y": 7973.015589527979
+        },
+        {
+          "x": 7995.170827788669,
+          "y": 7972.239696928544
+        },
+        {
+          "x": 7993.695034379461,
+          "y": 7971.668009598148
+        },
+        {
+          "x": 7992.122161467397,
+          "y": 7971.317897967057
+        },
+        {
+          "x": 7990.5,
+          "y": 7971.200000000001
+        },
+        {
+          "x": 7988.877838532603,
+          "y": 7971.317897967057
+        },
+        {
+          "x": 7987.304965620539,
+          "y": 7971.668009598148
+        },
+        {
+          "x": 7985.829172211331,
+          "y": 7972.239696928544
+        },
+        {
+          "x": 7984.495299540928,
+          "y": 7973.015589527979
+        },
+        {
+          "x": 7983.343876655449,
+          "y": 7973.9721122924575
+        },
+        {
+          "x": 7982.40988895662,
+          "y": 7975.0802017617925
+        },
+        {
+          "x": 7981.721715188051,
+          "y": 7976.306189198179
+        },
+        {
+          "x": 7981.300265161467,
+          "y": 7977.612823593753
+        },
+        {
+          "x": 7981.172197764577,
+          "y": 7978.8288618920815
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.PolyCircle",
+      "id": "27695d35-f2a6-0783-5ba2-cae5386922df",
+      "x": 7982,
+      "y": 7952,
+      "width": 16,
+      "height": 17,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Circle"
+      },
+      "cssClass": "shape_designer_figure_PolyCircle",
+      "ports": [],
+      "bgColor": "rgba(149,192,106,1)",
+      "color": "rgba(255,0,76,1)",
+      "stroke": 0,
+      "radius": 0,
+      "dasharray": null,
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "9608ef86-9545-4b21-82d3-df446f85954e",
+      "x": 7975.44,
+      "y": 7949.76,
+      "width": 29,
+      "height": 24,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Rectangle"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(0,0,0,0)",
+      "color": "rgba(255,23,77,1)",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 7975.44,
+          "y": 7949.76
+        },
+        {
+          "x": 8004.44,
+          "y": 7949.76
+        },
+        {
+          "x": 8004.44,
+          "y": 7973.76
+        },
+        {
+          "x": 7975.44,
+          "y": 7973.76
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
         }
       ]
     }
