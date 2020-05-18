@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.41_415",
+   VERSION: "2.0.42_418",
 
    init:function(attr, setter, getter)
    {
@@ -111,7 +111,7 @@ media_WebCam = media_WebCam.extend({
                     this.img.attr("path", e.target.result)
                     var image = new Image()
                     image.onload = () => {
-                        this.getOuputPort("output_port1").setValue(image)
+                        this.getOutputPort("output_port1").setValue(image)
                     }
                     image.src = e.target.result
                 }

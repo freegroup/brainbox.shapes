@@ -50,6 +50,7 @@ media_detect_Person = media_detect_Person.extend({
             return
         }
         var image = this.getInputPort("input_port1").getValue()
+        console.log(image)
         if (image) {
             this.model.detect(image).then(predictions => {
                 console.log('Predictions: ', predictions);
