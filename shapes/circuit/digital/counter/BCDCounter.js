@@ -7,7 +7,7 @@
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "2.0.32_397",
+   VERSION: "2.0.33_398",
 
    init:function(attr, setter, getter)
    {

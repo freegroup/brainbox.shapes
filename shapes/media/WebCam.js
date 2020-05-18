@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.32_397",
+   VERSION: "2.0.33_398",
 
    init:function(attr, setter, getter)
    {
@@ -72,6 +72,15 @@ media_WebCam = media_WebCam.extend({
         this.on("change:dimension", (emitter, event)=>{
             this.img.attr(event)
         })
+        
+        // Initialize the Image Classifier method with MobileNet
+const classifier = ml5.imageClassifier('MobileNet', modelLoaded);
+
+// When the model is loaded
+function modelLoaded() {
+  console.log('Model Loaded!');
+}
+
         var onFailSoHard = function(e) {
           console.log('Reeeejected!', e);
         };
