@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.27_389",
+   VERSION: "2.0.28_391",
 
    init:function(attr, setter, getter)
    {
@@ -60,6 +60,10 @@ media_WebCam = media_WebCam.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
+        
+        this.img = new draw2d.shape.basic.Image()
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))
+        
         var onFailSoHard = function(e) {
           console.log('Reeeejected!', e);
         };
@@ -100,14 +104,15 @@ media_WebCam = media_WebCam.extend({
         if(this.imageCapture===null){
             return
         }
-        this.imageCapture.takePhoto({imageHeight:150, imageWidth:150}).then(function(blob) {
+        this.imageCapture.takePhoto().then((blob) =>{
             var a = new FileReader();
-            a.onload = function(e) {
+            a.onload = (e) => {
                 console.log(e.target.result);
+                this.img.attr("path", e.target.result)
             }
             a.readAsDataURL(blob);
             
-        }).catch(function(error) {
+        }).catch((error) =>{
             console.log('takePhoto() error: ', error);
         });
     },
