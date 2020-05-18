@@ -19,7 +19,7 @@ media_WebCam = media_WebCam.extend({
         };
 
         // Not showing vendor prefixes.
-        navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+        navigator.mediaDevices.getUserMedia({ audio: false, video: video: { width: 350, height: 350 } })
             .then(function(stream) {
                  /* use the stream */
                  console.log("accepted")
