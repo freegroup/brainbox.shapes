@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.37_406",
+   VERSION: "2.0.38_407",
 
    init:function(attr, setter, getter)
    {
@@ -86,7 +86,7 @@ media_WebCam = media_WebCam.extend({
         this.imageCapture = null;
         try{
             // Initialize the Image Classifier method with MobileNet
-            const classifier = ml5.imageClassifier('MobileNet', ()=>{
+            this.classifier = ml5.imageClassifier('MobileNet', ()=>{
                 console.log("loaded");
                 
                 // Not showing vendor prefixes.
@@ -126,6 +126,10 @@ media_WebCam = media_WebCam.extend({
             var a = new FileReader();
             a.onload = (e) => {
                 this.img.attr("path", e.target.result)
+                // Make a prediction with a selected image
+this.classifier.classify(e.target.result, (err, results) => {
+  console.log(results);
+});
             }
             a.readAsDataURL(blob);
         }).catch((error) =>{
