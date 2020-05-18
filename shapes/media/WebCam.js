@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.21_382",
+   VERSION: "2.0.22_383",
 
    init:function(attr, setter, getter)
    {
@@ -65,15 +65,15 @@ media_WebCam = media_WebCam.extend({
         };
 
         // Not showing vendor prefixes.
-        navigator.getUserMedia({ audio: false, video: true }, function(localMediaStream) {
-            var video = document.querySelector('video');
-            video.src = window.URL.createObjectURL(localMediaStream);
-
-   
-            video.onloadedmetadata = function(e) {
-                 // Ready to go. Do some stuff.
-            };
-        }, onFailSoHard);
+        navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+            .then(function(stream) {
+                 /* use the stream */
+                 console.log("accepted")
+            })
+            .catch(function(err) {
+                 /* handle the error */
+                 console.log("catched")
+            })
     },
 
     /**
