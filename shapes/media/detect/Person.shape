@@ -3,9 +3,9 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "76ffcb86-e5f1-e89a-46e3-43d4a7132980",
-      "x": 7960.5,
+      "x": 7941.3,
       "y": 7941.5,
-      "width": 60,
+      "width": 79,
       "height": 63,
       "alpha": 1,
       "selectable": true,
@@ -25,19 +25,19 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7960.5,
+          "x": 7941.3,
           "y": 7941.5
         },
         {
-          "x": 8020.5,
+          "x": 8020.3,
           "y": 7941.5
         },
         {
-          "x": 8020.5,
+          "x": 8020.3,
           "y": 8004.5
         },
         {
-          "x": 7960.5,
+          "x": 7941.3,
           "y": 8004.5
         }
       ],
@@ -60,7 +60,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "aed420e8-7e2c-067e-cbb9-1e44941a1591",
-      "x": 7953.5,
+      "x": 7933.66,
       "y": 7968,
       "width": 10,
       "height": 10,
