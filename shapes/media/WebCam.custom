@@ -19,10 +19,31 @@ media_WebCam = media_WebCam.extend({
         };
 
         // Not showing vendor prefixes.
-        navigator.mediaDevices.getUserMedia({ audio: false, video: video: { width: 350, height: 350 } })
+        navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 350, height: 350 } })
             .then(function(stream) {
-                 /* use the stream */
-                 console.log("accepted")
+                /* use the stream */
+                console.log("accepted")
+                const options = {mimeType: 'video/webm'};
+    
+                const mediaRecorder = new MediaRecorder(stream, options);
+
+                mediaRecorder.addEventListener('dataavailable', function(e) {
+                    if (e.data.size > 0) {
+                       recordedChunks.push(e.data);
+                    }
+
+                    if(shouldStop === true && stopped === false) {
+                       mediaRecorder.stop();
+                       stopped = true;
+                    }
+                });
+
+                mediaRecorder.addEventListener('stop', function() {
+                    downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+                    downloadLink.download = 'acetest.webm';
+                });
+
+                mediaRecorder.start();
             })
             .catch(function(err) {
                  /* handle the error */
