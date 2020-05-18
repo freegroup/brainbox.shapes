@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.38_407",
+   VERSION: "2.0.39_409",
 
    init:function(attr, setter, getter)
    {
@@ -71,12 +71,12 @@ media_WebCam = media_WebCam.extend({
             width: this.getWidth(), 
             height: this.getHeight(),
             path: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
-        })
-        this.img.ignoreForPersistent = true
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))
+        });
+        this.img.ignoreForPersistent = true;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
         this.on("change:dimension", (emitter, event)=>{
-            this.img.attr(event)
-        })
+            this.img.attr(event);
+        });
         
         var onFailSoHard = function(e) {
           console.log('Reeeejected!', e);
@@ -86,29 +86,27 @@ media_WebCam = media_WebCam.extend({
         this.imageCapture = null;
         try{
             // Initialize the Image Classifier method with MobileNet
-            this.classifier = ml5.imageClassifier('MobileNet', ()=>{
+            cocoSsd.load().then(model =>{
+                this.model = model;
                 console.log("loaded");
                 
                 // Not showing vendor prefixes.
                 navigator.mediaDevices.getUserMedia({ audio: false, video: true })
                    .then((stream) =>{
-                /* use the stream */
-                console.log("accepted")
-                const track = stream.getVideoTracks()[0];
-                this.imageCapture = new ImageCapture(track);
-                 })
-                 .catch((err) =>{
+                        /* use the stream */
+                        console.log("accepted");
+                        const track = stream.getVideoTracks()[0];
+                        this.imageCapture = new ImageCapture(track);
+                    })
+                    .catch((err) =>{
                       /* handle the error */
-                 console.log("catched")
-                })
-
-        });
-       }
+                      console.log("catched");
+                    })
+            });
+        }
         catch(e){
             console.log("didn't support mediaDevices")
         }
-        
-
     },
 
     /**
@@ -126,10 +124,13 @@ media_WebCam = media_WebCam.extend({
             var a = new FileReader();
             a.onload = (e) => {
                 this.img.attr("path", e.target.result)
-                // Make a prediction with a selected image
-this.classifier.classify(e.target.result, (err, results) => {
-  console.log(results);
-});
+                
+                var image = new Image()
+                image.src = e.target.result
+                image.onload = () => {
+                    var output = tf.browser.fromPixels(img);
+                    console.log(output);
+                }
             }
             a.readAsDataURL(blob);
         }).catch((error) =>{
