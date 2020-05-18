@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.50_431",
+   VERSION: "2.0.51_432",
 
    init:function(attr, setter, getter)
    {
@@ -86,8 +86,19 @@ media_detect_Person = media_detect_Person.extend({
         this.on("change:dimension", (emitter, event)=>{
             this.img.attr(event);
         });
+
+        this.rectangle = new draw2d.shape.basic.Rectangle({
+                        x: 100,
+                        y: 10,
+                        bgColor: "#f0f000",
+                        alpha  : 0.7,
+                        width: 100,
+                        height: 60,
+                        radius: 10
+                });
+        this.add(this.rectangle,  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))  
         
-        this.model = null
+        this.model = null;
         try{
             // Initialize the Image Classifier method with MobileNet
             cocoSsd.load().then(model =>{
@@ -111,9 +122,10 @@ media_detect_Person = media_detect_Person.extend({
         if(this.model===null){
             return
         }
+        
         var image = this.getInputPort("input_port1").getValue()
-        this.img.attr("path", image.src)
         if (image instanceof HTMLImageElement) {
+            this.img.attr("path", image.src)
             this.model.detect(image, 1).then(predictions => {
                 console.log('Predictions: ', predictions);
             });
@@ -139,6 +151,7 @@ media_detect_Person = media_detect_Person.extend({
     
     setPersistentAttributes: function (memento) {
         this._super(memento)
+        this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle)
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
         this.on("change:dimension", (emitter, event)=>{
             this.img.attr(event);
