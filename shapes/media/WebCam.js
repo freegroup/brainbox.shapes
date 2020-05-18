@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.27_389",
+   VERSION: "2.0.28_390",
 
    init:function(attr, setter, getter)
    {
@@ -60,6 +60,10 @@ media_WebCam = media_WebCam.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
+        
+        this.img = new draw2d.shape.basic.Image()
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))
+        
         var onFailSoHard = function(e) {
           console.log('Reeeejected!', e);
         };
