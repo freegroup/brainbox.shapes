@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.25_387",
+   VERSION: "2.0.26_388",
 
    init:function(attr, setter, getter)
    {
@@ -64,29 +64,16 @@ media_WebCam = media_WebCam.extend({
           console.log('Reeeejected!', e);
         };
 
+        this.imageCapture = null;
         // Not showing vendor prefixes.
         navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 350, height: 350 } })
-            .then(function(stream) {
+            .then((stream) =>{
                 /* use the stream */
                 console.log("accepted")
-                const options = {mimeType: 'video/webm'};
-    
-                const mediaRecorder = new MediaRecorder(stream, options);
-
-                mediaRecorder.ondataavailable= function(e) {
-                    console.log(e)
-                    if (e.data.size > 0) {
-                       console.log(e.data);
-                    }
-                };
-                try {
-                mediaRecorder.start();
-                }
-                catch(e){
-                    console.log(e)
-                }
+                const track = stream.getVideoTracks()[0];
+                this.imageCapture = new ImageCapture(track);
             })
-            .catch(function(err) {
+            .catch((err) =>{
                  /* handle the error */
                  console.log("catched")
             })
@@ -100,6 +87,15 @@ media_WebCam = media_WebCam.extend({
      **/
     calculate:function( context)
     {
+        if(this.imageCature===null){
+            return
+        }
+        this.imageCapture.takePhoto().then(function(blob) {
+            console.log('Took photo:', blob);
+            console.log(URL.createObjectURL(blob));
+        }).catch(function(error) {
+            console.log('takePhoto() error: ', error);
+        });
     },
 
 
