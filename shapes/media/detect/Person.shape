@@ -1,3 +1,137 @@
 {
-  "draw2d": []
+  "draw2d": [
+    {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "76ffcb86-e5f1-e89a-46e3-43d4a7132980",
+      "x": 286,
+      "y": 151.00000381469727,
+      "width": 97,
+      "height": 91,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Rectangle",
+        "baseClass": "draw2d.SetFigure",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        \n        this.img = new draw2d.shape.basic.Image({\n            width: this.getWidth(), \n            height: this.getHeight(),\n            path: \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==\"\n        });\n        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));\n        this.on(\"change:dimension\", (emitter, event)=>{\n            this.img.attr(event);\n        });\n        \n        this.imageCapture = null;\n        try{\n            // Initialize the Image Classifier method with MobileNet\n            cocoSsd.load().then(model =>{\n                this.model = model;\n                console.log(\"model loaded\");\n                navigator.mediaDevices.getUserMedia({ audio: false, video: true })\n                   .then((stream) =>{\n                        const track = stream.getVideoTracks()[0];\n                        this.imageCapture = new ImageCapture(track);\n                    })\n                    .catch((err) =>{\n                        console.log(\"no permission to use VideoCam\");\n                    })\n            });\n        }\n        catch(e){\n            console.log(\"didn't support mediaDevices\")\n        }\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        if(this.imageCapture===null){\n            return\n        }\n        this.imageCapture.takePhoto()\n            .then((blob) =>{\n                var a = new FileReader();\n                a.onload = (e) => {\n                    this.img.attr(\"path\", e.target.result)\n                    var image = new Image()\n                    image.onload = () => {\n                        this.getOuputPort(\"output_port1\").setValue(image)\n                        //this.model.detect(image).then(predictions => {\n                        //    console.log('Predictions: ', predictions);\n                        //});\n                    }\n                    image.src = e.target.result\n                }\n                a.readAsDataURL(blob);\n        }).catch((error) =>{\n            console.log('takePhoto() error: ', error);\n        });\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n    }\n\n});"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(48,48,48,1)",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 286,
+          "y": 151.00000381469727
+        },
+        {
+          "x": 383,
+          "y": 151.00000381469727
+        },
+        {
+          "x": 383,
+          "y": 242.00000381469727
+        },
+        {
+          "x": 286,
+          "y": 242.00000381469727
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "aed420e8-7e2c-067e-cbb9-1e44941a1591",
+      "x": 279,
+      "y": 191.50000381469727,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Port",
+        "type": "Input",
+        "direction": 3,
+        "fanout": 20
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(55,177,222,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "3548f6ee-a9b6-8668-ed35-73c74ee9ca5c",
+      "x": 381,
+      "y": 191.50000381469727,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Port",
+        "type": "Output",
+        "direction": 1,
+        "fanout": 20
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(55,177,222,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
+        }
+      ]
+    }
+  ]
 }
