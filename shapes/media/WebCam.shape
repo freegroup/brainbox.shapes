@@ -70,8 +70,8 @@
       "angle": 0,
       "userData": {
         "name": "output_port1",
-        "type": "Hybrid",
-        "direction": null,
+        "type": "Output",
+        "direction": 1,
         "fanout": 20
       },
       "cssClass": "shape_designer_figure_ExtPort",
