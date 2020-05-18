@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.55_441",
+   VERSION: "2.0.56_444",
 
    init:function(attr, setter, getter)
    {
@@ -142,10 +142,16 @@ media_detect_Person = media_detect_Person.extend({
                        this.rectangleLocator.setX(this.getWidth()/100*x_percent);
                        this.rectangleLocator.setY(this.getHeight()/100*y_percent);
                        this.rectangleLocator.relocate(0, this.rectangle)
+                       this.getOutputPort("output_port1").setValue(true)
                     }
                     else{
                         this.rectangle.setVisible(false)
+                        this.getOutputPort("output_port1").setValue(false)
                     }
+                }
+                else{
+                    this.rectangle.setVisible(false)
+                    this.getOutputPort("output_port1").setValue(false)
                 }
             });
         }

@@ -84,10 +84,16 @@ media_detect_Person = media_detect_Person.extend({
                        this.rectangleLocator.setX(this.getWidth()/100*x_percent);
                        this.rectangleLocator.setY(this.getHeight()/100*y_percent);
                        this.rectangleLocator.relocate(0, this.rectangle)
+                       this.getOutputPort("output_port1").setValue(true)
                     }
                     else{
                         this.rectangle.setVisible(false)
+                        this.getOutputPort("output_port1").setValue(false)
                     }
+                }
+                else{
+                    this.rectangle.setVisible(false)
+                    this.getOutputPort("output_port1").setValue(false)
                 }
             });
         }
