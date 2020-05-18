@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.33_398",
+   VERSION: "2.0.34_400",
 
    init:function(attr, setter, getter)
    {
@@ -68,19 +68,12 @@ media_WebCam = media_WebCam.extend({
         this._super(attr, setter, getter);
         
         this.img = new draw2d.shape.basic.Image({width: this.getWidth(), height: this.getHeight()})
+        this.img.ignoreForPersistent = true
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))
         this.on("change:dimension", (emitter, event)=>{
             this.img.attr(event)
         })
         
-        // Initialize the Image Classifier method with MobileNet
-const classifier = ml5.imageClassifier('MobileNet', modelLoaded);
-
-// When the model is loaded
-function modelLoaded() {
-  console.log('Model Loaded!');
-}
-
         var onFailSoHard = function(e) {
           console.log('Reeeejected!', e);
         };
@@ -88,6 +81,12 @@ function modelLoaded() {
 
         this.imageCapture = null;
         try{
+            // Initialize the Image Classifier method with MobileNet
+            const classifier = ml5.imageClassifier('MobileNet', ()=>{
+                console.log("loaded");
+            });
+
+
         // Not showing vendor prefixes.
         navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             .then((stream) =>{
