@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIOWrite",
-   VERSION: "2.0.23_384",
+   VERSION: "2.0.24_386",
 
    init:function(attr, setter, getter)
    {
