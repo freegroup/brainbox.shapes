@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.28_391",
+   VERSION: "2.0.29_392",
 
    init:function(attr, setter, getter)
    {
@@ -61,9 +61,11 @@ media_WebCam = media_WebCam.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         
-        this.img = new draw2d.shape.basic.Image()
+        this.img = new draw2d.shape.basic.Image({width: this.getWidth(), height: this.getHeight()})
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}))
-        
+        this.on("change:dimension", (emitter, event)=>{
+            this.img.attr(event)
+        })
         var onFailSoHard = function(e) {
           console.log('Reeeejected!', e);
         };
@@ -82,10 +84,6 @@ media_WebCam = media_WebCam.extend({
             .then(photoCapabilities => {
                 const settings = this.imageCapture.track.getSettings();
                 console.log("photoCapabilities", photoCapabilities);
-                return this.imageCapture.getPhotoSettings();
-            })
-            .then(photoSettings => {
-                console.log("photoSettings", photoSettings);
             })
             .catch((err) =>{
                  /* handle the error */
@@ -107,11 +105,9 @@ media_WebCam = media_WebCam.extend({
         this.imageCapture.takePhoto().then((blob) =>{
             var a = new FileReader();
             a.onload = (e) => {
-                console.log(e.target.result);
                 this.img.attr("path", e.target.result)
             }
             a.readAsDataURL(blob);
-            
         }).catch((error) =>{
             console.log('takePhoto() error: ', error);
         });
