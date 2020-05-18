@@ -22,7 +22,7 @@ media_detect_Person = media_detect_Person.extend({
             deleteable: false,
             resizeable:false,
             draggable: false,
-            path: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
+            path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
         this.on("change:dimension", (emitter, event)=>{
