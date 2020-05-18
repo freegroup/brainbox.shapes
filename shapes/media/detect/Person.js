@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.55_440",
+   VERSION: "2.0.56_442",
 
    init:function(attr, setter, getter)
    {
@@ -130,18 +130,24 @@ media_detect_Person = media_detect_Person.extend({
             this.model.detect(image, 1).then(predictions => {
                 if(predictions.length>0){
                     let pre = predictions[0];
-                    console.log(pre)
-                    let bbox = pre.bbox;
-                    let x_percent = 100/image.naturalWidth * bbox[0];
-                    let y_percent = 100/image.naturalHeight * bbox[1];
-                    let w_percent = 100/image.naturalWidth * bbox[2];
-                    let h_percent = 100/image.naturalHeight * bbox[3];
+                    if(pre.class==="person"){
+                       this.rectangle.setVisible(true)    
+                       let bbox = pre.bbox;
+                       let x_percent = 100/image.naturalWidth * bbox[0];
+                       let y_percent = 100/image.naturalHeight * bbox[1];
+                       let w_percent = 100/image.naturalWidth * bbox[2];
+                       let h_percent = 100/image.naturalHeight * bbox[3];
                      
-                    this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})
-                    this.rectangleLocator.setX(this.getWidth()/100*x_percent);
-                    this.rectangleLocator.setY(this.getHeight()/100*y_percent);
-                    this.rectangleLocator.relocate(0, this.rectangle)
-                    console.log(bbox[0],x_percent);
+                       this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})
+                       this.rectangleLocator.setX(this.getWidth()/100*x_percent);
+                       this.rectangleLocator.setY(this.getHeight()/100*y_percent);
+                       this.rectangleLocator.relocate(0, this.rectangle)
+                       this.getOutputPort("output_port1").setValue(1)
+                    }
+                    else{
+                        this.rectangle.setVisible(false)
+                        this.getOutputPort("output_port1").setValue(0)
+                    }
                 }
             });
         }
