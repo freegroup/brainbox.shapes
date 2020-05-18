@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.40_412",
+   VERSION: "2.0.41_414",
 
    init:function(attr, setter, getter)
    {
@@ -79,19 +79,14 @@ media_WebCam = media_WebCam.extend({
         
         this.imageCapture = null;
         try{
-            // Initialize the Image Classifier method with MobileNet
-            cocoSsd.load().then(model =>{
-                this.model = model;
-                console.log("model loaded");
-                navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-                   .then((stream) =>{
-                        const track = stream.getVideoTracks()[0];
-                        this.imageCapture = new ImageCapture(track);
-                    })
-                    .catch((err) =>{
-                        console.log("no permission to use VideoCam");
-                    })
-            });
+            navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+               .then((stream) =>{
+                    const track = stream.getVideoTracks()[0];
+                    this.imageCapture = new ImageCapture(track);
+                })
+                .catch((err) =>{
+                    console.log("no permission to use VideoCam");
+                })
         }
         catch(e){
             console.log("didn't support mediaDevices")
@@ -117,9 +112,6 @@ media_WebCam = media_WebCam.extend({
                     var image = new Image()
                     image.onload = () => {
                         this.getOuputPort("output_port1").setValue(image)
-                        //this.model.detect(image).then(predictions => {
-                        //    console.log('Predictions: ', predictions);
-                        //});
                     }
                     image.src = e.target.result
                 }
