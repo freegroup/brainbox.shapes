@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.30_395",
+   VERSION: "2.0.31_396",
 
    init:function(attr, setter, getter)
    {
@@ -16,8 +16,8 @@ var media_WebCam = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:100,height:100},attr), setter, getter);
      var port;
      // output_port1
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
-     port.setConnectionDirection();
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
+     port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
      port.setMaxFanOut(20);
