@@ -36,31 +36,27 @@ media_WebCam = media_WebCam.extend({
             // Initialize the Image Classifier method with MobileNet
             const classifier = ml5.imageClassifier('MobileNet', ()=>{
                 console.log("loaded");
-            });
-
-
-        // Not showing vendor prefixes.
-        navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-            .then((stream) =>{
+                
+                // Not showing vendor prefixes.
+                navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+                   .then((stream) =>{
                 /* use the stream */
                 console.log("accepted")
                 const track = stream.getVideoTracks()[0];
                 this.imageCapture = new ImageCapture(track);
-                
-                return this.imageCapture.getPhotoCapabilities();
-            })
-            .then(photoCapabilities => {
-                const settings = this.imageCapture.track.getSettings();
-                console.log("photoCapabilities", photoCapabilities);
-            })
-            .catch((err) =>{
-                 /* handle the error */
+                 })
+                 .catch((err) =>{
+                      /* handle the error */
                  console.log("catched")
-            })
-        }
+                })
+
+        });
+       }
         catch(e){
             console.log("didn't support mediaDevices")
         }
+        
+
     },
 
     /**
