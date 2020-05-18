@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.49_430",
+   VERSION: "2.0.50_431",
 
    init:function(attr, setter, getter)
    {
@@ -135,6 +135,14 @@ media_detect_Person = media_detect_Person.extend({
      **/
     onStop:function( context )
     {
+    },
+    
+    setPersistentAttributes: function (memento) {
+        this._super(memento)
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
+        this.on("change:dimension", (emitter, event)=>{
+            this.img.attr(event);
+        });
     }
 
 });
