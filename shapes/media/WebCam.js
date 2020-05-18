@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.46_425",
+   VERSION: "2.0.47_427",
 
    init:function(attr, setter, getter)
    {
@@ -16,8 +16,8 @@ var media_WebCam = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:100,height:100},attr), setter, getter);
      var port;
      // output_port1
-     port = this.createPort("hybrid", new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
-     port.setConnectionDirection();
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
+     port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
      port.setMaxFanOut(20);
@@ -78,19 +78,6 @@ media_WebCam = media_WebCam.extend({
         });
         
         this.imageCapture = null;
-        try{
-            navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-               .then((stream) =>{
-                    const track = stream.getVideoTracks()[0];
-                    this.imageCapture = new ImageCapture(track);
-                })
-                .catch((err) =>{
-                    console.log("no permission to use VideoCam");
-                })
-        }
-        catch(e){
-            console.log("didn't support mediaDevices")
-        }
     },
 
     /**
@@ -128,6 +115,20 @@ media_WebCam = media_WebCam.extend({
      **/
     onStart:function( context )
     {
+        try{
+            navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+               .then((stream) =>{
+                    const track = stream.getVideoTracks()[0];
+                    this.imageCapture = new ImageCapture(track);
+                })
+                .catch((err) =>{
+                    console.log("no permission to use VideoCam");
+                })
+        }
+        catch(e){
+            console.log("didn't support mediaDevices")
+        }
+
     },
 
     /**

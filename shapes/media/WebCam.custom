@@ -26,19 +26,6 @@ media_WebCam = media_WebCam.extend({
         });
         
         this.imageCapture = null;
-        try{
-            navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-               .then((stream) =>{
-                    const track = stream.getVideoTracks()[0];
-                    this.imageCapture = new ImageCapture(track);
-                })
-                .catch((err) =>{
-                    console.log("no permission to use VideoCam");
-                })
-        }
-        catch(e){
-            console.log("didn't support mediaDevices")
-        }
     },
 
     /**
@@ -76,6 +63,20 @@ media_WebCam = media_WebCam.extend({
      **/
     onStart:function( context )
     {
+        try{
+            navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+               .then((stream) =>{
+                    const track = stream.getVideoTracks()[0];
+                    this.imageCapture = new ImageCapture(track);
+                })
+                .catch((err) =>{
+                    console.log("no permission to use VideoCam");
+                })
+        }
+        catch(e){
+            console.log("didn't support mediaDevices")
+        }
+
     },
 
     /**
