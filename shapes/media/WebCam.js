@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.26_388",
+   VERSION: "2.0.27_389",
 
    init:function(attr, setter, getter)
    {
@@ -66,12 +66,22 @@ media_WebCam = media_WebCam.extend({
 
         this.imageCapture = null;
         // Not showing vendor prefixes.
-        navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 350, height: 350 } })
+        navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             .then((stream) =>{
                 /* use the stream */
                 console.log("accepted")
                 const track = stream.getVideoTracks()[0];
                 this.imageCapture = new ImageCapture(track);
+                
+                return this.imageCapture.getPhotoCapabilities();
+            })
+            .then(photoCapabilities => {
+                const settings = this.imageCapture.track.getSettings();
+                console.log("photoCapabilities", photoCapabilities);
+                return this.imageCapture.getPhotoSettings();
+            })
+            .then(photoSettings => {
+                console.log("photoSettings", photoSettings);
             })
             .catch((err) =>{
                  /* handle the error */
@@ -87,12 +97,16 @@ media_WebCam = media_WebCam.extend({
      **/
     calculate:function( context)
     {
-        if(this.imageCature===null){
+        if(this.imageCapture===null){
             return
         }
-        this.imageCapture.takePhoto().then(function(blob) {
-            console.log('Took photo:', blob);
-            console.log(URL.createObjectURL(blob));
+        this.imageCapture.takePhoto({imageHeight:150, imageWidth:150}).then(function(blob) {
+            var a = new FileReader();
+            a.onload = function(e) {
+                console.log(e.target.result);
+            }
+            a.readAsDataURL(blob);
+            
         }).catch(function(error) {
             console.log('takePhoto() error: ', error);
         });
