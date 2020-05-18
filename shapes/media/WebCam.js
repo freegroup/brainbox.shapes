@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.20_381",
+   VERSION: "2.0.21_382",
 
    init:function(attr, setter, getter)
    {
@@ -65,7 +65,7 @@ media_WebCam = media_WebCam.extend({
         };
 
         // Not showing vendor prefixes.
-        navigator.getUserMedia('video, audio', function(localMediaStream) {
+        navigator.getUserMedia({ audio: false, video: true }, function(localMediaStream) {
             var video = document.querySelector('video');
             video.src = window.URL.createObjectURL(localMediaStream);
 

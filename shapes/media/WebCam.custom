@@ -19,7 +19,7 @@ media_WebCam = media_WebCam.extend({
         };
 
         // Not showing vendor prefixes.
-        navigator.getUserMedia('video, audio', function(localMediaStream) {
+        navigator.getUserMedia({ audio: false, video: true }, function(localMediaStream) {
             var video = document.querySelector('video');
             video.src = window.URL.createObjectURL(localMediaStream);
 
