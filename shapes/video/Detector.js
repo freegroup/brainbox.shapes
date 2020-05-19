@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.72_474",
+   VERSION: "2.0.73_476",
 
    init:function(attr, setter, getter)
    {
@@ -105,6 +105,9 @@ video_Detector = video_Detector.extend({
         
         this.on("change:userData.objectClass",(emitter, event)=>{
             this.layerAttr("objectClass", {text: event.value})
+        });
+        this.on("added",(emitter, event)=>{
+             this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
         });
 
         this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
@@ -244,8 +247,6 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
-        
-        this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
     },
     
     

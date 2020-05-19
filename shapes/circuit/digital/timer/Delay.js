@@ -7,7 +7,7 @@
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "2.0.72_474",
+   VERSION: "2.0.73_476",
 
    init:function(attr, setter, getter)
    {

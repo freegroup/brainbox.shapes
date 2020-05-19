@@ -18,6 +18,9 @@ video_Detector = video_Detector.extend({
         this.on("change:userData.objectClass",(emitter, event)=>{
             this.layerAttr("objectClass", {text: event.value})
         });
+        this.on("added",(emitter, event)=>{
+             this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
+        });
 
         this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
@@ -156,8 +159,6 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
-        
-        this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
     },
     
     
