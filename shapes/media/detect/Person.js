@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.57_447",
+   VERSION: "2.0.58_449",
 
    init:function(attr, setter, getter)
    {
