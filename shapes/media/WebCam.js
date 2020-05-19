@@ -7,7 +7,7 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.59_451",
+   VERSION: "2.0.60_452",
 
    init:function(attr, setter, getter)
    {
@@ -77,11 +77,9 @@ media_WebCam = media_WebCam.extend({
             height: this.getHeight()/4*3,
             path: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
         });
+        this.img.hitTest = ()=>false
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
-        this.on("change:dimension", (emitter, event)=>{
-            event.height = event.height/4*3
-            this.img.attr(event);
-        });
+
         
         this.imageCapture = null;
         this.track = null;
@@ -158,10 +156,7 @@ media_WebCam = media_WebCam.extend({
         this._super(memento)
         
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
-        this.on("change:dimension", (emitter, event)=>{
-            event.height = event.height/4*3
-            this.img.attr(event);
-        });
+        this.img.hitTest = ()=>false
     }
 
 });
