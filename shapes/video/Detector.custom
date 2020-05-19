@@ -156,6 +156,9 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+        
+        console.log(this.attr("userData.objectClass"),"attr")
+        this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
     },
     
     

@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.71_473",
+   VERSION: "2.0.72_475",
 
    init:function(attr, setter, getter)
    {
@@ -244,6 +244,9 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+        
+        console.log(this.attr("userData.objectClass"),"attr")
+        this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
     },
     
     
