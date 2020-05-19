@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.73_476",
+   VERSION: "2.0.74_477",
 
    init:function(attr, setter, getter)
    {
@@ -142,7 +142,6 @@ video_Detector = video_Detector.extend({
         // Initialize the Image Classifier method with MobileNet
         cocoSsd.load().then(model =>{
             this.model = model;
-            console.log("model loaded");
         });
         
         this.getInputPort("input_port1").attr({
@@ -187,16 +186,16 @@ video_Detector = video_Detector.extend({
                        this.rectangleLocator.setX(width/100*x_percent);
                        this.rectangleLocator.setY(height/100*y_percent);
                        this.rectangleLocator.relocate(0, this.rectangle);
-                       this.getOutputPort("output_port1").setValue(true);
+                       this.getOutputPort("output_port1").setValue(5.0);
                     }
                     else{
                         this.rectangle.setVisible(false);
-                        this.getOutputPort("output_port1").setValue(false);
+                        this.getOutputPort("output_port1").setValue(0.0);
                     }
                 }
                 else{
                     this.rectangle.setVisible(false);
-                    this.getOutputPort("output_port1").setValue(false);
+                    this.getOutputPort("output_port1").setValue(0.0);
                 }
             });
         }
