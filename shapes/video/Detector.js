@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.67_466",
+   VERSION: "2.0.68_468",
 
    init:function(attr, setter, getter)
    {
@@ -16,7 +16,7 @@ var video_Detector = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:80,height:82},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 48.78048780487805 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 49.23780487804878 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
@@ -52,7 +52,7 @@ var video_Detector = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M4.5 1.5L77.5 1.5L77.5 59.5L4.5 59.5Z');
+       shape = this.canvas.paper.path('M3.5 5.883584000000155L76.5 5.883584000000155L76.5 57.883584000000155L3.5 57.883584000000155Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(240,243,243,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
