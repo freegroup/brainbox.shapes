@@ -7,7 +7,7 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.61_453",
+   VERSION: "2.0.62_455",
 
    init:function(attr, setter, getter)
    {
@@ -102,22 +102,22 @@ media_detect_Person = media_detect_Person.extend({
             draggable: false,
             path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
-        this.img.hitTest = ()=>false
+        this.img.hitTest = ()=>false;
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
 
 
-        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0})
+        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0});
         this.rectangle = new draw2d.shape.basic.Rectangle({
                         x: 0, y: 0,
+                        width: 20, height: 20,
                         color: "#ff0000",
                         bgColor: null,
                         alpha  : 0.7,
-                        width: 100,
                         visible:false,
-                        height: 60,
                         radius: 5
                 });
-        this.add(this.rectangle, this.rectangleLocator)  
+        this.add(this.rectangle, this.rectangleLocator)  ;
+        this.rectangle.setVisible(false);
         
         this.model = null;
         // Initialize the Image Classifier method with MobileNet
@@ -146,27 +146,29 @@ media_detect_Person = media_detect_Person.extend({
                 if(predictions.length>0){
                     let pre = predictions[0];
                     if(pre.class==="person"){
-                       this.rectangle.setVisible(true)    
+                       var height = this.getHeight()/4*3;
+                       var width = this.getWidth();
+                       this.rectangle.setVisible(true);
                        let bbox = pre.bbox;
                        let x_percent = 100/image.naturalWidth * bbox[0];
                        let y_percent = 100/image.naturalHeight * bbox[1];
                        let w_percent = 100/image.naturalWidth * bbox[2];
                        let h_percent = 100/image.naturalHeight * bbox[3];
                      
-                       this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})
-                       this.rectangleLocator.setX(this.getWidth()/100*x_percent);
-                       this.rectangleLocator.setY(this.getHeight()/100*y_percent);
-                       this.rectangleLocator.relocate(0, this.rectangle)
-                       this.getOutputPort("output_port1").setValue(true)
+                       this.rectangle.attr({width:width/100*w_percent, height:height/100*h_percent});
+                       this.rectangleLocator.setX(width/100*x_percent);
+                       this.rectangleLocator.setY(height/100*y_percent);
+                       this.rectangleLocator.relocate(0, this.rectangle);
+                       this.getOutputPort("output_port1").setValue(true);
                     }
                     else{
-                        this.rectangle.setVisible(false)
-                        this.getOutputPort("output_port1").setValue(false)
+                        this.rectangle.setVisible(false);
+                        this.getOutputPort("output_port1").setValue(false);
                     }
                 }
                 else{
-                    this.rectangle.setVisible(false)
-                    this.getOutputPort("output_port1").setValue(false)
+                    this.rectangle.setVisible(false);
+                    this.getOutputPort("output_port1").setValue(false);
                 }
             });
         }
@@ -193,8 +195,9 @@ media_detect_Person = media_detect_Person.extend({
     {
         this._super(memento);
         this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);
+        this.rectangle.setVisible(false);
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
-        this.img.hitTest = ()=>false
+        this.img.hitTest = ()=>false;
     }
 
 });
