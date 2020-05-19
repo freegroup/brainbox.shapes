@@ -17,7 +17,7 @@ media_WebCam = media_WebCam.extend({
         
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth(), 
-            height: this.getHeight(),
+            height: this.getHeight()/4*3,
             path: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
         });
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
