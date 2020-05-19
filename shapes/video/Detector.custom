@@ -14,8 +14,12 @@ video_Detector = video_Detector.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
-        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         
+        this.on("change:userData.objectClass",(emitter, event)=>{
+            this.layerAttr("objectClass", {text: event.value})
+        });
+
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth()-6, 
             height: this.getHeight()/4*3-6,
