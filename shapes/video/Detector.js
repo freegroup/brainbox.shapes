@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.75_478",
+   VERSION: "2.0.76_480",
 
    init:function(attr, setter, getter)
    {
@@ -52,7 +52,7 @@ var video_Detector = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M3.5 5.883584000000155L76.5 5.883584000000155L76.5 57.883584000000155L3.5 57.883584000000155Z');
+       shape = this.canvas.paper.path('M3.5,4.883584000000155Q3.5,2.8835840000001554 5.5, 2.8835840000001554L74.5,2.8835840000001554Q76.5,2.8835840000001554 76.5, 4.883584000000155L76.5,52.883584000000155Q76.5,54.883584000000155 74.5, 54.883584000000155L5.5,54.883584000000155Q3.5,54.883584000000155 3.5, 52.883584000000155L3.5,4.883584000000155');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(240,243,243,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
@@ -253,6 +253,8 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+        
+        this.objectClass = this.attr("userData.objectClass")
     },
     
     

@@ -165,6 +165,8 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+        
+        this.objectClass = this.attr("userData.objectClass")
     },
     
     
