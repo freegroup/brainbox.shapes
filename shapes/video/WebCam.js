@@ -7,7 +7,7 @@
 var video_WebCam = CircuitFigure.extend({
 
    NAME: "video_WebCam",
-   VERSION: "2.0.64_458",
+   VERSION: "2.0.65_460",
 
    init:function(attr, setter, getter)
    {
@@ -50,6 +50,21 @@ var video_WebCam = CircuitFigure.extend({
        shape.attr({"x":5.8046875,"y":69,"text-anchor":"start","text":"WebCam","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
+       // Rectangle
+       shape = this.canvas.paper.path('M11.72705078125,22.5Q11.72705078125,19.5 14.72705078125, 19.5L49.72705078125,19.5Q52.72705078125,19.5 52.72705078125, 22.5L52.72705078125,44.5Q52.72705078125,47.5 49.72705078125, 47.5L14.72705078125,47.5Q11.72705078125,47.5 11.72705078125, 44.5L11.72705078125,22.5');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M52.622734264543645,29.57737012110689Q52.67847478124895,26.57788800000708 55.26516920427005, 25.05834466008171L62.1403563582289,21.01954333992537Q64.72705078125,19.5 64.72705078125, 22.5L64.72705078125,44.5Q64.72705078125,47.5 62.10245076049134, 46.04690856067706L55.04093080200735,42.13734743931612Q52.41633078124869,40.684255999993184 52.472071297953995, 37.684773878893374L52.622734264543645,29.57737012110689');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Circle
+       shape = this.canvas.paper.ellipse();
+       shape.attr({"rx":3.8705097763024305,"ry":3.8705097763024305,"cx":47.04582100494663,"cy":24.87050977630243,"stroke":"none","stroke-width":0,"fill":"rgba(192,15,57,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Circle");
+       
 
        return this.canvas.paper.setFinish();
    }
@@ -73,12 +88,12 @@ video_WebCam = video_WebCam.extend({
         this._super(attr, setter, getter);
         
         this.img = new draw2d.shape.basic.Image({
-            width: this.getWidth(), 
-            height: this.getHeight()/4*3,
-            path: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3 -6,
+            path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
         this.img.hitTest = ()=>false
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3,y:3}));
 
         
         this.imageCapture = null;
@@ -86,6 +101,11 @@ video_WebCam = video_WebCam.extend({
         
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     },
 
     /**
@@ -157,6 +177,12 @@ video_WebCam = video_WebCam.extend({
         
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
         this.img.hitTest = ()=>false
+        
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     }
 
 });

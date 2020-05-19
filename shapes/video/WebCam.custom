@@ -16,12 +16,12 @@ video_WebCam = video_WebCam.extend({
         this._super(attr, setter, getter);
         
         this.img = new draw2d.shape.basic.Image({
-            width: this.getWidth(), 
-            height: this.getHeight()/4*3,
-            path: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3 -6,
+            path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
         this.img.hitTest = ()=>false
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3,y:3}));
 
         
         this.imageCapture = null;
@@ -29,6 +29,11 @@ video_WebCam = video_WebCam.extend({
         
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     },
 
     /**
@@ -100,6 +105,12 @@ video_WebCam = video_WebCam.extend({
         
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
         this.img.hitTest = ()=>false
+        
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     }
 
 });
