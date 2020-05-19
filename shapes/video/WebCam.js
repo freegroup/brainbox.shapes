@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var media_WebCam = CircuitFigure.extend({
+var video_WebCam = CircuitFigure.extend({
 
-   NAME: "media_WebCam",
-   VERSION: "2.0.62_455",
+   NAME: "video_WebCam",
+   VERSION: "2.0.63_457",
 
    init:function(attr, setter, getter)
    {
@@ -67,7 +67,7 @@ var media_WebCam = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-media_WebCam = media_WebCam.extend({
+video_WebCam = video_WebCam.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
