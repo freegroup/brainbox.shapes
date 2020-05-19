@@ -17,17 +17,16 @@ media_detect_Person = media_detect_Person.extend({
 
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth(), 
-            height: this.getHeight(),
+            height: this.getHeight()/4*3,
             selectable: false,
             deleteable: false,
             resizeable:false,
             draggable: false,
             path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
+        this.img.hitTest = ()=>false
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
-        this.on("change:dimension", (emitter, event)=>{
-            this.img.attr(event);
-        });
+
 
         this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0})
         this.rectangle = new draw2d.shape.basic.Rectangle({
@@ -43,16 +42,11 @@ media_detect_Person = media_detect_Person.extend({
         this.add(this.rectangle, this.rectangleLocator)  
         
         this.model = null;
-        try{
-            // Initialize the Image Classifier method with MobileNet
-            cocoSsd.load().then(model =>{
-                this.model = model;
-                console.log("model loaded");
-            });
-        }
-        catch(e){
-            console.log("didn't support mediaDevices")
-        }
+        // Initialize the Image Classifier method with MobileNet
+        cocoSsd.load().then(model =>{
+            this.model = model;
+            console.log("model loaded");
+        });
     },
 
     /**
@@ -117,13 +111,12 @@ media_detect_Person = media_detect_Person.extend({
     {
     },
     
-    setPersistentAttributes: function (memento) {
+    setPersistentAttributes: function (memento) 
+    {
         this._super(memento);
         this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
-        this.on("change:dimension", (emitter, event)=>{
-            this.img.attr(event);
-        });
+        this.img.hitTest = ()=>false
     }
 
 });
