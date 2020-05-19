@@ -19,7 +19,6 @@ video_Detector = video_Detector.extend({
         this.on("change:userData.objectClass",(emitter, event)=>{
             this.layerAttr("objectClass", {text: event.value})
             this.objectClass = event.value;
-            console.log(this.objectClass)
         });
         this.on("added",(emitter, event)=>{
              this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
