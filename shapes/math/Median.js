@@ -7,7 +7,7 @@
 var math_Median = CircuitFigure.extend({
 
    NAME: "math_Median",
-   VERSION: "2.0.77_483",
+   VERSION: "2.0.78_485",
 
    init:function(attr, setter, getter)
    {
