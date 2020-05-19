@@ -7,22 +7,22 @@
 var media_detect_Person = CircuitFigure.extend({
 
    NAME: "media_detect_Person",
-   VERSION: "2.0.60_452",
+   VERSION: "2.0.61_454",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:79,height:63},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:79,height:83.5},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -3.341772151899149, y: 50 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -7.59493670886076, y: 47.30538922155688 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 102.78481012658206, y: 50 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 103.4391898734174, y: 47.30538922155688 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -33,7 +33,7 @@ var media_detect_Person = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 79;
-      this.originalHeight= 63;
+      this.originalHeight= 83.5;
       return shape;
    },
 
@@ -42,29 +42,34 @@ var media_detect_Person = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L79,0 L79,63 L0,63");
+       shape = this.canvas.paper.path("M0,0 L79,0 L79,83.5 L0,83.5");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 0L79 0L79 63L0 63Z');
+       shape = this.canvas.paper.path('M0,3Q0,0 3, 0L76,0Q79,0 79, 3L79,76Q79,79 76, 79L3,79Q0,79 0, 76L0,3');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M39.87219776457641 37.32886189208148L39.69999999999982 37.32886189208148L39.69999999999982 56.70000000000073L58.69999999999982 56.70000000000073L58.69999999999982 37.32886189208148L58.52780223542322 37.32886189208148L58.39973483853282 36.11282359375309L57.97828481194847 34.8061891981788L57.29011104337951 33.58020176179252L56.356123344550724 32.472112292457496L55.20470045907223 31.51558952797859L53.870827788668976 30.739696928543708L52.39503437946041 30.168009598148274L50.822161467396654 29.817897967057434L49.19999999999982 29.700000000000728L47.57783853260298 29.817897967057434L46.004965620539224 30.168009598148274L44.52917221133066 30.739696928543708L43.19529954092741 31.51558952797859L42.04387665544891 32.472112292457496L41.109888956620125 33.58020176179252L40.42171518805117 34.8061891981788L40.000265161466814 36.11282359375309L39.87219776457641 37.32886189208148Z');
+       shape = this.canvas.paper.path('M40.87219776457641 33.62886189208075L40.69999999999982 33.62886189208075L40.69999999999982 53L59.69999999999982 53L59.69999999999982 33.62886189208075L59.52780223542322 33.62886189208075L59.39973483853282 32.412823593752364L58.97828481194847 31.106189198178072L58.29011104337951 29.880201761791795L57.356123344550724 28.772112292456768L56.20470045907223 27.815589527977863L54.870827788668976 27.03969692854298L53.39503437946041 26.468009598147546L51.822161467396654 26.117897967056706L50.19999999999982 26L48.57783853260298 26.117897967056706L47.004965620539224 26.468009598147546L45.52917221133066 27.03969692854298L44.19529954092741 27.815589527977863L43.04387665544891 28.772112292456768L42.109888956620125 29.880201761791795L41.42171518805117 31.106189198178072L41.000265161466814 32.412823593752364L40.87219776457641 33.62886189208075Z');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(149,192,106,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Circle
        shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":8,"ry":8.5,"cx":48.69999999999982,"cy":19,"stroke":"none","stroke-width":0,"fill":"rgba(149,192,106,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"rx":8,"ry":8.5,"cx":50.19999999999982,"cy":16.703520000000026,"stroke":"none","stroke-width":0,"fill":"rgba(149,192,106,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M34.13999999999942 8.260000000000218L63.13999999999942 8.260000000000218L63.13999999999942 32.26000000000022L34.13999999999942 32.26000000000022Z');
+       shape = this.canvas.paper.path('M35.69999999999982 4.325120000000425L64.69999999999982 4.325120000000425L64.69999999999982 28.325120000000425L35.69999999999982 28.325120000000425Z');
        shape.attr({"stroke":"rgba(255,23,77,1)","stroke-width":1,"fill":"rgba(0,0,0,0)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'Detector');
+       shape.attr({"x":9.029459999999744,"y":71,"text-anchor":"start","text":"Detector","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
        
 
        return this.canvas.paper.setFinish();
@@ -90,42 +95,36 @@ media_detect_Person = media_detect_Person.extend({
 
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth(), 
-            height: this.getHeight(),
+            height: this.getHeight()/4*3,
             selectable: false,
             deleteable: false,
             resizeable:false,
             draggable: false,
             path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
+        this.img.hitTest = ()=>false;
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
-        this.on("change:dimension", (emitter, event)=>{
-            this.img.attr(event);
-        });
 
-        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0})
+
+        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0});
         this.rectangle = new draw2d.shape.basic.Rectangle({
                         x: 0, y: 0,
+                        width: 20, height: 20,
                         color: "#ff0000",
                         bgColor: null,
                         alpha  : 0.7,
-                        width: 100,
                         visible:false,
-                        height: 60,
                         radius: 5
                 });
-        this.add(this.rectangle, this.rectangleLocator)  
+        this.add(this.rectangle, this.rectangleLocator)  ;
+        this.rectangle.setVisible(false);
         
         this.model = null;
-        try{
-            // Initialize the Image Classifier method with MobileNet
-            cocoSsd.load().then(model =>{
-                this.model = model;
-                console.log("model loaded");
-            });
-        }
-        catch(e){
-            console.log("didn't support mediaDevices")
-        }
+        // Initialize the Image Classifier method with MobileNet
+        cocoSsd.load().then(model =>{
+            this.model = model;
+            console.log("model loaded");
+        });
     },
 
     /**
@@ -147,27 +146,27 @@ media_detect_Person = media_detect_Person.extend({
                 if(predictions.length>0){
                     let pre = predictions[0];
                     if(pre.class==="person"){
-                       this.rectangle.setVisible(true)    
+                       this.rectangle.setVisible(true) ;   
                        let bbox = pre.bbox;
                        let x_percent = 100/image.naturalWidth * bbox[0];
                        let y_percent = 100/image.naturalHeight * bbox[1];
                        let w_percent = 100/image.naturalWidth * bbox[2];
                        let h_percent = 100/image.naturalHeight * bbox[3];
                      
-                       this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent})
+                       this.rectangle.attr({width: this.getWidth()/100*w_percent, height:this.getHeight()/100*h_percent});
                        this.rectangleLocator.setX(this.getWidth()/100*x_percent);
                        this.rectangleLocator.setY(this.getHeight()/100*y_percent);
-                       this.rectangleLocator.relocate(0, this.rectangle)
-                       this.getOutputPort("output_port1").setValue(true)
+                       this.rectangleLocator.relocate(0, this.rectangle);
+                       this.getOutputPort("output_port1").setValue(true);
                     }
                     else{
-                        this.rectangle.setVisible(false)
-                        this.getOutputPort("output_port1").setValue(false)
+                        this.rectangle.setVisible(false);
+                        this.getOutputPort("output_port1").setValue(false);
                     }
                 }
                 else{
-                    this.rectangle.setVisible(false)
-                    this.getOutputPort("output_port1").setValue(false)
+                    this.rectangle.setVisible(false);
+                    this.getOutputPort("output_port1").setValue(false);
                 }
             });
         }
@@ -190,13 +189,13 @@ media_detect_Person = media_detect_Person.extend({
     {
     },
     
-    setPersistentAttributes: function (memento) {
+    setPersistentAttributes: function (memento) 
+    {
         this._super(memento);
         this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);
+        this.rectangle.setVisible(false);
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
-        this.on("change:dimension", (emitter, event)=>{
-            this.img.attr(event);
-        });
+        this.img.hitTest = ()=>false;
     }
 
 });
