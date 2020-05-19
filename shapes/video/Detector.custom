@@ -16,8 +16,8 @@ video_Detector = video_Detector.extend({
         this._super(attr, setter, getter);
 
         this.img = new draw2d.shape.basic.Image({
-            width: this.getWidth(), 
-            height: this.getHeight()/4*3,
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3-6,
             selectable: false,
             deleteable: false,
             resizeable:false,
@@ -25,10 +25,10 @@ video_Detector = video_Detector.extend({
             path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         });
         this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
 
 
-        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0});
+        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0, y:0});
         this.rectangle = new draw2d.shape.basic.Rectangle({
                         x: 0, y: 0,
                         width: 20, height: 20,
@@ -40,6 +40,7 @@ video_Detector = video_Detector.extend({
                 });
         this.add(this.rectangle, this.rectangleLocator)  ;
         this.rectangle.setVisible(false);
+        this.rectangle.hitTest = ()=>false;
         
         this.model = null;
         // Initialize the Image Classifier method with MobileNet
@@ -47,6 +48,15 @@ video_Detector = video_Detector.extend({
             this.model = model;
             console.log("model loaded");
         });
+        
+        this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -118,8 +128,16 @@ video_Detector = video_Detector.extend({
         this._super(memento);
         this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);
         this.rectangle.setVisible(false);
+        this.rectangle.hitTest = ()=>false;
+ 
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
         this.img.hitTest = ()=>false;
+        
+        this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     }
 
 });
