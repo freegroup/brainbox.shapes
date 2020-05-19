@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.71_472",
+   VERSION: "2.0.72_474",
 
    init:function(attr, setter, getter)
    {
@@ -76,10 +76,10 @@ var video_Detector = CircuitFigure.extend({
        shape.attr({"x":10.529459999999744,"y":69.5,"text-anchor":"start","text":"Detector","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
-       // Label
+       // objectClass
        shape = this.canvas.paper.text(0,0,'person');
        shape.attr({"x":36.5,"y":37.3125,"text-anchor":"start","text":"person","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#FF0A2B","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
+       shape.data("name","objectClass");
        
 
        return this.canvas.paper.setFinish();
@@ -102,8 +102,12 @@ video_Detector = video_Detector.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
-        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         
+        this.on("change:userData.objectClass",(emitter, event)=>{
+            this.layerAttr("objectClass", {text: event.value})
+        });
+
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth()-6, 
             height: this.getHeight()/4*3-6,
@@ -240,6 +244,8 @@ video_Detector = video_Detector.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+        
+        this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
     },
     
     
