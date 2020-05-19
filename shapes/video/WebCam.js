@@ -7,7 +7,7 @@
 var video_WebCam = CircuitFigure.extend({
 
    NAME: "video_WebCam",
-   VERSION: "2.0.65_460",
+   VERSION: "2.0.66_462",
 
    init:function(attr, setter, getter)
    {
@@ -16,7 +16,7 @@ var video_WebCam = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:80,height:81.5},attr), setter, getter);
      var port;
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.090576171875, y: 47.239263803680984 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.090576171875, y: 52.147239263803684 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
