@@ -7,7 +7,7 @@
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "2.0.66_462",
+   VERSION: "2.0.67_465",
 
    init:function(attr, setter, getter)
    {
