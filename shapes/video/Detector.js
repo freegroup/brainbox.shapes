@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.68_468",
+   VERSION: "2.0.69_470",
 
    init:function(attr, setter, getter)
    {
@@ -102,7 +102,8 @@ video_Detector = video_Detector.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
-
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+        
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth()-6, 
             height: this.getHeight()/4*3-6,
@@ -110,7 +111,7 @@ video_Detector = video_Detector.extend({
             deleteable: false,
             resizeable:false,
             draggable: false,
-            path: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            path: this.TRANSPARENT_PIXEL
         });
         this.img.hitTest = ()=>false;
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
@@ -211,6 +212,19 @@ video_Detector = video_Detector.extend({
     {
     },
     
+  
+    getPersistentAttributes: function () 
+    {
+       let currentImage = this.img.attr("path");
+       this.img.attr("path", this.TRANSPARENT_PIXEL);
+    
+       let memento = this._super()
+    
+       this.img.attr("path", currentImage);
+
+       return memento
+    },
+
     setPersistentAttributes: function (memento) 
     {
         this._super(memento);
