@@ -22,7 +22,7 @@
       "bgColor": "rgba(255,255,255,1)",
       "color": "rgba(48,48,48,1)",
       "stroke": 1,
-      "radius": 0,
+      "radius": 4,
       "dasharray": null,
       "vertices": [
         {
@@ -55,6 +55,9 @@
         },
         {
           "name": "shape_designer.filter.FillColorFilter"
+        },
+        {
+          "name": "shape_designer.filter.RadiusFilter"
         }
       ]
     },
