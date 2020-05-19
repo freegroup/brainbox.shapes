@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.74_477",
+   VERSION: "2.0.75_478",
 
    init:function(attr, setter, getter)
    {
@@ -103,12 +103,17 @@ video_Detector = video_Detector.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         
+        this.objectClass = "person"
         this.on("change:userData.objectClass",(emitter, event)=>{
             this.layerAttr("objectClass", {text: event.value})
+            this.objectClass = event.value;
+            console.log(this.objectClass)
         });
         this.on("added",(emitter, event)=>{
              this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
         });
+        this.attr("userData.objectClass",this.objectClass)
+
 
         this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
@@ -150,7 +155,9 @@ video_Detector = video_Detector.extend({
             diameter:15
         })
         
-        this.attr({resizeable:false});
+        this.attr({
+            resizeable:false
+        });
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
@@ -172,7 +179,7 @@ video_Detector = video_Detector.extend({
             this.model.detect(image, 1).then(predictions => {
                 if(predictions.length>0){
                     let pre = predictions[0];
-                    if(pre.class==="person"){
+                    if(pre.class === this.objectClass){
                        var height = this.getHeight()/4*3;
                        var width = this.getWidth();
                        this.rectangle.setVisible(true);
