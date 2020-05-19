@@ -7,16 +7,16 @@
 var media_WebCam = CircuitFigure.extend({
 
    NAME: "media_WebCam",
-   VERSION: "2.0.57_447",
+   VERSION: "2.0.58_448",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:100,height:100},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:79},attr), setter, getter);
      var port;
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.2724609375, y: 50 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.090576171875, y: 48.734177215189874 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -26,8 +26,8 @@ var media_WebCam = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 100;
-      this.originalHeight= 100;
+      this.originalWidth = 80;
+      this.originalHeight= 79;
       return shape;
    },
 
@@ -36,14 +36,19 @@ var media_WebCam = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L100,0 L100,100 L0,100");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,79 L0,79");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 0L100 0L100 100L0 100Z');
+       shape = this.canvas.paper.path('M0 0L80 0L80 77L0 77Z');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'WebCam');
+       shape.attr({"x":5.8046875,"y":66.5,"text-anchor":"start","text":"WebCam","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
        
 
        return this.canvas.paper.setFinish();
@@ -74,11 +79,15 @@ media_WebCam = media_WebCam.extend({
         });
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
         this.on("change:dimension", (emitter, event)=>{
+            event.height = event.height/4*3
             this.img.attr(event);
         });
         
         this.imageCapture = null;
         this.track = null;
+        
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -150,6 +159,7 @@ media_WebCam = media_WebCam.extend({
         
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
         this.on("change:dimension", (emitter, event)=>{
+            event.height = event.height/4*3
             this.img.attr(event);
         });
     }

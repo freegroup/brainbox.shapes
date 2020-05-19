@@ -22,11 +22,15 @@ media_WebCam = media_WebCam.extend({
         });
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:0,y:0}));
         this.on("change:dimension", (emitter, event)=>{
+            event.height = event.height/4*3
             this.img.attr(event);
         });
         
         this.imageCapture = null;
         this.track = null;
+        
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -98,6 +102,7 @@ media_WebCam = media_WebCam.extend({
         
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
         this.on("change:dimension", (emitter, event)=>{
+            event.height = event.height/4*3
             this.img.attr(event);
         });
     }
