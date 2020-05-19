@@ -65,7 +65,7 @@
       "type": "shape_designer.figure.ExtPort",
       "id": "aed420e8-7e2c-067e-cbb9-1e44941a1591",
       "x": 7954,
-      "y": 7994.625,
+      "y": 7995,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -140,10 +140,10 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "496df3d2-e3d3-22a4-70a7-faca8187fafc",
-      "x": 7965,
-      "y": 7961.125,
+      "x": 7964,
+      "y": 7965.508584,
       "width": 73,
-      "height": 58,
+      "height": 52,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -160,20 +160,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7965,
-          "y": 7961.125
+          "x": 7964,
+          "y": 7965.508584
         },
         {
-          "x": 8038,
-          "y": 7961.125
+          "x": 8037,
+          "y": 7965.508584
         },
         {
-          "x": 8038,
-          "y": 8019.125
+          "x": 8037,
+          "y": 8017.508584
         },
         {
-          "x": 7965,
-          "y": 8019.125
+          "x": 7964,
+          "y": 8017.508584
         }
       ],
       "blur": 0,
