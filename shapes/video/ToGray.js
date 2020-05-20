@@ -7,7 +7,7 @@
 var video_ToGray = CircuitFigure.extend({
 
    NAME: "video_ToGray",
-   VERSION: "2.0.80_488",
+   VERSION: "2.0.81_502",
 
    init:function(attr, setter, getter)
    {
@@ -15,6 +15,18 @@ var video_ToGray = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:112,height:102},attr), setter, getter);
      var port;
+     // input_port1
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -5.357142857142858, y: 51.96078431372549 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port1");
+     port.setMaxFanOut(20);
+     // output_port1
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.78571428571429, y: 50 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output_port1");
+     port.setMaxFanOut(20);
    },
 
    createShapeElement : function()
@@ -60,7 +72,9 @@ video_ToGray = video_ToGray.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
-
+        this.worker= null;
+        this.getInputPort("input_port1").setSemanticGroup("Image");
+        this.getOutputPort("output_port1").setSemanticGroup("Image");
     },
 
     /**
@@ -71,7 +85,20 @@ video_ToGray = video_ToGray.extend({
      **/
     calculate:function( context)
     {
-        this.worker.postMessage("Helloooooo");
+        var img = this.getInputPort("input_port1").getValue();
+        if(img instanceof HTMLImageElement && this.worker){
+            var width = img.naturalWidth;
+            var height= img.naturalHeight;
+            // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
+            //
+            var canvas = new OffscreenCanvas(width, height);
+            var context2d = canvas.getContext('2d');
+            context2d.drawImage(img, 0, 0);
+            var imageData = context2d.getImageData(0, 0, width, height);
+            // push it to the WebWorker
+            //
+            this.worker.postMessage(imageData);
+        }
     },
 
 
@@ -81,10 +108,40 @@ video_ToGray = video_ToGray.extend({
      **/
     onStart:function( context )
     {
-        var echo = function(){
-            console.log("hello")
+        // the method which runs as WebWorker
+        //
+        var webWorkerFunction = function(event){
+            var imageData = event.data;
+            var pixels = imageData.data;
+            for( let x = 0; x < pixels.length; x += 4 ) {
+                let average = (pixels[x] + pixels[x+1] +pixels[x+2]) / 3;
+    
+                pixels[x]     = average;
+                pixels[x + 1] = average;
+                pixels[x + 2] = average;
+            }
+            self.postMessage( imageData );
         }
-        this.worker = this.createWorker(echo)
+        
+        // convert a js function to a WebWorker
+        //
+        this.worker = this.createWorker(webWorkerFunction)
+        
+        // The result event if the WebWorker has converted an pixelarray to another pixel array
+        //
+        this.worker.onmessage =  (event) => {
+            var imageData = event.data;
+            var canvas = document.createElement('canvas');
+            canvas.width = imageData.width;
+            canvas.height = imageData.height;
+            var context2d = canvas.getContext("2d");
+            context2d.putImageData(imageData,0,0);
+            var image = new Image()
+            image.onload = () => {
+                this.getOutputPort("output_port1").setValue(image)
+            }
+            image.src = canvas.toDataURL();
+        };
     },
 
     /**
@@ -95,6 +152,7 @@ video_ToGray = video_ToGray.extend({
     {
         this.worker.terminate();
         delete this.worker;
+        this.worker = null;
     },
     
 
