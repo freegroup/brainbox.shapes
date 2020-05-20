@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var video_ToGray = CircuitFigure.extend({
+var video_ToBlackWhite = CircuitFigure.extend({
 
-   NAME: "video_ToGray",
+   NAME: "video_ToBlackWhite",
    VERSION: "2.0.82_505",
 
    init:function(attr, setter, getter)
@@ -51,6 +51,11 @@ var video_ToGray = CircuitFigure.extend({
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
+       // Label
+       shape = this.canvas.paper.text(0,0,'BlackWhite');
+       shape.attr({"x":18.984375,"y":49.5390625,"text-anchor":"start","text":"BlackWhite","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
 
        return this.canvas.paper.setFinish();
    }
@@ -68,7 +73,7 @@ var video_ToGray = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_ToGray = video_ToGray.extend({
+video_ToBlackWhite = video_ToBlackWhite.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -114,15 +119,11 @@ video_ToGray = video_ToGray.extend({
             var imageData = event.data;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-              let average = (
-                pixels[x] +
-                pixels[x + 1] +
-                pixels[x + 2]
-                ) / 3;
-    
-                pixels[x] = average;
-                pixels[x + 1] = average;
-                pixels[x + 2] = average;
+                let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2]
+                let value= lum>0.5?255:0
+                pixels[x]     = value;
+                pixels[x + 1] = value;
+                pixels[x + 2] = value;
             }
             self.postMessage( imageData );
         }
@@ -136,6 +137,8 @@ video_ToGray = video_ToGray.extend({
         this.worker.onmessage =  (event) => {
             var imageData = event.data;
             var canvas = document.createElement('canvas');
+            canvas.width = imageData.width;
+            canvas.height = imageData.height;
             var context2d = canvas.getContext("2d");
             context2d.putImageData(imageData,0,0);
             var image = new Image()

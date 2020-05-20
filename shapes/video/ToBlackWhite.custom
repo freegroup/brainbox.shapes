@@ -1,61 +1,3 @@
-// Generated Code for the Draw2D touch HTML5 lib.
-// File will be generated if you save the *.shape file.
-//
-// created with http://www.draw2d.org
-//
-//
-var video_ToGray = CircuitFigure.extend({
-
-   NAME: "video_ToGray",
-   VERSION: "2.0.82_505",
-
-   init:function(attr, setter, getter)
-   {
-     var _this = this;
-
-     this._super( $.extend({stroke:0, bgColor:null, width:112,height:102},attr), setter, getter);
-     var port;
-     // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -5.357142857142858, y: 51.96078431372549 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input_port1");
-     port.setMaxFanOut(20);
-     // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.78571428571429, y: 50 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("output_port1");
-     port.setMaxFanOut(20);
-   },
-
-   createShapeElement : function()
-   {
-      var shape = this._super();
-      this.originalWidth = 112;
-      this.originalHeight= 102;
-      return shape;
-   },
-
-   createSet: function()
-   {
-       this.canvas.paper.setStart();
-       var shape = null;
-       // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L112,0 L112,102 L0,102");
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
-       shape.data("name","BoundingBox");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M0 0L112 0L112 102L0 102Z');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-
-       return this.canvas.paper.setFinish();
-   }
-});
-
 /**
  * Generated Code for the Draw2D touch HTML5 lib.
  * File will be generated if you save the *.shape file.
@@ -68,7 +10,7 @@ var video_ToGray = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_ToGray = video_ToGray.extend({
+video_ToBlackWhite = video_ToBlackWhite.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -114,15 +56,11 @@ video_ToGray = video_ToGray.extend({
             var imageData = event.data;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-              let average = (
-                pixels[x] +
-                pixels[x + 1] +
-                pixels[x + 2]
-                ) / 3;
-    
-                pixels[x] = average;
-                pixels[x + 1] = average;
-                pixels[x + 2] = average;
+                let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2]
+                let value= lum>0.5?255:0
+                pixels[x]     = value;
+                pixels[x + 1] = value;
+                pixels[x + 2] = value;
             }
             self.postMessage( imageData );
         }
@@ -136,6 +74,8 @@ video_ToGray = video_ToGray.extend({
         this.worker.onmessage =  (event) => {
             var imageData = event.data;
             var canvas = document.createElement('canvas');
+            canvas.width = imageData.width;
+            canvas.height = imageData.height;
             var context2d = canvas.getContext("2d");
             context2d.putImageData(imageData,0,0);
             var image = new Image()
