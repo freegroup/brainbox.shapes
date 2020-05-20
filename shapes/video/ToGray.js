@@ -7,21 +7,21 @@
 var video_ToGray = CircuitFigure.extend({
 
    NAME: "video_ToGray",
-   VERSION: "2.0.79_487",
+   VERSION: "2.0.80_488",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:10,height:10},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:112,height:102},attr), setter, getter);
      var port;
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 10;
-      this.originalHeight= 10;
+      this.originalWidth = 112;
+      this.originalHeight= 102;
       return shape;
    },
 
@@ -30,9 +30,14 @@ var video_ToGray = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L10,0 L10,10 L0,10");
+       shape = this.canvas.paper.path("M0,0 L112,0 L112,102 L0,102");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0 0L112 0L112 102L0 102Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
 
        return this.canvas.paper.setFinish();
@@ -54,9 +59,8 @@ var video_ToGray = CircuitFigure.extend({
 video_ToGray = video_ToGray.extend({
 
     init: function(attr, setter, getter){
-         this._super(attr, setter, getter);
+        this._super(attr, setter, getter);
 
-         // your special code here
     },
 
     /**
@@ -67,6 +71,7 @@ video_ToGray = video_ToGray.extend({
      **/
     calculate:function( context)
     {
+        this.worker.postMessage("Helloooooo");
     },
 
 
@@ -76,6 +81,10 @@ video_ToGray = video_ToGray.extend({
      **/
     onStart:function( context )
     {
+        var echo = function(){
+            console.log("hello")
+        }
+        this.worker = this.createWorker(echo)
     },
 
     /**
@@ -84,18 +93,19 @@ video_ToGray = video_ToGray.extend({
      **/
     onStop:function( context )
     {
+        this.worker.terminate();
+        delete this.worker;
     },
+    
 
     /**
-     * Get the simulator a hint which kind of hardware the shapes requires or supports
-     * This helps the simulator to bring up some dialogs and messages if any new hardware is connected/get lost
-     * and your are running a circuit which needs this kind of hardware...
-     **/
-    getRequiredHardware: function(){
-      return {
-        raspi: false,
-        arduino: false
-      }
+     *  Helper function to dynamically create Web Workers.
+     */
+    createWorker: function(fn) {
+        var blob = new Blob(["self.onmessage = ", fn.toString()], {
+           type: "text/javascript"
+        });
+        var url = window.URL.createObjectURL(blob);
+        return new Worker(url);
     }
-
 });
