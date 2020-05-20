@@ -7,7 +7,7 @@
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "2.0.80_488",
+   VERSION: "2.0.81_501",
 
    init:function(attr, setter, getter)
    {
