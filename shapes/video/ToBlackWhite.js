@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.82_505",
+   VERSION: "2.0.83_507",
 
    init:function(attr, setter, getter)
    {
@@ -119,8 +119,9 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var imageData = event.data;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2]
-                let value= lum>0.5?255:0
+                let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2];
+                console.log(lum);
+                let value= lum>50?255:0
                 pixels[x]     = value;
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;
