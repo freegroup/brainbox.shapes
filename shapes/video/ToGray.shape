@@ -1,3 +1,61 @@
 {
-  "draw2d": []
+  "draw2d": [
+    {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
+      "x": 469,
+      "y": 240.00000381469727,
+      "width": 112,
+      "height": 102,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Rectangle",
+        "baseClass": "draw2d.SetFigure",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        this.worker.postMessage(\"Helloooooo\");\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        var echo = function(){\n            console.log(\"hello\")\n        }\n        this.worker = this.createWorker(echo)\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    }\n});"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(48,48,48,1)",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 469,
+          "y": 240.00000381469727
+        },
+        {
+          "x": 581,
+          "y": 240.00000381469727
+        },
+        {
+          "x": 581,
+          "y": 342.00000381469727
+        },
+        {
+          "x": 469,
+          "y": 342.00000381469727
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
+    }
+  ]
 }
