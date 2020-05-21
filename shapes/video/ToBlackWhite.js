@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.96_540",
+   VERSION: "2.0.97_542",
 
    init:function(attr, setter, getter)
    {
@@ -180,8 +180,8 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     },
     
     imageToData: function(image){
-        var width = img.naturalWidth;
-        var height= img.naturalHeight;
+        var width = image.naturalWidth;
+        var height= image.naturalHeight;
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {
@@ -190,7 +190,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             this.tmpCanvas.height = height;
             this.tmpContext = this.tmpCanvas.getContext('2d');
         }
-        this.tmpContext.drawImage(img, 0, 0, width, height);
+        this.tmpContext.drawImage(image, 0, 0, width, height);
         return this.tmpContext.getImageData(0, 0, width, height);
     }
 });
