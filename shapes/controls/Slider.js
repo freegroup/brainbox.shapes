@@ -35,15 +35,20 @@ var controls_Slider = draw2d.shape.widget.Slider.extend({
     onStop: function (context) {
     },
 
-    getParameterSettings: function () {
-        return [
-            {
-                name: "value",
-                label: "Value",
-                property: {
-                    type: "string"
-                }
-            }];
+
+    getPersistentAttributes: function ()
+    {
+        let memento = this._super()
+        memento.value = this.getValue()
+        return memento
+    },
+
+    setPersistentAttributes: function (memento)
+    {
+        this._super(memento)
+        if(memento.value){
+            this.setValue(parseInt(memento.value))
+        }
     }
 
 });
