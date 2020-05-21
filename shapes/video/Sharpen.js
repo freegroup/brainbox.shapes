@@ -7,7 +7,7 @@
 var video_Sharpen = CircuitFigure.extend({
 
    NAME: "video_Sharpen",
-   VERSION: "2.0.115_576",
+   VERSION: "2.0.116_582",
 
    init:function(attr, setter, getter)
    {
@@ -97,6 +97,10 @@ video_Sharpen = video_Sharpen.extend({
         this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**

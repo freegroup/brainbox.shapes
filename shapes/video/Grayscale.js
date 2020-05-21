@@ -7,7 +7,7 @@
 var video_Grayscale = CircuitFigure.extend({
 
    NAME: "video_Grayscale",
-   VERSION: "2.0.115_576",
+   VERSION: "2.0.116_582",
 
    init:function(attr, setter, getter)
    {
@@ -97,6 +97,11 @@ video_Grayscale = video_Grayscale.extend({
         this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
+
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**

@@ -7,7 +7,7 @@
 var video_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_BlackWhite",
-   VERSION: "2.0.115_576",
+   VERSION: "2.0.116_582",
 
    init:function(attr, setter, getter)
    {
@@ -108,6 +108,10 @@ video_BlackWhite = video_BlackWhite.extend({
         this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -145,11 +149,10 @@ video_BlackWhite = video_BlackWhite.extend({
             threshold = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
+
                 let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
                 let value= lum>threshold?255:0;
-                pixels[x]     = value;
-                pixels[x + 1] = value;
-                pixels[x + 2] = value;
+                pixels[x] = pixels[x+1] = pixels[x+2] = value;
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
