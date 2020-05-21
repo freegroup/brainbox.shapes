@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
-      "x": 7944,
-      "y": 7949,
+      "x": 7939.5,
+      "y": 7939.5,
       "width": 112,
       "height": 102,
       "alpha": 1,
@@ -25,20 +25,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7944,
-          "y": 7949
+          "x": 7939.5,
+          "y": 7939.5
         },
         {
-          "x": 8056,
-          "y": 7949
+          "x": 8051.5,
+          "y": 7939.5
         },
         {
-          "x": 8056,
-          "y": 8051
+          "x": 8051.5,
+          "y": 8041.5
         },
         {
-          "x": 7944,
-          "y": 8051
+          "x": 7939.5,
+          "y": 8041.5
         }
       ],
       "blur": 0,
@@ -60,8 +60,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 7958.984375,
-      "y": 7986.0390625,
+      "x": 7954.484375,
+      "y": 7976.5390625,
       "width": 53.03125,
       "height": 21.375,
       "alpha": 1,
@@ -100,8 +100,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 7938,
-      "y": 7994,
+      "x": 7933.5,
+      "y": 7984.5,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -137,47 +137,9 @@
     },
     {
       "type": "shape_designer.figure.ExtPort",
-      "id": "bd65785a-5f94-d517-41bf-bb2fbe49a671",
-      "x": 7938,
-      "y": 8032.2724609375,
-      "width": 10,
-      "height": 10,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "input_port2",
-        "type": "Input",
-        "direction": 3,
-        "fanout": null
-      },
-      "cssClass": "shape_designer_figure_ExtPort",
-      "ports": [],
-      "bgColor": "rgba(55,177,222,1)",
-      "color": "rgba(27,27,27,1)",
-      "stroke": 1,
-      "dasharray": null,
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.FanoutFilter"
-        },
-        {
-          "name": "shape_designer.filter.PortDirectionFilter"
-        },
-        {
-          "name": "shape_designer.filter.PortTypeFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 8053,
-      "y": 7995,
+      "x": 8048.5,
+      "y": 7985.5,
       "width": 10,
       "height": 10,
       "alpha": 1,
