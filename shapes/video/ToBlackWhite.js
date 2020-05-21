@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.99_547",
+   VERSION: "2.0.100_548",
 
    init:function(attr, setter, getter)
    {
@@ -61,6 +61,16 @@ var video_ToBlackWhite = CircuitFigure.extend({
        shape = this.canvas.paper.text(0,0,'BlackWhite');
        shape.attr({"x":4,"y":68.48800000000028,"text-anchor":"start","text":"BlackWhite","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M7.2724609375 45.73301031250048L72.2724609375 45.73301031250048L72.2724609375 4.7330103125004825Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M29.24339200000213 46.73301031250048L25.049088000002484 54.33518631250081L32.65126400000281 54.33518631250081Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,8,41,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
 
        return this.canvas.paper.setFinish();
