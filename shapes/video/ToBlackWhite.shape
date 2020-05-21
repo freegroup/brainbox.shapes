@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
-      "x": 460,
-      "y": 240.51200381469727,
+      "x": 7960,
+      "y": 7959.787249999999,
       "width": 80,
       "height": 80,
       "alpha": 1,
@@ -25,20 +25,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 460,
-          "y": 240.51200381469727
+          "x": 7960,
+          "y": 7959.787249999999
         },
         {
-          "x": 540,
-          "y": 240.51200381469727
+          "x": 8040,
+          "y": 7959.787249999999
         },
         {
-          "x": 540,
-          "y": 320.51200381469727
+          "x": 8040,
+          "y": 8039.787249999999
         },
         {
-          "x": 460,
-          "y": 320.51200381469727
+          "x": 7960,
+          "y": 8039.787249999999
         }
       ],
       "blur": 0,
@@ -63,8 +63,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 455,
-      "y": 276.00000381469727,
+      "x": 7955,
+      "y": 7995.27525,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -75,7 +75,7 @@
         "name": "input_port1",
         "type": "Input",
         "direction": 3,
-        "fanout": 20
+        "fanout": null
       },
       "cssClass": "shape_designer_figure_ExtPort",
       "ports": [],
@@ -101,8 +101,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 534.992,
-      "y": 275.51200381469727,
+      "x": 8034.992,
+      "y": 7994.787249999999,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -139,9 +139,9 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 460,
-      "y": 297.00000381469727,
-      "width": 28.34375,
+      "x": 7960,
+      "y": 8016.27525,
+      "width": 58.03125,
       "height": 21.375,
       "alpha": 1,
       "selectable": true,
@@ -173,6 +173,44 @@
         },
         {
           "name": "shape_designer.filter.FontColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "9d29ea24-7652-4aae-625a-a9c7cb87615c",
+      "x": 7955,
+      "y": 8020.2724609375,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Port",
+        "type": "Input",
+        "direction": 3,
+        "fanout": 20
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(55,177,222,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
         }
       ]
     }
