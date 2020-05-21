@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.91_527",
+   VERSION: "2.0.92_528",
 
    init:function(attr, setter, getter)
    {
@@ -160,6 +160,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             canvas.width = imageData.width;
             canvas.height = imageData.height;
             var context2d = canvas.getContext("2d");
+            console.log(imageData)
             context2d.putImageData(imageData,0,0);
             var image = new Image()
             image.onload = () => {

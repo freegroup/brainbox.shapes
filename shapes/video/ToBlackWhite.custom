@@ -91,6 +91,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             canvas.width = imageData.width;
             canvas.height = imageData.height;
             var context2d = canvas.getContext("2d");
+            console.log(imageData)
             context2d.putImageData(imageData,0,0);
             var image = new Image()
             image.onload = () => {
