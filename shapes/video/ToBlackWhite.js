@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.94_534",
+   VERSION: "2.0.95_536",
 
    init:function(attr, setter, getter)
    {
@@ -119,8 +119,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             this.worker.postMessage( {
                 imageData: imageData,
                 threshold: threshold
-                }, 
-                [imageData.data.buffer] 
+                }
             );
         }
     },
@@ -139,7 +138,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var threshold = event.data.threshold;
             //console.log(imageData.data.buffer)
             // map offset from 0-5 => 0-255
-            offset = 255/5*threshold;
+            threshold = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
                 let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
@@ -149,8 +148,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
                 pixels[x + 2] = value;
             }
             self.postMessage(
-                imageData, 
-                [imageData.data.buffer] 
+                imageData
              );
         };
         
