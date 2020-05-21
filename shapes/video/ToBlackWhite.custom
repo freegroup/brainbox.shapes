@@ -28,8 +28,8 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        var offset = this.getInputPort("input_port2").getValue();
-        if(img instanceof HTMLImageElement && this.worker){
+        var threshold = this.getInputPort("input_port2").getValue();
+        if(img instanceof HTMLImageElement && this.worker!==null){
             var width = img.naturalWidth;
             var height= img.naturalHeight;
             // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
@@ -41,12 +41,9 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            this.worker.post( {
-                pixels: imageData.data.buffer,
-                width: width,
-                height: height,
-                channels: 4,
-                offset: offset
+            this.worker.postMessage( {
+                imageData: imageData,
+                threshold: threshold
                 }, 
                 [imageData.data.buffer] 
             )
@@ -63,24 +60,20 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         // the method which runs as WebWorker
         //
         var webWorkerFunction = function(event){
-            var imageData = new ImageData( new Uint8ClampedArray( event.data.pixels ), event.data.width, event.data.height );
-            var offset = event.data.offset;
+            var imageData = event.data.imageData;
+            var threshold = event.data.threshold;
             // map offset from 0-5 => 0-255
-            offset = 255/5*offset
+            offset = 255/5*threshold
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
                 let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2];
-                let value= lum>offset?255:0
+                let value= lum>threshold?255:0
                 pixels[x]     = value;
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;
             }
-            self.postMessage( {
-                pixels: imageData.data.buffer,
-                width: event.data.width,
-                height: event.data.height,
-                channels: 4
-                }, 
+            self.postMessage(
+                imageData, 
                 [imageData.data.buffer] 
              );
         }
@@ -92,7 +85,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         // The result event if the WebWorker has converted an pixelarray to another pixel array
         //
         this.worker.onmessage =  (event) => {
-            var imageData = new ImageData( new Uint8ClampedArray( event.data.pixels ), event.data.width, event.data.height );
+            var imageData = event.data.imageData;
             var canvas = document.createElement('canvas');
             canvas.width = imageData.width;
             canvas.height = imageData.height;
