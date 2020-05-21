@@ -7,7 +7,7 @@
 var video_Edge = CircuitFigure.extend({
 
    NAME: "video_Edge",
-   VERSION: "2.0.115_576",
+   VERSION: "2.0.116_581",
 
    init:function(attr, setter, getter)
    {
@@ -97,6 +97,10 @@ video_Edge = video_Edge.extend({
         this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
