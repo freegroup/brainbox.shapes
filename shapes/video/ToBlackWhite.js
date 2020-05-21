@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.94_533",
+   VERSION: "2.0.95_535",
 
    init:function(attr, setter, getter)
    {
@@ -84,6 +84,8 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         this.worker= null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
     },
@@ -117,8 +119,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             this.worker.postMessage( {
                 imageData: imageData,
                 threshold: threshold
-                }, 
-                [imageData.data.buffer] 
+                }
             );
         }
     },
@@ -147,8 +148,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
                 pixels[x + 2] = value;
             }
             self.postMessage(
-                imageData, 
-                [imageData.data.buffer] 
+                imageData
              );
         };
         
