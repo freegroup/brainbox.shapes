@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.93_532",
+   VERSION: "2.0.94_534",
 
    init:function(attr, setter, getter)
    {
@@ -84,6 +84,8 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         this.worker= null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
     },
@@ -103,22 +105,23 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var height= img.naturalHeight;
             // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
             //
-            var canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
-            var context2d = canvas.getContext('2d');
-            context2d.drawImage(img, 0, 0);
-            var imageData = context2d.getImageData(0, 0, width, height);
+            if(this.tmpContext === null ) {
+                this.tmpCanvas = document.createElement('canvas');
+                this.tmpCanvas.width = width;
+                this.tmpCanvas.height = height;
+                this.tmpContext = this.tmpCanvas.getContext('2d');
+            }
+            this.tmpContext.drawImage(img, 0, 0, width, height);
+            var imageData = this.tmpContext.getImageData(0, 0, width, height);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            console.log(imageData)
             this.worker.postMessage( {
                 imageData: imageData,
                 threshold: threshold
                 }, 
                 [imageData.data.buffer] 
-            )
+            );
         }
     },
 
@@ -136,11 +139,11 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var threshold = event.data.threshold;
             //console.log(imageData.data.buffer)
             // map offset from 0-5 => 0-255
-            offset = 255/5*threshold
+            offset = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2];
-                let value= lum>threshold?255:0
+                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
+                let value= lum>threshold?255:0;
                 pixels[x]     = value;
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;
@@ -149,26 +152,23 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
                 imageData, 
                 [imageData.data.buffer] 
              );
-        }
+        };
         
         // convert a js function to a WebWorker
         //
-        this.worker = this.createWorker(webWorkerFunction)
+        this.worker = this.createWorker(webWorkerFunction);
         
         // The result event if the WebWorker has converted an pixelarray to another pixel array
         //
         this.worker.onmessage =  (event) => {
             var imageData = event.data;
-            var canvas = document.createElement('canvas');
-            canvas.width = imageData.width;
-            canvas.height = imageData.height;
-            var context2d = canvas.getContext("2d");
-            context2d.putImageData(imageData,0,0);
-            var image = new Image()
+            
+            this.tmpContext.putImageData(imageData,0,0);
+            var image = new Image();
             image.onload = () => {
-                this.getOutputPort("output_port1").setValue(image)
+                this.getOutputPort("output_port1").setValue(image);
             }
-            image.src = canvas.toDataURL();
+            image.src = this.tmpCanvas.toDataURL();
         };
     },
 
@@ -180,7 +180,11 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     {
         this.worker.terminate();
         delete this.worker;
+        delete this.tmpContext;
+        delete this.tmpCanvas;
         this.worker = null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
     },
     
 

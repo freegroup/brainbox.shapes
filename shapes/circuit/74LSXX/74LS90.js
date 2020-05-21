@@ -7,7 +7,7 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "2.0.93_532",
+   VERSION: "2.0.94_534",
 
    init:function(attr, setter, getter)
    {
