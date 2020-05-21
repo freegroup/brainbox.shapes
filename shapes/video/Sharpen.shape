@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
-      "x": 7990.823773568589,
-      "y": 7971.2365825,
+      "x": 7960,
+      "y": 7959.1856112000005,
       "width": 80,
       "height": 80,
       "alpha": 1,
@@ -14,7 +14,7 @@
       "userData": {
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var convolute = function(pixels, weights, opaque) {\n                var side = Math.round(Math.sqrt(weights.length));\n                var halfSide = Math.floor(side/2);\n                var src = pixels.data;\n                var sw = pixels.width;\n                var sh = pixels.height;\n                // pad output by the convolution matrix\n                var w = sw;\n                var h = sh;\n                var output = Filters.createImageData(w, h);\n                var dst = output.data;\n                // go through the destination image pixels\n                var alphaFac = opaque ? 1 : 0;\n                for (var y=0; y= 0 && scy < sh && scx >= 0 && scx < sw;) {\n                          var srcOff = (scy*sw+scx)*4;\n                          var wt = weights[cy*side+cx];\n                          r += src[srcOff] * wt;\n                          g += src[srcOff+1] * wt;\n                          b += src[srcOff+2] * wt;\n                          a += src[srcOff+3] * wt;\n                        }\n                      }\n                    }\n                    dst[dstOff] = r;\n                    dst[dstOff+1] = g;\n                    dst[dstOff+2] = b;\n                    dst[dstOff+3] = a + alphaFac*(255-a);\n                  }\n                }\n                return output;\n            }\n            var imageData = event.data;\n            var pixels = imageData.data;\n            for( let x = 0; x < pixels.length; x += 4 ) {\n                // CIE luminance for the RGB\n                // The human eye is bad at seeing red and blue, so we de-emphasize them.\n                let average = 0.2126*pixels[x] + 0.7152*pixels[x+1] + 0.0722*pixels[x+2];\n                //let average = (pixels[x] + pixels[x+1] +pixels[x+2]) / 3;\n    \n                pixels[x]     = average;\n                pixels[x + 1] = average;\n                pixels[x + 2] = average;\n            }\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => {\n                this.getOutputPort(\"output_port1\").setValue(image);\n            }\n            image.src = this.tmpCanvas.toDataURL();\n        };\n        \n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    },\n    \n});",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data;\n            var opaque = false;\n            var weights =[  0, -1,  0,  -1,  5, -1,   0, -1,  0 ];\n            var side = Math.round(Math.sqrt(weights.length));\n            var halfSide = Math.floor(side/2);\n\n            var src = imageData.data;\n            var sw = imageData.width;\n            var sh = imageData.height;\n            var w = sw;\n            var h = sh;\n            var dst = new Uint8ClampedArray(w*h*4);\n            var alphaFac = opaque ? 1 : 0;\n\n            for (var y=0; y < h; y++) {\n              for (var x=0; x < w; x++) {\n                var sy = y;\n                var sx = x;\n                var dstOff = (y*w+x)*4;\n                var r=0, g=0, b=0, a=0;\n                for (var cy=0; cy<side; cy++) {\n                  for (var cx=0; cx<side; cx++) {\n                    var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));\n                    var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));\n                    var srcOff = (scy*sw+scx)*4;\n                    var wt = weights[cy*side+cx];\n                    r += src[srcOff] * wt;\n                    g += src[srcOff+1] * wt;\n                    b += src[srcOff+2] * wt;\n                    a += src[srcOff+3] * wt;\n                  }\n                }\n                dst[dstOff] = r;\n                dst[dstOff+1] = g;\n                dst[dstOff+2] = b;\n                dst[dstOff+3] = a + alphaFac*(255-a);\n              }\n            }\n            imageData.data.set(dst);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { this.getOutputPort(\"output_port1\").setValue(image);};\n            image.src = this.tmpCanvas.toDataURL();\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
         "markdown": "## Full Adder\n\nFull adder is developed to overcome the drawback of \nHalf Adder circuit. It can add two one-bit numbers \nA and B, and carry c. The full adder is a three \ninput and two output combinational circuit.\n\n\n\n|  A    |    B    |  Cin     |    S    |    C   |\n|:-----:|:-------:|:--------:|:--------:|:-------|\n|   0   |    0    |     0    |     0    |     0  |\n|   0   |    0    |     1    |     1    |     0  |\n|   0   |    1    |     0    |     1    |     0  |\n|   0   |    1    |     1    |     0    |     1  |\n|   1   |    0    |     0    |     0    |     1  |\n|   1   |    0    |     1    |     0    |     1  |\n|   1   |    1    |     0    |     0    |     1  |\n|   1   |    1    |     1    |     0    |     1  |\n",
         "type": "Output",
         "direction": 1
@@ -28,20 +28,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7990.823773568589,
-          "y": 7971.2365825
+          "x": 7960,
+          "y": 7959.1856112000005
         },
         {
-          "x": 8070.823773568589,
-          "y": 7971.2365825
+          "x": 8040,
+          "y": 7959.1856112000005
         },
         {
-          "x": 8070.823773568589,
-          "y": 8051.2365825
+          "x": 8040,
+          "y": 8039.1856112000005
         },
         {
-          "x": 7990.823773568589,
-          "y": 8051.2365825
+          "x": 7960,
+          "y": 8039.1856112000005
         }
       ],
       "blur": 0,
@@ -66,8 +66,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 7997.052573568589,
-      "y": 8027.1153601,
+      "x": 7966.2288,
+      "y": 8015.0643888,
       "width": 53.03125,
       "height": 21.375,
       "alpha": 1,
@@ -106,8 +106,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 7985.052573568589,
-      "y": 8006.1461825,
+      "x": 7954.2288,
+      "y": 7994.0952112,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -144,8 +144,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 8066.083823568589,
-      "y": 8006.1461825,
+      "x": 8035.26005,
+      "y": 7994.0952112,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -182,8 +182,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "a452e3a3-60f4-11d1-a604-704a88726bbc",
-      "x": 8022.323773568589,
-      "y": 7995.1153601,
+      "x": 7991.5,
+      "y": 7983.0643888,
       "width": 17,
       "height": 29,
       "alpha": 1,
@@ -202,108 +202,108 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 8023.462557636421,
-          "y": 8010.700878262953
+          "x": 7992.638784067832,
+          "y": 7998.6499069629535
         },
         {
-          "x": 8022.836386291908,
-          "y": 8012.113690208273
+          "x": 7992.012612723319,
+          "y": 8000.062718908273
         },
         {
-          "x": 8022.452907667985,
-          "y": 8013.619438658402
+          "x": 7991.629134099396,
+          "y": 8001.568467358403
         },
         {
-          "x": 8022.323773568589,
-          "y": 8015.172372208636
+          "x": 7991.5,
+          "y": 8003.121400908637
         },
         {
-          "x": 8022.452907667985,
-          "y": 8016.725305758869
+          "x": 7991.629134099396,
+          "y": 8004.674334458869
         },
         {
-          "x": 8022.836386291908,
-          "y": 8018.231054209001
+          "x": 7992.012612723319,
+          "y": 8006.180082909002
         },
         {
-          "x": 8023.462557636421,
-          "y": 8019.643866154323
+          "x": 7992.638784067832,
+          "y": 8007.592894854324
         },
         {
-          "x": 8024.312395802078,
-          "y": 8020.920814018787
+          "x": 7993.488622233489,
+          "y": 8008.869842718787
         },
         {
-          "x": 8025.360078886253,
-          "y": 8022.023098387694
+          "x": 7994.536305317664,
+          "y": 8009.972127087694
         },
         {
-          "x": 8026.573773568589,
-          "y": 8022.917226908295
+          "x": 7995.75,
+          "y": 8010.866255608295
         },
         {
-          "x": 8027.91660235032,
-          "y": 8023.57603193793
+          "x": 7997.092828781731,
+          "y": 8011.52506063793
         },
         {
-          "x": 8029.34776405842,
-          "y": 8023.979496019147
+          "x": 7998.523990489831,
+          "y": 8011.928524719147
         },
         {
-          "x": 8030.823773568589,
-          "y": 8024.1153601
+          "x": 8000,
+          "y": 8012.0643888
         },
         {
-          "x": 8032.299783078758,
-          "y": 8023.979496019147
+          "x": 8001.476009510169,
+          "y": 8011.928524719147
         },
         {
-          "x": 8033.730944786857,
-          "y": 8023.57603193793
+          "x": 8002.907171218269,
+          "y": 8011.52506063793
         },
         {
-          "x": 8035.073773568589,
-          "y": 8022.917226908295
+          "x": 8004.25,
+          "y": 8010.866255608295
         },
         {
-          "x": 8036.287468250925,
-          "y": 8022.023098387694
+          "x": 8005.463694682336,
+          "y": 8009.972127087694
         },
         {
-          "x": 8037.3351513351,
-          "y": 8020.920814018787
+          "x": 8006.511377766511,
+          "y": 8008.869842718787
         },
         {
-          "x": 8038.184989500757,
-          "y": 8019.643866154323
+          "x": 8007.361215932168,
+          "y": 8007.592894854324
         },
         {
-          "x": 8038.81116084527,
-          "y": 8018.231054209001
+          "x": 8007.987387276681,
+          "y": 8006.180082909002
         },
         {
-          "x": 8039.194639469193,
-          "y": 8016.725305758869
+          "x": 8008.370865900604,
+          "y": 8004.674334458869
         },
         {
-          "x": 8039.323773568589,
-          "y": 8015.172372208636
+          "x": 8008.5,
+          "y": 8003.121400908637
         },
         {
-          "x": 8039.194639469193,
-          "y": 8013.619438658402
+          "x": 8008.370865900604,
+          "y": 8001.568467358403
         },
         {
-          "x": 8038.81116084527,
-          "y": 8012.113690208273
+          "x": 8007.987387276681,
+          "y": 8000.062718908273
         },
         {
-          "x": 8038.184989500757,
-          "y": 8010.700878262953
+          "x": 8007.361215932168,
+          "y": 7998.6499069629535
         },
         {
-          "x": 8031.138372682924,
-          "y": 7995.1153601
+          "x": 8000.314599114335,
+          "y": 7983.0643888
         }
       ],
       "blur": 0,
@@ -322,8 +322,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "a124516b-f734-a921-a7f5-16b57e9050ea",
-      "x": 8009.323773568589,
-      "y": 7984.1461825,
+      "x": 7978.5,
+      "y": 7972.0952112,
       "width": 12,
       "height": 21,
       "alpha": 1,
@@ -342,108 +342,108 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 8010.127621145881,
-          "y": 7995.432247376622
+          "x": 7979.303847577292,
+          "y": 7983.381276076623
         },
         {
-          "x": 8009.685617843873,
-          "y": 7996.455318095645
+          "x": 7978.861844275284,
+          "y": 7984.404346795646
         },
         {
-          "x": 8009.414927050514,
-          "y": 7997.545687662982
+          "x": 7978.591153481925,
+          "y": 7985.494716362983
         },
         {
-          "x": 8009.323773568589,
-          "y": 7998.67022575108
+          "x": 7978.5,
+          "y": 7986.61925445108
         },
         {
-          "x": 8009.414927050514,
-          "y": 7999.79476383918
+          "x": 7978.591153481925,
+          "y": 7987.7437925391805
         },
         {
-          "x": 8009.685617843873,
-          "y": 8000.88513340652
+          "x": 7978.861844275284,
+          "y": 7988.834162106521
         },
         {
-          "x": 8010.127621145881,
-          "y": 8001.908204125544
+          "x": 7979.303847577292,
+          "y": 7989.857232825545
         },
         {
-          "x": 8010.727506909876,
-          "y": 8002.832890510154
+          "x": 7979.903733341287,
+          "y": 7990.781919210155
         },
         {
-          "x": 8011.467047910471,
-          "y": 8003.631096432469
+          "x": 7980.643274341882,
+          "y": 7991.58012513247
         },
         {
-          "x": 8012.323773568588,
-          "y": 8004.278568809454
+          "x": 7981.499999999999,
+          "y": 7992.227597509454
         },
         {
-          "x": 8013.271652708634,
-          "y": 8004.755634520572
+          "x": 7982.447879140045,
+          "y": 7992.704663220573
         },
         {
-          "x": 8014.281884502585,
-          "y": 8005.04779816559
+          "x": 7983.458110933996,
+          "y": 7992.996826865591
         },
         {
-          "x": 8015.323773568589,
-          "y": 8005.1461825
+          "x": 7984.5,
+          "y": 7993.0952112
         },
         {
-          "x": 8016.365662634593,
-          "y": 8005.04779816559
+          "x": 7985.541889066004,
+          "y": 7992.996826865591
         },
         {
-          "x": 8017.375894428544,
-          "y": 8004.755634520572
+          "x": 7986.552120859955,
+          "y": 7992.704663220573
         },
         {
-          "x": 8018.32377356859,
-          "y": 8004.278568809454
+          "x": 7987.500000000001,
+          "y": 7992.227597509454
         },
         {
-          "x": 8019.180499226707,
-          "y": 8003.631096432469
+          "x": 7988.356725658118,
+          "y": 7991.58012513247
         },
         {
-          "x": 8019.920040227302,
-          "y": 8002.832890510154
+          "x": 7989.096266658713,
+          "y": 7990.781919210155
         },
         {
-          "x": 8020.519925991297,
-          "y": 8001.908204125544
+          "x": 7989.696152422708,
+          "y": 7989.857232825545
         },
         {
-          "x": 8020.961929293305,
-          "y": 8000.88513340652
+          "x": 7990.138155724716,
+          "y": 7988.834162106521
         },
         {
-          "x": 8021.232620086664,
-          "y": 7999.79476383918
+          "x": 7990.408846518075,
+          "y": 7987.7437925391805
         },
         {
-          "x": 8021.323773568589,
-          "y": 7998.67022575108
+          "x": 7990.5,
+          "y": 7986.61925445108
         },
         {
-          "x": 8021.232620086664,
-          "y": 7997.545687662982
+          "x": 7990.408846518075,
+          "y": 7985.494716362983
         },
         {
-          "x": 8020.961929293305,
-          "y": 7996.455318095645
+          "x": 7990.138155724716,
+          "y": 7984.404346795646
         },
         {
-          "x": 8020.519925991297,
-          "y": 7995.432247376622
+          "x": 7989.696152422708,
+          "y": 7983.381276076623
         },
         {
-          "x": 8015.545843531649,
-          "y": 7984.1461825
+          "x": 7984.72206996306,
+          "y": 7972.0952112
         }
       ],
       "blur": 0,
@@ -462,8 +462,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "64e8b429-3f7b-e6c0-2718-68e3e145637a",
-      "x": 8044.727792768589,
-      "y": 7995.1153601,
+      "x": 8013.9040192,
+      "y": 7983.0643888,
       "width": 12,
       "height": 21,
       "alpha": 1,
@@ -482,108 +482,108 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 8045.531640345882,
-          "y": 8006.4014249766215
+          "x": 8014.707866777293,
+          "y": 7994.350453676622
         },
         {
-          "x": 8045.089637043874,
-          "y": 8007.424495695645
+          "x": 8014.265863475285,
+          "y": 7995.373524395646
         },
         {
-          "x": 8044.818946250516,
-          "y": 8008.5148652629805
+          "x": 8013.995172681927,
+          "y": 7996.463893962981
         },
         {
-          "x": 8044.727792768589,
-          "y": 8009.6394033510815
+          "x": 8013.9040192,
+          "y": 7997.588432051082
         },
         {
-          "x": 8044.818946250516,
-          "y": 8010.7639414391815
+          "x": 8013.995172681927,
+          "y": 7998.712970139182
         },
         {
-          "x": 8045.089637043874,
-          "y": 8011.854311006518
+          "x": 8014.265863475285,
+          "y": 7999.803339706519
         },
         {
-          "x": 8045.531640345882,
-          "y": 8012.877381725544
+          "x": 8014.707866777293,
+          "y": 8000.826410425545
         },
         {
-          "x": 8046.131526109875,
-          "y": 8013.802068110154
+          "x": 8015.307752541286,
+          "y": 8001.751096810155
         },
         {
-          "x": 8046.871067110469,
-          "y": 8014.6002740324675
+          "x": 8016.04729354188,
+          "y": 8002.549302732468
         },
         {
-          "x": 8047.727792768589,
-          "y": 8015.2477464094545
+          "x": 8016.9040192,
+          "y": 8003.196775109455
         },
         {
-          "x": 8048.675671908634,
-          "y": 8015.724812120569
+          "x": 8017.851898340045,
+          "y": 8003.67384082057
         },
         {
-          "x": 8049.685903702588,
-          "y": 8016.016975765589
+          "x": 8018.862130133999,
+          "y": 8003.96600446559
         },
         {
-          "x": 8050.727792768589,
-          "y": 8016.1153601
+          "x": 8019.9040192,
+          "y": 8004.0643888
         },
         {
-          "x": 8051.76968183459,
-          "y": 8016.016975765589
+          "x": 8020.945908266001,
+          "y": 8003.96600446559
         },
         {
-          "x": 8052.779913628544,
-          "y": 8015.724812120569
+          "x": 8021.956140059955,
+          "y": 8003.67384082057
         },
         {
-          "x": 8053.727792768589,
-          "y": 8015.2477464094545
+          "x": 8022.9040192,
+          "y": 8003.196775109455
         },
         {
-          "x": 8054.584518426709,
-          "y": 8014.6002740324675
+          "x": 8023.76074485812,
+          "y": 8002.549302732468
         },
         {
-          "x": 8055.324059427303,
-          "y": 8013.802068110154
+          "x": 8024.500285858714,
+          "y": 8001.751096810155
         },
         {
-          "x": 8055.923945191296,
-          "y": 8012.877381725544
+          "x": 8025.100171622707,
+          "y": 8000.826410425545
         },
         {
-          "x": 8056.365948493304,
-          "y": 8011.854311006518
+          "x": 8025.542174924715,
+          "y": 7999.803339706519
         },
         {
-          "x": 8056.636639286662,
-          "y": 8010.7639414391815
+          "x": 8025.812865718073,
+          "y": 7998.712970139182
         },
         {
-          "x": 8056.727792768589,
-          "y": 8009.6394033510815
+          "x": 8025.9040192,
+          "y": 7997.588432051082
         },
         {
-          "x": 8056.636639286662,
-          "y": 8008.5148652629805
+          "x": 8025.812865718073,
+          "y": 7996.463893962981
         },
         {
-          "x": 8056.365948493304,
-          "y": 8007.424495695645
+          "x": 8025.542174924715,
+          "y": 7995.373524395646
         },
         {
-          "x": 8055.923945191296,
-          "y": 8006.4014249766215
+          "x": 8025.100171622707,
+          "y": 7994.350453676622
         },
         {
-          "x": 8050.949862731649,
-          "y": 7995.1153601
+          "x": 8020.12608916306,
+          "y": 7983.0643888
         }
       ],
       "blur": 0,
