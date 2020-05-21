@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.85_516",
+   VERSION: "2.0.86_518",
 
    init:function(attr, setter, getter)
    {
@@ -21,17 +21,17 @@ var video_ToBlackWhite = CircuitFigure.extend({
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
+     // input_port2
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 81.36021635212748 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port2");
+     port.setMaxFanOut(20);
      // output_port1
      port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 49.696849219759294 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
-     port.setMaxFanOut(20);
-     // Port
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 81.36021635212748 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("Port");
      port.setMaxFanOut(20);
    },
 
@@ -97,6 +97,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
+        var offset = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker){
             var width = img.naturalWidth;
             var height= img.naturalHeight;
@@ -108,7 +109,10 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var imageData = context2d.getImageData(0, 0, width, height);
             // push it to the WebWorker
             //
-            this.worker.postMessage(imageData);
+            this.worker.postMessage({
+                imageData,
+                offset
+            });
         }
     },
 
@@ -122,11 +126,14 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         // the method which runs as WebWorker
         //
         var webWorkerFunction = function(event){
-            var imageData = event.data;
+            var imageData = event.data.imageData;
+            var offset = event.data.offset;
+            // map offset from 0-5 => 0-255
+            offset = 255/5*offset
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
                 let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2];
-                let value= lum>50?255:0
+                let value= lum>offset?255:0
                 pixels[x]     = value;
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;

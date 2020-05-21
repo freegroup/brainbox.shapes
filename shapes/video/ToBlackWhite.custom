@@ -28,6 +28,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
+        var offset = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker){
             var width = img.naturalWidth;
             var height= img.naturalHeight;
@@ -39,7 +40,10 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var imageData = context2d.getImageData(0, 0, width, height);
             // push it to the WebWorker
             //
-            this.worker.postMessage(imageData);
+            this.worker.postMessage({
+                imageData,
+                offset
+            });
         }
     },
 
@@ -53,11 +57,14 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         // the method which runs as WebWorker
         //
         var webWorkerFunction = function(event){
-            var imageData = event.data;
+            var imageData = event.data.imageData;
+            var offset = event.data.offset;
+            // map offset from 0-5 => 0-255
+            offset = 255/5*offset
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
                 let lum = .2126 * pixels[x] + .7152 * pixels[x+1] + .0722 * pixels[x+2];
-                let value= lum>50?255:0
+                let value= lum>offset?255:0
                 pixels[x]     = value;
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;
