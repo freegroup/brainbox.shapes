@@ -7,7 +7,7 @@
 var video_ToGray = CircuitFigure.extend({
 
    NAME: "video_ToGray",
-   VERSION: "2.0.84_511",
+   VERSION: "2.0.85_516",
 
    init:function(attr, setter, getter)
    {
@@ -16,7 +16,7 @@ var video_ToGray = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:112,height:102},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -5.357142857142858, y: 51.96078431372549 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.8928571428571429, y: 49.01960784313725 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
