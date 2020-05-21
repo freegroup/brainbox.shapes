@@ -7,7 +7,7 @@
 var video_ToGray = CircuitFigure.extend({
 
    NAME: "video_ToGray",
-   VERSION: "2.0.90_526",
+   VERSION: "2.0.91_527",
 
    init:function(attr, setter, getter)
    {
