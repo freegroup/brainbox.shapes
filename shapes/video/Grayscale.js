@@ -7,22 +7,22 @@
 var video_Grayscale = CircuitFigure.extend({
 
    NAME: "video_Grayscale",
-   VERSION: "2.0.110_565",
+   VERSION: "2.0.111_566",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80.125,height:82.63839999999982},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:141.77254713717684,height:108.67183999999997},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9429953198129615, y: 48.29425545509114 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 42.9504677504726, y: 60.68089028399641 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.18804992199671, y: 48.29425545509114 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.10627939120968, y: 60.68089028399641 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -32,8 +32,8 @@ var video_Grayscale = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80.125;
-      this.originalHeight= 82.63839999999982;
+      this.originalWidth = 141.77254713717684;
+      this.originalHeight= 108.67183999999997;
       return shape;
    },
 
@@ -42,19 +42,24 @@ var video_Grayscale = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80.125,0 L80.125,82.63839999999982 L0,82.63839999999982");
+       shape = this.canvas.paper.path("M0,0 L141.77254713717684,0 L141.77254713717684,108.67183999999997 L0,108.67183999999997");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0.015625,3Q0.015625,0 3.015625, 0L77.015625,0Q80.015625,0 80.015625, 3L80.015625,77Q80.015625,80 77.015625, 80L3.015625,80Q0.015625,80 0.015625, 77L0.015625,3');
+       shape = this.canvas.paper.path('M61.66317213717684,29.033440000000155Q61.66317213717684,26.033440000000155 64.66317213717684, 26.033440000000155L138.66317213717684,26.033440000000155Q141.66317213717684,26.033440000000155 141.66317213717684, 29.033440000000155L141.66317213717684,103.03344000000016Q141.66317213717684,106.03344000000016 138.66317213717684, 106.03344000000016L64.66317213717684,106.03344000000016Q61.66317213717684,106.03344000000016 61.66317213717684, 103.03344000000016L61.66317213717684,29.033440000000155');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Label
        shape = this.canvas.paper.text(0,0,'Grayscale');
-       shape.attr({"x":4,"y":70.13839999999982,"text-anchor":"start","text":"Grayscale","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":65.64754713717684,"y":96.17183999999997,"text-anchor":"start","text":"Grayscale","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
+       
+       // Circle
+       shape = this.canvas.paper.path('M1.1387840678316934 15.585518162953122L0.5126127233188527 16.998330108272967L0.12913409939574194 18.504078558402398L0 20.057012108636627L0.12913409939574194 21.609945658869037L0.5126127233188527 23.115694109001197L1.1387840678316934 24.52850605432377L1.988622233488968 25.805453918786952L3.0363053176643007 26.907738287693974L4.25 27.801866808295017L5.592828781731441 28.460671837930022L7.023990489830794 28.864135919146975L8.5 29L9.976009510169206 28.864135919146975L11.407171218268559 28.460671837930022L12.75 27.801866808295017L13.9636946823357 26.907738287693974L15.011377766511032 25.805453918786952L15.861215932168307 24.52850605432377L16.487387276681147 23.115694109001197L16.870865900604258 21.609945658869037L17 20.057012108636627L16.870865900604258 18.504078558402398L16.487387276681147 16.998330108272967L15.861215932168307 15.585518162953122L8.81459911433467 0Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(172,170,173,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Circle");
        
 
        return this.canvas.paper.setFinish();
