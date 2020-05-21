@@ -30,13 +30,13 @@ video_Brighter = video_Brighter.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        var threshold = this.getInputPort("input_port2").getValue();
+        var adjustment = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
+            this.worker.postMessage({imageData: imageData,adjustment: adjustment}, [imageData.data.buffer]);
         }
     },
 
@@ -51,16 +51,14 @@ video_Brighter = video_Brighter.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data.imageData;
-            var threshold = event.data.threshold;
+            var adjustment = event.data.adjustment;
             // map offset from 0-5 => 0-255
-            threshold = 255/5*threshold;
+            adjustment = 255/5*adjustment;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
-                let value= lum>threshold?255:0;
-                pixels[x]     = value;
-                pixels[x + 1] = value;
-                pixels[x + 2] = value;
+                pixels[x]     = Math.max(255,pixels[x]+adjustment);
+                pixels[x + 1] = Math.max(255,pixels[x+1]+adjustment);
+                pixels[x + 2] = Math.max(255,pixels[x+2]+adjustment);
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
