@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.92_530",
+   VERSION: "2.0.93_532",
 
    init:function(attr, setter, getter)
    {
@@ -103,13 +103,16 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var height= img.naturalHeight;
             // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
             //
-            var canvas = new OffscreenCanvas(width, height);
+            var canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
             var context2d = canvas.getContext('2d');
             context2d.drawImage(img, 0, 0);
             var imageData = context2d.getImageData(0, 0, width, height);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            console.log(imageData)
             this.worker.postMessage( {
                 imageData: imageData,
                 threshold: threshold
@@ -131,7 +134,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         var webWorkerFunction = function(event){
             var imageData = event.data.imageData;
             var threshold = event.data.threshold;
-            console.log(imageData.data.buffer)
+            //console.log(imageData.data.buffer)
             // map offset from 0-5 => 0-255
             offset = 255/5*threshold
             var pixels = imageData.data;
