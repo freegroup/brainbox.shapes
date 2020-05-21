@@ -7,7 +7,7 @@
 var video_Detector = CircuitFigure.extend({
 
    NAME: "video_Detector",
-   VERSION: "2.0.104_554",
+   VERSION: "2.0.105_557",
 
    init:function(attr, setter, getter)
    {
@@ -16,7 +16,7 @@ var video_Detector = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:121,height:80},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.4132231404958678, y: 50 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.4132231404958678, y: 48.75 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
