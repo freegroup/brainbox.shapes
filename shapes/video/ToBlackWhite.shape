@@ -63,8 +63,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 7955,
-      "y": 7995.27525,
+      "x": 7953.5,
+      "y": 7994.77525,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -101,7 +101,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 8034.992,
+      "x": 8036.492,
       "y": 7994.787249999999,
       "width": 10,
       "height": 10,
@@ -179,7 +179,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "9d29ea24-7652-4aae-625a-a9c7cb87615c",
-      "x": 7955,
+      "x": 7953.5,
       "y": 8020.2724609375,
       "width": 10,
       "height": 10,
