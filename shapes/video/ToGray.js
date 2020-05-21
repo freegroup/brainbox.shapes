@@ -7,7 +7,7 @@
 var video_ToGray = CircuitFigure.extend({
 
    NAME: "video_ToGray",
-   VERSION: "2.0.97_541",
+   VERSION: "2.0.98_544",
 
    init:function(attr, setter, getter)
    {
@@ -78,6 +78,8 @@ video_ToGray = video_ToGray.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         this.worker= null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
     },
@@ -91,18 +93,13 @@ video_ToGray = video_ToGray.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker){
-            var width = img.naturalWidth;
-            var height= img.naturalHeight;
-            // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
+        var threshold = this.getInputPort("input_port2").getValue();
+        if(img instanceof HTMLImageElement && this.worker!==null){
+            var imageData = this.imageToData(img);
+            // Push it to the WebWorker with "Transferable Objects"
+            // Passing data by reference instead of structure clone
             //
-            var canvas = new OffscreenCanvas(width, height);
-            var context2d = canvas.getContext('2d');
-            context2d.drawImage(img, 0, 0);
-            var imageData = context2d.getImageData(0, 0, width, height);
-            // push it to the WebWorker
-            //
-            this.worker.postMessage(imageData);
+            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
         }
     },
 
@@ -115,8 +112,11 @@ video_ToGray = video_ToGray.extend({
     {
         // the method which runs as WebWorker
         //
-        var webWorkerFunction = function(event){
-            var imageData = event.data;
+        var workerFunction = function(event){
+            var imageData = event.data.imageData;
+            var threshold = event.data.threshold;
+            // map offset from 0-5 => 0-255
+            threshold = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
                 let average = (pixels[x] + pixels[x+1] +pixels[x+2]) / 3;
@@ -125,28 +125,25 @@ video_ToGray = video_ToGray.extend({
                 pixels[x + 1] = average;
                 pixels[x + 2] = average;
             }
-            self.postMessage( imageData );
-        }
+            self.postMessage(imageData, [imageData.data.buffer]);
+        };
+        
+        // the method which receives the WebWorker result
+        //
+       var receiverFunction = (event) => {
+            var imageData = event.data;
+            this.tmpContext.putImageData(imageData,0,0);
+            var image = new Image();
+            image.onload = () => {
+                this.getOutputPort("output_port1").setValue(image);
+            }
+            image.src = this.tmpCanvas.toDataURL();
+        };
         
         // convert a js function to a WebWorker
         //
-        this.worker = this.createWorker(webWorkerFunction)
-        
-        // The result event if the WebWorker has converted an pixelarray to another pixel array
-        //
-        this.worker.onmessage =  (event) => {
-            var imageData = event.data;
-            var canvas = document.createElement('canvas');
-            canvas.width = imageData.width;
-            canvas.height = imageData.height;
-            var context2d = canvas.getContext("2d");
-            context2d.putImageData(imageData,0,0);
-            var image = new Image()
-            image.onload = () => {
-                this.getOutputPort("output_port1").setValue(image)
-            }
-            image.src = canvas.toDataURL();
-        };
+        this.worker = this.createWorker(workerFunction);
+        this.worker.onmessage = receiverFunction
     },
 
     /**
@@ -157,7 +154,11 @@ video_ToGray = video_ToGray.extend({
     {
         this.worker.terminate();
         delete this.worker;
+        delete this.tmpContext;
+        delete this.tmpCanvas;
         this.worker = null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
     },
     
 
@@ -170,5 +171,20 @@ video_ToGray = video_ToGray.extend({
         });
         var url = window.URL.createObjectURL(blob);
         return new Worker(url);
+    },
+    
+    imageToData: function(image){
+        var width = image.naturalWidth;
+        var height= image.naturalHeight;
+        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
+        //
+        if(this.tmpContext === null ) {
+            this.tmpCanvas = document.createElement('canvas');
+            this.tmpCanvas.width = width;
+            this.tmpCanvas.height = height;
+            this.tmpContext = this.tmpCanvas.getContext('2d');
+        }
+        this.tmpContext.drawImage(image, 0, 0, width, height);
+        return this.tmpContext.getImageData(0, 0, width, height);
     }
 });
