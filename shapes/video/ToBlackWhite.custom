@@ -42,13 +42,13 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             // Passing data by reference instead of structure clone
             //
             this.worker.post( {
-                pixels: pixels.data.buffer,
+                pixels: imageData.data.buffer,
                 width: width,
                 height: height,
                 channels: 4,
                 offset: offset
                 }, 
-                [pixels.data.buffer] 
+                [imageData.data.buffer] 
             )
         }
     },

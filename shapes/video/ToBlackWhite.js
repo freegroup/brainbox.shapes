@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.87_519",
+   VERSION: "2.0.88_521",
 
    init:function(attr, setter, getter)
    {
@@ -111,13 +111,13 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             // Passing data by reference instead of structure clone
             //
             this.worker.post( {
-                pixels: pixels.data.buffer,
+                pixels: imageData.data.buffer,
                 width: width,
                 height: height,
                 channels: 4,
                 offset: offset
                 }, 
-                [pixels.data.buffer] 
+                [imageData.data.buffer] 
             )
         }
     },
