@@ -4,31 +4,31 @@
 // created with http://www.draw2d.org
 //
 //
-var video_Brighter = CircuitFigure.extend({
+var video_BlackWhite = CircuitFigure.extend({
 
-   NAME: "video_Brighter",
+   NAME: "video_BlackWhite",
    VERSION: "2.0.110_564",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:84.4852109375006},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:81.98800000000028},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 47.92318034212164 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 49.38283651266057 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // input_port2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 77.51085688351353 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 79.87170188015365 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port2");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 47.93738401145803 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 49.397472800897525 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -39,7 +39,7 @@ var video_Brighter = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 84.4852109375006;
+      this.originalHeight= 81.98800000000028;
       return shape;
    },
 
@@ -48,7 +48,7 @@ var video_Brighter = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,84.4852109375006 L0,84.4852109375006");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,81.98800000000028 L0,81.98800000000028");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -58,68 +58,28 @@ var video_Brighter = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Brighter');
-       shape.attr({"x":16.417600000006132,"y":72.4852109375006,"text-anchor":"start","text":"Brighter","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'BlackWhite');
+       shape.attr({"x":5.5,"y":69.98800000000028,"text-anchor":"start","text":"BlackWhite","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M7.2724609375 45.73301031250048L72.2724609375 45.73301031250048L72.2724609375 4.7330103125004825Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M53.360640000001695 47.41166200000043L49.16633600000205 55.01383800000076L56.768512000002374 55.01383800000076Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,8,41,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'adjustment');
-       shape.attr({"x":14.2724609375,"y":53.40215900000749,"text-anchor":"start","text":"adjustment","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'threshold');
+       shape.attr({"x":13.2724609375,"y":52.597375000000284,"text-anchor":"start","text":"threshold","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
-       
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":12.5,"ry":12.5,"cx":38.946079999991525,"cy":28.368606000007276,"stroke":"rgba(224,215,88,1)","stroke-width":1,"fill":"rgba(245,229,2,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
        
        // Line
        shape = this.canvas.paper.path('M11.417600000006132 53.26363000000765L7.485440000008566,53.26363000000856L0.4075520000042161,64.01153400000749');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M6.699008000003232 15.335102000001825L21.37907200000427,22.150846000003185');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M6.980416000002151 31.869438000003356L19.039040000001478,29.510142000003725');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M16.961152000002585 44.733758000004855L23.2526080000016,38.44230200000493');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M55.25344000000314 14.868606000007276L69.40921600000456,6.217854000004991');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M57.36985600000389 26.16006200000811L71.26348800000414,25.897918000008758');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M54.505535999998756 34.830078000004505L64.99129599999651,39.81081400000767');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M48.7576319999971 43.500094000008175L50.5926399999953,45.597246000008454L52.427647999994406,47.69439800000964');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M18.1060479999951 6.557054000005337L21.776063999993312,9.571710000007442L25.446079999991525,12.586366000008638');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M39.62111999999979 3.4305900000053953L39.621119999996154,6.052030000006198L39.621119999993425,9.984190000007402');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(240,240,38,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
 
@@ -139,7 +99,7 @@ var video_Brighter = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_Brighter = video_Brighter.extend({
+video_BlackWhite = video_BlackWhite.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -159,13 +119,13 @@ video_Brighter = video_Brighter.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        var adjustment = this.getInputPort("input_port2").getValue();
+        var threshold = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            this.worker.postMessage({imageData: imageData,adjustment: adjustment}, [imageData.data.buffer]);
+            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
         }
     },
 
@@ -180,15 +140,16 @@ video_Brighter = video_Brighter.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data.imageData;
-            var adjustment = event.data.adjustment;
+            var threshold = event.data.threshold;
             // map offset from 0-5 => 0-255
-            adjustment = 255/5*adjustment;
-            console.log(adjustment)
+            threshold = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                pixels[x]     = Math.min(255,pixels[x  ]+adjustment);
-                pixels[x + 1] = Math.min(255,pixels[x+1]+adjustment);
-                pixels[x + 2] = Math.min(255,pixels[x+2]+adjustment);
+                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
+                let value= lum>threshold?255:0;
+                pixels[x]     = value;
+                pixels[x + 1] = value;
+                pixels[x + 2] = value;
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
