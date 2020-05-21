@@ -10,7 +10,7 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_Sharpen = video_Sharpen.extend({
+video_Edge = video_Edge.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -50,9 +50,11 @@ video_Sharpen = video_Sharpen.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data;
-            var opaque = false;
-            var weights =[  0, -1,  0,  -1,  5, -1,   0, -1,  0 ];
-            var side = Math.round(Math.sqrt(weights.length));
+            var opaque = true;
+            var weights =[  1,   1,  1,  
+                            1, 0.7, -1,  
+                           -1,  -1, -1 ];
+            var side     = Math.round(Math.sqrt(weights.length));
             var halfSide = Math.floor(side/2);
 
             var src = imageData.data;
