@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var video_Grayscale = CircuitFigure.extend({
+var video_Sharpen = CircuitFigure.extend({
 
-   NAME: "video_Grayscale",
+   NAME: "video_Sharpen",
    VERSION: "2.0.112_568",
 
    init:function(attr, setter, getter)
@@ -88,7 +88,7 @@ var video_Grayscale = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_Grayscale = video_Grayscale.extend({
+video_Sharpen = video_Sharpen.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
