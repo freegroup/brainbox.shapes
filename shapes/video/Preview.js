@@ -7,22 +7,22 @@
 var video_Preview = CircuitFigure.extend({
 
    NAME: "video_Preview",
-   VERSION: "2.0.98_544",
+   VERSION: "2.0.99_545",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:121,height:80},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.4132231404958678, y: 50 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 50 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.71485619834695, y: 50 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 102.5, y: 50 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -32,7 +32,7 @@ var video_Preview = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 121;
+      this.originalWidth = 80;
       this.originalHeight= 80;
       return shape;
    },
@@ -42,48 +42,33 @@ var video_Preview = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L121,0 L121,80 L0,80");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,80 L0,80");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M1,3Q1,0 4, 0L118,0Q121,0 121, 3L121,77Q121,80 118, 80L4,80Q1,80 1, 77L1,3');
+       shape = this.canvas.paper.path('M0,3Q0,0 3, 0L77,0Q80,0 80, 3L80,77Q80,80 77, 80L3,80Q0,80 0, 77L0,3');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M4.5,3.5085840000001554Q4.5,1.5085840000001554 6.5, 1.5085840000001554L75.5,1.5085840000001554Q77.5,1.5085840000001554 77.5, 3.5085840000001554L77.5,51.508584000000155Q77.5,53.508584000000155 75.5, 53.508584000000155L6.5,53.508584000000155Q4.5,53.508584000000155 4.5, 51.508584000000155L4.5,3.5085840000001554');
+       shape = this.canvas.paper.path('M3.5,3.5085840000001554Q3.5,1.5085840000001554 5.5, 1.5085840000001554L74.5,1.5085840000001554Q76.5,1.5085840000001554 76.5, 3.5085840000001554L76.5,51.508584000000155Q76.5,53.508584000000155 74.5, 53.508584000000155L5.5,53.508584000000155Q3.5,53.508584000000155 3.5, 51.508584000000155L3.5,3.5085840000001554');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(240,243,243,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M24.872197764576413 34.69697836850173L24.699999999999818 34.69697836850173L24.699999999999818 48.328520000000026L43.69999999999982 48.328520000000026L43.69999999999982 34.69697836850173L43.52780223542322 34.69697836850173L43.39973483853282 33.84124771412098L42.97828481194847 32.92176425057005L42.29011104337951 32.05903235089045L41.356123344550724 31.27926568728435L40.20470045907223 30.606157075243573L38.870827788668976 30.060158579344716L37.39503437946041 29.657860087585505L35.822161467396654 29.41148523607808L34.19999999999982 29.328520000000026L32.57783853260298 29.41148523607808L31.004965620539224 29.657860087585505L29.52917221133066 30.060158579344716L28.195299540927408 30.606157075243573L27.043876655448912 31.27926568728435L26.109888956620125 32.05903235089045L25.421715188051166 32.92176425057005L25.000265161466814 33.84124771412098L24.872197764576413 34.69697836850173Z');
+       shape = this.canvas.paper.path('M23.872197764576413 34.69697836850173L23.699999999999818 34.69697836850173L23.699999999999818 48.328520000000026L42.69999999999982 48.328520000000026L42.69999999999982 34.69697836850173L42.52780223542322 34.69697836850173L42.39973483853282 33.84124771412098L41.97828481194847 32.92176425057005L41.29011104337951 32.05903235089045L40.356123344550724 31.27926568728435L39.20470045907223 30.606157075243573L37.870827788668976 30.060158579344716L36.39503437946041 29.657860087585505L34.822161467396654 29.41148523607808L33.19999999999982 29.328520000000026L31.577838532602982 29.41148523607808L30.004965620539224 29.657860087585505L28.52917221133066 30.060158579344716L27.195299540927408 30.606157075243573L26.043876655448912 31.27926568728435L25.109888956620125 32.05903235089045L24.421715188051166 32.92176425057005L24.000265161466814 33.84124771412098L23.872197764576413 34.69697836850173Z');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(149,192,106,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Circle
        shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":8,"ry":8.5,"cx":33.69999999999982,"cy":17.828520000000026,"stroke":"none","stroke-width":0,"fill":"rgba(149,192,106,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"rx":8,"ry":8.5,"cx":32.69999999999982,"cy":17.828520000000026,"stroke":"none","stroke-width":0,"fill":"rgba(149,192,106,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
-       // Rectangle
-       shape = this.canvas.paper.path('M19.199999999999818 8.450120000000425L48.19999999999982 8.450120000000425L48.19999999999982 32.450120000000425L19.199999999999818 32.450120000000425Z');
-       shape.attr({"stroke":"rgba(255,23,77,1)","stroke-width":2,"fill":"rgba(0,0,0,0)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
        // Label
-       shape = this.canvas.paper.text(0,0,'Detect:');
-       shape.attr({"x":4,"y":67.50858400000016,"text-anchor":"start","text":"Detect:","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // objectClass
-       shape = this.canvas.paper.text(0,0,'person');
-       shape.attr({"x":50,"y":66.96170900000016,"text-anchor":"start","text":"person","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#FF0A2B","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","objectClass");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'found');
-       shape.attr({"x":88,"y":39.937895000000026,"text-anchor":"start","text":"found","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Preview');
+       shape.attr({"x":15.5,"y":67.50858400000016,"text-anchor":"start","text":"Preview","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
 
@@ -108,17 +93,6 @@ video_Preview = video_Preview.extend({
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         
-        this.objectClass = "person"
-        this.on("change:userData.objectClass",(emitter, event)=>{
-            this.layerAttr("objectClass", {text: event.value})
-            this.objectClass = event.value;
-        });
-        this.on("added",(emitter, event)=>{
-             this.layerAttr("objectClass", {text: this.attr("userData.objectClass")})
-        });
-        this.attr("userData.objectClass",this.objectClass)
-
-
         this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth()/6*4-6, 
@@ -132,28 +106,12 @@ video_Preview = video_Preview.extend({
         this.img.hitTest = ()=>false;
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
 
-
-        this.rectangleLocator =  new draw2d.layout.locator.XYAbsPortLocator({x:0, y:0});
-        this.rectangle = new draw2d.shape.basic.Rectangle({
-                        x: 0, y: 0,
-                        width: 20, height: 20,
-                        color: "#ff0000",
-                        bgColor: null,
-                        alpha  : 0.7,
-                        visible:false,
-                        radius: 5
-                });
-        this.add(this.rectangle, this.rectangleLocator)  ;
-        this.rectangle.setVisible(false);
-        this.rectangle.hitTest = ()=>false;
-        
-        this.model = null;
-        // Initialize the Image Classifier method with MobileNet
-        cocoSsd.load().then(model =>{
-            this.model = model;
-        });
-        
         this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        this.getOutputPort("output_port1").attr({
             semanticGroup:"Image",
             bgColor:"#ff0000",
             diameter:15
@@ -173,42 +131,10 @@ video_Preview = video_Preview.extend({
      **/
     calculate:function( context)
     {
-        if(this.model===null){
-            return;
-        }
-        
         var image = this.getInputPort("input_port1").getValue();
         if (image instanceof HTMLImageElement) {
             this.img.attr("path", image.src);
-            this.model.detect(image, 1).then(predictions => {
-                if(predictions.length>0){
-                    let pre = predictions[0];
-                    if(pre.class === this.objectClass){
-                       var height = this.getHeight()/4*3;
-                       var width = this.getWidth()/6*4;
-                       this.rectangle.setVisible(true);
-                       let bbox = pre.bbox;
-                       let x_percent = 100/image.naturalWidth * bbox[0];
-                       let y_percent = 100/image.naturalHeight * bbox[1];
-                       let w_percent = 100/image.naturalWidth * bbox[2];
-                       let h_percent = 100/image.naturalHeight * bbox[3];
-                     
-                       this.rectangle.attr({width:width/100*w_percent, height:height/100*h_percent});
-                       this.rectangleLocator.setX(width/100*x_percent);
-                       this.rectangleLocator.setY(height/100*y_percent);
-                       this.rectangleLocator.relocate(0, this.rectangle);
-                       this.getOutputPort("output_port1").setValue(5.0);
-                    }
-                    else{
-                        this.rectangle.setVisible(false);
-                        this.getOutputPort("output_port1").setValue(0.0);
-                    }
-                }
-                else{
-                    this.rectangle.setVisible(false);
-                    this.getOutputPort("output_port1").setValue(0.0);
-                }
-            });
+            this.getOutputPort("output_port1").setValue(image);
         }
     },
 
@@ -245,10 +171,7 @@ video_Preview = video_Preview.extend({
     setPersistentAttributes: function (memento) 
     {
         this._super(memento);
-        this.rectangle = this.getChildren().find( child => child instanceof draw2d.shape.basic.Rectangle);
-        this.rectangle.setVisible(false);
-        this.rectangle.hitTest = ()=>false;
- 
+
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
         this.img.hitTest = ()=>false;
         
@@ -257,103 +180,10 @@ video_Preview = video_Preview.extend({
             bgColor:"#ff0000",
             diameter:15
         })
-        
-        this.objectClass = this.attr("userData.objectClass")
-    },
-    
-    
-    getParameterSettings: function () {
-        return [
-            {
-                name: "objectClass",
-                label: "Type of Object to detect",
-                property: {
-                    type: "enum",
-                    values: [
-"person",
-"bicycle",
-"car",
-"motorcycle",
-"airplane",
-"bus",
-"train",
-"truck",
-"boat",
-"traffic light",
-"fire hydrant",
-"stop sign",
-"parking meter",
-"bench",
-"bird",
-"cat",
-"dog",
-"horse",
-"sheep",
-"cow",
-"elephant",
-"bear",
-"zebra",
-"giraffe",
-"backpack",
-"umbrella",
-"handbag",
-"tie",
-"suitcase",
-"frisbee",
-"skis",
-"snowboard",
-"sports ball",
-"kite",
-"baseball bat",
-"baseball glove",
-"skateboard",
-"surfboard",
-"tennis racket",
-"bottle",
-"wine glass",
-"cup",
-"fork",
-"knife",
-"spoon",
-"bowl",
-"banana",
-"apple",
-"sandwich",
-"orange",
-"broccoli",
-"carrot",
-"hot dog",
-"pizza",
-"donut",
-"cake",
-"chair",
-"couch",
-"potted plant",
-"bed",
-"dining table",
-"toilet",
-"tv",
-"laptop",
-"mouse",
-"remote",
-"keyboard",
-"cell phone",
-"microwave",
-"oven",
-"toaster",
-"sink",
-"refrigerator",
-"book",
-"clock",
-"vase",
-"scissors",
-"teddy bear",
-"hair drier",
-"toothbrush"
-]
-                }
-
-            }];
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     }
-
 });
