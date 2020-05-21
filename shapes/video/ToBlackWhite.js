@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.86_518",
+   VERSION: "2.0.87_519",
 
    init:function(attr, setter, getter)
    {
@@ -107,12 +107,18 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             var context2d = canvas.getContext('2d');
             context2d.drawImage(img, 0, 0);
             var imageData = context2d.getImageData(0, 0, width, height);
-            // push it to the WebWorker
+            // Push it to the WebWorker with "Transferable Objects"
+            // Passing data by reference instead of structure clone
             //
-            this.worker.postMessage({
-                imageData,
-                offset
-            });
+            this.worker.post( {
+                pixels: pixels.data.buffer,
+                width: width,
+                height: height,
+                channels: 4,
+                offset: offset
+                }, 
+                [pixels.data.buffer] 
+            )
         }
     },
 
@@ -126,7 +132,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         // the method which runs as WebWorker
         //
         var webWorkerFunction = function(event){
-            var imageData = event.data.imageData;
+            var imageData = new ImageData( new Uint8ClampedArray( event.data.pixels ), event.data.width, event.data.height );
             var offset = event.data.offset;
             // map offset from 0-5 => 0-255
             offset = 255/5*offset
@@ -138,7 +144,14 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;
             }
-            self.postMessage( imageData );
+            self.postMessage( {
+                pixels: imageData.data.buffer,
+                width: event.data.width,
+                height: event.data.height,
+                channels: 4
+                }, 
+                [imageData.data.buffer] 
+             );
         }
         
         // convert a js function to a WebWorker
@@ -148,7 +161,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         // The result event if the WebWorker has converted an pixelarray to another pixel array
         //
         this.worker.onmessage =  (event) => {
-            var imageData = event.data;
+            var imageData = new ImageData( new Uint8ClampedArray( event.data.pixels ), event.data.width, event.data.height );
             var canvas = document.createElement('canvas');
             canvas.width = imageData.width;
             canvas.height = imageData.height;
