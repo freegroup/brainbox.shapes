@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.95_537",
+   VERSION: "2.0.96_539",
 
    init:function(attr, setter, getter)
    {
@@ -101,26 +101,11 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         var img = this.getInputPort("input_port1").getValue();
         var threshold = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null){
-            var width = img.naturalWidth;
-            var height= img.naturalHeight;
-            // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
-            //
-            if(this.tmpContext === null ) {
-                this.tmpCanvas = document.createElement('canvas');
-                this.tmpCanvas.width = width;
-                this.tmpCanvas.height = height;
-                this.tmpContext = this.tmpCanvas.getContext('2d');
-            }
-            this.tmpContext.drawImage(img, 0, 0, width, height);
-            var imageData = this.tmpContext.getImageData(0, 0, width, height);
+            var imageData = this.imageToData(image);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            this.worker.postMessage( {
-                imageData: imageData,
-                threshold: threshold
-                }, [imageData.data.buffer]
-            );
+            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
         }
     },
 
@@ -133,10 +118,9 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
     {
         // the method which runs as WebWorker
         //
-        var webWorkerFunction = function(event){
+        var workerFunction = function(event){
             var imageData = event.data.imageData;
             var threshold = event.data.threshold;
-            //console.log(imageData.data.buffer)
             // map offset from 0-5 => 0-255
             threshold = 255/5*threshold;
             var pixels = imageData.data;
@@ -147,20 +131,13 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
                 pixels[x + 1] = value;
                 pixels[x + 2] = value;
             }
-            self.postMessage(
-                imageData, [imageData.data.buffer]
-             );
+            self.postMessage(imageData, [imageData.data.buffer]);
         };
         
-        // convert a js function to a WebWorker
+        // the method which receives the WebWorker result
         //
-        this.worker = this.createWorker(webWorkerFunction);
-        
-        // The result event if the WebWorker has converted an pixelarray to another pixel array
-        //
-        this.worker.onmessage =  (event) => {
+       var receiverFunction = (event) => {
             var imageData = event.data;
-            
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => {
@@ -168,6 +145,11 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
             }
             image.src = this.tmpCanvas.toDataURL();
         };
+        
+        // convert a js function to a WebWorker
+        //
+        this.worker = this.createWorker(workerFunction);
+        this.worker.onmessage = receiverFunction
     },
 
     /**
@@ -195,5 +177,20 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         });
         var url = window.URL.createObjectURL(blob);
         return new Worker(url);
+    },
+    
+    imageToData: function(image){
+        var width = img.naturalWidth;
+        var height= img.naturalHeight;
+        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
+        //
+        if(this.tmpContext === null ) {
+            this.tmpCanvas = document.createElement('canvas');
+            this.tmpCanvas.width = width;
+            this.tmpCanvas.height = height;
+            this.tmpContext = this.tmpCanvas.getContext('2d');
+        }
+        this.tmpContext.drawImage(img, 0, 0, width, height);
+        return this.tmpContext.getImageData(0, 0, width, height);
     }
 });
