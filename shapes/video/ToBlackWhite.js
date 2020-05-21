@@ -7,7 +7,7 @@
 var video_ToBlackWhite = CircuitFigure.extend({
 
    NAME: "video_ToBlackWhite",
-   VERSION: "2.0.91_527",
+   VERSION: "2.0.92_529",
 
    init:function(attr, setter, getter)
    {
@@ -131,7 +131,7 @@ video_ToBlackWhite = video_ToBlackWhite.extend({
         var webWorkerFunction = function(event){
             var imageData = event.data.imageData;
             var threshold = event.data.threshold;
-            console.log("got data", threshold)
+            console.log(imageData)
             // map offset from 0-5 => 0-255
             offset = 255/5*threshold
             var pixels = imageData.data;
