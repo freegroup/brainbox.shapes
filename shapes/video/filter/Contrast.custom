@@ -55,9 +55,9 @@ video_filter_Contrast = video_filter_Contrast.extend({
             
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                let red = data[i];
-                let green = data[i + 1];
-                let blue = data[i + 2];
+                let red = pixels[x];
+                let green = pixels[x + 1];
+                let blue = pixels[x + 2];
 
                 //Red channel
                 red /= 255;
