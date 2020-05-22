@@ -7,28 +7,28 @@
 var video_converter_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_converter_HSV_Colorspace",
-   VERSION: "2.0.131_638",
+   VERSION: "2.0.132_640",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:82.76692700000422,height:80.50410056640976},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:82.12910056640976},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8123181014077319, y: 50.293090308611994 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 49.29799513299382 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // input_port2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8123181014077319, y: 84.05724711641572 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 82.39409695865007 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port2");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.4596178132795, y: 50.307996381613606 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 49.31260627559365 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -38,8 +38,8 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 82.76692700000422;
-      this.originalHeight= 80.50410056640976;
+      this.originalWidth = 80;
+      this.originalHeight= 82.12910056640976;
       return shape;
    },
 
@@ -48,7 +48,7 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L82.76692700000422,0 L82.76692700000422,80.50410056640976 L0,80.50410056640976");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,82.12910056640976 L0,82.12910056640976");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -63,8 +63,8 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'HSV Colorspace');
-       shape.attr({"x":4.407552000004216,"y":69.81660056640976,"text-anchor":"start","text":"HSV Colorspace","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'RGB -> HSV');
+       shape.attr({"x":7.407552000004216,"y":71.12910056640976,"text-anchor":"start","text":"RGB -> HSV","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -169,7 +169,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
             var pixels = imageData.data;
             var nPixels = pixels.length,
               v = 2, // Math.pow(2, this.value()),
-              s = 1, // Math.pow(2, this.saturation()),
+              s = 1.5, // Math.pow(2, this.saturation()),
               h = Math.abs(hue + 360) % 360,
               i;
 
