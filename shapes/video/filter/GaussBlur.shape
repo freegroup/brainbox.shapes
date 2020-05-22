@@ -3,7 +3,7 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
-      "x": 7960,
+      "x": 7960.3102625,
       "y": 7959.1856112000005,
       "width": 80,
       "height": 80,
@@ -14,7 +14,7 @@
       "userData": {
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data;\n            var pixels = imageData.data;\n            var topX=0;\n            var topY =0;\n            var width = imageData.width;\n            var height=imageData.height;\n            var radius=30;\n\n            var BlurStack = function() {\n              this.r = 0;\n              this.g = 0;\n              this.b = 0;\n              this.a = 0;\n              this.next = null;\n            };\n\n            var mulTable = [\n              512, 512, 456, 512, 328, 456, 335, 512, 405, 328, 271, 456, 388, 335, 292, 512,\n              454, 405, 364, 328, 298, 271, 496, 456, 420, 388, 360, 335, 312, 292, 273, 512,\n              482, 454, 428, 405, 383, 364, 345, 328, 312, 298, 284, 271, 259, 496, 475, 456,\n              437, 420, 404, 388, 374, 360, 347, 335, 323, 312, 302, 292, 282, 273, 265, 512,\n              497, 482, 468, 454, 441, 428, 417, 405, 394, 383, 373, 364, 354, 345, 337, 328,\n              320, 312, 305, 298, 291, 284, 278, 271, 265, 259, 507, 496, 485, 475, 465, 456,\n              446, 437, 428, 420, 412, 404, 396, 388, 381, 374, 367, 360, 354, 347, 341, 335,\n              329, 323, 318, 312, 307, 302, 297, 292, 287, 282, 278, 273, 269, 265, 261, 512,\n              505, 497, 489, 482, 475, 468, 461, 454, 447, 441, 435, 428, 422, 417, 411, 405,\n              399, 394, 389, 383, 378, 373, 368, 364, 359, 354, 350, 345, 341, 337, 332, 328,\n              324, 320, 316, 312, 309, 305, 301, 298, 294, 291, 287, 284, 281, 278, 274, 271,\n              268, 265, 262, 259, 257, 507, 501, 496, 491, 485, 480, 475, 470, 465, 460, 456,\n              451, 446, 442, 437, 433, 428, 424, 420, 416, 412, 408, 404, 400, 396, 392, 388,\n              385, 381, 377, 374, 370, 367, 363, 360, 357, 354, 350, 347, 344, 341, 338, 335,\n              332, 329, 326, 323, 320, 318, 315, 312, 310, 307, 304, 302, 299, 297, 294, 292,\n              289, 287, 285, 282, 280, 278, 275, 273, 271, 269, 267, 265, 263, 261, 259\n            ];\n\n            var shgTable = [\n              9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17,\n              17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19,\n              19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20,\n              20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21,\n              21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21,\n              21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22,\n              22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22,\n              22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,\n              23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,\n              23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,\n              23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,\n              23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24\n            ];\n\n          let x, y, i, p, yp, yi, yw, rSum, gSum, bSum, aSum,\n            rOutSum, gOutSum, bOutSum, aOutSum,\n            rInSum, gInSum, bInSum, aInSum,\n            pr, pg, pb, pa, rbs;\n\n          const div = 2 * radius + 1;\n          // const w4 = width << 2;\n          const widthMinus1 = width - 1;\n          const heightMinus1 = height - 1;\n          const radiusPlus1 = radius + 1;\n          const sumFactor = radiusPlus1 * (radiusPlus1 + 1) / 2;\n\n          const stackStart = new BlurStack();\n          let stack = stackStart;\n          let stackEnd;\n          for (i = 1; i < div; i++) {\n            stack = stack.next = new BlurStack();\n            if (i === radiusPlus1) {\n              stackEnd = stack;\n            }\n          }\n          stack.next = stackStart;\n          let stackIn = null;\n          let stackOut = null;\n\n          yw = yi = 0;\n\n          const mulSum = mulTable[radius];\n          const shgSum = shgTable[radius];\n\n          for (y = 0; y < height; y++) {\n            rInSum = gInSum = bInSum = aInSum = rSum = gSum = bSum = aSum = 0;\n\n            rOutSum = radiusPlus1 * (pr = pixels[yi]);\n            gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);\n            bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);\n            aOutSum = radiusPlus1 * (pa = pixels[yi + 3]);\n\n            rSum += sumFactor * pr;\n            gSum += sumFactor * pg;\n            bSum += sumFactor * pb;\n            aSum += sumFactor * pa;\n\n            stack = stackStart;\n\n            for (i = 0; i < radiusPlus1; i++) {\n              stack.r = pr;\n              stack.g = pg;\n              stack.b = pb;\n              stack.a = pa;\n              stack = stack.next;\n            }\n\n            for (i = 1; i < radiusPlus1; i++) {\n              p = yi + ((widthMinus1 < i ? widthMinus1 : i) << 2);\n              rSum += (stack.r = (pr = pixels[p])) * (rbs = radiusPlus1 - i);\n              gSum += (stack.g = (pg = pixels[p + 1])) * rbs;\n              bSum += (stack.b = (pb = pixels[p + 2])) * rbs;\n              aSum += (stack.a = (pa = pixels[p + 3])) * rbs;\n\n              rInSum += pr;\n              gInSum += pg;\n              bInSum += pb;\n              aInSum += pa;\n\n              stack = stack.next;\n            }\n\n            stackIn = stackStart;\n            stackOut = stackEnd;\n            for (x = 0; x < width; x++) {\n              pixels[yi + 3] = pa = (aSum * mulSum) >> shgSum;\n              if (pa !== 0) {\n                pa = 255 / pa;\n                pixels[yi] = ((rSum * mulSum) >> shgSum) * pa;\n                pixels[yi + 1] = ((gSum * mulSum) >> shgSum) * pa;\n                pixels[yi + 2] = ((bSum * mulSum) >> shgSum) * pa;\n              } else {\n                pixels[yi] = pixels[yi + 1] = pixels[yi + 2] = 0;\n              }\n\n              rSum -= rOutSum;\n              gSum -= gOutSum;\n              bSum -= bOutSum;\n              aSum -= aOutSum;\n\n              rOutSum -= stackIn.r;\n              gOutSum -= stackIn.g;\n              bOutSum -= stackIn.b;\n              aOutSum -= stackIn.a;\n\n              p = (yw + ((p = x + radius + 1) < widthMinus1\n                ? p\n                : widthMinus1)) << 2;\n\n              rInSum += (stackIn.r = pixels[p]);\n              gInSum += (stackIn.g = pixels[p + 1]);\n              bInSum += (stackIn.b = pixels[p + 2]);\n              aInSum += (stackIn.a = pixels[p + 3]);\n\n              rSum += rInSum;\n              gSum += gInSum;\n              bSum += bInSum;\n              aSum += aInSum;\n\n              stackIn = stackIn.next;\n\n              rOutSum += (pr = stackOut.r);\n              gOutSum += (pg = stackOut.g);\n              bOutSum += (pb = stackOut.b);\n              aOutSum += (pa = stackOut.a);\n\n              rInSum -= pr;\n              gInSum -= pg;\n              bInSum -= pb;\n              aInSum -= pa;\n\n              stackOut = stackOut.next;\n\n              yi += 4;\n            }\n            yw += width;\n          }\n\n          for (x = 0; x < width; x++) {\n            gInSum = bInSum = aInSum = rInSum = gSum = bSum = aSum = rSum = 0;\n\n            yi = x << 2;\n            rOutSum = radiusPlus1 * (pr = pixels[yi]);\n            gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);\n            bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);\n            aOutSum = radiusPlus1 * (pa = pixels[yi + 3]);\n\n            rSum += sumFactor * pr;\n            gSum += sumFactor * pg;\n            bSum += sumFactor * pb;\n            aSum += sumFactor * pa;\n\n            stack = stackStart;\n\n            for (i = 0; i < radiusPlus1; i++) {\n              stack.r = pr;\n              stack.g = pg;\n              stack.b = pb;\n              stack.a = pa;\n              stack = stack.next;\n            }\n\n            yp = width;\n\n            for (i = 1; i <= radius; i++) {\n              yi = (yp + x) << 2;\n\n              rSum += (stack.r = (pr = pixels[yi])) * (rbs = radiusPlus1 - i);\n              gSum += (stack.g = (pg = pixels[yi + 1])) * rbs;\n              bSum += (stack.b = (pb = pixels[yi + 2])) * rbs;\n              aSum += (stack.a = (pa = pixels[yi + 3])) * rbs;\n\n              rInSum += pr;\n              gInSum += pg;\n              bInSum += pb;\n              aInSum += pa;\n\n              stack = stack.next;\n\n              if (i < heightMinus1) {\n                yp += width;\n              }\n            }\n\n            yi = x;\n            stackIn = stackStart;\n            stackOut = stackEnd;\n            for (y = 0; y < height; y++) {\n              p = yi << 2;\n              pixels[p + 3] = pa = (aSum * mulSum) >> shgSum;\n              if (pa > 0) {\n                pa = 255 / pa;\n                pixels[p] = ((rSum * mulSum) >> shgSum) * pa;\n                pixels[p + 1] = ((gSum * mulSum) >> shgSum) * pa;\n                pixels[p + 2] = ((bSum * mulSum) >> shgSum) * pa;\n              } else {\n                pixels[p] = pixels[p + 1] = pixels[p + 2] = 0;\n              }\n\n              rSum -= rOutSum;\n              gSum -= gOutSum;\n              bSum -= bOutSum;\n              aSum -= aOutSum;\n\n              rOutSum -= stackIn.r;\n              gOutSum -= stackIn.g;\n              bOutSum -= stackIn.b;\n              aOutSum -= stackIn.a;\n\n              p = (x + (\n                ((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) *\n                width\n              )) << 2;\n\n              rSum += (rInSum += (stackIn.r = pixels[p]));\n              gSum += (gInSum += (stackIn.g = pixels[p + 1]));\n              bSum += (bInSum += (stackIn.b = pixels[p + 2]));\n              aSum += (aInSum += (stackIn.a = pixels[p + 3]));\n\n              stackIn = stackIn.next;\n\n              rOutSum += (pr = stackOut.r);\n              gOutSum += (pg = stackOut.g);\n              bOutSum += (pb = stackOut.b);\n              aOutSum += (pa = stackOut.a);\n\n              rInSum -= pr;\n              gInSum -= pg;\n              bInSum -= pb;\n              aInSum -= pa;\n\n              stackOut = stackOut.next;\n\n              yi += width;\n            }\n          }\n            //imageData.data.set(dst);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { this.getOutputPort(\"output_port1\").setValue(image);};\n            image.src = this.tmpCanvas.toDataURL();\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data;\n            var pixels = imageData.data;\n            var topX=0;\n            var topY =0;\n            var width = imageData.width;\n            var height=imageData.height;\n            var radius=30;\n\n            var BlurStack = function() {\n              this.r = 0;\n              this.g = 0;\n              this.b = 0;\n              this.a = 0;\n              this.next = null;\n            };\n\n            var mulTable = [\n              512, 512, 456, 512, 328, 456, 335, 512, 405, 328, 271, 456, 388, 335, 292, 512,\n              454, 405, 364, 328, 298, 271, 496, 456, 420, 388, 360, 335, 312, 292, 273, 512,\n              482, 454, 428, 405, 383, 364, 345, 328, 312, 298, 284, 271, 259, 496, 475, 456,\n              437, 420, 404, 388, 374, 360, 347, 335, 323, 312, 302, 292, 282, 273, 265, 512,\n              497, 482, 468, 454, 441, 428, 417, 405, 394, 383, 373, 364, 354, 345, 337, 328,\n              320, 312, 305, 298, 291, 284, 278, 271, 265, 259, 507, 496, 485, 475, 465, 456,\n              446, 437, 428, 420, 412, 404, 396, 388, 381, 374, 367, 360, 354, 347, 341, 335,\n              329, 323, 318, 312, 307, 302, 297, 292, 287, 282, 278, 273, 269, 265, 261, 512,\n              505, 497, 489, 482, 475, 468, 461, 454, 447, 441, 435, 428, 422, 417, 411, 405,\n              399, 394, 389, 383, 378, 373, 368, 364, 359, 354, 350, 345, 341, 337, 332, 328,\n              324, 320, 316, 312, 309, 305, 301, 298, 294, 291, 287, 284, 281, 278, 274, 271,\n              268, 265, 262, 259, 257, 507, 501, 496, 491, 485, 480, 475, 470, 465, 460, 456,\n              451, 446, 442, 437, 433, 428, 424, 420, 416, 412, 408, 404, 400, 396, 392, 388,\n              385, 381, 377, 374, 370, 367, 363, 360, 357, 354, 350, 347, 344, 341, 338, 335,\n              332, 329, 326, 323, 320, 318, 315, 312, 310, 307, 304, 302, 299, 297, 294, 292,\n              289, 287, 285, 282, 280, 278, 275, 273, 271, 269, 267, 265, 263, 261, 259\n            ];\n\n            var shgTable = [\n              9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17,\n              17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19,\n              19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20,\n              20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21,\n              21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21,\n              21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22,\n              22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22,\n              22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,\n              23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,\n              23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,\n              23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,\n              23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,\n              24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24\n            ];\n\n          let x, y, i, p, yp, yi, yw, rSum, gSum, bSum, aSum,\n            rOutSum, gOutSum, bOutSum, aOutSum,\n            rInSum, gInSum, bInSum, aInSum,\n            pr, pg, pb, pa, rbs;\n\n          const div = 2 * radius + 1;\n          // const w4 = width << 2;\n          const widthMinus1 = width - 1;\n          const heightMinus1 = height - 1;\n          const radiusPlus1 = radius + 1;\n          const sumFactor = radiusPlus1 * (radiusPlus1 + 1) / 2;\n\n          const stackStart = new BlurStack();\n          let stack = stackStart;\n          let stackEnd;\n          for (i = 1; i < div; i++) {\n            stack = stack.next = new BlurStack();\n            if (i === radiusPlus1) {\n              stackEnd = stack;\n            }\n          }\n          stack.next = stackStart;\n          let stackIn = null;\n          let stackOut = null;\n\n          yw = yi = 0;\n\n          const mulSum = mulTable[radius];\n          const shgSum = shgTable[radius];\n\n          for (y = 0; y < height; y++) {\n            rInSum = gInSum = bInSum = aInSum = rSum = gSum = bSum = aSum = 0;\n\n            rOutSum = radiusPlus1 * (pr = pixels[yi]);\n            gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);\n            bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);\n            aOutSum = radiusPlus1 * (pa = pixels[yi + 3]);\n\n            rSum += sumFactor * pr;\n            gSum += sumFactor * pg;\n            bSum += sumFactor * pb;\n            aSum += sumFactor * pa;\n\n            stack = stackStart;\n\n            for (i = 0; i < radiusPlus1; i++) {\n              stack.r = pr;\n              stack.g = pg;\n              stack.b = pb;\n              stack.a = pa;\n              stack = stack.next;\n            }\n\n            for (i = 1; i < radiusPlus1; i++) {\n              p = yi + ((widthMinus1 < i ? widthMinus1 : i) << 2);\n              rSum += (stack.r = (pr = pixels[p])) * (rbs = radiusPlus1 - i);\n              gSum += (stack.g = (pg = pixels[p + 1])) * rbs;\n              bSum += (stack.b = (pb = pixels[p + 2])) * rbs;\n              aSum += (stack.a = (pa = pixels[p + 3])) * rbs;\n\n              rInSum += pr;\n              gInSum += pg;\n              bInSum += pb;\n              aInSum += pa;\n\n              stack = stack.next;\n            }\n\n            stackIn = stackStart;\n            stackOut = stackEnd;\n            for (x = 0; x < width; x++) {\n              pixels[yi + 3] = pa = (aSum * mulSum) >> shgSum;\n              if (pa !== 0) {\n                pa = 255 / pa;\n                pixels[yi] = ((rSum * mulSum) >> shgSum) * pa;\n                pixels[yi + 1] = ((gSum * mulSum) >> shgSum) * pa;\n                pixels[yi + 2] = ((bSum * mulSum) >> shgSum) * pa;\n              } else {\n                pixels[yi] = pixels[yi + 1] = pixels[yi + 2] = 0;\n              }\n\n              rSum -= rOutSum;\n              gSum -= gOutSum;\n              bSum -= bOutSum;\n              aSum -= aOutSum;\n\n              rOutSum -= stackIn.r;\n              gOutSum -= stackIn.g;\n              bOutSum -= stackIn.b;\n              aOutSum -= stackIn.a;\n\n              p = (yw + ((p = x + radius + 1) < widthMinus1\n                ? p\n                : widthMinus1)) << 2;\n\n              rInSum += (stackIn.r = pixels[p]);\n              gInSum += (stackIn.g = pixels[p + 1]);\n              bInSum += (stackIn.b = pixels[p + 2]);\n              aInSum += (stackIn.a = pixels[p + 3]);\n\n              rSum += rInSum;\n              gSum += gInSum;\n              bSum += bInSum;\n              aSum += aInSum;\n\n              stackIn = stackIn.next;\n\n              rOutSum += (pr = stackOut.r);\n              gOutSum += (pg = stackOut.g);\n              bOutSum += (pb = stackOut.b);\n              aOutSum += (pa = stackOut.a);\n\n              rInSum -= pr;\n              gInSum -= pg;\n              bInSum -= pb;\n              aInSum -= pa;\n\n              stackOut = stackOut.next;\n\n              yi += 4;\n            }\n            yw += width;\n          }\n\n          for (x = 0; x < width; x++) {\n            gInSum = bInSum = aInSum = rInSum = gSum = bSum = aSum = rSum = 0;\n\n            yi = x << 2;\n            rOutSum = radiusPlus1 * (pr = pixels[yi]);\n            gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);\n            bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);\n            aOutSum = radiusPlus1 * (pa = pixels[yi + 3]);\n\n            rSum += sumFactor * pr;\n            gSum += sumFactor * pg;\n            bSum += sumFactor * pb;\n            aSum += sumFactor * pa;\n\n            stack = stackStart;\n\n            for (i = 0; i < radiusPlus1; i++) {\n              stack.r = pr;\n              stack.g = pg;\n              stack.b = pb;\n              stack.a = pa;\n              stack = stack.next;\n            }\n\n            yp = width;\n\n            for (i = 1; i <= radius; i++) {\n              yi = (yp + x) << 2;\n\n              rSum += (stack.r = (pr = pixels[yi])) * (rbs = radiusPlus1 - i);\n              gSum += (stack.g = (pg = pixels[yi + 1])) * rbs;\n              bSum += (stack.b = (pb = pixels[yi + 2])) * rbs;\n              aSum += (stack.a = (pa = pixels[yi + 3])) * rbs;\n\n              rInSum += pr;\n              gInSum += pg;\n              bInSum += pb;\n              aInSum += pa;\n\n              stack = stack.next;\n\n              if (i < heightMinus1) {\n                yp += width;\n              }\n            }\n\n            yi = x;\n            stackIn = stackStart;\n            stackOut = stackEnd;\n            for (y = 0; y < height; y++) {\n              p = yi << 2;\n              pixels[p + 3] = pa = (aSum * mulSum) >> shgSum;\n              if (pa > 0) {\n                pa = 255 / pa;\n                pixels[p] = ((rSum * mulSum) >> shgSum) * pa;\n                pixels[p + 1] = ((gSum * mulSum) >> shgSum) * pa;\n                pixels[p + 2] = ((bSum * mulSum) >> shgSum) * pa;\n              } else {\n                pixels[p] = pixels[p + 1] = pixels[p + 2] = 0;\n              }\n\n              rSum -= rOutSum;\n              gSum -= gOutSum;\n              bSum -= bOutSum;\n              aSum -= aOutSum;\n\n              rOutSum -= stackIn.r;\n              gOutSum -= stackIn.g;\n              bOutSum -= stackIn.b;\n              aOutSum -= stackIn.a;\n\n              p = (x + (\n                ((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) *\n                width\n              )) << 2;\n\n              rSum += (rInSum += (stackIn.r = pixels[p]));\n              gSum += (gInSum += (stackIn.g = pixels[p + 1]));\n              bSum += (bInSum += (stackIn.b = pixels[p + 2]));\n              aSum += (aInSum += (stackIn.a = pixels[p + 3]));\n\n              stackIn = stackIn.next;\n\n              rOutSum += (pr = stackOut.r);\n              gOutSum += (pg = stackOut.g);\n              bOutSum += (pb = stackOut.b);\n              aOutSum += (pa = stackOut.a);\n\n              rInSum -= pr;\n              gInSum -= pg;\n              bInSum -= pb;\n              aInSum -= pa;\n\n              stackOut = stackOut.next;\n\n              yi += width;\n            }\n          }\n            //imageData.data.set(dst);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            this.processing = false;\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { this.getOutputPort(\"output_port1\").setValue(image);};\n            image.src = this.tmpCanvas.toDataURL();\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
         "markdown": "## Full Adder\n\nFull adder is developed to overcome the drawback of \nHalf Adder circuit. It can add two one-bit numbers \nA and B, and carry c. The full adder is a three \ninput and two output combinational circuit.\n\n\n\n|  A    |    B    |  Cin     |    S    |    C   |\n|:-----:|:-------:|:--------:|:--------:|:-------|\n|   0   |    0    |     0    |     0    |     0  |\n|   0   |    0    |     1    |     1    |     0  |\n|   0   |    1    |     0    |     1    |     0  |\n|   0   |    1    |     1    |     0    |     1  |\n|   1   |    0    |     0    |     0    |     1  |\n|   1   |    0    |     1    |     0    |     1  |\n|   1   |    1    |     0    |     0    |     1  |\n|   1   |    1    |     1    |     0    |     1  |\n",
         "type": "Output",
         "direction": 1
@@ -28,19 +28,19 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7960,
+          "x": 7960.3102625,
           "y": 7959.1856112000005
         },
         {
-          "x": 8040,
+          "x": 8040.3102625,
           "y": 7959.1856112000005
         },
         {
-          "x": 8040,
+          "x": 8040.3102625,
           "y": 8039.1856112000005
         },
         {
-          "x": 7960,
+          "x": 7960.3102625,
           "y": 8039.1856112000005
         }
       ],
@@ -66,9 +66,9 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 7958.2288,
+      "x": 7958.5390625,
       "y": 8015.0643888,
-      "width": 53.03125,
+      "width": 54.828125,
       "height": 21.375,
       "alpha": 1,
       "selectable": true,
@@ -106,7 +106,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 7954.2288,
+      "x": 7954.5390625,
       "y": 7994.0952112,
       "width": 10,
       "height": 10,
@@ -144,7 +144,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 8035.26005,
+      "x": 8035.5703125,
       "y": 7994.0952112,
       "width": 10,
       "height": 10,
@@ -182,7 +182,7 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "67330ad1-a95f-151a-e910-9b17a569af3e",
-      "x": 7964.315424000003,
+      "x": 7964.625686500003,
       "y": 7962.956352000003,
       "width": 71,
       "height": 52,
@@ -202,19 +202,19 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7964.315424000003,
+          "x": 7964.625686500003,
           "y": 7962.956352000003
         },
         {
-          "x": 8035.315424000003,
+          "x": 8035.625686500003,
           "y": 7962.956352000003
         },
         {
-          "x": 8035.315424000003,
+          "x": 8035.625686500003,
           "y": 8014.956352000003
         },
         {
-          "x": 7964.315424000003,
+          "x": 7964.625686500003,
           "y": 8014.956352000003
         }
       ],
@@ -240,7 +240,7 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "5263cadc-3415-f3df-8232-a47e6c6962b3",
-      "x": 7998.318989118233,
+      "x": 7998.629251618233,
       "y": 7986.410266559116,
       "width": 15,
       "height": 26,
@@ -260,67 +260,67 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7998.318989118233,
+          "x": 7998.629251618233,
           "y": 8012.247962293422
         },
         {
-          "x": 8013.318989118233,
+          "x": 8013.629251618233,
           "y": 8012.410266559116
         },
         {
-          "x": 8009.655734423339,
+          "x": 8009.965996923339,
           "y": 7994.09282349929
         },
         {
-          "x": 8009.530852297251,
+          "x": 8009.841114797251,
           "y": 7992.758761486806
         },
         {
-          "x": 8009.160000399195,
+          "x": 8009.470262899195,
           "y": 7991.465234273506
         },
         {
-          "x": 8008.554446876433,
+          "x": 8008.864709376433,
           "y": 7990.251545029202
         },
         {
-          "x": 8007.732591166328,
+          "x": 8008.0428536663285,
           "y": 7989.154571087439
         },
         {
-          "x": 8006.719404938755,
+          "x": 8007.0296674387555,
           "y": 7988.207643446324
         },
         {
-          "x": 8005.545673344542,
+          "x": 8005.855935844542,
           "y": 7987.439534023078
         },
         {
-          "x": 8004.247059624239,
+          "x": 8004.557322124239,
           "y": 7986.873581433838
         },
         {
-          "x": 8002.863021498611,
+          "x": 8003.173283998611,
           "y": 7986.526981861651
         },
         {
-          "x": 8001.435612265745,
+          "x": 8001.745874765745,
           "y": 7986.410266559116
         },
         {
-          "x": 8000.008203032879,
+          "x": 8000.318465532879,
           "y": 7986.526981861651
         },
         {
-          "x": 7998.62416490725,
+          "x": 7998.93442740725,
           "y": 7986.873581433838
         },
         {
-          "x": 7998.318989118233,
+          "x": 7998.629251618233,
           "y": 7987.006580974246
         },
         {
-          "x": 7998.318989118233,
+          "x": 7998.629251618233,
           "y": 8012.247962293422
         }
       ],
@@ -349,7 +349,7 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "82f2c4ff-a88a-1d9e-708e-daf90dcaa704",
-      "x": 7998.673623449605,
+      "x": 7998.983885949605,
       "y": 7966.444595518235,
       "width": 10.898249505085005,
       "height": 18,
@@ -369,99 +369,99 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7998.673623449605,
+          "x": 7998.983885949605,
           "y": 7984.217990874181
         },
         {
-          "x": 7999.0090393556875,
+          "x": 7999.319301855688,
           "y": 7984.3078652953445
         },
         {
-          "x": 8000.57187295469,
+          "x": 8000.88213545469,
           "y": 7984.444595518235
         },
         {
-          "x": 8002.134706553692,
+          "x": 8002.444969053692,
           "y": 7984.3078652953445
         },
         {
-          "x": 8003.650054244621,
+          "x": 8003.960316744621,
           "y": 7983.901829105308
         },
         {
-          "x": 8005.07187295469,
+          "x": 8005.38213545469,
           "y": 7983.238824152295
         },
         {
-          "x": 8006.356961441868,
+          "x": 8006.6672239418685,
           "y": 7982.338995506306
         },
         {
-          "x": 8007.466272942761,
+          "x": 8007.776535442761,
           "y": 7981.229684005413
         },
         {
-          "x": 8008.36610158875,
+          "x": 8008.67636408875,
           "y": 7979.944595518235
         },
         {
-          "x": 8009.029106541763,
+          "x": 8009.339369041763,
           "y": 7978.522776808166
         },
         {
-          "x": 8009.4351427318,
+          "x": 8009.7454052318,
           "y": 7977.007429117237
         },
         {
-          "x": 8009.57187295469,
+          "x": 8009.88213545469,
           "y": 7975.444595518235
         },
         {
-          "x": 8009.4351427318,
+          "x": 8009.7454052318,
           "y": 7973.881761919232
         },
         {
-          "x": 8009.029106541763,
+          "x": 8009.339369041763,
           "y": 7972.366414228303
         },
         {
-          "x": 8008.36610158875,
+          "x": 8008.67636408875,
           "y": 7970.944595518235
         },
         {
-          "x": 8007.466272942761,
+          "x": 8007.776535442761,
           "y": 7969.659507031056
         },
         {
-          "x": 8006.356961441868,
+          "x": 8006.6672239418685,
           "y": 7968.550195530163
         },
         {
-          "x": 8005.07187295469,
+          "x": 8005.38213545469,
           "y": 7967.650366884174
         },
         {
-          "x": 8003.650054244621,
+          "x": 8003.960316744621,
           "y": 7966.987361931161
         },
         {
-          "x": 8002.134706553692,
+          "x": 8002.444969053692,
           "y": 7966.581325741125
         },
         {
-          "x": 8000.57187295469,
+          "x": 8000.88213545469,
           "y": 7966.444595518235
         },
         {
-          "x": 7999.0090393556875,
+          "x": 7999.319301855688,
           "y": 7966.581325741125
         },
         {
-          "x": 7998.673623449605,
+          "x": 7998.983885949605,
           "y": 7966.671200162288
         },
         {
-          "x": 7998.673623449605,
+          "x": 7998.983885949605,
           "y": 7984.217990874181
         }
       ],
@@ -487,7 +487,7 @@
     {
       "type": "shape_designer.figure.PolyCircle",
       "id": "5f767493-26e4-fad9-cef3-1901c554622d",
-      "x": 7991.3355715182315,
+      "x": 7991.645834018232,
       "y": 7967.444595518235,
       "width": 16.32885696353746,
       "height": 16.32885696353746,
@@ -521,7 +521,7 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "29256ea5-e5e1-cb3c-5966-7f8958f98e5b",
-      "x": 7988.818989118233,
+      "x": 7989.129251618233,
       "y": 7987.910266559116,
       "width": 22.081740799994805,
       "height": 22.209715199999664,
@@ -541,87 +541,87 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7988.818989118233,
+          "x": 7989.129251618233,
           "y": 8009.910266559116
         },
         {
-          "x": 8010.900729918228,
+          "x": 8011.210992418228,
           "y": 8010.119981759116
         },
         {
-          "x": 8007.335571518231,
+          "x": 8007.645834018231,
           "y": 7994.472858930233
         },
         {
-          "x": 8007.214033542328,
+          "x": 8007.524296042328,
           "y": 7993.333276724218
         },
         {
-          "x": 8006.8531124845185,
+          "x": 8007.163374984519,
           "y": 7992.228320146877
         },
         {
-          "x": 8006.263774748507,
+          "x": 8006.574037248507,
           "y": 7991.191562744674
         },
         {
-          "x": 8005.463927063182,
+          "x": 8005.7741895631825,
           "y": 7990.254505866658
         },
         {
-          "x": 8004.477872395722,
+          "x": 8004.788134895723,
           "y": 7989.4456215118835
         },
         {
-          "x": 8003.335571518231,
+          "x": 8003.645834018231,
           "y": 7988.789487222162
         },
         {
-          "x": 8002.071732664836,
+          "x": 8002.381995164837,
           "y": 7988.306039305866
         },
         {
-          "x": 8000.724756939567,
+          "x": 8001.035019439567,
           "y": 7988.0099670833
         },
         {
-          "x": 7999.3355715182315,
+          "x": 7999.645834018232,
           "y": 7987.910266559116
         },
         {
-          "x": 7997.946386096895,
+          "x": 7998.2566485968955,
           "y": 7988.0099670833
         },
         {
-          "x": 7996.599410371626,
+          "x": 7996.909672871626,
           "y": 7988.306039305866
         },
         {
-          "x": 7995.3355715182315,
+          "x": 7995.645834018232,
           "y": 7988.789487222162
         },
         {
-          "x": 7994.19327064074,
+          "x": 7994.50353314074,
           "y": 7989.4456215118835
         },
         {
-          "x": 7993.20721597328,
+          "x": 7993.51747847328,
           "y": 7990.254505866658
         },
         {
-          "x": 7992.407368287955,
+          "x": 7992.717630787955,
           "y": 7991.191562744674
         },
         {
-          "x": 7991.818030551944,
+          "x": 7992.128293051944,
           "y": 7992.228320146877
         },
         {
-          "x": 7991.457109494134,
+          "x": 7991.767371994134,
           "y": 7993.333276724218
         },
         {
-          "x": 7991.3355715182315,
+          "x": 7991.645834018232,
           "y": 7994.472858930233
         }
       ],
@@ -659,11 +659,11 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7998.696404480012,
+          "x": 7999.006666980012,
           "y": 7963.2244925440145
         },
         {
-          "x": 7998.864176640011,
+          "x": 7999.174439140011,
           "y": 8014.229850624006
         }
       ],
