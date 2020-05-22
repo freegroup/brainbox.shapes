@@ -200,9 +200,9 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "6cd97bb4-e30c-3c23-b0db-106d14602587",
-      "x": 7990.7,
+      "x": 7987.554272000002,
       "y": 7990.82852,
-      "width": 19,
+      "width": 25.291455999997197,
       "height": 19,
       "alpha": 1,
       "selectable": true,
@@ -213,10 +213,10 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(149,192,106,1)",
+      "bgColor": "rgba(199,29,61,1)",
       "color": "rgba(48,48,48,1)",
       "stroke": 0,
-      "radius": 0,
+      "radius": 3,
       "dasharray": null,
       "vertices": [
         {
@@ -228,11 +228,11 @@
           "y": 7996.196978368502
         },
         {
-          "x": 7990.7,
+          "x": 7987.554272000002,
           "y": 8009.82852
         },
         {
-          "x": 8009.7,
+          "x": 8012.845727999999,
           "y": 8009.82852
         },
         {
@@ -326,6 +326,9 @@
         },
         {
           "name": "shape_designer.filter.FillColorFilter"
+        },
+        {
+          "name": "shape_designer.filter.RadiusFilter"
         }
       ]
     },
@@ -385,7 +388,7 @@
       },
       "cssClass": "shape_designer_figure_PolyCircle",
       "ports": [],
-      "bgColor": "rgba(149,192,106,1)",
+      "bgColor": "rgba(199,29,61,1)",
       "color": "rgba(255,0,76,1)",
       "stroke": 0,
       "radius": 0,
