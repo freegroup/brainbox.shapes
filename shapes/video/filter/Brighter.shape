@@ -154,7 +154,7 @@
         "name": "input_port2",
         "type": "Input",
         "direction": 3,
-        "fanout": 20
+        "fanout": null
       },
       "cssClass": "shape_designer_figure_ExtPort",
       "ports": [],
