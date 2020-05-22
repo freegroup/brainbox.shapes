@@ -66,7 +66,7 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 7981.2288,
+      "x": 7977.2288,
       "y": 8015.0643888,
       "width": 53.03125,
       "height": 21.375,
@@ -84,7 +84,7 @@
       "stroke": 0,
       "radius": 0,
       "dasharray": null,
-      "text": "Blur",
+      "text": "Edge",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
       "fontSize": 16,
