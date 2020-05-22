@@ -65,7 +65,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
             var pixels = imageData.data;
             var nPixels = pixels.length,
               v = 2, // Math.pow(2, this.value()),
-              s = 1, // Math.pow(2, this.saturation()),
+              s = 1.5, // Math.pow(2, this.saturation()),
               h = Math.abs(hue + 360) % 360,
               i;
 
