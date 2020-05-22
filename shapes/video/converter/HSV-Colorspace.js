@@ -7,7 +7,7 @@
 var video_converter_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_converter_HSV_Colorspace",
-   VERSION: "2.0.130_637",
+   VERSION: "2.0.131_638",
 
    init:function(attr, setter, getter)
    {
@@ -145,7 +145,8 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
             // Passing data by reference instead of structure clone
             //
             this.processing = true;
-            this.worker.postMessage( imageData, [imageData.data.buffer]);
+            var hue = this.getInputPort("input_port2").getValue();
+            this.worker.postMessage( {imageData, hue}, [imageData.data.buffer]);
         }
     },
 
@@ -159,13 +160,17 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
-            var imageData = event.data;
+            var imageData = event.data.imageData;
+            var hue = event.data.hue;
+            
+            // mapping of [0..5] => [0..359]
+            hue = 359/5*hue;
+            
             var pixels = imageData.data;
-            var data = imageData.data,
-              nPixels = pixels.length,
+            var nPixels = pixels.length,
               v = 2, // Math.pow(2, this.value()),
               s = 1, // Math.pow(2, this.saturation()),
-              h = 2, //Math.abs(this.hue() + 360) % 360,
+              h = Math.abs(hue + 360) % 360,
               i;
 
             // Precompute the values in the matrix:
@@ -185,15 +190,15 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
             var r, g, b, a;
 
             for (i = 0; i < nPixels; i += 4) {
-              r = data[i + 0];
-              g = data[i + 1];
-              b = data[i + 2];
-              a = data[i + 3];
+              r = pixels[i + 0];
+              g = pixels[i + 1];
+              b = pixels[i + 2];
+              a = pixels[i + 3];
 
-              data[i + 0] = rr * r + rg * g + rb * b;
-              data[i + 1] = gr * r + gg * g + gb * b;
-              data[i + 2] = br * r + bg * g + bb * b;
-              data[i + 3] = a; // alpha
+              pixels[i + 0] = rr * r + rg * g + rb * b;
+              pixels[i + 1] = gr * r + gg * g + gb * b;
+              pixels[i + 2] = br * r + bg * g + bb * b;
+              pixels[i + 3] = a; // alpha
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
