@@ -7,7 +7,7 @@
 var video_filter_Contrast = CircuitFigure.extend({
 
    NAME: "video_filter_Contrast",
-   VERSION: "2.0.126_605",
+   VERSION: "2.0.127_606",
 
    init:function(attr, setter, getter)
    {
@@ -63,8 +63,8 @@ var video_filter_Contrast = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Darker');
-       shape.attr({"x":19.466176000004452,"y":70.9852109375006,"text-anchor":"start","text":"Darker","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Contrast');
+       shape.attr({"x":13.466176000004452,"y":70.9852109375006,"text-anchor":"start","text":"Contrast","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -165,14 +165,38 @@ video_filter_Contrast = video_filter_Contrast.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data.imageData;
-            var adjustment = event.data.adjustment;
-            // map offset from 0-5 => 0-255
-            adjustment = 255/5*adjustment;
+            var adjustment = event.data.adjustment; // 0..5
+            
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                pixels[x]     = Math.max(0,pixels[x  ]-adjustment);
-                pixels[x + 1] = Math.max(0,pixels[x+1]-adjustment);
-                pixels[x + 2] = Math.max(0,pixels[x+2]-adjustment);
+                let red = data[i];
+                let green = data[i + 1];
+                let blue = data[i + 2];
+
+                //Red channel
+                red /= 255;
+                red -= 0.5;
+                red *= adjustment;
+                red += 0.5;
+                red *= 255;
+
+                //Green channel
+                green /= 255;
+                green -= 0.5;
+                green *= adjustment;
+                green += 0.5;
+                green *= 255;
+
+                //Blue channel
+                blue /= 255;
+                blue -= 0.5;
+                blue *= adjustment;
+                blue += 0.5;
+                blue *= 255;
+
+                pixels[x]     = red < 0 ? 0 : red > 255 ? 255 : red;
+                pixels[x + 1] = green < 0 ? 0 : green > 255 ? 255 : green;
+                pixels[x + 2] = blue < 0 ? 0 : blue > 255 ? 255 : blue;
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
