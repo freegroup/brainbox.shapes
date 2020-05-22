@@ -7,7 +7,7 @@
 var video_Brighter = CircuitFigure.extend({
 
    NAME: "video_Brighter",
-   VERSION: "2.0.116_582",
+   VERSION: "2.0.117_584",
 
    init:function(attr, setter, getter)
    {
@@ -183,7 +183,6 @@ video_Brighter = video_Brighter.extend({
             var adjustment = event.data.adjustment;
             // map offset from 0-5 => 0-255
             adjustment = 255/5*adjustment;
-            console.log(adjustment)
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
                 pixels[x]     = Math.min(255,pixels[x  ]+adjustment);
