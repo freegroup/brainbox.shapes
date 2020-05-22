@@ -17,6 +17,7 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -35,11 +36,12 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
     {
         var img = this.getInputPort("input_port1").getValue();
         var threshold = this.getInputPort("input_port2").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
         }
     },
@@ -51,6 +53,8 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
      **/
     onStart:function( context )
     {
+        this.progressing = false;
+        
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
@@ -71,6 +75,7 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
+            this.processing = false;
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
@@ -84,6 +89,7 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction
+        this.processing = false;
     },
 
     /**
@@ -99,6 +105,7 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.progressing = false;
     },
     
 
