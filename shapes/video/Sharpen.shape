@@ -195,7 +195,7 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(255,255,255,1)",
+      "bgColor": "rgba(237,237,237,1)",
       "color": "rgba(48,48,48,1)",
       "stroke": 1,
       "radius": 4,
