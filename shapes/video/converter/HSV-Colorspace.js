@@ -7,22 +7,28 @@
 var video_converter_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_converter_HSV_Colorspace",
-   VERSION: "2.0.129_632",
+   VERSION: "2.0.130_637",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:82.12910056640976},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:82.76692700000422,height:80.50410056640976},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 49.29799513299382 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8123181014077319, y: 50.293090308611994 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
+     // input_port2
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8123181014077319, y: 84.05724711641572 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port2");
+     port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 49.31260627559365 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.4596178132795, y: 50.307996381613606 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -32,8 +38,8 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80;
-      this.originalHeight= 82.12910056640976;
+      this.originalWidth = 82.76692700000422;
+      this.originalHeight= 80.50410056640976;
       return shape;
    },
 
@@ -42,7 +48,7 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,82.12910056640976 L0,82.12910056640976");
+       shape = this.canvas.paper.path("M0,0 L82.76692700000422,0 L82.76692700000422,80.50410056640976 L0,80.50410056640976");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -57,8 +63,8 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Invert');
-       shape.attr({"x":22.407552000004216,"y":70.12910056640976,"text-anchor":"start","text":"Invert","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'HSV Colorspace');
+       shape.attr({"x":4.407552000004216,"y":69.81660056640976,"text-anchor":"start","text":"HSV Colorspace","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -115,6 +121,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -132,11 +139,12 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage( imageData, [imageData.data.buffer]);
         }
     },
@@ -153,10 +161,39 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
         var workerFunction = function(event){
             var imageData = event.data;
             var pixels = imageData.data;
-            for( let x = 0; x < pixels.length; x += 4 ) {
-                pixels[x]   = 255-pixels[x];
-                pixels[x+1] = 255-pixels[x+1];
-                pixels[x+2] = 255-pixels[x+2];
+            var data = imageData.data,
+              nPixels = pixels.length,
+              v = 2, // Math.pow(2, this.value()),
+              s = 1, // Math.pow(2, this.saturation()),
+              h = 2, //Math.abs(this.hue() + 360) % 360,
+              i;
+
+            // Precompute the values in the matrix:
+            var vsu = v * s * Math.cos((h * Math.PI) / 180),
+                vsw = v * s * Math.sin((h * Math.PI) / 180);
+            // (result spot)(source spot)
+            var rr = 0.299 * v + 0.701 * vsu + 0.167 * vsw,
+                rg = 0.587 * v - 0.587 * vsu + 0.33 * vsw,
+                rb = 0.114 * v - 0.114 * vsu - 0.497 * vsw;
+            var gr = 0.299 * v - 0.299 * vsu - 0.328 * vsw,
+                gg = 0.587 * v + 0.413 * vsu + 0.035 * vsw,
+                gb = 0.114 * v - 0.114 * vsu + 0.293 * vsw;
+            var br = 0.299 * v - 0.3 * vsu + 1.25 * vsw,
+                bg = 0.587 * v - 0.586 * vsu - 1.05 * vsw,
+                bb = 0.114 * v + 0.886 * vsu - 0.2 * vsw;
+
+            var r, g, b, a;
+
+            for (i = 0; i < nPixels; i += 4) {
+              r = data[i + 0];
+              g = data[i + 1];
+              b = data[i + 2];
+              a = data[i + 3];
+
+              data[i + 0] = rr * r + rg * g + rb * b;
+              data[i + 1] = gr * r + gg * g + gb * b;
+              data[i + 2] = br * r + bg * g + bb * b;
+              data[i + 3] = a; // alpha
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
@@ -164,6 +201,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
+            this.processing = false;
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
@@ -177,6 +215,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction
+        this.processing = false;
     },
 
     /**
@@ -192,6 +231,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 
