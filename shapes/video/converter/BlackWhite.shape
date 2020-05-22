@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
-      "x": 15585,
-      "y": 15583.130762216795,
+      "x": 7960,
+      "y": 7957.966699716795,
       "width": 80,
       "height": 80,
       "alpha": 1,
@@ -14,7 +14,7 @@
       "userData": {
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        var threshold = this.getInputPort(\"input_port2\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data.imageData;\n            var threshold = event.data.threshold;\n            // map offset from 0-5 => 0-255\n            threshold = 255/5*threshold;\n            var pixels = imageData.data;\n            for( let x = 0; x < pixels.length; x += 4 ) {\n\n                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];\n                let value= lum>threshold?255:0;\n                pixels[x] = pixels[x+1] = pixels[x+2] = value;\n            }\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            this.processing = false;\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => {\n                this.getOutputPort(\"output_port1\").setValue(image);\n            }\n            image.src = this.tmpCanvas.toDataURL();\n        };\n        \n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        var threshold = this.getInputPort(\"input_port2\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        this.progressing = false;\n        \n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data.imageData;\n            var threshold = event.data.threshold;\n            // map offset from 0-5 => 0-255\n            threshold = 255/5*threshold;\n            var pixels = imageData.data;\n            for( let x = 0; x < pixels.length; x += 4 ) {\n\n                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];\n                let value= lum>threshold?255:0;\n                pixels[x] = pixels[x+1] = pixels[x+2] = value;\n            }\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            this.processing = false;\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => {\n                this.getOutputPort(\"output_port1\").setValue(image);\n            }\n            image.src = this.tmpCanvas.toDataURL();\n        };\n        \n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.progressing = false;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
         "markdown": "## Full Adder\n\nFull adder is developed to overcome the drawback of \nHalf Adder circuit. It can add two one-bit numbers \nA and B, and carry c. The full adder is a three \ninput and two output combinational circuit.\n\n\n\n|  A    |    B    |  Cin     |    S    |    C   |\n|:-----:|:-------:|:--------:|:--------:|:-------|\n|   0   |    0    |     0    |     0    |     0  |\n|   0   |    0    |     1    |     1    |     0  |\n|   0   |    1    |     0    |     1    |     0  |\n|   0   |    1    |     1    |     0    |     1  |\n|   1   |    0    |     0    |     0    |     1  |\n|   1   |    0    |     1    |     0    |     1  |\n|   1   |    1    |     0    |     0    |     1  |\n|   1   |    1    |     1    |     0    |     1  |\n",
         "type": "Output",
         "direction": 1
@@ -28,20 +28,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15585,
-          "y": 15583.130762216795
+          "x": 7960,
+          "y": 7957.966699716795
         },
         {
-          "x": 15665,
-          "y": 15583.130762216795
+          "x": 8040,
+          "y": 7957.966699716795
         },
         {
-          "x": 15665,
-          "y": 15663.130762216795
+          "x": 8040,
+          "y": 8037.966699716795
         },
         {
-          "x": 15585,
-          "y": 15663.130762216795
+          "x": 7960,
+          "y": 8037.966699716795
         }
       ],
       "blur": 0,
@@ -81,16 +81,16 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 15594.377490534403,
-          "y": 15640.259862783205
+          "x": 7969.3774905344035,
+          "y": 8015.095800283205
         },
         {
-          "x": 15590.757806182406,
-          "y": 15640.661257676009
+          "x": 7965.757806182406,
+          "y": 8015.497195176009
         },
         {
-          "x": 15585.407552000004,
-          "y": 15647.142296216804
+          "x": 7960.407552000004,
+          "y": 8021.9782337168035
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -104,8 +104,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 15578.5,
-      "y": 15618.618762216796,
+      "x": 7953.5,
+      "y": 7993.454699716796,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -142,8 +142,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "9d29ea24-7652-4aae-625a-a9c7cb87615c",
-      "x": 15578.5,
-      "y": 15643.615973154296,
+      "x": 7953.5,
+      "y": 8018.451910654296,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -180,8 +180,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 15661.492,
-      "y": 15618.630762216795,
+      "x": 8036.492,
+      "y": 7993.466699716795,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -218,8 +218,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "60a2dd97-1f28-c39f-3767-73fb56280eae",
-      "x": 15589.5,
-      "y": 15587.510730216796,
+      "x": 7964.5,
+      "y": 7962.346667716796,
       "width": 71,
       "height": 48,
       "alpha": 1,
@@ -238,20 +238,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15589.5,
-          "y": 15587.510730216796
+          "x": 7964.5,
+          "y": 7962.346667716796
         },
         {
-          "x": 15660.5,
-          "y": 15587.510730216796
+          "x": 8035.5,
+          "y": 7962.346667716796
         },
         {
-          "x": 15660.5,
-          "y": 15635.510730216796
+          "x": 8035.5,
+          "y": 8010.346667716796
         },
         {
-          "x": 15589.5,
-          "y": 15635.510730216796
+          "x": 7964.5,
+          "y": 8010.346667716796
         }
       ],
       "blur": 0,
@@ -276,8 +276,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 15586.407552000004,
-      "y": 15643.259862783205,
+      "x": 7961.407552000004,
+      "y": 8018.095800283205,
       "width": 58.03125,
       "height": 21.375,
       "alpha": 1,
@@ -316,8 +316,8 @@
     {
       "type": "shape_designer.figure.PolyCircle",
       "id": "f6c602d3-cc44-24dd-49a7-c0955b0e114e",
-      "x": 15615.136293579453,
-      "y": 15592.630285796253,
+      "x": 7990.136293579453,
+      "y": 7967.466223296253,
       "width": 16,
       "height": 16,
       "alpha": 1,
@@ -350,8 +350,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "2eac019a-c713-c8ea-ae92-17abd55d6a43",
-      "x": 15593,
-      "y": 15630.118762216796,
+      "x": 7968,
+      "y": 8004.954699716796,
       "width": 49.15625,
       "height": 21.21875,
       "alpha": 1,
@@ -390,8 +390,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "6eac5a02-2b2a-f16d-f87b-d71700eb0679",
-      "x": 15613.136293579453,
-      "y": 15614.010730216796,
+      "x": 7988.136293579453,
+      "y": 7988.846667716796,
       "width": 21,
       "height": 19,
       "alpha": 1,
@@ -410,80 +410,80 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15613.136293579453,
-          "y": 15633.010730216796
+          "x": 7988.136293579453,
+          "y": 8007.846667716796
         },
         {
-          "x": 15634.136293579453,
-          "y": 15633.010730216796
+          "x": 8009.136293579453,
+          "y": 8007.846667716796
         },
         {
-          "x": 15632.664780560579,
-          "y": 15618.620771485887
+          "x": 8007.664780560579,
+          "y": 7993.4567089858865
         },
         {
-          "x": 15632.264814642871,
-          "y": 15617.681460057916
+          "x": 8007.264814642871,
+          "y": 7992.517397557916
         },
         {
-          "x": 15631.611721664993,
-          "y": 15616.800123998295
+          "x": 8006.611721664993,
+          "y": 7991.636061498295
         },
         {
-          "x": 15630.725345526596,
-          "y": 15616.003542257227
+          "x": 8005.725345526596,
+          "y": 7990.839479757227
         },
         {
-          "x": 15629.632618318119,
-          "y": 15615.31591856782
+          "x": 8004.632618318119,
+          "y": 7990.15185606782
         },
         {
-          "x": 15628.366742002849,
-          "y": 15614.75814602792
+          "x": 8003.366742002849,
+          "y": 7989.59408352792
         },
         {
-          "x": 15626.966179592053,
-          "y": 15614.347172273912
+          "x": 8001.966179592053,
+          "y": 7989.183109773912
         },
         {
-          "x": 15625.47348646587,
-          "y": 15614.095484535348
+          "x": 8000.473486465869,
+          "y": 7988.931422035348
         },
         {
-          "x": 15623.934017349595,
-          "y": 15614.010730216796
+          "x": 7998.934017349595,
+          "y": 7988.846667716796
         },
         {
-          "x": 15622.394548233322,
-          "y": 15614.095484535348
+          "x": 7997.394548233322,
+          "y": 7988.931422035348
         },
         {
-          "x": 15620.901855107135,
-          "y": 15614.347172273912
+          "x": 7995.901855107135,
+          "y": 7989.183109773912
         },
         {
-          "x": 15619.501292696339,
-          "y": 15614.75814602792
+          "x": 7994.501292696339,
+          "y": 7989.59408352792
         },
         {
-          "x": 15618.235416381065,
-          "y": 15615.31591856782
+          "x": 7993.235416381065,
+          "y": 7990.15185606782
         },
         {
-          "x": 15617.142689172593,
-          "y": 15616.003542257227
+          "x": 7992.142689172593,
+          "y": 7990.839479757227
         },
         {
-          "x": 15616.256313034195,
-          "y": 15616.800123998295
+          "x": 7991.256313034195,
+          "y": 7991.636061498295
         },
         {
-          "x": 15615.60322005632,
-          "y": 15617.681460057916
+          "x": 7990.60322005632,
+          "y": 7992.517397557916
         },
         {
-          "x": 15615.203254138609,
-          "y": 15618.620771485887
+          "x": 7990.203254138609,
+          "y": 7993.4567089858865
         }
       ],
       "blur": 0,
@@ -502,8 +502,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "8ba0c773-a1f9-419a-a08a-812260337f1a",
-      "x": 15624.929184,
-      "y": 15588.510730216796,
+      "x": 7999.9291840000005,
+      "y": 7963.346667716796,
       "width": 35,
       "height": 46,
       "alpha": 1,
@@ -522,24 +522,24 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15624.929184,
-          "y": 15634.510730216796
+          "x": 7999.9291840000005,
+          "y": 8009.346667716796
         },
         {
-          "x": 15659.929184,
-          "y": 15634.510730216796
+          "x": 8034.9291840000005,
+          "y": 8009.346667716796
         },
         {
-          "x": 15659.929184,
-          "y": 15588.510730216796
+          "x": 8034.9291840000005,
+          "y": 7963.346667716796
         },
         {
-          "x": 15624.929184,
-          "y": 15588.510730216796
+          "x": 7999.9291840000005,
+          "y": 7963.346667716796
         },
         {
-          "x": 15624.929184,
-          "y": 15634.510730216796
+          "x": 7999.9291840000005,
+          "y": 8009.346667716796
         }
       ],
       "blur": 0,
@@ -576,12 +576,12 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 15625.086528000003,
-          "y": 15588.313928216798
+          "x": 8000.086528000003,
+          "y": 7963.149865716798
         },
         {
-          "x": 15625.348672,
-          "y": 15635.499848216798
+          "x": 8000.348672,
+          "y": 8010.335785716798
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -595,8 +595,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "5b6e9c69-63d9-b541-81b1-8aec11093f79",
-      "x": 15625.848672,
-      "y": 15614.010730216796,
+      "x": 8000.848672,
+      "y": 7988.846667716796,
       "width": 8.803056947199366,
       "height": 19,
       "alpha": 1,
@@ -615,56 +615,56 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15625.848672,
-          "y": 15633.010730216796
+          "x": 8000.848672,
+          "y": 8007.846667716796
         },
         {
-          "x": 15634.6517289472,
-          "y": 15633.010730216796
+          "x": 8009.651728947199,
+          "y": 8007.846667716796
         },
         {
-          "x": 15633.460504122399,
-          "y": 15618.620771485887
+          "x": 8008.460504122399,
+          "y": 7993.4567089858865
         },
         {
-          "x": 15633.136722189014,
-          "y": 15617.681460057916
+          "x": 8008.136722189014,
+          "y": 7992.517397557916
         },
         {
-          "x": 15632.60802787359,
-          "y": 15616.800123998295
+          "x": 8007.60802787359,
+          "y": 7991.636061498295
         },
         {
-          "x": 15631.890485285363,
-          "y": 15616.003542257227
+          "x": 8006.890485285363,
+          "y": 7990.839479757227
         },
         {
-          "x": 15631.005896592791,
-          "y": 15615.31591856782
+          "x": 8006.005896592791,
+          "y": 7990.15185606782
         },
         {
-          "x": 15629.981139575662,
-          "y": 15614.75814602792
+          "x": 8004.981139575662,
+          "y": 7989.59408352792
         },
         {
-          "x": 15628.8473509574,
-          "y": 15614.347172273912
+          "x": 8003.8473509574,
+          "y": 7989.183109773912
         },
         {
-          "x": 15627.63898033144,
-          "y": 15614.095484535348
+          "x": 8002.63898033144,
+          "y": 7988.931422035348
         },
         {
-          "x": 15626.39274342779,
-          "y": 15614.010730216796
+          "x": 8001.39274342779,
+          "y": 7988.846667716796
         },
         {
-          "x": 15625.848672,
-          "y": 15614.047731530889
+          "x": 8000.848672,
+          "y": 7988.883669030889
         },
         {
-          "x": 15625.848672,
-          "y": 15633.010730216796
+          "x": 8000.848672,
+          "y": 8007.846667716796
         }
       ],
       "blur": 0,
@@ -683,8 +683,8 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "c77630c2-4fd4-2e7f-edf1-912692694ac9",
-      "x": 15624.929184,
-      "y": 15592.630285796253,
+      "x": 7999.9291840000005,
+      "y": 7967.466223296253,
       "width": 8.331258059450192,
       "height": 16,
       "alpha": 1,
@@ -703,92 +703,92 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15624.929184,
-          "y": 15608.601304471349
+          "x": 7999.9291840000005,
+          "y": 7983.437241971349
         },
         {
-          "x": 15625.26044205945,
-          "y": 15608.630285796253
+          "x": 8000.260442059451,
+          "y": 7983.466223296253
         },
         {
-          "x": 15626.649627480785,
-          "y": 15608.50874782035
+          "x": 8001.649627480785,
+          "y": 7983.3446853203495
         },
         {
-          "x": 15627.996603206055,
-          "y": 15608.147826762539
+          "x": 8002.996603206055,
+          "y": 7982.983764262539
         },
         {
-          "x": 15629.26044205945,
-          "y": 15607.558489026527
+          "x": 8004.260442059451,
+          "y": 7982.394426526527
         },
         {
-          "x": 15630.402742936942,
-          "y": 15606.758641341205
+          "x": 8005.402742936942,
+          "y": 7981.594578841205
         },
         {
-          "x": 15631.388797604402,
-          "y": 15605.772586673746
+          "x": 8006.3887976044025,
+          "y": 7980.6085241737455
         },
         {
-          "x": 15632.188645289725,
-          "y": 15604.630285796253
+          "x": 8007.188645289725,
+          "y": 7979.466223296253
         },
         {
-          "x": 15632.777983025737,
-          "y": 15603.366446942859
+          "x": 8007.777983025737,
+          "y": 7978.202384442859
         },
         {
-          "x": 15633.138904083547,
-          "y": 15602.019471217587
+          "x": 8008.1389040835475,
+          "y": 7976.855408717587
         },
         {
-          "x": 15633.26044205945,
-          "y": 15600.630285796253
+          "x": 8008.260442059451,
+          "y": 7975.466223296253
         },
         {
-          "x": 15633.138904083547,
-          "y": 15599.241100374918
+          "x": 8008.1389040835475,
+          "y": 7974.0770378749185
         },
         {
-          "x": 15632.777983025737,
-          "y": 15597.894124649647
+          "x": 8007.777983025737,
+          "y": 7972.730062149647
         },
         {
-          "x": 15632.188645289725,
-          "y": 15596.630285796253
+          "x": 8007.188645289725,
+          "y": 7971.466223296253
         },
         {
-          "x": 15631.388797604402,
-          "y": 15595.48798491876
+          "x": 8006.3887976044025,
+          "y": 7970.32392241876
         },
         {
-          "x": 15630.402742936942,
-          "y": 15594.501930251301
+          "x": 8005.402742936942,
+          "y": 7969.337867751301
         },
         {
-          "x": 15629.26044205945,
-          "y": 15593.702082565978
+          "x": 8004.260442059451,
+          "y": 7968.538020065978
         },
         {
-          "x": 15627.996603206055,
-          "y": 15593.112744829967
+          "x": 8002.996603206055,
+          "y": 7967.948682329967
         },
         {
-          "x": 15626.649627480785,
-          "y": 15592.751823772156
+          "x": 8001.649627480785,
+          "y": 7967.587761272156
         },
         {
-          "x": 15625.26044205945,
-          "y": 15592.630285796253
+          "x": 8000.260442059451,
+          "y": 7967.466223296253
         },
         {
-          "x": 15624.929184,
-          "y": 15592.659267121157
+          "x": 7999.9291840000005,
+          "y": 7967.4952046211565
         },
         {
-          "x": 15624.929184,
-          "y": 15608.601304471349
+          "x": 7999.9291840000005,
+          "y": 7983.437241971349
         }
       ],
       "blur": 0,
