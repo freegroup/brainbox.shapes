@@ -7,7 +7,7 @@
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.133_645",
+   VERSION: "2.0.134_647",
 
    init:function(attr, setter, getter)
    {
@@ -147,45 +147,51 @@ video_detector_Sobel = video_detector_Sobel.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data;
-            var opaque = true;
-            var weights =[  1,   1,  1,  
-                            1, 0.7, -1,  
-                           -1,  -1, -1 ];
-            var side     = Math.round(Math.sqrt(weights.length));
-            var halfSide = Math.floor(side/2);
+            var pixels    = imageData.data;
+            var kernelX   =[ -1, 0,  1,  
+                             -2, 0, -2,  
+                             -1, 0, -1 ];
+                             
+            var kernelY   =[ -1, -2, -1,  
+                              0,  0,  0,  
+                             -1, -2, -1 ];
+                           
+            var convolut = function(weights, src, w, h){
+                var side     = Math.round(Math.sqrt(weights.length));
+                var halfSide = Math.floor(side/2);
+                var sw = w;
+                var sh = h;
 
-            var src = imageData.data;
-            var sw = imageData.width;
-            var sh = imageData.height;
-            var w = sw;
-            var h = sh;
-            var dst = new Uint8ClampedArray(w*h*4);
-            var alphaFac = opaque ? 1 : 0;
+                var dst = new Uint8ClampedArray(w*h*4);
 
-            for (var y=0; y < h; y++) {
-              for (var x=0; x < w; x++) {
-                var sy = y;
-                var sx = x;
-                var dstOff = (y*w+x)*4;
-                var r=0, g=0, b=0, a=0;
-                for (var cy=0; cy<side; cy++) {
-                  for (var cx=0; cx<side; cx++) {
-                    var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
-                    var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
-                    var srcOff = (scy*sw+scx)*4;
-                    var wt = weights[cy*side+cx];
-                    r += src[srcOff] * wt;
-                    g += src[srcOff+1] * wt;
-                    b += src[srcOff+2] * wt;
-                    a += src[srcOff+3] * wt;
-                  }
+                for (var y=0; y < h; y++) {
+                    for (var x=0; x < w; x++) {
+                        var sy = y;
+                        var sx = x;
+                        var dstOff = (y*w+x)*4;
+                        var r=0, g=0, b=0, a=0;
+                        for (var cy=0; cy<side; cy++) {
+                            for (var cx=0; cx<side; cx++) {
+                                var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
+                                var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
+                                var srcOff = (scy*sw+scx)*4;
+                                var wt = weights[cy*side+cx];
+                                r += src[srcOff] * wt;
+                                g += src[srcOff+1] * wt;
+                                b += src[srcOff+2] * wt;
+                            }
+                        }
+                        dst[dstOff]   = r;
+                        dst[dstOff+1] = g;
+                        dst[dstOff+2] = b;
+                    }
                 }
-                dst[dstOff] = r;
-                dst[dstOff+1] = g;
-                dst[dstOff+2] = b;
-                dst[dstOff+3] = a + alphaFac*(255-a);
-              }
+                return dst;
             }
+
+            var w = imageData.width;
+            var h = imageData.height;
+            var dst = convolut(kernelX, pixels, w, h)
             imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
