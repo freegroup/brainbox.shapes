@@ -7,7 +7,7 @@
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "2.0.143_669",
+   VERSION: "2.0.144_672",
 
    init:function(attr, setter, getter)
    {
