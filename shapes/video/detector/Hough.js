@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.154_694",
+   VERSION: "2.0.155_696",
 
    init:function(attr, setter, getter)
    {
@@ -182,6 +182,7 @@ video_detector_Hough = video_detector_Hough.extend({
                     }
                 }
 
+console.log(max);
                 if (max > 30) {
                     bestRho <<= 1; // accumulator is bitshifted
                     bestRho -= rhoMax; /// accumulator has rhoMax added
@@ -218,7 +219,7 @@ video_detector_Hough = video_detector_Hough.extend({
                 for (var y = 0; y < height; y++) {
                     // because we NEED a black/white image we can just use the RED part
                     // if the RGBA color
-                    var r = pixels[(x+y*width)*4];
+                    var r = pixels[x+(y*width*4)];
                     if(r>10){
                         houghAcc(x,y)
                     }
