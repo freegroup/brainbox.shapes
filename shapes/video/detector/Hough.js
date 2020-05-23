@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.146_677",
+   VERSION: "2.0.147_678",
 
    init:function(attr, setter, getter)
    {
@@ -136,9 +136,6 @@ video_detector_Hough = video_detector_Hough.extend({
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
-        else{
-            console.log("drop image")
-        }
     },
 
 
@@ -155,55 +152,19 @@ video_detector_Hough = video_detector_Hough.extend({
             var pixels    = imageData.data;
             var w = imageData.width;
             var h = imageData.height;
-
-            var kernelX   =[ 1,  0,
-                             0, -1 ];
-                             
-            var kernelY   =[ 0, 1,
-                            -1, 0 ];
-                           
-            function convolut(weights, src, w, h){
-                var side     = Math.round(Math.sqrt(weights.length));
-                var halfSide = Math.floor(side/2);
-                var sw = w;
-                var sh = h;
-
-                var dst = new Uint8ClampedArray(w*h*4);
-
-                for (var y=0; y < h; y++) {
-                    for (var x=0; x < w; x++) {
-                        var sy = y;
-                        var sx = x;
-                        var dstOff = (y*w+x)*4;
-                        var r=0, g=0, b=0, a=0;
-                        for (var cy=0; cy<side; cy++) {
-                            for (var cx=0; cx<side; cx++) {
-                                var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
-                                var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
-                                var srcOff = (scy*sw+scx)*4;
-                                var wt = weights[cy*side+cx];
-                                r += src[srcOff] * wt;
-                                g += src[srcOff+1] * wt;
-                                b += src[srcOff+2] * wt;
-                            }
-                        }
-                        dst[dstOff]   = r;
-                        dst[dstOff+1] = g;
-                        dst[dstOff+2] = b;
-                        dst[dstOff+3] = src[dstOff+3];
-                    }
-                }
-                return dst;
-            }
-
-            var dstX = convolut(kernelX, pixels, w, h);
-            var dstY = convolut(kernelY, pixels, w, h);
-            for (var i=0; i < dstX.length; i++) {
-                var edgeX = dstX[i];
-                var edgeY = dstY[i]; 
-                dstX[i] = Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
-            }
+            var angles = 360;
             
+            // Precalculate tables.
+            var cosTable = Float64Array(angles);
+            var sinTable = Float64Array(angles);
+            var theta = 0
+            var piSteps = Math.PI / angles;
+            for (var i = 0; i < angles; i++) {
+                cosTable[i] = Math.cos(theta);
+                sinTable[i] = Math.sin(theta);
+                theta += piSteps;
+            }
+
             imageData.data.set(dstX);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
