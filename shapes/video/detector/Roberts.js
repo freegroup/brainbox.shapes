@@ -7,7 +7,7 @@
 var video_detector_Roberts = CircuitFigure.extend({
 
    NAME: "video_detector_Roberts",
-   VERSION: "2.0.150_685",
+   VERSION: "2.0.151_688",
 
    init:function(attr, setter, getter)
    {
@@ -184,9 +184,9 @@ video_detector_Roberts = video_detector_Roberts.extend({
                                 b += src[srcOff+2] * wt;
                             }
                         }
-                        dst[dstOff]   = r;
-                        dst[dstOff+1] = g;
-                        dst[dstOff+2] = b;
+                        dst[dstOff]   = 255-r;
+                        dst[dstOff+1] = 255-g;
+                        dst[dstOff+2] = 255-b;
                         dst[dstOff+3] = src[dstOff+3];
                     }
                 }
