@@ -493,46 +493,6 @@
           "name": "shape_designer.filter.OpacityFilter"
         }
       ]
-    },
-    {
-      "type": "shape_designer.figure.ExtLabel",
-      "id": "88fb223b-ab2c-753c-5592-832e07084db5",
-      "x": 8005.013351680005,
-      "y": 7958.5,
-      "width": 28.34375,
-      "height": 21.21875,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Angle"
-      },
-      "cssClass": "shape_designer_figure_ExtLabel",
-      "ports": [],
-      "bgColor": "rgba(0,0,0,0)",
-      "color": "rgba(27,27,27,1)",
-      "stroke": 0,
-      "radius": 0,
-      "dasharray": null,
-      "text": "80°",
-      "outlineStroke": 0,
-      "outlineColor": "rgba(0,0,0,0)",
-      "fontSize": 16,
-      "fontColor": "rgba(255,0,32,1)",
-      "fontFamily": null,
-      "editor": "LabelInplaceEditor",
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.FontSizeFilter"
-        },
-        {
-          "name": "shape_designer.filter.FontColorFilter"
-        }
-      ]
     }
   ]
 }
