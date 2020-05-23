@@ -7,7 +7,7 @@
 var video_detector_Prewitt = CircuitFigure.extend({
 
    NAME: "video_detector_Prewitt",
-   VERSION: "2.0.160_706",
+   VERSION: "2.0.161_710",
 
    init:function(attr, setter, getter)
    {
