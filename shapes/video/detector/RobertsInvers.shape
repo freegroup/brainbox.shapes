@@ -410,8 +410,8 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(0,0,0,1)",
-      "color": "rgba(255,255,255,1)",
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(0,0,0,1)",
       "stroke": 2,
       "radius": 2,
       "dasharray": null,
@@ -512,7 +512,7 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "TOP_Circle"
+        "name": "Shadow_Circle"
       },
       "cssClass": "shape_designer_figure_PolyCircle",
       "ports": [],
