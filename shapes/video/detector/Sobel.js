@@ -7,7 +7,7 @@
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.135_648",
+   VERSION: "2.0.136_652",
 
    init:function(attr, setter, getter)
    {
@@ -151,12 +151,12 @@ video_detector_Sobel = video_detector_Sobel.extend({
             var imageData = event.data;
             var pixels    = imageData.data;
             var kernelX   =[ -1, 0,  1,  
-                             -2, 0, -2,  
-                             -1, 0, -1 ];
+                             -2, 0,  2,  
+                             -1, 0,  1 ];
                              
             var kernelY   =[ -1, -2, -1,  
                               0,  0,  0,  
-                             -1, -2, -1 ];
+                              1,  2,  1 ];
                            
             var convolut = function(weights, src, w, h){
                 var side     = Math.round(Math.sqrt(weights.length));
@@ -189,11 +189,11 @@ video_detector_Sobel = video_detector_Sobel.extend({
                     }
                 }
                 return dst;
-            }
+            };
 
             var w = imageData.width;
             var h = imageData.height;
-            var dst = convolut(kernelX, pixels, w, h)
+            var dst = convolut(kernelX, pixels, w, h);
             imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
@@ -206,6 +206,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
             var image = new Image();
             image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
             image.src = this.tmpCanvas.toDataURL();
+            console.log(image.src)
             this.processing = false;
         };
 
