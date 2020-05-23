@@ -43,9 +43,6 @@ video_detector_Roberts = video_detector_Roberts.extend({
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
-        else{
-            console.log("drop image")
-        }
     },
 
 

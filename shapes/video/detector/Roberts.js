@@ -7,7 +7,7 @@
 var video_detector_Roberts = CircuitFigure.extend({
 
    NAME: "video_detector_Roberts",
-   VERSION: "2.0.149_681",
+   VERSION: "2.0.150_684",
 
    init:function(attr, setter, getter)
    {
@@ -135,9 +135,6 @@ video_detector_Roberts = video_detector_Roberts.extend({
             //
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
-        }
-        else{
-            console.log("drop image")
         }
     },
 

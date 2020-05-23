@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.149_681",
+   VERSION: "2.0.150_684",
 
    init:function(attr, setter, getter)
    {
@@ -157,8 +157,8 @@ video_detector_Hough = video_detector_Hough.extend({
             var accum     = Array(angles);
             
             // Precalculate tables.
-            var cosTable = Float64Array(angles);
-            var sinTable = Float64Array(angles);
+            var cosTable = new Float64Array(angles);
+            var sinTable = new Float64Array(angles);
             var theta = 0
             var piSteps = Math.PI / angles;
             for (var i = 0; i < angles; i++) {
@@ -243,7 +243,9 @@ video_detector_Hough = video_detector_Hough.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
-            var imageData = event.data;
+            var imageData = event.data.imageData;
+            var line = event.data.line;
+            console.log(line);
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => { 
