@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.158_701",
+   VERSION: "2.0.159_704",
 
    init:function(attr, setter, getter)
    {
@@ -159,6 +159,7 @@ video_detector_Hough = video_detector_Hough.extend({
             
             // Precalculate tables.
             if(self.cosTable===undefined){
+                console.log("setup sin/cos lookup table")
                 self.cosTable = new Float64Array(angles);
                 self.sinTable = new Float64Array(angles);
                 var theta = 0;
@@ -216,14 +217,13 @@ video_detector_Hough = video_detector_Hough.extend({
                     }
                 }
             }
-            for (var x = 0; x < width; x++) {
-                for (var y = 0; y < height; y++) {
-                    // because we NEED a black/white image we can just use the RED part
-                    // if the RGBA color
-                    var r = pixels[(x+y*width)*4];
-                    if(r>10){
-                        houghAcc(x,y);
-                    }
+            for (var index=0; index<pixels.length; index+=4) {
+                // because we NEED a black/white image we can just use the RED part
+                // if the RGBA color
+                if(pixels[index]===0){
+                    var x = (index/4) % width;
+                    var y = (index/4) / width;
+                    houghAcc(x,y);
                 }
             }
 
