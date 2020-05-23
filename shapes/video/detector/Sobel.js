@@ -7,7 +7,7 @@
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.134_647",
+   VERSION: "2.0.135_650",
 
    init:function(attr, setter, getter)
    {
@@ -110,6 +110,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -127,11 +128,12 @@ video_detector_Sobel = video_detector_Sobel.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
     },
@@ -186,6 +188,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
                         dst[dstOff+2] = b;
                     }
                 }
+                console.log(dst)
                 return dst;
             }
 
@@ -204,6 +207,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
             var image = new Image();
             image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
             image.src = this.tmpCanvas.toDataURL();
+            this.processing = false;
         };
 
 
@@ -211,6 +215,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction;
+        this.processing = false;
     },
 
     /**
@@ -226,6 +231,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 
