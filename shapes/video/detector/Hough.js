@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.150_685",
+   VERSION: "2.0.151_686",
 
    init:function(attr, setter, getter)
    {
@@ -159,7 +159,8 @@ video_detector_Hough = video_detector_Hough.extend({
             // Precalculate tables.
             var cosTable = new Float64Array(angles);
             var sinTable = new Float64Array(angles);
-            var theta = 0
+            var theta = 0;
+            var houghAccCalled=false;
             var piSteps = Math.PI / angles;
             for (var i = 0; i < angles; i++) {
                 cosTable[i] = Math.cos(theta);
@@ -198,6 +199,7 @@ video_detector_Hough = video_detector_Hough.extend({
             }
             
             function houghAcc(x, y) {
+                houghAccCalled= true;
                 var rho;
                 x -= width  / 2;
                 y -= height / 2;
@@ -223,7 +225,7 @@ video_detector_Hough = video_detector_Hough.extend({
                 }
             }
 
-            var line = findMaxInHough();
+            var line = houghAccCalled?findMaxInHough():null;
             
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
