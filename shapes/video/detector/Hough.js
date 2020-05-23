@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.175_751",
+   VERSION: "2.0.176_753",
 
    init:function(attr, setter, getter)
    {
@@ -164,7 +164,6 @@ video_detector_Hough = video_detector_Hough.extend({
             
             // Precalculate tables.
             if(self.cosTable===undefined){
-                console.log("setup sin/cos lookup table")
                 self.cosTable = new Float64Array(angles);
                 self.sinTable = new Float64Array(angles);
                 var theta = 0;
@@ -259,7 +258,6 @@ video_detector_Hough = video_detector_Hough.extend({
        var receiverFunction = (event) => {
             var imageData = event.data.imageData;
             var line = event.data.line;
-            console.log(line);
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => { 
@@ -267,7 +265,6 @@ video_detector_Hough = video_detector_Hough.extend({
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
-
         };
 
 
