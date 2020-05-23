@@ -119,10 +119,32 @@ video_detector_Hough = video_detector_Hough.extend({
                     }
                 }
             }
-            findMaxInHough();
+            for (var x = 0; x < width; x++) {
+                for (var y = 0; y < height; y++) {
+                    // because we NEED a black/white image we can just use the RED part
+                    // if the RGBA color
+                    var r = pixels[x*y*4];
+                    if(r>100){
+                        houghAcc(x,y)
+                    }
+                }
+            }
 
-            imageData.data.set(dstX);
-            self.postMessage(imageData, [imageData.data.buffer]);
+            var line = findMaxInHough();
+            
+            var canvas = new OffscreenCanvas(width, height);
+            var ctx = canvas.getContext('2d');
+            if(line){
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(255,0,0,1)';
+                ctx.moveTo(line.x1 + width / 2, line.y1 + height / 2);
+                ctx.lineTo(line.x2 + width / 2, line.y2 + height / 2);
+                ctx.stroke();
+                ctx.closePath();
+                imageData = ctx.getImageData(0, 0, width, height);
+            }
+            //imageData.data.set(dstX);
+            self.postMessage({imageData, line}, [imageData.data.buffer]);
         };
         
         // the method which receives the WebWorker result
