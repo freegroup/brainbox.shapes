@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.182_766",
+   VERSION: "2.0.183_768",
 
    init:function(attr, setter, getter)
    {
@@ -176,7 +176,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 histB[pixels[index+2]]++; // blue
                                           // ignore alpha
             }
-            //console.log("R",histR.join(","))
+            console.log("R",histR.join(","))
             //console.log("G",histG.join(","))
             //console.log("B",histB.join(","))
             var sumR = 0;
@@ -196,8 +196,22 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 lutB[i] = parseInt(sumB * scale);
                 ++i;
             }
-//            console.log(histR, lutR)
+            console.log(lutR.join(", "))
 
+            histR.fill(0);
+            histG.fill(0);
+            histB.fill(0);
+            
+            // collect the distribution of the RGB values 
+            //
+            for (index=0; index < pixels.length; index+=4) {
+                histR[pixels[index  ]]++; // red
+                histG[pixels[index+1]]++; // green
+                histB[pixels[index+2]]++; // blue
+                                          // ignore alpha
+            }
+            console.log("R",histR.join(","))
+            console.log("----------------------")
             // re-map input pixels by using LUT
             for (index=0; index < pixels.length; index+=4) {
                 pixels[i  ] = lutR[pixels[index  ]];
