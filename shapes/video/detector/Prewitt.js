@@ -4,25 +4,25 @@
 // created with http://www.draw2d.org
 //
 //
-var video_filter_Sharpen = CircuitFigure.extend({
+var video_detector_Prewitt = CircuitFigure.extend({
 
-   NAME: "video_filter_Sharpen",
+   NAME: "video_detector_Prewitt",
    VERSION: "2.0.141_665",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.87877759999992},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:81.04423942400535},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.34495943717131 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.24421560822089 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.34495943717131 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.24421560822089 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -33,7 +33,7 @@ var video_filter_Sharpen = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 80.87877759999992;
+      this.originalHeight= 81.04423942400535;
       return shape;
    },
 
@@ -42,7 +42,7 @@ var video_filter_Sharpen = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.87877759999992 L0,80.87877759999992");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,81.04423942400535 L0,81.04423942400535");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -52,8 +52,8 @@ var video_filter_Sharpen = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Sharpen');
-       shape.attr({"x":10.228799999999865,"y":68.37877759999992,"text-anchor":"start","text":"Sharpen","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Prewitt');
+       shape.attr({"x":15.228799999999865,"y":68.54423942400535,"text-anchor":"start","text":"Prewitt","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
@@ -61,34 +61,29 @@ var video_filter_Sharpen = CircuitFigure.extend({
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(237,237,237,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
-       // Circle
-       shape = this.canvas.paper.path('M38.3575436800038 6.761013428584192L38.33557151823152 6.75898431823407L36.77273791922926 6.903310664618402L35.25739022830021 7.331904420767387L33.83557151823152 8.031742982281685L32.55048303105286 8.981562108603612L31.441171530160318 10.15250202621246L30.541342884171172 11.50898431823407L29.878337931158057 13.009792956640013L29.472301741121555 14.609326630398755L29.335571518231518 16.25898431823407L29.472301741121555 17.908642006069385L29.878337931158057 19.508175679828128L30.541342884171172 21.00898431823407L31.441171530160318 22.36546661025568L32.55048303105286 23.53640652786453L33.83557151823152 24.486225654186455L35.25739022830021 25.186064215700753L36.77273791922926 25.614657971849738L38.33557151823152 25.75898431823407L38.3575436800038 25.756955207883948L38.3575436800038 6.761013428584192Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":0.25});
-       shape.data("name","Circle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M35.323635168710325,52.22508227661048Q38.32230559823074,52.314388799999506 38.32230559823074, 49.314388799999506L38.32230559823074,30.438490014114905Q38.32230559823074,27.438490014114905 38.301052857797, 27.433087432160846L38.301052857797,27.433087432160846Q38.279800117363266,27.427684850206788 37.59730583340797, 27.371036825103147L37.59730583340797,27.371036825103147Q36.91481154945268,27.314388799999506 36.23231726549511, 27.371036825103147L36.23231726549511,27.371036825103147Q35.549822981537545,27.427684850206788 34.88806594104108, 27.5959077039397L34.88806594104108,27.5959077039397Q34.22630890054461,27.764130557672615 33.605396256316, 28.038816873749056L33.605396256316,28.038816873749056Q32.98448361208739,28.313503189825497 32.42328148062643, 28.68630676353132L32.42328148062643,28.68630676353132Q31.86207934916547,29.059110337237144 31.377639573254783, 29.51870372063013L31.377639573254783,29.51870372063013Q30.893199797344096,29.978297104023113 30.50024183443702, 30.510715784715558L30.50024183443702,30.510715784715558Q30.107283871529944,31.043134465408002 29.817747550480362, 31.632201171204088L29.817747550480362,31.632201171204088Q29.52821122943078,32.22126787700017 28.902015467438314, 35.15518656497751L25.948501360223208,48.993303588943135Q25.32230559823074,51.927222276920475 28.320976027751158, 52.0165288003095L35.323635168710325,52.22508227661048');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":0.1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M38.309039678229965 51.724655359115786L38.309039678229965 27.84379252466624L38.27307350211322 27.833419567314195L37.11808317541818 27.724655359115786L35.96309284872041 27.833419567314195L34.84319631864855 28.156407446482262L33.792421074570484 28.683805173349356L32.84269439055879 29.399588034863882L32.02287323132532 30.28200733097765L31.357867447944045 31.304251197908343L30.867882904630278 32.435259273036536L27.309039678229965 51.352975496960426Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":0.2});
-       shape.data("name","Rectangle");
+       // TOP_Circle
+       shape = this.canvas.paper.ellipse();
+       shape.attr({"rx":8.16442848176873,"ry":8.16442848176873,"cx":39.50000000000025,"cy":16.4234128000028,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","TOP_Circle");
        
        // TOP_Body
        shape = this.canvas.paper.path('M29.462567472217447,46.776768974949896Q28.81898911823282,50.724655359115786 32.81880873597436, 50.762642534977275L46.90091030048609,50.89638338325396Q50.900729918227626,50.93437055911545 50.01211395841982, 47.03432419067637L48.22418747803842,39.18729409867167Q47.33557151823061,35.28724773023259 47.27480253027943, 34.71745662722515L47.27480253027943,34.71745662722515Q47.21403354232825,34.1476655242177 47.03357301342339, 33.5951872355472L47.03357301342339,33.5951872355472Q46.85311248451853,33.0427089468767 46.558443616512704, 32.52433024577522L46.558443616512704,32.52433024577522Q46.263774748506876,32.005951544673735 45.86385090584463, 31.537423105665766L45.86385090584463,31.537423105665766Q45.46392706318238,31.068894666657798 44.97089972945241, 30.66445248927039L44.97089972945241,30.66445248927039Q44.47787239572244,30.26001031188298 43.906721956976526, 29.931943167022382L43.906721956976526,29.931943167022382Q43.33557151823061,29.603876022161785 42.70365209153351, 29.36215206401357L42.70365209153351,29.36215206401357Q42.07173266483642,29.120428105865358 41.39824480220159, 28.972391994582267L41.39824480220159,28.972391994582267Q40.72475693956676,28.824355883299177 40.03016422889914, 28.77450562120748L40.03016422889914,28.77450562120748Q39.33557151823152,28.724655359115786 38.64097880756344, 28.77450562120748L38.64097880756344,28.77450562120748Q37.94638609689537,28.824355883299177 37.27289823426054, 28.972391994582267L37.27289823426054,28.972391994582267Q36.59941037162571,29.120428105865358 35.96749094492861, 29.36215206401357L35.96749094492861,29.36215206401357Q35.33557151823152,29.603876022161785 34.7644210794856, 29.931943167022382L34.7644210794856,29.931943167022382Q34.193270640739684,30.26001031188298 33.700243307009714, 30.66445248927039L33.700243307009714,30.66445248927039Q33.207215973279745,31.068894666657798 32.8072921306175, 31.537423105665766L32.8072921306175,31.537423105665766Q32.40736828795525,32.005951544673735 32.11269941994942, 32.52433024577522L32.11269941994942,32.52433024577522Q31.818030551943593,33.0427089468767 31.637570023038734, 33.5951872355472L31.637570023038734,33.5951872355472Q31.457109494133874,34.1476655242177 31.396340506182696, 34.71745662722515L31.396340506182696,34.71745662722515Q31.335571518231518,35.28724773023259 30.69199316424689, 39.235134114398484L29.462567472217447,46.776768974949896');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","TOP_Body");
        
+       // Shadow
+       shape = this.canvas.paper.path('M38.81898911823282,48.09356345220658Q38.81898911823282,50.09356345220658 40.81886978802416, 50.11541079975606L48.81910844844148,50.202808011566304Q50.81898911823282,50.224655359115786 50.43037456504294, 48.26277393327756L48.276999915507304,37.391678928941374Q47.88838536231742,35.429797503103146 47.838432511882274, 34.89104169036955L47.838432511882274,34.89104169036955Q47.78847966144713,34.35228587763595 47.64013890222441, 33.829899887648025L47.64013890222441,33.829899887648025Q47.49179814300169,33.3075138976601 47.24957673389736, 32.81737016438365L47.24957673389736,32.81737016438365Q47.007355324793025,32.32722643110719 46.678613040751316, 31.884217723856636L46.678613040751316,31.884217723856636Q46.349870756709606,31.44120901660608 45.9445962656805, 31.05879593077134L45.9445962656805,31.05879593077134Q45.5393217746514,30.676382844936597 45.069829136965836, 30.36618480862535L45.069829136965836,30.36618480862535Q44.600336499280274,30.0559867723141 44.08089101115911, 29.827428995890386L44.08089101115911,29.827428995890386Q43.561445523037946,29.598871219466673 43.00783027278612, 29.4588983153144L43.00783027278612,29.4588983153144Q42.4542150225343,29.318925411162127 41.88325132938871, 29.271790385138956L41.88325132938871,29.271790385138956Q41.31228763624313,29.224655359115786 40.74132394309618, 29.271790385138956L40.74132394309618,29.271790385138956Q40.170360249949226,29.318925411162127 39.6167449996974, 29.4588983153144L39.6167449996974,29.4588983153144Q39.06312974944558,29.598871219466673 38.9410594338392, 29.652582572324718L38.9410594338392,29.652582572324718Q38.81898911823282,29.706293925182763 38.81898911823282, 31.706293925182763L38.81898911823282,48.09356345220658');
+       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":2,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Shadow");
+       
        // TOP_Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":8.16442848176873,"ry":8.16442848176873,"cx":39.50000000000025,"cy":16.4234128000028,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M39.17362344960475 23.57014711485499L39.41983980273653 23.64504246582692L40.56705787534429 23.75898431823407L41.71427594795114 23.64504246582692L42.82663637994392 23.306678974127863L43.87034066247361 22.754174846618298L44.813676369059976 22.004317641627495L45.627980721607855 21.07989139088386L46.28851149442198 20.00898431823407L46.7751987942147 18.82413539317713L47.0732548736587 17.561345650736257L47.17362344960475 16.25898431823407L47.0732548736587 14.956622985731883L46.7751987942147 13.69383324329101L46.28851149442198 12.50898431823407L45.627980721607855 11.438077245584282L44.813676369059976 10.513650994840646L43.87034066247361 9.763793789849842L42.82663637994392 9.211289662340278L41.71427594795114 8.872926170641222L40.56705787534429 8.75898431823407L39.41983980273653 8.872926170641222L39.17362344960475 8.94782152161315L39.17362344960475 23.57014711485499Z');
+       shape.attr({"stroke":"rgba(13,13,13,1)","stroke-width":2,"fill":"rgba(255,253,253,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","TOP_Circle");
        
        // Line
        shape = this.canvas.paper.path('M38.69640448001155 4.038881344014044L38.864176640010555,55.044239424005355');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(26,12,112,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
 
@@ -108,13 +103,14 @@ var video_filter_Sharpen = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_filter_Sharpen = video_filter_Sharpen.extend({
+video_detector_Prewitt = video_detector_Prewitt.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -132,11 +128,12 @@ video_filter_Sharpen = video_filter_Sharpen.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
     },
@@ -152,44 +149,61 @@ video_filter_Sharpen = video_filter_Sharpen.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data;
-            var opaque = false;
-            var weights =[  0, -1,  0,  -1,  5, -1,   0, -1,  0 ];
-            var side = Math.round(Math.sqrt(weights.length));
-            var halfSide = Math.floor(side/2);
+            var pixels    = imageData.data;
+            var w = imageData.width;
+            var h = imageData.height;
 
-            var src = imageData.data;
-            var sw = imageData.width;
-            var sh = imageData.height;
-            var w = sw;
-            var h = sh;
-            var dst = new Uint8ClampedArray(w*h*4);
-            var alphaFac = opaque ? 1 : 0;
+            var kernelX   =[ -1, 0,  1,  
+                             -1, 0,  1,  
+                             -1, 0,  1 ];
+                             
+            var kernelY   =[ -1, -1, -1,  
+                              0,  0,  0,  
+                              1,  1,  1 ];
+                           
+            function convolut(weights, src, w, h){
+                var side     = Math.round(Math.sqrt(weights.length));
+                var halfSide = Math.floor(side/2);
+                var sw = w;
+                var sh = h;
 
-            for (var y=0; y < h; y++) {
-              for (var x=0; x < w; x++) {
-                var sy = y;
-                var sx = x;
-                var dstOff = (y*w+x)*4;
-                var r=0, g=0, b=0, a=0;
-                for (var cy=0; cy<side; cy++) {
-                  for (var cx=0; cx<side; cx++) {
-                    var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
-                    var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
-                    var srcOff = (scy*sw+scx)*4;
-                    var wt = weights[cy*side+cx];
-                    r += src[srcOff] * wt;
-                    g += src[srcOff+1] * wt;
-                    b += src[srcOff+2] * wt;
-                    a += src[srcOff+3] * wt;
-                  }
+                var dst = new Uint8ClampedArray(w*h*4);
+
+                for (var y=0; y < h; y++) {
+                    for (var x=0; x < w; x++) {
+                        var sy = y;
+                        var sx = x;
+                        var dstOff = (y*w+x)*4;
+                        var r=0, g=0, b=0, a=0;
+                        for (var cy=0; cy<side; cy++) {
+                            for (var cx=0; cx<side; cx++) {
+                                var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
+                                var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
+                                var srcOff = (scy*sw+scx)*4;
+                                var wt = weights[cy*side+cx];
+                                r += src[srcOff] * wt;
+                                g += src[srcOff+1] * wt;
+                                b += src[srcOff+2] * wt;
+                            }
+                        }
+                        dst[dstOff]   = r;
+                        dst[dstOff+1] = g;
+                        dst[dstOff+2] = b;
+                        dst[dstOff+3] = src[dstOff+3];
+                    }
                 }
-                dst[dstOff] = r;
-                dst[dstOff+1] = g;
-                dst[dstOff+2] = b;
-                dst[dstOff+3] = a + alphaFac*(255-a);
-              }
+                return dst;
             }
-            imageData.data.set(dst);
+
+            var dstX = convolut(kernelX, pixels, w, h);
+            var dstY = convolut(kernelY, pixels, w, h);
+            for (var i=0; i < dstX.length; i++) {
+                var edgeX = dstX[i];
+                var edgeY = dstY[i]; 
+                dstX[i] = Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
+            }
+            
+            imageData.data.set(dstX);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
@@ -199,8 +213,12 @@ video_filter_Sharpen = video_filter_Sharpen.extend({
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
-            image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
+            image.onload = () => { 
+                this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
+            };
             image.src = this.tmpCanvas.toDataURL();
+
         };
 
 
@@ -208,6 +226,7 @@ video_filter_Sharpen = video_filter_Sharpen.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction;
+        this.processing = false;
     },
 
     /**
@@ -223,6 +242,7 @@ video_filter_Sharpen = video_filter_Sharpen.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 
