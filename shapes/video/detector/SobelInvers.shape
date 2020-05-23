@@ -469,8 +469,8 @@
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
       "bgColor": "rgba(255,255,255,1)",
-      "color": "rgba(87,87,87,1)",
-      "stroke": 2,
+      "color": "rgba(166,166,166,1)",
+      "stroke": 1,
       "radius": 2,
       "dasharray": null,
       "vertices": [
@@ -576,7 +576,7 @@
       "ports": [],
       "bgColor": "rgba(255,253,253,1)",
       "color": "rgba(161,161,161,1)",
-      "stroke": 2,
+      "stroke": 1,
       "radius": 0,
       "dasharray": null,
       "vertices": [
