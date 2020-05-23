@@ -105,7 +105,7 @@ video_detector_RobertsInvers = video_detector_RobertsInvers.extend({
             for (var i=0; i < dstX.length; i++) {
                 var edgeX = dstX[i];
                 var edgeY = dstY[i]; 
-                dstX[i] = Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
+                dstX[i] = 255-Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
             }
             
             imageData.data.set(dstX);
