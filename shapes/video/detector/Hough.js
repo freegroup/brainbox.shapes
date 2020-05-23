@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.153_693",
+   VERSION: "2.0.154_694",
 
    init:function(attr, setter, getter)
    {
@@ -154,7 +154,7 @@ video_detector_Hough = video_detector_Hough.extend({
             var height    = imageData.height;
             var angles    = 360;
             var rhoMax    = Math.sqrt(width*width + height*height);
-            var accum     = new Array(angles);
+            var accum     = Array(angles);
             
             // Precalculate tables.
             var cosTable = new Float64Array(angles);
@@ -218,8 +218,8 @@ video_detector_Hough = video_detector_Hough.extend({
                 for (var y = 0; y < height; y++) {
                     // because we NEED a black/white image we can just use the RED part
                     // if the RGBA color
-                    var r = pixels[x*y*4];
-                    if(r>100){
+                    var r = pixels[(x+y*width)*4];
+                    if(r>10){
                         houghAcc(x,y)
                     }
                 }
@@ -229,12 +229,12 @@ video_detector_Hough = video_detector_Hough.extend({
             
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
-            if(line){
-                ctx.fillStyle = 'rgba(255,255,255,1)';
-                ctx.beginPath();
-                ctx.fillRect(0,0,width, height);
-                ctx.closePath();
+            ctx.fillStyle = 'rgba(255,255,255,1)';
+            ctx.beginPath();
+            ctx.fillRect(0,0,width, height);
+            ctx.closePath();
 
+            if(line){
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = 10;
@@ -242,9 +242,8 @@ video_detector_Hough = video_detector_Hough.extend({
                 ctx.lineTo(line.x2 + width / 2, line.y2 + height / 2);
                 ctx.stroke();
                 ctx.closePath();
-                imageData = ctx.getImageData(0, 0, width, height);
             }
-            //imageData.data.set(dstX);
+            imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, line}, [imageData.data.buffer]);
         };
         
