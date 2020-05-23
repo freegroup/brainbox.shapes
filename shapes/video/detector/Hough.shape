@@ -434,12 +434,53 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 8014.3164646400055,
-          "y": 7966.367316480003
+          "x": 8028.073781759998,
+          "y": 7987.842152959996
         },
         {
-          "x": 8002.782128640006,
-          "y": 8009.883220480003
+          "x": 8010.164103680005,
+          "y": 7982.536358400005
+        }
+      ],
+      "router": "draw2d.layout.connection.VertexRouter",
+      "radius": "",
+      "filters": [
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.OpacityFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLine",
+      "id": "e8187275-290a-bdf3-07c5-3d617da27d5b",
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Line"
+      },
+      "cssClass": "shape_designer_figure_ExtLine",
+      "stroke": 2,
+      "color": "rgba(255,15,31,1)",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 8012.270033919998,
+          "y": 7989.318937599998
+        },
+        {
+          "x": 8008.516131840003,
+          "y": 7981.884533760003
+        },
+        {
+          "x": 8015.164103680005,
+          "y": 7977.637800960007
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
