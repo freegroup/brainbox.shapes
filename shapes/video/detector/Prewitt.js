@@ -7,7 +7,7 @@
 var video_detector_Prewitt = CircuitFigure.extend({
 
    NAME: "video_detector_Prewitt",
-   VERSION: "2.0.152_690",
+   VERSION: "2.0.153_693",
 
    init:function(attr, setter, getter)
    {
@@ -135,9 +135,6 @@ video_detector_Prewitt = video_detector_Prewitt.extend({
             //
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
-        }
-        else{
-            console.log("drop image")
         }
     },
 
