@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.174_749",
+   VERSION: "2.0.175_750",
 
    init:function(attr, setter, getter)
    {
@@ -148,47 +148,57 @@ video_filter_Histogram = video_filter_Histogram.extend({
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
+            const  HISTOGRAM_SIZE = 256; // for 8-bit image
+            const  MAX_VALUE = 255;      // max value in 8-bit image
+
             var imageData = event.data;
-            var opaque = false;
-            var weights =[  1/9, 1/9, 1/9,  
-                            1/9, 1/9, 1/9,  
-                            1/9, 1/9, 1/9 ];
-            var side = Math.round(Math.sqrt(weights.length));
-            var halfSide = Math.floor(side/2);
-
-            var src = imageData.data;
-            var sw = imageData.width;
-            var sh = imageData.height;
-            var w = sw;
-            var h = sh;
-            var dst = new Uint8ClampedArray(w*h*4);
-            var alphaFac = opaque ? 1 : 0;
-
-            for (var y=0; y < h; y++) {
-              for (var x=0; x < w; x++) {
-                var sy = y;
-                var sx = x;
-                var dstOff = (y*w+x)*4;
-                var r=0, g=0, b=0, a=0;
-                for (var cy=0; cy<side; cy++) {
-                  for (var cx=0; cx<side; cx++) {
-                    var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
-                    var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
-                    var srcOff = (scy*sw+scx)*4;
-                    var wt = weights[cy*side+cx];
-                    r += src[srcOff] * wt;
-                    g += src[srcOff+1] * wt;
-                    b += src[srcOff+2] * wt;
-                    a += src[srcOff+3] * wt;
-                  }
-                }
-                dst[dstOff] = r;
-                dst[dstOff+1] = g;
-                dst[dstOff+2] = b;
-                dst[dstOff+3] = a + alphaFac*(255-a);
-              }
+            var pixels = imageData.data;
+            var width  = imageData.width;
+            var height = imageData.height;
+            var imageSize = width * height;
+            var scale = MAX_VALUE / imageSize;    // scale factor ,so the values in LUT are from 0 to MAX_VALUE
+            var lutR   = new Uint8Array(HISTOGRAM_SIZE);
+            var lutG   = new Uint8Array(HISTOGRAM_SIZE);
+            var lutB   = new Uint8Array(HISTOGRAM_SIZE);
+            var histR  = new Uint32Array(HISTOGRAM_SIZE);
+            var histG  = new Uint32Array(HISTOGRAM_SIZE);
+            var histB  = new Uint32Array(HISTOGRAM_SIZE);
+            histR.fill(0);
+            histG.fill(0);
+            histB.fill(0);
+            
+            // collect the distribution of the RGB values 
+            //
+            for (var index=0; index < imageSize; index+=4) {
+                histR[pixels[index  ]]++; // red
+                histG[pixels[index+1]]++; // green
+                histB[pixels[index+2]]++; // blue
+                                          // ignore alpha
             }
-            imageData.data.set(dst);
+            var sumR = 0;
+            var sumG = 0;
+            var sumB = 0;
+            var i = 0;
+            while(i < HISTOGRAM_SIZE)
+            {
+                // cumulative sum is used as LUT
+                sumR += histR[i];
+                sumG += histG[i];
+                sumB += histB[i];
+        
+                // build look-up table
+                lutR[i] = parseInt(sumR * scale);
+                lutG[i] = parseInt(sumG * scale);
+                lutB[i] = parseInt(sumB * scale);
+                ++i;
+            }
+
+            // re-map input pixels by using LUT
+            for (index=0; index < imageSize; index+=4) {
+                pixels[i  ] = lutR[pixels[index  ]];
+                pixels[i+1] = lutR[pixels[index+1]];
+                pixels[i+2] = lutR[pixels[index+2]];
+            }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
