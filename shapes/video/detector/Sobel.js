@@ -7,7 +7,7 @@
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.149_681",
+   VERSION: "2.0.150_685",
 
    init:function(attr, setter, getter)
    {
