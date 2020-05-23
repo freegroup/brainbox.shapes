@@ -467,7 +467,7 @@
       "ports": [],
       "bgColor": "rgba(0,0,0,1)",
       "color": "rgba(117,117,117,1)",
-      "stroke": 1,
+      "stroke": 3,
       "radius": 0,
       "dasharray": null,
       "vertices": [
@@ -602,7 +602,7 @@
       "ports": [],
       "bgColor": "rgba(0,0,0,1)",
       "color": "rgba(196,196,196,1)",
-      "stroke": 1,
+      "stroke": 3,
       "radius": 2,
       "dasharray": null,
       "vertices": [
