@@ -64,15 +64,17 @@ video_detector_Hough = video_detector_Hough.extend({
             var accum     = Array(angles);
             
             // Precalculate tables.
-            var cosTable = new Float64Array(angles);
-            var sinTable = new Float64Array(angles);
-            var theta = 0;
-            var houghAccCalled=false;
-            var piSteps = Math.PI / angles;
-            for (var i = 0; i < angles; i++) {
-                cosTable[i] = Math.cos(theta);
-                sinTable[i] = Math.sin(theta);
-                theta += piSteps;
+            if(self.cosTable===undefined){
+                self.cosTable = new Float64Array(angles);
+                self.sinTable = new Float64Array(angles);
+                var theta = 0;
+                var houghAccCalled=false;
+                var piSteps = Math.PI / angles;
+                for (var i = 0; i < angles; i++) {
+                    cosTable[i] = Math.cos(theta);
+                    sinTable[i] = Math.sin(theta);
+                    theta += piSteps;
+                }
             }
             
             function findMaxInHough() {
@@ -89,11 +91,12 @@ video_detector_Hough = video_detector_Hough.extend({
                     }
                 }
 
+console.log(max);
                 if (max > 30) {
                     bestRho <<= 1; // accumulator is bitshifted
                     bestRho -= rhoMax; /// accumulator has rhoMax added
-                    var a = cosTable[bestTheta];
-                    var b = sinTable[bestTheta];
+                    var a = self.cosTable[bestTheta];
+                    var b = self.sinTable[bestTheta];
 
                     var x1 = a * bestRho + 100 * (-b);
                     var y1 = b * bestRho + 100 * ( a);
@@ -111,7 +114,7 @@ video_detector_Hough = video_detector_Hough.extend({
                 x -= width  / 2;
                 y -= height / 2;
                 for (var index = 0; index < angles; index++) {
-                    rho = rhoMax + x * cosTable[index] + y * sinTable[index];
+                    rho = rhoMax + x * self.cosTable[index] + y * self.sinTable[index];
                     rho >>= 1;
                     if (accum[index] === undefined) accum[index] = [];
                     if (accum[index][rho] === undefined) {
