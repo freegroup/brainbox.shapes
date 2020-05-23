@@ -7,7 +7,7 @@
 var video_converter_WhiteBlack = CircuitFigure.extend({
 
    NAME: "video_converter_WhiteBlack",
-   VERSION: "2.0.184_770",
+   VERSION: "2.0.185_771",
 
    init:function(attr, setter, getter)
    {
@@ -176,10 +176,8 @@ video_converter_WhiteBlack = video_converter_WhiteBlack.extend({
             threshold = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-
                 let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
-                let value= lum>threshold?255:0;
-                pixels[x] = pixels[x+1] = pixels[x+2] = value;
+                pixels[x] = pixels[x+1] = pixels[x+2] = lum>threshold?255:0;
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };

@@ -7,7 +7,7 @@
 var video_converter_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_converter_BlackWhite",
-   VERSION: "2.0.184_770",
+   VERSION: "2.0.185_771",
 
    init:function(attr, setter, getter)
    {
