@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.178_758",
+   VERSION: "2.0.179_759",
 
    init:function(attr, setter, getter)
    {
@@ -169,6 +169,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
             
             // collect the distribution of the RGB values 
             //
+            console.log(pixels)
             for (var index=0; index < imageSize; index+=4) {
                 histR[pixels[index  ]]++; // red
                 histG[pixels[index+1]]++; // green
@@ -185,7 +186,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 sumR += histR[i];
                 sumG += histG[i];
                 sumB += histB[i];
-            console.log(sumR, sumG, sumB,  histR[i], histG[i], histB[i])
+           // console.log(sumR, sumG, sumB,  histR[i], histG[i], histB[i])
         
                 // build look-up table
                 lutR[i] = parseInt(sumR * scale);
