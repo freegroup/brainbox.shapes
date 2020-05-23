@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.160_706",
+   VERSION: "2.0.161_709",
 
    init:function(attr, setter, getter)
    {
