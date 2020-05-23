@@ -7,7 +7,7 @@
 var video_converter_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_converter_BlackWhite",
-   VERSION: "2.0.141_666",
+   VERSION: "2.0.142_668",
 
    init:function(attr, setter, getter)
    {
@@ -167,8 +167,6 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
      **/
     onStart:function( context )
     {
-        this.progressing = false;
-        
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
@@ -189,12 +187,12 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
-            this.processing = false;
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
             }
             image.src = this.tmpCanvas.toDataURL();
         };

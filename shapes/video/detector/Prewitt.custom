@@ -43,6 +43,9 @@ video_detector_Prewitt = video_detector_Prewitt.extend({
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
+        else{
+            console.log("drop image")
+        }
     },
 
 
