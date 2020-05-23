@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.172_744",
+   VERSION: "2.0.173_746",
 
    init:function(attr, setter, getter)
    {
@@ -72,7 +72,7 @@ var video_detector_Hough = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Line
-       shape = this.canvas.paper.path('M52.12108800000442 6.109201212002517L51.20358400000487,9.517073212003197Q50.28608000000531,12.924945212003877 47.53356800000438, 20.65819321200479L47.53356800000438,20.65819321200479Q44.781056000003446,28.391441212005702 43.42947118239631, 37.289374594584714L41.63532800000303,49.100817212005495');
+       shape = this.canvas.paper.path('M41.89747200000329 6.109201212002517L40.97996800000374,9.517073212003197Q40.062464000004184,12.924945212003877 37.30995200000325, 20.65819321200479L37.30995200000325,20.65819321200479Q34.557440000002316,28.391441212005702 33.20585518239518, 37.289374594584714L31.4117120000019,49.100817212005495');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
@@ -82,12 +82,12 @@ var video_detector_Hough = CircuitFigure.extend({
        shape.data("name","Line");
        
        // Line
-       shape = this.canvas.paper.path('M68.07378175999838 28.82521017199906L50.1641036800047,23.519415612007833');
+       shape = this.canvas.paper.path('M59.947317759990256 26.990202171997225L42.03763967999657,21.684407612005998');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(255,15,31,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
        // Line
-       shape = this.canvas.paper.path('M52.27003391999824 30.301994812000885L48.516131840003254,22.867590972005928L55.1641036800047,18.62085817200932');
+       shape = this.canvas.paper.path('M43.619281919998684 28.46698681199905L39.8653798400037,21.032582972004093L46.513351680005144,16.785850172007486');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(255,15,31,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
