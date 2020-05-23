@@ -7,7 +7,7 @@
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "2.0.145_675",
+   VERSION: "2.0.146_676",
 
    init:function(attr, setter, getter)
    {
