@@ -191,7 +191,7 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "Rectangle"
+        "name": "PictureFrame"
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
