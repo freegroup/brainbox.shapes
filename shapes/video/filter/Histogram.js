@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.182_766",
+   VERSION: "2.0.183_767",
 
    init:function(attr, setter, getter)
    {
@@ -196,7 +196,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 lutB[i] = parseInt(sumB * scale);
                 ++i;
             }
-//            console.log(histR, lutR)
+            console.log(lutR.join(", "))
 
             // re-map input pixels by using LUT
             for (index=0; index < pixels.length; index+=4) {
