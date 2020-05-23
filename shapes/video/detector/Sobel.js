@@ -7,7 +7,7 @@
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.136_652",
+   VERSION: "2.0.137_653",
 
    init:function(attr, setter, getter)
    {
@@ -193,7 +193,10 @@ video_detector_Sobel = video_detector_Sobel.extend({
 
             var w = imageData.width;
             var h = imageData.height;
-            var dst = convolut(kernelX, pixels, w, h);
+            var weights =[  1,   1,  1,  
+                            1, 0.7, -1,  
+                           -1,  -1, -1 ];
+            var dst = convolut(weights, pixels, w, h);
             imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
         };

@@ -7,7 +7,7 @@
 var video_converter_Grayscale = CircuitFigure.extend({
 
    NAME: "video_converter_Grayscale",
-   VERSION: "2.0.136_652",
+   VERSION: "2.0.137_653",
 
    init:function(attr, setter, getter)
    {
