@@ -7,7 +7,7 @@
 var video_filter_Sharpen = CircuitFigure.extend({
 
    NAME: "video_filter_Sharpen",
-   VERSION: "2.0.173_746",
+   VERSION: "2.0.174_749",
 
    init:function(attr, setter, getter)
    {
