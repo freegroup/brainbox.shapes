@@ -7,7 +7,7 @@
 var video_filter_Contrast = CircuitFigure.extend({
 
    NAME: "video_filter_Contrast",
-   VERSION: "2.0.173_746",
+   VERSION: "2.0.174_747",
 
    init:function(attr, setter, getter)
    {
@@ -59,7 +59,7 @@ var video_filter_Contrast = CircuitFigure.extend({
        
        // Rectangle
        shape = this.canvas.paper.path('M4.5,8.37996800000019Q4.5,4.37996800000019 8.5, 4.37996800000019L71.5,4.37996800000019Q75.5,4.37996800000019 75.5, 8.37996800000019L75.5,48.37996800000019Q75.5,52.37996800000019 71.5, 52.37996800000019L8.5,52.37996800000019Q4.5,52.37996800000019 4.5, 48.37996800000019L4.5,8.37996800000019');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(252,252,252,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(199,199,199,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Label
@@ -84,7 +84,7 @@ var video_filter_Contrast = CircuitFigure.extend({
        
        // Rectangle
        shape = this.canvas.paper.path('M39.92918400000053,47.87996800000019Q39.92918400000053,51.87996800000019 43.92918400000053, 51.87996800000019L70.92918400000053,51.87996800000019Q74.92918400000053,51.87996800000019 74.92918400000053, 47.87996800000019L74.92918400000053,8.87996800000019Q74.92918400000053,4.87996800000019 70.92918400000053, 4.87996800000019L43.92918400000053,4.87996800000019Q39.92918400000053,4.87996800000019 39.92918400000053, 8.87996800000019L39.92918400000053,47.87996800000019');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(189,189,189,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(250,250,250,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
