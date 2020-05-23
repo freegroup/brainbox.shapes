@@ -7,7 +7,7 @@
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "2.0.167_728",
+   VERSION: "2.0.168_737",
 
    init:function(attr, setter, getter)
    {
