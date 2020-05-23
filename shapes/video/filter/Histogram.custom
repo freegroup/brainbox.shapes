@@ -63,6 +63,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var imageSize = width * height;
+            //console.log(imageSize)
             var scale = MAX_VALUE / imageSize;    // scale factor ,so the values in LUT are from 0 to MAX_VALUE
             var lutR   = new Uint8Array(HISTOGRAM_SIZE);
             var lutG   = new Uint8Array(HISTOGRAM_SIZE);
@@ -76,13 +77,15 @@ video_filter_Histogram = video_filter_Histogram.extend({
             
             // collect the distribution of the RGB values 
             //
-            for (var index=0; index < imageSize; index+=4) {
+            for (var index=0; index < pixels.length; index+=4) {
                 histR[pixels[index  ]]++; // red
                 histG[pixels[index+1]]++; // green
                 histB[pixels[index+2]]++; // blue
                                           // ignore alpha
             }
-            console.log(histR.join(","))
+            //console.log("R",histR.join(","))
+            //console.log("G",histG.join(","))
+            //console.log("B",histB.join(","))
             var sumR = 0;
             var sumG = 0;
             var sumB = 0;
@@ -103,7 +106,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
 //            console.log(histR, lutR)
 
             // re-map input pixels by using LUT
-            for (index=0; index < imageSize; index+=4) {
+            for (index=0; index < pixels.length; index+=4) {
                 pixels[i  ] = lutR[pixels[index  ]];
                 pixels[i+1] = lutR[pixels[index+1]];
                 pixels[i+2] = lutR[pixels[index+2]];
