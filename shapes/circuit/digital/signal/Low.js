@@ -7,7 +7,7 @@
 var circuit_digital_signal_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_Low",
-   VERSION: "2.0.169_739",
+   VERSION: "2.0.170_740",
 
    init:function(attr, setter, getter)
    {
