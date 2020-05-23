@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.181_763",
+   VERSION: "2.0.182_765",
 
    init:function(attr, setter, getter)
    {
@@ -156,6 +156,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var imageSize = width * height;
+            console.log(imageSize)
             var scale = MAX_VALUE / imageSize;    // scale factor ,so the values in LUT are from 0 to MAX_VALUE
             var lutR   = new Uint8Array(HISTOGRAM_SIZE);
             var lutG   = new Uint8Array(HISTOGRAM_SIZE);
@@ -175,7 +176,9 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 histB[pixels[index+2]]++; // blue
                                           // ignore alpha
             }
-            console.log(histR.join(","))
+            console.log("R",histR.join(","))
+            console.log("G",histG.join(","))
+            console.log("B",histB.join(","))
             var sumR = 0;
             var sumG = 0;
             var sumB = 0;
