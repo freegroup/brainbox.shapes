@@ -7,7 +7,7 @@
 var video_converter_Invert = CircuitFigure.extend({
 
    NAME: "video_converter_Invert",
-   VERSION: "2.0.139_659",
+   VERSION: "2.0.140_663",
 
    init:function(attr, setter, getter)
    {
@@ -115,6 +115,7 @@ video_converter_Invert = video_converter_Invert.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -132,11 +133,12 @@ video_converter_Invert = video_converter_Invert.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing ===false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage( imageData, [imageData.data.buffer]);
         }
     },
@@ -169,6 +171,7 @@ video_converter_Invert = video_converter_Invert.extend({
             var image = new Image();
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
             }
             image.src = this.tmpCanvas.toDataURL();
         };
@@ -177,6 +180,7 @@ video_converter_Invert = video_converter_Invert.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction
+        this.processing = false;
     },
 
     /**
@@ -192,6 +196,7 @@ video_converter_Invert = video_converter_Invert.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 

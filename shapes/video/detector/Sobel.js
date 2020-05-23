@@ -7,7 +7,7 @@
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.139_659",
+   VERSION: "2.0.140_663",
 
    init:function(attr, setter, getter)
    {
@@ -213,10 +213,12 @@ video_detector_Sobel = video_detector_Sobel.extend({
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
-            image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
+            image.onload = () => { 
+                this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
+            };
             image.src = this.tmpCanvas.toDataURL();
-            console.log(image.src)
-            this.processing = false;
+
         };
 
 
