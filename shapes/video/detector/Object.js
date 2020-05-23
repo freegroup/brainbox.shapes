@@ -7,7 +7,7 @@
 var video_detector_Object = CircuitFigure.extend({
 
    NAME: "video_detector_Object",
-   VERSION: "2.0.183_768",
+   VERSION: "2.0.184_770",
 
    init:function(attr, setter, getter)
    {
