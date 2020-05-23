@@ -96,7 +96,7 @@ video_detector_SobelInvers = video_detector_SobelInvers.extend({
                         dst[dstOff]   = r;
                         dst[dstOff+1] = g;
                         dst[dstOff+2] = b;
-                        dst[dstOff+3] = src[dstOff+3];
+                        dst[dstOff+3] = 0;
                     }
                 }
                 return dst;
@@ -107,7 +107,7 @@ video_detector_SobelInvers = video_detector_SobelInvers.extend({
             for (var i=0; i < dstX.length; i++) {
                 var edgeX = dstX[i];
                 var edgeY = dstY[i]; 
-                dstX[i] = Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
+                dstX[i] = 255-Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
             }
             
             imageData.data.set(dstX);
