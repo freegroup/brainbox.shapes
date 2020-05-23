@@ -7,7 +7,7 @@
 var video_converter_Grayscale = CircuitFigure.extend({
 
    NAME: "video_converter_Grayscale",
-   VERSION: "2.0.186_773",
+   VERSION: "2.0.187_774",
 
    init:function(attr, setter, getter)
    {
@@ -137,7 +137,8 @@ video_converter_Grayscale = video_converter_Grayscale.extend({
             for( let x = 0; x < pixels.length; x += 4 ) {
                 // CIE luminance for the RGB
                 // The human eye is bad at seeing red and blue, so we de-emphasize them.
-                let average = 0.2126*pixels[x] + 0.7152*pixels[x+1] + 0.0722*pixels[x+2];
+//                let average = 0.2126*pixels[x] + 0.7152*pixels[x+1] + 0.0722*pixels[x+2];
+                let average = 0.299*pixels[x] + 0.587*pixels[x+1] + 0.114*pixels[x+2];
                 //let average = (pixels[x] + pixels[x+1] +pixels[x+2]) / 3;
     
                 pixels[x]     = average;
