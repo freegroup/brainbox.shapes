@@ -57,6 +57,9 @@ video_detector_Sobel = video_detector_Sobel.extend({
         var workerFunction = function(event){
             var imageData = event.data;
             var pixels    = imageData.data;
+            var w = imageData.width;
+            var h = imageData.height;
+
             var kernelX   =[ -1, 0,  1,  
                              -2, 0,  2,  
                              -1, 0,  1 ];
@@ -65,7 +68,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
                               0,  0,  0,  
                               1,  2,  1 ];
                            
-            var convolut = function(weights, src, w, h){
+            function convolut(weights, src, w, h){
                 var side     = Math.round(Math.sqrt(weights.length));
                 var halfSide = Math.floor(side/2);
                 var sw = w;
@@ -96,11 +99,12 @@ video_detector_Sobel = video_detector_Sobel.extend({
                     }
                 }
                 return dst;
-            };
+            }
 
-            var w = imageData.width;
-            var h = imageData.height;
-            var dst = convolut(kernelX, pixels, w, h);
+            var weights =[  1,   1,  1,  
+                            1, 0.7, -1,  
+                           -1,  -1, -1 ];
+            var dst = convolut(weights, pixels, w, h);
             imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
