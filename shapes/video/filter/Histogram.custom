@@ -82,6 +82,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 histB[pixels[index+2]]++; // blue
                                           // ignore alpha
             }
+            console.log(histR)
             var sumR = 0;
             var sumG = 0;
             var sumB = 0;
