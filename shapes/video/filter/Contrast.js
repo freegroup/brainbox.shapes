@@ -7,7 +7,7 @@
 var video_filter_Contrast = CircuitFigure.extend({
 
    NAME: "video_filter_Contrast",
-   VERSION: "2.0.177_754",
+   VERSION: "2.0.178_757",
 
    init:function(attr, setter, getter)
    {
