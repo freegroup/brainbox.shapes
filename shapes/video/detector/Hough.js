@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.155_696",
+   VERSION: "2.0.156_699",
 
    init:function(attr, setter, getter)
    {
@@ -155,18 +155,22 @@ video_detector_Hough = video_detector_Hough.extend({
             var angles    = 360;
             var rhoMax    = Math.sqrt(width*width + height*height);
             var accum     = Array(angles);
+            var houghAccCalled=false;
             
             // Precalculate tables.
-            var cosTable = new Float64Array(angles);
-            var sinTable = new Float64Array(angles);
-            var theta = 0;
-            var houghAccCalled=false;
-            var piSteps = Math.PI / angles;
-            for (var i = 0; i < angles; i++) {
-                cosTable[i] = Math.cos(theta);
-                sinTable[i] = Math.sin(theta);
-                theta += piSteps;
+            console.log(self.cosTable)
+            if(self.cosTable===undefined){
+                self.cosTable = new Float64Array(angles);
+                self.sinTable = new Float64Array(angles);
+                var theta = 0;
+                var piSteps = Math.PI / angles;
+                for (var i = 0; i < angles; i++) {
+                    self.cosTable[i] = Math.cos(theta);
+                    self.sinTable[i] = Math.sin(theta);
+                    theta += piSteps;
+                }
             }
+            console.log(self.cosTable)
             
             function findMaxInHough() {
                 var max = 0;
@@ -186,8 +190,8 @@ console.log(max);
                 if (max > 30) {
                     bestRho <<= 1; // accumulator is bitshifted
                     bestRho -= rhoMax; /// accumulator has rhoMax added
-                    var a = cosTable[bestTheta];
-                    var b = sinTable[bestTheta];
+                    var a = self.cosTable[bestTheta];
+                    var b = self.sinTable[bestTheta];
 
                     var x1 = a * bestRho + 100 * (-b);
                     var y1 = b * bestRho + 100 * ( a);
@@ -205,7 +209,7 @@ console.log(max);
                 x -= width  / 2;
                 y -= height / 2;
                 for (var index = 0; index < angles; index++) {
-                    rho = rhoMax + x * cosTable[index] + y * sinTable[index];
+                    rho = rhoMax + x * self.cosTable[index] + y * self.sinTable[index];
                     rho >>= 1;
                     if (accum[index] === undefined) accum[index] = [];
                     if (accum[index][rho] === undefined) {
@@ -221,7 +225,7 @@ console.log(max);
                     // if the RGBA color
                     var r = pixels[x+(y*width*4)];
                     if(r>10){
-                        houghAcc(x,y)
+                        houghAcc(x,y);
                     }
                 }
             }
