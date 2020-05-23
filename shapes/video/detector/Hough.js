@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.147_679",
+   VERSION: "2.0.148_680",
 
    init:function(attr, setter, getter)
    {
@@ -153,6 +153,8 @@ video_detector_Hough = video_detector_Hough.extend({
             var width     = imageData.width;
             var height    = imageData.height;
             var angles    = 360;
+            var rhoMax    = Math.sqrt(width*width + height*height);
+            var accum     = Array(angles);
             
             // Precalculate tables.
             var cosTable = Float64Array(angles);
@@ -164,6 +166,37 @@ video_detector_Hough = video_detector_Hough.extend({
                 sinTable[i] = Math.sin(theta);
                 theta += piSteps;
             }
+            
+            function findMaxInHough() {
+                var max = 0;
+                var bestRho = 0;
+                var bestTheta = 0;
+                for (var i = 0; i < angles; i++) {
+                    for (var j = 0; j < accum[i].length; j++) {
+                        if (accum[i][j] > max) {
+                            max = accum[i][j];
+                            bestRho = j;
+                            bestTheta = i;
+                        }
+                    }
+                }
+
+                if (max > 30) {
+                    bestRho <<= 1; // accumulator is bitshifted
+                    bestRho -= rhoMax; /// accumulator has rhoMax added
+                    var a = cosTable[bestTheta];
+                    var b = sinTable[bestTheta];
+
+                    var x1 = a * bestRho + 100 * (-b);
+                    var y1 = b * bestRho + 100 * ( a);
+                    var x2 = a * bestRho - 100 * (-b);
+                    var y2 = b * bestRho - 100 * ( a);
+                    // return a line with P1(x1,y1) and P2(x2,y2)
+                    return {x1,y1, x2,y2};
+                }
+                return null;
+            }
+            
             function houghAcc(x, y) {
                 var rho;
                 x -= width  / 2;
@@ -178,8 +211,8 @@ video_detector_Hough = video_detector_Hough.extend({
                        accum[index][rho]++;
                     }
                 }
-                findMaxInHough();
             }
+            findMaxInHough();
 
             imageData.data.set(dstX);
             self.postMessage(imageData, [imageData.data.buffer]);
