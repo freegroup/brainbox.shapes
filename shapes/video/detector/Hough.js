@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.162_713",
+   VERSION: "2.0.163_715",
 
    init:function(attr, setter, getter)
    {
@@ -220,7 +220,7 @@ video_detector_Hough = video_detector_Hough.extend({
             for (var index=0; index<pixels.length; index+=4) {
                 // because we NEED a black/white image we can just use the RED part
                 // if the RGBA color
-                if(pixels[index]===0){
+                if(pixels[index]<80){
                     var x = (index/4) % width;
                     var y = (index/4) / width;
                     houghAcc(x,y);
