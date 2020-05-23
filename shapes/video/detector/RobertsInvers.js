@@ -7,7 +7,7 @@
 var video_detector_RobertsInvers = CircuitFigure.extend({
 
    NAME: "video_detector_RobertsInvers",
-   VERSION: "2.0.170_740",
+   VERSION: "2.0.171_741",
 
    init:function(attr, setter, getter)
    {
