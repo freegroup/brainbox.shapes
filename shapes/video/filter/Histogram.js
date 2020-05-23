@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.180_761",
+   VERSION: "2.0.181_762",
 
    init:function(attr, setter, getter)
    {
@@ -169,13 +169,13 @@ video_filter_Histogram = video_filter_Histogram.extend({
             
             // collect the distribution of the RGB values 
             //
-            //console.log(pixels)
             for (var index=0; index < imageSize; index+=4) {
                 histR[pixels[index  ]]++; // red
                 histG[pixels[index+1]]++; // green
                 histB[pixels[index+2]]++; // blue
                                           // ignore alpha
             }
+            console.log(histR)
             var sumR = 0;
             var sumG = 0;
             var sumB = 0;
@@ -186,16 +186,14 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 sumR += histR[i];
                 sumG += histG[i];
                 sumB += histB[i];
-           // console.log(sumR, sumG, sumB,  histR[i], histG[i], histB[i])
-        
+       
                 // build look-up table
                 lutR[i] = parseInt(sumR * scale);
                 lutG[i] = parseInt(sumG * scale);
                 lutB[i] = parseInt(sumB * scale);
                 ++i;
             }
-            console.log(histR, lutR)
-            //console.log(lutR, lutG, lutB)
+//            console.log(histR, lutR)
 
             // re-map input pixels by using LUT
             for (index=0; index < imageSize; index+=4) {
@@ -203,7 +201,6 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 pixels[i+1] = lutR[pixels[index+1]];
                 pixels[i+2] = lutR[pixels[index+2]];
             }
-            //console.log(pixels)
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
