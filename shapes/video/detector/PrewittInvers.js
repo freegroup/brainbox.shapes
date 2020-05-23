@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var video_detector_RobertsInvers = CircuitFigure.extend({
+var video_detector_PrewittInvers = CircuitFigure.extend({
 
-   NAME: "video_detector_RobertsInvers",
+   NAME: "video_detector_PrewittInvers",
    VERSION: "2.0.186_772",
 
    init:function(attr, setter, getter)
@@ -52,14 +52,14 @@ var video_detector_RobertsInvers = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Roberts');
-       shape.attr({"x":13.228799999999865,"y":68.54423942400535,"text-anchor":"start","text":"Roberts","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Prewitt');
+       shape.attr({"x":15.228799999999865,"y":68.54423942400535,"text-anchor":"start","text":"Prewitt","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
-       // PictureFrame
+       // Rectangle
        shape = this.canvas.paper.path('M4.315424000003077,7.770740800002386Q4.315424000003077,3.770740800002386 8.315424000003077, 3.770740800002386L71.31542400000308,3.770740800002386Q75.31542400000308,3.770740800002386 75.31542400000308, 7.770740800002386L75.31542400000308,51.770740800002386Q75.31542400000308,55.770740800002386 71.31542400000308, 55.770740800002386L8.315424000003077,55.770740800002386Q4.315424000003077,55.770740800002386 4.315424000003077, 51.770740800002386L4.315424000003077,7.770740800002386');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(237,237,237,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","PictureFrame");
+       shape.data("name","Rectangle");
        
        // TOP_Circle
        shape = this.canvas.paper.ellipse();
@@ -71,24 +71,19 @@ var video_detector_RobertsInvers = CircuitFigure.extend({
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","TOP_Body");
        
-       // Rectangle
-       shape = this.canvas.paper.path('M38.19640448001155,8.038881344014044Q38.19640448001155,4.038881344014044 42.19640448001155, 4.038881344014044L71.19640448001155,4.038881344014044Q75.19640448001155,4.038881344014044 75.19640448001155, 8.038881344014044L75.19640448001155,51.038881344014044Q75.19640448001155,55.038881344014044 71.19640448001155, 55.038881344014044L42.19640448001155,55.038881344014044Q38.19640448001155,55.038881344014044 38.19640448001155, 51.038881344014044L38.19640448001155,8.038881344014044');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":2,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Shadow_Body
+       // Shadow
        shape = this.canvas.paper.path('M38.81898911823282,48.09356345220658Q38.81898911823282,50.09356345220658 40.81886978802416, 50.11541079975606L48.81910844844148,50.202808011566304Q50.81898911823282,50.224655359115786 50.43037456504294, 48.26277393327756L48.276999915507304,37.391678928941374Q47.88838536231742,35.429797503103146 47.838432511882274, 34.89104169036955L47.838432511882274,34.89104169036955Q47.78847966144713,34.35228587763595 47.64013890222441, 33.829899887648025L47.64013890222441,33.829899887648025Q47.49179814300169,33.3075138976601 47.24957673389736, 32.81737016438365L47.24957673389736,32.81737016438365Q47.007355324793025,32.32722643110719 46.678613040751316, 31.884217723856636L46.678613040751316,31.884217723856636Q46.349870756709606,31.44120901660608 45.9445962656805, 31.05879593077134L45.9445962656805,31.05879593077134Q45.5393217746514,30.676382844936597 45.069829136965836, 30.36618480862535L45.069829136965836,30.36618480862535Q44.600336499280274,30.0559867723141 44.08089101115911, 29.827428995890386L44.08089101115911,29.827428995890386Q43.561445523037946,29.598871219466673 43.00783027278612, 29.4588983153144L43.00783027278612,29.4588983153144Q42.4542150225343,29.318925411162127 41.88325132938871, 29.271790385138956L41.88325132938871,29.271790385138956Q41.31228763624313,29.224655359115786 40.74132394309618, 29.271790385138956L40.74132394309618,29.271790385138956Q40.170360249949226,29.318925411162127 39.6167449996974, 29.4588983153144L39.6167449996974,29.4588983153144Q39.06312974944558,29.598871219466673 38.9410594338392, 29.652582572324718L38.9410594338392,29.652582572324718Q38.81898911823282,29.706293925182763 38.81898911823282, 31.706293925182763L38.81898911823282,48.09356345220658');
-       shape.attr({"stroke":"rgba(219,219,219,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Shadow_Body");
+       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":2,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Shadow");
        
-       // Shadow_Circle
+       // TOP_Circle
        shape = this.canvas.paper.path('M39.17362344960475 23.57014711485499L39.41983980273653 23.64504246582692L40.56705787534429 23.75898431823407L41.71427594795114 23.64504246582692L42.82663637994392 23.306678974127863L43.87034066247361 22.754174846618298L44.813676369059976 22.004317641627495L45.627980721607855 21.07989139088386L46.28851149442198 20.00898431823407L46.7751987942147 18.82413539317713L47.0732548736587 17.561345650736257L47.17362344960475 16.25898431823407L47.0732548736587 14.956622985731883L46.7751987942147 13.69383324329101L46.28851149442198 12.50898431823407L45.627980721607855 11.438077245584282L44.813676369059976 10.513650994840646L43.87034066247361 9.763793789849842L42.82663637994392 9.211289662340278L41.71427594795114 8.872926170641222L40.56705787534429 8.75898431823407L39.41983980273653 8.872926170641222L39.17362344960475 8.94782152161315L39.17362344960475 23.57014711485499Z');
-       shape.attr({"stroke":"rgba(115,115,115,1)","stroke-width":1,"fill":"rgba(255,253,253,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Shadow_Circle");
+       shape.attr({"stroke":"rgba(13,13,13,1)","stroke-width":2,"fill":"rgba(255,253,253,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","TOP_Circle");
        
        // Line
-       shape = this.canvas.paper.path('M38.69640448001155 4.5874573440150925L38.864176640010555,54.544239424005355');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M38.69640448001155 4.038881344014044L38.864176640010555,55.044239424005355');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
 
@@ -108,7 +103,7 @@ var video_detector_RobertsInvers = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_detector_RobertsInvers = video_detector_RobertsInvers.extend({
+video_detector_PrewittInvers = video_detector_PrewittInvers.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -158,11 +153,13 @@ video_detector_RobertsInvers = video_detector_RobertsInvers.extend({
             var w = imageData.width;
             var h = imageData.height;
 
-            var kernelX   =[ 1,  0,
-                             0, -1 ];
+            var kernelX   =[ -1, 0,  1,  
+                             -1, 0,  1,  
+                             -1, 0,  1 ];
                              
-            var kernelY   =[ 0, 1,
-                            -1, 0 ];
+            var kernelY   =[ -1, -1, -1,  
+                              0,  0,  0,  
+                              1,  1,  1 ];
                            
             function convolut(weights, src, w, h){
                 var side     = Math.round(Math.sqrt(weights.length));
@@ -192,7 +189,7 @@ video_detector_RobertsInvers = video_detector_RobertsInvers.extend({
                         dst[dstOff]   = r;
                         dst[dstOff+1] = g;
                         dst[dstOff+2] = b;
-                        dst[dstOff+3] = 0;
+                        dst[dstOff+3] = src[dstOff+3];
                     }
                 }
                 return dst;
@@ -203,7 +200,7 @@ video_detector_RobertsInvers = video_detector_RobertsInvers.extend({
             for (var i=0; i < dstX.length; i++) {
                 var edgeX = dstX[i];
                 var edgeY = dstY[i]; 
-                dstX[i] = 255-Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
+                dstX[i] = Math.min(255,Math.round(Math.sqrt(edgeX * edgeX + edgeY * edgeY)));
             }
             
             imageData.data.set(dstX);
