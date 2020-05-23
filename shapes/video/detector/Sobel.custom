@@ -122,7 +122,6 @@ video_detector_Sobel = video_detector_Sobel.extend({
             var image = new Image();
             image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
             image.src = this.tmpCanvas.toDataURL();
-            console.log(image.src)
             this.processing = false;
         };
 
