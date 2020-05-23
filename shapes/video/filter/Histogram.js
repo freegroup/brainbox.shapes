@@ -7,7 +7,7 @@
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.183_768",
+   VERSION: "2.0.184_769",
 
    init:function(attr, setter, getter)
    {
@@ -156,7 +156,6 @@ video_filter_Histogram = video_filter_Histogram.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var imageSize = width * height;
-            //console.log(imageSize)
             var scale = MAX_VALUE / imageSize;    // scale factor ,so the values in LUT are from 0 to MAX_VALUE
             var lutR   = new Uint8Array(HISTOGRAM_SIZE);
             var lutG   = new Uint8Array(HISTOGRAM_SIZE);
@@ -174,11 +173,8 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 histR[pixels[index  ]]++; // red
                 histG[pixels[index+1]]++; // green
                 histB[pixels[index+2]]++; // blue
-                                          // ignore alpha
             }
-            console.log("R",histR.join(","))
-            //console.log("G",histG.join(","))
-            //console.log("B",histB.join(","))
+
             var sumR = 0;
             var sumG = 0;
             var sumB = 0;
@@ -191,32 +187,17 @@ video_filter_Histogram = video_filter_Histogram.extend({
                 sumB += histB[i];
        
                 // build look-up table
-                lutR[i] = parseInt(sumR * scale);
-                lutG[i] = parseInt(sumG * scale);
-                lutB[i] = parseInt(sumB * scale);
+                lutR[i] = (sumR * scale+0.5)|0;
+                lutG[i] = (sumG * scale+0.5)|0;
+                lutB[i] = (sumB * scale+0.5)|0;
                 ++i;
             }
-            console.log(lutR.join(", "))
 
-            histR.fill(0);
-            histG.fill(0);
-            histB.fill(0);
-            
-            // collect the distribution of the RGB values 
-            //
-            for (index=0; index < pixels.length; index+=4) {
-                histR[pixels[index  ]]++; // red
-                histG[pixels[index+1]]++; // green
-                histB[pixels[index+2]]++; // blue
-                                          // ignore alpha
-            }
-            console.log("R",histR.join(","))
-            console.log("----------------------")
             // re-map input pixels by using LUT
             for (index=0; index < pixels.length; index+=4) {
                 pixels[i  ] = lutR[pixels[index  ]];
-                pixels[i+1] = lutR[pixels[index+1]];
-                pixels[i+2] = lutR[pixels[index+2]];
+                pixels[i+1] = lutG[pixels[index+1]];
+                pixels[i+2] = lutB[pixels[index+2]];
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
