@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var video_filter_Blur = CircuitFigure.extend({
+var video_filter_Histogram = CircuitFigure.extend({
 
-   NAME: "video_filter_Blur",
+   NAME: "video_filter_Histogram",
    VERSION: "2.0.174_748",
 
    init:function(attr, setter, getter)
@@ -103,7 +103,7 @@ var video_filter_Blur = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_filter_Blur = video_filter_Blur.extend({
+video_filter_Histogram = video_filter_Histogram.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
