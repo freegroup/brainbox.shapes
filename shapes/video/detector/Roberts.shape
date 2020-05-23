@@ -395,40 +395,6 @@
       ]
     },
     {
-      "type": "shape_designer.figure.ExtLine",
-      "id": "ec7a6711-0d3b-6ca5-d21e-7479a5f0a829",
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Line"
-      },
-      "cssClass": "shape_designer_figure_ExtLine",
-      "stroke": 2,
-      "color": "rgba(0,0,0,1)",
-      "outlineStroke": 0,
-      "outlineColor": "rgba(0,0,0,0)",
-      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
-      "vertex": [
-        {
-          "x": 7998.696404480012,
-          "y": 7963.141761632011
-        },
-        {
-          "x": 7998.864176640011,
-          "y": 8014.147119712003
-        }
-      ],
-      "router": "draw2d.layout.connection.VertexRouter",
-      "radius": "",
-      "filters": [
-        {
-          "name": "shape_designer.filter.StrokeFilter"
-        }
-      ]
-    },
-    {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "5263cadc-3415-f3df-8232-a47e6c6962b3",
       "x": 7998.818989118233,
@@ -440,12 +406,12 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "Shadow"
+        "name": "Shadow_Body"
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(255,255,255,1)",
-      "color": "rgba(0,0,0,1)",
+      "bgColor": "rgba(0,0,0,1)",
+      "color": "rgba(255,255,255,1)",
       "stroke": 2,
       "radius": 2,
       "dasharray": null,
@@ -546,7 +512,7 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "TOP_Circle"
+        "name": "Show_Circle"
       },
       "cssClass": "shape_designer_figure_PolyCircle",
       "ports": [],
@@ -664,6 +630,40 @@
         {
           "name": "shape_designer.filter.FillColorFilter"
         },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLine",
+      "id": "ec7a6711-0d3b-6ca5-d21e-7479a5f0a829",
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Line"
+      },
+      "cssClass": "shape_designer_figure_ExtLine",
+      "stroke": 2,
+      "color": "rgba(0,0,0,1)",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
+      "vertex": [
+        {
+          "x": 7998.696404480012,
+          "y": 7963.141761632011
+        },
+        {
+          "x": 7998.864176640011,
+          "y": 8014.147119712003
+        }
+      ],
+      "router": "draw2d.layout.connection.VertexRouter",
+      "radius": "",
+      "filters": [
         {
           "name": "shape_designer.filter.StrokeFilter"
         }
