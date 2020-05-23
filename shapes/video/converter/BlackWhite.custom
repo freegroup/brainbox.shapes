@@ -64,7 +64,7 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
             for( let x = 0; x < pixels.length; x += 4 ) {
 
                 let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
-                let value= lum>threshold?255:0;
+                let value= lum>threshold?0:255;
                 pixels[x] = pixels[x+1] = pixels[x+2] = value;
             }
             self.postMessage(imageData, [imageData.data.buffer]);
