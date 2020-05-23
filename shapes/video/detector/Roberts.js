@@ -4,25 +4,25 @@
 // created with http://www.draw2d.org
 //
 //
-var video_detector_Sobel = CircuitFigure.extend({
+var video_detector_Roberts = CircuitFigure.extend({
 
-   NAME: "video_detector_Sobel",
+   NAME: "video_detector_Roberts",
    VERSION: "2.0.145_675",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:81.04423942400535},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.886999999999944 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.24421560822089 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.886999999999944 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.24421560822089 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -33,7 +33,7 @@ var video_detector_Sobel = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 80;
+      this.originalHeight= 81.04423942400535;
       return shape;
    },
 
@@ -42,7 +42,7 @@ var video_detector_Sobel = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80 L0,80");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,81.04423942400535 L0,81.04423942400535");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -52,8 +52,8 @@ var video_detector_Sobel = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Sobel');
-       shape.attr({"x":20.228799999999865,"y":67.37877759999992,"text-anchor":"start","text":"Sobel","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Roberts');
+       shape.attr({"x":13.228799999999865,"y":68.54423942400535,"text-anchor":"start","text":"Roberts","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
@@ -103,7 +103,7 @@ var video_detector_Sobel = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_detector_Sobel = video_detector_Sobel.extend({
+video_detector_Roberts = video_detector_Roberts.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -136,6 +136,9 @@ video_detector_Sobel = video_detector_Sobel.extend({
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
+        else{
+            console.log("drop image")
+        }
     },
 
 
@@ -153,13 +156,11 @@ video_detector_Sobel = video_detector_Sobel.extend({
             var w = imageData.width;
             var h = imageData.height;
 
-            var kernelX   =[ -1, 0,  1,  
-                             -2, 0,  2,  
-                             -1, 0,  1 ];
+            var kernelX   =[ 1,  0,
+                             0, -1 ];
                              
-            var kernelY   =[ -1, -2, -1,  
-                              0,  0,  0,  
-                              1,  2,  1 ];
+            var kernelY   =[ 0, 1,
+                            -1, 0 ];
                            
             function convolut(weights, src, w, h){
                 var side     = Math.round(Math.sqrt(weights.length));
