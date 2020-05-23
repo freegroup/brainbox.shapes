@@ -502,10 +502,10 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "8ba0c773-a1f9-419a-a08a-812260337f1a",
-      "x": 7999.9291840000005,
-      "y": 7963.346667716796,
-      "width": 35,
-      "height": 46,
+      "x": 7999.134216704,
+      "y": 7962.346667716796,
+      "width": 36,
+      "height": 48,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -515,31 +515,31 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(255,255,255,1)",
+      "bgColor": "rgba(0,0,0,1)",
       "color": "rgba(48,48,48,1)",
       "stroke": 0,
       "radius": 4,
       "dasharray": null,
       "vertices": [
         {
-          "x": 7999.9291840000005,
-          "y": 8009.346667716796
+          "x": 7999.134216704,
+          "y": 8010.346667716796
         },
         {
-          "x": 8034.9291840000005,
-          "y": 8009.346667716796
+          "x": 8035.134216704,
+          "y": 8010.346667716796
         },
         {
-          "x": 8034.9291840000005,
-          "y": 7963.346667716796
+          "x": 8035.134216704,
+          "y": 7962.346667716796
         },
         {
-          "x": 7999.9291840000005,
-          "y": 7963.346667716796
+          "x": 7999.134216704,
+          "y": 7962.346667716796
         },
         {
-          "x": 7999.9291840000005,
-          "y": 8009.346667716796
+          "x": 7999.134216704,
+          "y": 8010.346667716796
         }
       ],
       "blur": 0,
@@ -576,12 +576,12 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 8000.086528000003,
+          "x": 7999.586528000003,
           "y": 7963.149865716798
         },
         {
-          "x": 8000.348672,
-          "y": 8010.335785716798
+          "x": 7999.848672,
+          "y": 8009.798914804796
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -608,7 +608,7 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(0,0,0,1)",
+      "bgColor": "rgba(255,255,255,1)",
       "color": "rgba(48,48,48,1)",
       "stroke": 0,
       "radius": 0,
@@ -696,7 +696,7 @@
       },
       "cssClass": "shape_designer_figure_PolyCircle",
       "ports": [],
-      "bgColor": "rgba(0,0,0,1)",
+      "bgColor": "rgba(255,255,255,1)",
       "color": "rgba(27,27,27,1)",
       "stroke": 0,
       "radius": 0,
