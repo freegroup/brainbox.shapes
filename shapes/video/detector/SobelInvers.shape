@@ -395,6 +395,64 @@
       ]
     },
     {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "e92bf9c0-1264-ecad-f67b-68da2e200ad9",
+      "x": 7998.696404480012,
+      "y": 7963.456352000003,
+      "width": 37,
+      "height": 52,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Shadow_Background"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(0,0,0,1)",
+      "stroke": 1,
+      "radius": 5,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 7998.696404480012,
+          "y": 7963.456352000003
+        },
+        {
+          "x": 8035.696404480012,
+          "y": 7963.456352000003
+        },
+        {
+          "x": 8035.696404480012,
+          "y": 8015.456352000003
+        },
+        {
+          "x": 7998.696404480012,
+          "y": 8015.456352000003
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        },
+        {
+          "name": "shape_designer.filter.RadiusFilter"
+        }
+      ]
+    },
+    {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "5263cadc-3415-f3df-8232-a47e6c6962b3",
       "x": 7998.818989118233,
@@ -653,11 +711,11 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7998.696404480012,
+          "x": 7999.196404480012,
           "y": 7963.7244925440145
         },
         {
-          "x": 7998.864176640011,
+          "x": 7999.364176640011,
           "y": 8014.729850624006
         }
       ],
