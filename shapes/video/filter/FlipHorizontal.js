@@ -7,22 +7,22 @@
 var video_filter_FlipHorizontal = CircuitFigure.extend({
 
    NAME: "video_filter_FlipHorizontal",
-   VERSION: "2.0.188_776",
+   VERSION: "2.0.189_779",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.22465535911579},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80.35023911823282,height:80},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.7473000305823 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9597980148700479, y: 49.886999999999944 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.7473000305823 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.88775500953986, y: 49.886999999999944 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -32,8 +32,8 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80;
-      this.originalHeight= 80.22465535911579;
+      this.originalWidth = 80.35023911823282;
+      this.originalHeight= 80;
       return shape;
    },
 
@@ -42,7 +42,7 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.22465535911579 L0,80.22465535911579");
+       shape = this.canvas.paper.path("M0,0 L80.35023911823282,0 L80.35023911823282,80 L0,80");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -52,8 +52,8 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Flip');
-       shape.attr({"x":26.03773911823282,"y":67.72465535911579,"text-anchor":"start","text":"Flip","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Flip Horizontal');
+       shape.attr({"x":6.037739118232821,"y":67.91215535911579,"text-anchor":"start","text":"Flip Horizontal","font-family":"\"Arial\"","font-size":11,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
@@ -164,7 +164,19 @@ video_filter_FlipHorizontal = video_filter_FlipHorizontal.extend({
             var pixels = imageData.data;
             var width  = imageData.width;
             var height = imageData.height;
-
+            
+            var dst = new Uint8ClampedArray(width*height*4);
+            for (var y=0; y<height; y++) {
+              for (var x=0; x<width; x++) {
+                var off = (y*width+x)*4;
+                var dstOff = (y*width+(width-x-1))*4;
+                dst[dstOff  ] = pixels[off];
+                dst[dstOff+1] = pixels[off+1];
+                dst[dstOff+2] = pixels[off+2];
+                dst[dstOff+3] = pixels[off+3];
+              }
+            }
+            imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
