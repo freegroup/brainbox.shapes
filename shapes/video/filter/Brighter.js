@@ -7,7 +7,7 @@
 var video_filter_Brighter = CircuitFigure.extend({
 
    NAME: "video_filter_Brighter",
-   VERSION: "2.0.210_835",
+   VERSION: "2.0.211_836",
 
    init:function(attr, setter, getter)
    {
@@ -131,8 +131,15 @@ video_filter_Brighter = video_filter_Brighter.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
+        
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+  
     },
 
     /**
@@ -145,11 +152,12 @@ video_filter_Brighter = video_filter_Brighter.extend({
     {
         var img = this.getInputPort("input_port1").getValue();
         var adjustment = this.getInputPort("input_port2").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage({imageData: imageData,adjustment: adjustment}, [imageData.data.buffer]);
         }
     },
@@ -185,6 +193,7 @@ video_filter_Brighter = video_filter_Brighter.extend({
             var image = new Image();
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
             }
             image.src = this.tmpCanvas.toDataURL();
         };
@@ -193,6 +202,7 @@ video_filter_Brighter = video_filter_Brighter.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction
+        this.processing = false;
     },
 
     /**
@@ -208,6 +218,7 @@ video_filter_Brighter = video_filter_Brighter.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 
