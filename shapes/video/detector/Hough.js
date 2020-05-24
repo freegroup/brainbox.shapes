@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.205_807",
+   VERSION: "2.0.206_808",
 
    init:function(attr, setter, getter)
    {
@@ -243,7 +243,7 @@ video_detector_Hough = video_detector_Hough.extend({
             if(line){
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
-                ctx.lineWidth = 10;
+                ctx.lineWidth = Math.max(2,(width/25)|0);
                 ctx.moveTo(line.x1 + width / 2, line.y1 + height / 2);
                 ctx.lineTo(line.x2 + width / 2, line.y2 + height / 2);
                 ctx.stroke();
