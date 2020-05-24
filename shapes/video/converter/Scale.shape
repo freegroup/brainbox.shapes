@@ -359,7 +359,7 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "Label"
+        "name": "factor_label"
       },
       "cssClass": "shape_designer_figure_ExtLabel",
       "ports": [],
