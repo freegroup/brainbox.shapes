@@ -7,7 +7,7 @@
 var video_filter_SobelInvers = CircuitFigure.extend({
 
    NAME: "video_filter_SobelInvers",
-   VERSION: "2.0.214_839",
+   VERSION: "2.0.215_840",
 
    init:function(attr, setter, getter)
    {
