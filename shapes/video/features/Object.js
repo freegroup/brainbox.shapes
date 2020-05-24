@@ -7,7 +7,7 @@
 var video_features_Object = CircuitFigure.extend({
 
    NAME: "video_features_Object",
-   VERSION: "2.0.223_856",
+   VERSION: "2.0.224_857",
 
    init:function(attr, setter, getter)
    {
