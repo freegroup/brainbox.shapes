@@ -7,7 +7,7 @@
 var video_filter_FlipVertical = CircuitFigure.extend({
 
    NAME: "video_filter_FlipVertical",
-   VERSION: "2.0.206_808",
+   VERSION: "2.0.207_814",
 
    init:function(attr, setter, getter)
    {
