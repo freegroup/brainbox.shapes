@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.226_864",
+   VERSION: "2.0.227_867",
 
    init:function(attr, setter, getter)
    {
@@ -256,9 +256,14 @@ video_features_LineAngle = video_features_LineAngle.extend({
             
                 if(result.length > 0){
                     result = result[0]
+                    if(result.length === 2){
+                        p1 = result[0];
+                        p2 = result[1];
+                        console.log("hit")
+                        return {x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1]}
+                    }
                 }
-                console.log(JSON.stringify(result))
-                return result;
+                return null;
             }
 
             function findMaxInHough() {
@@ -337,15 +342,12 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     
     
                 line2 = clipLine(line);
-                if(line2 && line2.length>0){
-                    line2 = line2[0]
-                    console.log(line, line2)
-                }
+                console.log(line2);
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = Math.max(2,(width/25)|0);
-                ctx.moveTo(line.x1 + width / 2, line.y1 + height / 2);
-                ctx.lineTo(line.x2 + width / 2, line.y2 + height / 2);
+                ctx.moveTo(line2.x1, line2.y1);
+                ctx.lineTo(line2.x2, line2.y2);
                 ctx.stroke();
                 ctx.closePath();
                 console.log(getAngle(line));
