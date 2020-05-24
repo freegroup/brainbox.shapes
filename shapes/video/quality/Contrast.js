@@ -7,7 +7,7 @@
 var video_quality_Contrast = CircuitFigure.extend({
 
    NAME: "video_quality_Contrast",
-   VERSION: "2.0.225_863",
+   VERSION: "2.0.226_866",
 
    init:function(attr, setter, getter)
    {
