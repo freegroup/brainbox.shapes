@@ -7,7 +7,7 @@
 var video_filter_Blur = CircuitFigure.extend({
 
    NAME: "video_filter_Blur",
-   VERSION: "2.0.199_797",
+   VERSION: "2.0.200_799",
 
    init:function(attr, setter, getter)
    {
