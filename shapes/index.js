@@ -7,7 +7,7 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -311,7 +311,7 @@ circuit_74LSXX_74LS90 = circuit_74LSXX_74LS90.extend({
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -481,7 +481,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -797,7 +797,7 @@ circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 var circuit_digital_buttons_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLow",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -908,7 +908,7 @@ circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1073,7 +1073,7 @@ circuit_digital_buttons_HighLowArray = circuit_digital_buttons_HighLowArray.exte
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1189,7 +1189,7 @@ circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1373,7 +1373,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1612,7 +1612,7 @@ circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1774,7 +1774,7 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
 var circuit_digital_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_Led",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1863,7 +1863,7 @@ circuit_digital_display_Led = circuit_digital_display_Led.extend({
 var circuit_digital_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_DFlipFlop",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -1996,7 +1996,7 @@ circuit_digital_flipflop_DFlipFlop = circuit_digital_flipflop_DFlipFlop.extend({
 var circuit_digital_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKFlipFlop",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -2159,7 +2159,7 @@ circuit_digital_flipflop_JKFlipFlop = circuit_digital_flipflop_JKFlipFlop.extend
 var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKRFlipFlop",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -2340,7 +2340,7 @@ circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.exte
 var circuit_digital_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_SRFlipFlop",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -2482,7 +2482,7 @@ circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -2604,7 +2604,7 @@ circuit_digital_flipflop_TFlipFlop = circuit_digital_flipflop_TFlipFlop.extend({
 var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_AND",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -2736,7 +2736,7 @@ circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
 var circuit_digital_gate_DIN40700_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NAND",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -2873,7 +2873,7 @@ circuit_digital_gate_DIN40700_NAND = circuit_digital_gate_DIN40700_NAND.extend({
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3020,7 +3020,7 @@ circuit_digital_gate_DIN40700_NOR = circuit_digital_gate_DIN40700_NOR.extend({
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3162,7 +3162,7 @@ circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XNOR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3309,7 +3309,7 @@ circuit_digital_gate_DIN40700_XNOR = circuit_digital_gate_DIN40700_XNOR.extend({
 var circuit_digital_gate_DIN40700_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XOR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3461,7 +3461,7 @@ circuit_digital_gate_DIN40700_XOR = circuit_digital_gate_DIN40700_XOR.extend({
 var circuit_digital_gate_IEC60617_12_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_AND",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3559,7 +3559,7 @@ circuit_digital_gate_IEC60617_12_AND = circuit_digital_gate_IEC60617_12_AND.exte
 var circuit_digital_gate_IEC60617_12_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NAND",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3662,7 +3662,7 @@ circuit_digital_gate_IEC60617_12_NAND = circuit_digital_gate_IEC60617_12_NAND.ex
 var circuit_digital_gate_IEC60617_12_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3770,7 +3770,7 @@ circuit_digital_gate_IEC60617_12_NOR = circuit_digital_gate_IEC60617_12_NOR.exte
 var circuit_digital_gate_IEC60617_12_NOT = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOT",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3867,7 +3867,7 @@ circuit_digital_gate_IEC60617_12_NOT = circuit_digital_gate_IEC60617_12_NOT.exte
 var circuit_digital_gate_IEC60617_12_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_OR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -3970,7 +3970,7 @@ circuit_digital_gate_IEC60617_12_OR = circuit_digital_gate_IEC60617_12_OR.extend
 var circuit_digital_gate_IEC60617_12_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XNOR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4073,7 +4073,7 @@ circuit_digital_gate_IEC60617_12_XNOR = circuit_digital_gate_IEC60617_12_XNOR.ex
 var circuit_digital_gate_IEC60617_12_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XOR",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4171,7 +4171,7 @@ circuit_digital_gate_IEC60617_12_XOR = circuit_digital_gate_IEC60617_12_XOR.exte
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4276,7 +4276,7 @@ circuit_digital_pulse_10hz = circuit_digital_pulse_10hz.extend({
 var circuit_digital_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_1hz",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4381,7 +4381,7 @@ circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 var circuit_digital_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_50hz",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4484,7 +4484,7 @@ circuit_digital_pulse_50hz = circuit_digital_pulse_50hz.extend({
 var circuit_digital_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_Delay",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4655,7 +4655,7 @@ circuit_digital_pulse_Delay = circuit_digital_pulse_Delay.extend({
 var circuit_digital_signal_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_High",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4737,7 +4737,7 @@ circuit_digital_signal_High = circuit_digital_signal_High.extend({
 var circuit_digital_signal_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_Low",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4820,7 +4820,7 @@ circuit_digital_signal_Low = circuit_digital_signal_Low.extend({
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -4989,7 +4989,7 @@ circuit_digital_timer_Delay = circuit_digital_timer_Delay.extend({
 var circuit_hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Arduino",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -5483,7 +5483,7 @@ circuit_hardware_arduino_Arduino = circuit_hardware_arduino_Arduino.extend({
 var circuit_hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "circuit_hardware_arduino_Led",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -5587,7 +5587,7 @@ circuit_hardware_arduino_Led = circuit_hardware_arduino_Led.extend({
 var circuit_hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIORead",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -5844,7 +5844,7 @@ circuit_hardware_raspi_GPIORead = circuit_hardware_raspi_GPIORead.extend({
 var circuit_hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_GPIOWrite",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -6388,7 +6388,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var math_Median = CircuitFigure.extend({
 
    NAME: "math_Median",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -6547,7 +6547,7 @@ math_Median = math_Median.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -6671,7 +6671,7 @@ messaging_HiveMQ = messaging_HiveMQ.extend({
 var signal_SignalSource = CircuitFigure.extend({
 
    NAME: "signal_SignalSource",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -6835,7 +6835,7 @@ signal_SignalSource = signal_SignalSource.extend({
 var signal_SignalTarget = CircuitFigure.extend({
 
    NAME: "signal_SignalTarget",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -7009,7 +7009,7 @@ signal_SignalTarget = signal_SignalTarget.extend({
 var video_converter_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_converter_BlackWhite",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -7268,7 +7268,7 @@ video_converter_BlackWhite = video_converter_BlackWhite.extend({
 var video_converter_Grayscale = CircuitFigure.extend({
 
    NAME: "video_converter_Grayscale",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -7505,7 +7505,7 @@ video_converter_Grayscale = video_converter_Grayscale.extend({
 var video_converter_GrayscaleAvg = CircuitFigure.extend({
 
    NAME: "video_converter_GrayscaleAvg",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -7742,7 +7742,7 @@ video_converter_GrayscaleAvg = video_converter_GrayscaleAvg.extend({
 var video_converter_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_converter_HSV_Colorspace",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -8030,7 +8030,7 @@ video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
 var video_converter_Invert = CircuitFigure.extend({
 
    NAME: "video_converter_Invert",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -8268,7 +8268,7 @@ video_converter_Invert = video_converter_Invert.extend({
 var video_converter_Luminance = CircuitFigure.extend({
 
    NAME: "video_converter_Luminance",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -8510,7 +8510,7 @@ video_converter_Luminance = video_converter_Luminance.extend({
 var video_converter_Scale = CircuitFigure.extend({
 
    NAME: "video_converter_Scale",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -8717,7 +8717,7 @@ video_converter_Scale = video_converter_Scale.extend({
 var video_converter_WhiteBlack = CircuitFigure.extend({
 
    NAME: "video_converter_WhiteBlack",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -8974,7 +8974,7 @@ video_converter_WhiteBlack = video_converter_WhiteBlack.extend({
 var video_detector_Edge = CircuitFigure.extend({
 
    NAME: "video_detector_Edge",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -9227,7 +9227,7 @@ video_detector_Edge = video_detector_Edge.extend({
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -9549,7 +9549,7 @@ video_detector_Hough = video_detector_Hough.extend({
 var video_detector_Object = CircuitFigure.extend({
 
    NAME: "video_detector_Object",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -9910,7 +9910,7 @@ video_detector_Object = video_detector_Object.extend({
 var video_detector_Prewitt = CircuitFigure.extend({
 
    NAME: "video_detector_Prewitt",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -9974,15 +9974,15 @@ var video_detector_Prewitt = CircuitFigure.extend({
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","TOP_Body");
        
-       // Shadow
+       // Shadow_Body
        shape = this.canvas.paper.path('M38.81898911823282,48.09356345220658Q38.81898911823282,50.09356345220658 40.81886978802416, 50.11541079975606L48.81910844844148,50.202808011566304Q50.81898911823282,50.224655359115786 50.43037456504294, 48.26277393327756L48.276999915507304,37.391678928941374Q47.88838536231742,35.429797503103146 47.838432511882274, 34.89104169036955L47.838432511882274,34.89104169036955Q47.78847966144713,34.35228587763595 47.64013890222441, 33.829899887648025L47.64013890222441,33.829899887648025Q47.49179814300169,33.3075138976601 47.24957673389736, 32.81737016438365L47.24957673389736,32.81737016438365Q47.007355324793025,32.32722643110719 46.678613040751316, 31.884217723856636L46.678613040751316,31.884217723856636Q46.349870756709606,31.44120901660608 45.9445962656805, 31.05879593077134L45.9445962656805,31.05879593077134Q45.5393217746514,30.676382844936597 45.069829136965836, 30.36618480862535L45.069829136965836,30.36618480862535Q44.600336499280274,30.0559867723141 44.08089101115911, 29.827428995890386L44.08089101115911,29.827428995890386Q43.561445523037946,29.598871219466673 43.00783027278612, 29.4588983153144L43.00783027278612,29.4588983153144Q42.4542150225343,29.318925411162127 41.88325132938871, 29.271790385138956L41.88325132938871,29.271790385138956Q41.31228763624313,29.224655359115786 40.74132394309618, 29.271790385138956L40.74132394309618,29.271790385138956Q40.170360249949226,29.318925411162127 39.6167449996974, 29.4588983153144L39.6167449996974,29.4588983153144Q39.06312974944558,29.598871219466673 38.9410594338392, 29.652582572324718L38.9410594338392,29.652582572324718Q38.81898911823282,29.706293925182763 38.81898911823282, 31.706293925182763L38.81898911823282,48.09356345220658');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":2,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Shadow");
+       shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":2,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Shadow_Body");
        
-       // TOP_Circle
+       // Shadow_Head
        shape = this.canvas.paper.path('M39.17362344960475 23.57014711485499L39.41983980273653 23.64504246582692L40.56705787534429 23.75898431823407L41.71427594795114 23.64504246582692L42.82663637994392 23.306678974127863L43.87034066247361 22.754174846618298L44.813676369059976 22.004317641627495L45.627980721607855 21.07989139088386L46.28851149442198 20.00898431823407L46.7751987942147 18.82413539317713L47.0732548736587 17.561345650736257L47.17362344960475 16.25898431823407L47.0732548736587 14.956622985731883L46.7751987942147 13.69383324329101L46.28851149442198 12.50898431823407L45.627980721607855 11.438077245584282L44.813676369059976 10.513650994840646L43.87034066247361 9.763793789849842L42.82663637994392 9.211289662340278L41.71427594795114 8.872926170641222L40.56705787534429 8.75898431823407L39.41983980273653 8.872926170641222L39.17362344960475 8.94782152161315L39.17362344960475 23.57014711485499Z');
-       shape.attr({"stroke":"rgba(13,13,13,1)","stroke-width":2,"fill":"rgba(255,253,253,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","TOP_Circle");
+       shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":2,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Shadow_Head");
        
        // Line
        shape = this.canvas.paper.path('M38.69640448001155 4.038881344014044L38.864176640010555,55.044239424005355');
@@ -10163,6 +10163,14 @@ video_detector_Prewitt = video_detector_Prewitt.extend({
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {
@@ -10186,7 +10194,7 @@ video_detector_Prewitt = video_detector_Prewitt.extend({
 var video_detector_PrewittInvers = CircuitFigure.extend({
 
    NAME: "video_detector_PrewittInvers",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -10462,7 +10470,7 @@ video_detector_PrewittInvers = video_detector_PrewittInvers.extend({
 var video_detector_Roberts = CircuitFigure.extend({
 
    NAME: "video_detector_Roberts",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -10741,7 +10749,7 @@ video_detector_Roberts = video_detector_Roberts.extend({
 var video_detector_RobertsInvers = CircuitFigure.extend({
 
    NAME: "video_detector_RobertsInvers",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -11020,7 +11028,7 @@ video_detector_RobertsInvers = video_detector_RobertsInvers.extend({
 var video_detector_Sobel = CircuitFigure.extend({
 
    NAME: "video_detector_Sobel",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -11301,7 +11309,7 @@ video_detector_Sobel = video_detector_Sobel.extend({
 var video_detector_SobelInvers = CircuitFigure.extend({
 
    NAME: "video_detector_SobelInvers",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -11582,7 +11590,7 @@ video_detector_SobelInvers = video_detector_SobelInvers.extend({
 var video_filter_Blur = CircuitFigure.extend({
 
    NAME: "video_filter_Blur",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -11835,7 +11843,7 @@ video_filter_Blur = video_filter_Blur.extend({
 var video_filter_Brighter = CircuitFigure.extend({
 
    NAME: "video_filter_Brighter",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -12076,7 +12084,7 @@ video_filter_Brighter = video_filter_Brighter.extend({
 var video_filter_Contrast = CircuitFigure.extend({
 
    NAME: "video_filter_Contrast",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -12341,7 +12349,7 @@ video_filter_Contrast = video_filter_Contrast.extend({
 var video_filter_Darker = CircuitFigure.extend({
 
    NAME: "video_filter_Darker",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -12582,7 +12590,7 @@ video_filter_Darker = video_filter_Darker.extend({
 var video_filter_FlipHorizontal = CircuitFigure.extend({
 
    NAME: "video_filter_FlipHorizontal",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -12823,7 +12831,7 @@ video_filter_FlipHorizontal = video_filter_FlipHorizontal.extend({
 var video_filter_FlipVertical = CircuitFigure.extend({
 
    NAME: "video_filter_FlipVertical",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -13064,7 +13072,7 @@ video_filter_FlipVertical = video_filter_FlipVertical.extend({
 var video_filter_GaussBlur = CircuitFigure.extend({
 
    NAME: "video_filter_GaussBlur",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -13588,7 +13596,7 @@ video_filter_GaussBlur = video_filter_GaussBlur.extend({
 var video_filter_Histogram = CircuitFigure.extend({
 
    NAME: "video_filter_Histogram",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -13858,7 +13866,7 @@ video_filter_Histogram = video_filter_Histogram.extend({
 var video_filter_Sharpen = CircuitFigure.extend({
 
    NAME: "video_filter_Sharpen",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -14114,7 +14122,7 @@ video_filter_Sharpen = video_filter_Sharpen.extend({
 var video_Preview = CircuitFigure.extend({
 
    NAME: "video_Preview",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
@@ -14307,7 +14315,7 @@ video_Preview = video_Preview.extend({
 var video_WebCam = CircuitFigure.extend({
 
    NAME: "video_WebCam",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {

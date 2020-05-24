@@ -7,7 +7,7 @@
 var video_converter_Scale = CircuitFigure.extend({
 
    NAME: "video_converter_Scale",
-   VERSION: "2.0.208_815",
+   VERSION: "2.0.209_819",
 
    init:function(attr, setter, getter)
    {
