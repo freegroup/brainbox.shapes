@@ -7,7 +7,7 @@
 var video_converter_Grayscale = CircuitFigure.extend({
 
    NAME: "video_converter_Grayscale",
-   VERSION: "2.0.206_808",
+   VERSION: "2.0.207_813",
 
    init:function(attr, setter, getter)
    {
@@ -155,12 +155,9 @@ video_converter_Grayscale = video_converter_Grayscale.extend({
             var imageData = event.data;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                // CIE luminance for the RGB
-                // The human eye is bad at seeing red and blue, so we de-emphasize them.
-//                let average = 0.2126*pixels[x] + 0.7152*pixels[x+1] + 0.0722*pixels[x+2];
-                let average = 0.299*pixels[x] + 0.587*pixels[x+1] + 0.114*pixels[x+2];
-                //let average = (pixels[x] + pixels[x+1] +pixels[x+2]) / 3;
-    
+                // normal grayscale conversion
+                let average = 0.3*pixels[x] + 0.59*pixels[x+1] + 0.11*pixels[x+2];
+
                 pixels[x]     = average;
                 pixels[x + 1] = average;
                 pixels[x + 2] = average;
@@ -213,12 +210,20 @@ video_converter_Grayscale = video_converter_Grayscale.extend({
         return new Worker(url);
     },
     
+    
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+        
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
-        if(this.tmpContext === null ) {
+        if(this.tmpContext === null) {
             this.tmpCanvas = document.createElement('canvas');
             this.tmpCanvas.width = width;
             this.tmpCanvas.height = height;

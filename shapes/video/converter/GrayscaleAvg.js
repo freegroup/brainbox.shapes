@@ -7,7 +7,7 @@
 var video_converter_GrayscaleAvg = CircuitFigure.extend({
 
    NAME: "video_converter_GrayscaleAvg",
-   VERSION: "2.0.206_808",
+   VERSION: "2.0.207_813",
 
    init:function(attr, setter, getter)
    {
@@ -213,6 +213,14 @@ video_converter_GrayscaleAvg = video_converter_GrayscaleAvg.extend({
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {
