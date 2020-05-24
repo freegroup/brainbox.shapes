@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.204_806",
+   VERSION: "2.0.205_807",
 
    init:function(attr, setter, getter)
    {
@@ -189,7 +189,7 @@ video_detector_Hough = video_detector_Hough.extend({
                     }
                 }
 
-                if (max > 500) {
+                if (max > height) {
                     bestRho <<= 1; // accumulator is bitshifted
                     bestRho -= rhoMax; /// accumulator has rhoMax added
                     var a = self.cosTable[bestTheta];
