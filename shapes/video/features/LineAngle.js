@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.227_867",
+   VERSION: "2.0.228_869",
 
    init:function(attr, setter, getter)
    {
@@ -186,7 +186,6 @@ video_features_LineAngle = video_features_LineAngle.extend({
             //    top  1001  1000  1010
             //    mid  0001  0000  0010
             // bottom  0101  0100  0110
-            
             function bitCode(p, bbox) {
                 var code = 0;
             
@@ -198,8 +197,8 @@ video_features_LineAngle = video_features_LineAngle.extend({
             
                 return code;
             }
-            // intersect a segment against one of the 4 lines that make up the bbox
             
+            // intersect a segment against one of the 4 lines that make up the bbox
             function intersect(a, b, edge, bbox) {
                 return edge & 8 ? [a[0] + (b[0] - a[0]) * (bbox[3] - a[1]) / (b[1] - a[1]), bbox[3]] : // top
                     edge & 4 ? [a[0] + (b[0] - a[0]) * (bbox[1] - a[1]) / (b[1] - a[1]), bbox[1]] : // bottom
@@ -209,15 +208,15 @@ video_features_LineAngle = video_features_LineAngle.extend({
             
             // Sutherland-Hodgeman polygon clipping algorithm
             function clipLine(line) {
+                if(!line) return null;
+                var offset = 5;
                 var points = [[line.x1, line.y1],[line.x2, line.y2]];
-                var bbox = [0,0, width, height];
+                var bbox = [offset,offset, width-offset, height-offset];
                 var len = points.length,
                     codeA = bitCode(points[0], bbox),
                     part = [],
-                    i, a, b, codeB, lastCode;
-            
-                console.log("codeA", codeA)
-                var result = [];
+                    i, a, b, codeB, lastCode,
+                    result = [];
             
                 for (i = 1; i < len; i++) {
                     a = points[i - 1];
@@ -259,7 +258,6 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     if(result.length === 2){
                         p1 = result[0];
                         p2 = result[1];
-                        console.log("hit")
                         return {x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1]}
                     }
                 }
@@ -291,7 +289,12 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     var x2 = (a * bestRho - 1000 * (-b))|0;
                     var y2 = (b * bestRho - 1000 * ( a))|0;
                     // return a line with P1(x1,y1) and P2(x2,y2)
-                    return {x1,y1, x2,y2};
+                    return {
+                        x1:x1 + width / 2, 
+                        y1:y1 + height / 2,
+                        x2:x2 + width / 2, 
+                        y2:y2 + height / 2
+                    };
                 }
                 return null;
             }
@@ -331,23 +334,15 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.beginPath();
             ctx.fillRect(0,0,width, height);
             ctx.closePath();
-
+            
+            line = clipLine(line)
+            
             if(line){
-                line = {
-                    x1:line.x1 + width / 2, 
-                    y1:line.y1 + height / 2,
-                    x2:line.x2 + width / 2, 
-                    y2:line.y2 + height / 2
-                }
-                    
-    
-                line2 = clipLine(line);
-                console.log(line2);
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = Math.max(2,(width/25)|0);
-                ctx.moveTo(line2.x1, line2.y1);
-                ctx.lineTo(line2.x2, line2.y2);
+                ctx.moveTo(line.x1, line.y1);
+                ctx.lineTo(line.x2, line.y2);
                 ctx.stroke();
                 ctx.closePath();
                 console.log(getAngle(line));
