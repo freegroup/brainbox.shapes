@@ -77,14 +77,14 @@ video_converter_WhiteBlack = video_converter_WhiteBlack.extend({
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
                 this.processing = false;
-            }
+            };
             image.src = this.tmpCanvas.toDataURL();
         };
         
         // convert a js function to a WebWorker
         //
         this.worker = this.createWorker(workerFunction);
-        this.worker.onmessage = receiverFunction
+        this.worker.onmessage = receiverFunction;
         this.processing = false;
     },
 
@@ -119,6 +119,14 @@ video_converter_WhiteBlack = video_converter_WhiteBlack.extend({
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {
