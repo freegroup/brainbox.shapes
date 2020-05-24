@@ -7,7 +7,7 @@
 var video_converter_Scale = CircuitFigure.extend({
 
    NAME: "video_converter_Scale",
-   VERSION: "2.0.202_803",
+   VERSION: "2.0.203_804",
 
    init:function(attr, setter, getter)
    {
@@ -165,7 +165,9 @@ video_converter_Scale = video_converter_Scale.extend({
             w = parseInt(w/factor);
             h = parseInt(h/factor);
             this.layerAttr("width_height", {"text": w+"x"+h});
-            var scaleCanvas = new OffscreenCanvas(w, h);
+            var scaleCanvas = document.createElement("canvas");
+            scaleCanvas.height = h;
+            scaleCanvas.width = w;
             var scaleCtx = scaleCanvas.getContext('2d');
             scaleCtx.drawImage(img, 0, 0, w, h);
             var scaledImage = document.createElement("img");
