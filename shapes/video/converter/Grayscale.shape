@@ -287,10 +287,10 @@
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
-      "bgColor": "rgba(255,255,255,1)",
+      "bgColor": "rgba(199,29,61,1)",
       "color": "rgba(48,48,48,1)",
-      "stroke": 1,
-      "radius": 0,
+      "stroke": 0,
+      "radius": 4,
       "dasharray": null,
       "vertices": [
         {
@@ -379,10 +379,10 @@
           "name": "shape_designer.filter.SizeFilter"
         },
         {
-          "name": "shape_designer.filter.StrokeFilter"
+          "name": "shape_designer.filter.FillColorFilter"
         },
         {
-          "name": "shape_designer.filter.FillColorFilter"
+          "name": "shape_designer.filter.RadiusFilter"
         }
       ]
     }
