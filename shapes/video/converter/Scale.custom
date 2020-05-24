@@ -35,14 +35,14 @@ video_converter_Scale = video_converter_Scale.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        var threshold = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
+            var factor = this.getInputPort("input_port2").getValue();
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
             this.processing = true;
-            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
+            this.worker.postMessage({imageData, factor}, [imageData.data.buffer]);
         }
     },
 
@@ -57,14 +57,21 @@ video_converter_Scale = video_converter_Scale.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data.imageData;
-            var threshold = event.data.threshold;
-            // map offset from 0-5 => 0-255
-            threshold = 255/5*threshold;
             var pixels = imageData.data;
-            for( let x = 0; x < pixels.length; x += 4 ) {
-                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
-                pixels[x] = pixels[x+1] = pixels[x+2] = lum>threshold?255:0;
-            }
+            var factor = event.data.factor;
+            var width = imageData.width;
+            var height = imageData.height;
+            
+            // map factor from 0-5 => 1-10
+            factor = 9/5*factor+1;
+
+            width = width / factor;
+            height = height / factor;
+            
+            var canvas = new OffscreenCanvas(width, height);
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(imageData, 0, 0, width, height);
+            imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
