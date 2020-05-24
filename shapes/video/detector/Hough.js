@@ -7,7 +7,7 @@
 var video_detector_Hough = CircuitFigure.extend({
 
    NAME: "video_detector_Hough",
-   VERSION: "2.0.207_813",
+   VERSION: "2.0.208_817",
 
    init:function(attr, setter, getter)
    {
@@ -306,6 +306,14 @@ video_detector_Hough = video_detector_Hough.extend({
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {
