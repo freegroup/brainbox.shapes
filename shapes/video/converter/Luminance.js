@@ -7,7 +7,7 @@
 var video_converter_Luminance = CircuitFigure.extend({
 
    NAME: "video_converter_Luminance",
-   VERSION: "2.0.207_809",
+   VERSION: "2.0.208_816",
 
    init:function(attr, setter, getter)
    {
@@ -115,6 +115,7 @@ video_converter_Luminance = video_converter_Luminance.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
 
@@ -133,11 +134,12 @@ video_converter_Luminance = video_converter_Luminance.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
     },
@@ -173,14 +175,16 @@ video_converter_Luminance = video_converter_Luminance.extend({
             var image = new Image();
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
-            }
+                this.processing = false;
+            };
             image.src = this.tmpCanvas.toDataURL();
         };
         
         // convert a js function to a WebWorker
         //
         this.worker = this.createWorker(workerFunction);
-        this.worker.onmessage = receiverFunction
+        this.worker.onmessage = receiverFunction;
+        this.processing = false;
     },
 
     /**
@@ -196,6 +200,7 @@ video_converter_Luminance = video_converter_Luminance.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 
@@ -213,6 +218,14 @@ video_converter_Luminance = video_converter_Luminance.extend({
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {

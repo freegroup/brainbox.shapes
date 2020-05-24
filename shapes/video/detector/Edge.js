@@ -7,7 +7,7 @@
 var video_detector_Edge = CircuitFigure.extend({
 
    NAME: "video_detector_Edge",
-   VERSION: "2.0.207_809",
+   VERSION: "2.0.208_816",
 
    init:function(attr, setter, getter)
    {
@@ -110,6 +110,7 @@ video_detector_Edge = video_detector_Edge.extend({
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -127,11 +128,12 @@ video_detector_Edge = video_detector_Edge.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing ===false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
+            this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
     },
@@ -196,7 +198,10 @@ video_detector_Edge = video_detector_Edge.extend({
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
-            image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
+            image.onload = () => { 
+                this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
+            };
             image.src = this.tmpCanvas.toDataURL();
         };
 
@@ -205,6 +210,7 @@ video_detector_Edge = video_detector_Edge.extend({
         //
         this.worker = this.createWorker(workerFunction);
         this.worker.onmessage = receiverFunction;
+        this.processing = false;
     },
 
     /**
@@ -220,6 +226,7 @@ video_detector_Edge = video_detector_Edge.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.processing = false;
     },
     
 
@@ -237,6 +244,14 @@ video_detector_Edge = video_detector_Edge.extend({
     imageToData: function(image){
         var width = image.naturalWidth;
         var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
         //
         if(this.tmpContext === null ) {
