@@ -598,6 +598,61 @@
           "name": "shape_designer.filter.FillColorFilter"
         }
       ]
+    },
+    {
+      "type": "shape_designer.figure.PolyRect",
+      "id": "63ec1f6f-d462-1b9a-98b4-942de9b20745",
+      "x": 7963.152384000004,
+      "y": 7962.331059200003,
+      "width": 73.40032000000065,
+      "height": 54.735667200000535,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Rectangle"
+      },
+      "cssClass": "shape_designer_figure_PolyRect",
+      "ports": [],
+      "bgColor": "rgba(255,255,255,1)",
+      "color": "rgba(48,48,48,1)",
+      "stroke": 1,
+      "radius": 0,
+      "dasharray": null,
+      "vertices": [
+        {
+          "x": 7963.152384000004,
+          "y": 7962.331059200003
+        },
+        {
+          "x": 8036.552704000004,
+          "y": 7962.331059200003
+        },
+        {
+          "x": 8036.552704000004,
+          "y": 8017.066726400004
+        },
+        {
+          "x": 7963.152384000004,
+          "y": 8017.066726400004
+        }
+      ],
+      "blur": 0,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.SizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FillColorFilter"
+        }
+      ]
     }
   ]
 }
