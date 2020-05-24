@@ -81,52 +81,108 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 return Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI;
             }
             
+            // helper method to clip the outline to the given image
+            //
             function clipLine({x1, y1, x2, y2}){
-                var offset = 30;
-                var edgeLeft = offset;
-                var edgeRight= width-offset;
-                var edgeTop = offset;
-                var edgeBottom = height-offset;
-                
-                var t0 = 0.0;    
-                var t1 = 1.0;
-                var xdelta = x2-x1;
-                var ydelta = y2-y1;
-                var p,q,r;
-            
-                for(var edge=0; edge<4; edge++) {   // Traverse through left, right, bottom, top edges.
-                    if (edge===0) {  p = -xdelta;    q = -(edgeLeft-x1);  }
-                    if (edge===1) {  p = xdelta;     q =  (edgeRight-x1); }
-                    if (edge===2) {  p = -ydelta;    q = -(edgeBottom-y1);}
-                    if (edge===3) {  p = ydelta;     q =  (edgeTop-y1);   }   
-                    r = q/p;
-                    if(p===0 && q<0) {
-                        console.log("parallel outside")
-                        return {x1, y1, x2, y2}
-                    };   // Don't draw line at all. (parallel line outside)
-            
-                    if(p<0) {
-                        if(r>t1) {
-                            console.log("Don't draw line at all.")
-                            return {x1, y1, x2, y2};
-                        }// Don't draw line at all.
-                        else if(r>t0) t0=r;            // Line is clipped!
-                    } else if(p>0) {
-                        if(r<t0) {
-                            console.log("Don't draw line at all. 2",p)
-                            return {x1, y1, x2, y2};
-                        }// Don't draw line at all.
-                        else if(r<t1) t1=r;         // Line is clipped!
-                    }
-                }
-            
-                return {
-                    x1:  x1 + t0*xdelta,
-                    y1 : y1 + t0*ydelta,
-                    x2 : x1 + t1*xdelta,
-                    y2 : y1 + t1*ydelta
-                }
-            
+                const offset = 10;
+                const INSIDE = 0; // 0000 
+                const LEFT = 1; // 0001 
+                const RIGHT = 2; // 0010 
+                const BOTTOM = 4; // 0100 
+                const TOP = 8; // 1000 
+                  
+                // Defining x_max, y_max and x_min, y_min for 
+                // clipping rectangle. Since diagonal points are 
+                // enough to define a rectangle 
+                const x_max = width-offset; 
+                const y_max = height-offset; 
+                const x_min = offset; 
+                const y_min = offset;
+                // Function to compute region code for a point(x, y) 
+                function computeCode(x, y) 
+                { 
+                    // initialized as being inside 
+                    var code = INSIDE; 
+                    if (x < x_min) // to the left of rectangle 
+                        code |= LEFT; 
+                    else if (x > x_max) // to the right of rectangle 
+                        code |= RIGHT; 
+                    if (y < y_min) // below the rectangle 
+                        code |= BOTTOM; 
+                    else if (y > y_max) // above the rectangle 
+                        code |= TOP; 
+                    return code; 
+                } 
+                // Compute region codes for P1, P2 
+                var code1 = computeCode(x1, y1); 
+                var code2 = computeCode(x2, y2); 
+                // Initialize line as outside the rectangular window 
+                var accept = false; 
+              
+                while (true) { 
+                    if ((code1 === 0) && (code2 === 0)) { 
+                        // If both endpoints lie within rectangle 
+                        accept = true; 
+                        break; 
+                    } 
+                    else if (code1 & code2) { 
+                        // If both endpoints are outside rectangle, 
+                        // in same region 
+                        break; 
+                    } 
+                    else { 
+                        // Some segment of line lies within the 
+                        // rectangle 
+                        int code_out; 
+                        var x, y; 
+              
+                        // At least one endpoint is outside the 
+                        // rectangle, pick it. 
+                        if (code1 !== 0) 
+                            code_out = code1; 
+                        else
+                            code_out = code2; 
+              
+                        // Find intersection point; 
+                        // using formulas y = y1 + slope * (x - x1), 
+                        // x = x1 + (1 / slope) * (y - y1) 
+                        if (code_out & TOP) { 
+                            // point is above the clip rectangle 
+                            x = x1 + (x2 - x1) * (y_max - y1) / (y2 - y1); 
+                            y = y_max; 
+                        } 
+                        else if (code_out & BOTTOM) { 
+                            // point is below the rectangle 
+                            x = x1 + (x2 - x1) * (y_min - y1) / (y2 - y1); 
+                            y = y_min; 
+                        } 
+                        else if (code_out & RIGHT) { 
+                            // point is to the right of rectangle 
+                            y = y1 + (y2 - y1) * (x_max - x1) / (x2 - x1); 
+                            x = x_max; 
+                        } 
+                        else if (code_out & LEFT) { 
+                            // point is to the left of rectangle 
+                            y = y1 + (y2 - y1) * (x_min - x1) / (x2 - x1); 
+                            x = x_min; 
+                        } 
+              
+                        // Now intersection point x, y is found 
+                        // We replace point outside rectangle 
+                        // by intersection point 
+                        if (code_out == code1) { 
+                            x1 = x; 
+                            y1 = y; 
+                            code1 = computeCode(x1, y1); 
+                        } 
+                        else { 
+                            x2 = x; 
+                            y2 = y; 
+                            code2 = computeCode(x2, y2); 
+                        } 
+                    } 
+                } 
+                return {x1, y1, x2, y2};
             }
             function findMaxInHough() {
                 var max = 0;
