@@ -7,7 +7,7 @@
 var signal_SignalSource = CircuitFigure.extend({
 
    NAME: "signal_SignalSource",
-   VERSION: "2.0.228_870",
+   VERSION: "2.0.229_874",
 
    init:function(attr, setter, getter)
    {
