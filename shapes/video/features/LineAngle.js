@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.221_852",
+   VERSION: "2.0.222_854",
 
    init:function(attr, setter, getter)
    {
@@ -179,109 +179,80 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 return Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI;
             }
             
-            // helper method to clip the outline to the given image
+            // Clipping helper
             //
-            function clipLine({x1, y1, x2, y2}){
-                const offset = 10;
-                const INSIDE = 0; // 0000 
-                const LEFT = 1; // 0001 
-                const RIGHT = 2; // 0010 
-                const BOTTOM = 4; // 0100 
-                const TOP = 8; // 1000 
-                  
-                // Defining x_max, y_max and x_min, y_min for 
-                // clipping rectangle. Since diagonal points are 
-                // enough to define a rectangle 
-                const x_max = width-offset; 
-                const y_max = height-offset; 
-                const x_min = offset; 
-                const y_min = offset;
-                // Function to compute region code for a point(x, y) 
-                function computeCode(x, y) 
-                { 
-                    // initialized as being inside 
-                    var code = INSIDE; 
-                    if (x < x_min) // to the left of rectangle 
-                        code |= LEFT; 
-                    else if (x > x_max) // to the right of rectangle 
-                        code |= RIGHT; 
-                    if (y < y_min) // below the rectangle 
-                        code |= BOTTOM; 
-                    else if (y > y_max) // above the rectangle 
-                        code |= TOP; 
-                    return code; 
-                } 
-                // Compute region codes for P1, P2 
-                var code1 = computeCode(x1, y1); 
-                var code2 = computeCode(x2, y2); 
-                // Initialize line as outside the rectangular window 
-                var accept = false; 
-              
-                while (true) { 
-                    if ((code1 === 0) && (code2 === 0)) { 
-                        // If both endpoints lie within rectangle 
-                        accept = true; 
-                        break; 
-                    } 
-                    else if (code1 & code2) { 
-                        // If both endpoints are outside rectangle, 
-                        // in same region 
-                        break; 
-                    } 
-                    else { 
-                        // Some segment of line lies within the 
-                        // rectangle 
-                        var code_out; 
-                        var x, y; 
-              
-                        // At least one endpoint is outside the 
-                        // rectangle, pick it. 
-                        if (code1 !== 0) 
-                            code_out = code1; 
-                        else
-                            code_out = code2; 
-              
-                        // Find intersection point; 
-                        // using formulas y = y1 + slope * (x - x1), 
-                        // x = x1 + (1 / slope) * (y - y1) 
-                        if (code_out & TOP) { 
-                            // point is above the clip rectangle 
-                            x = x1 + (x2 - x1) * (y_max - y1) / (y2 - y1); 
-                            y = y_max; 
-                        } 
-                        else if (code_out & BOTTOM) { 
-                            // point is below the rectangle 
-                            x = x1 + (x2 - x1) * (y_min - y1) / (y2 - y1); 
-                            y = y_min; 
-                        } 
-                        else if (code_out & RIGHT) { 
-                            // point is to the right of rectangle 
-                            y = y1 + (y2 - y1) * (x_max - x1) / (x2 - x1); 
-                            x = x_max; 
-                        } 
-                        else if (code_out & LEFT) { 
-                            // point is to the left of rectangle 
-                            y = y1 + (y2 - y1) * (x_min - x1) / (x2 - x1); 
-                            x = x_min; 
-                        } 
-              
-                        // Now intersection point x, y is found 
-                        // We replace point outside rectangle 
-                        // by intersection point 
-                        if (code_out == code1) { 
-                            x1 = x; 
-                            y1 = y; 
-                            code1 = computeCode(x1, y1); 
-                        } 
-                        else { 
-                            x2 = x; 
-                            y2 = y; 
-                            code2 = computeCode(x2, y2); 
-                        } 
-                    } 
-                } 
-                return {x1, y1, x2, y2};
+            // bit code reflects the point position relative to the bbox:
+            //         left  mid  right
+            //    top  1001  1000  1010
+            //    mid  0001  0000  0010
+            // bottom  0101  0100  0110
+            
+            function bitCode(p, bbox) {
+                var code = 0;
+            
+                if (p[0] < bbox[0]) code |= 1; // left
+                else if (p[0] > bbox[2]) code |= 2; // right
+            
+                if (p[1] < bbox[1]) code |= 4; // bottom
+                else if (p[1] > bbox[3]) code |= 8; // top
+            
+                return code;
             }
+            // intersect a segment against one of the 4 lines that make up the bbox
+            
+            function intersect(a, b, edge, bbox) {
+                return edge & 8 ? [a[0] + (b[0] - a[0]) * (bbox[3] - a[1]) / (b[1] - a[1]), bbox[3]] : // top
+                    edge & 4 ? [a[0] + (b[0] - a[0]) * (bbox[1] - a[1]) / (b[1] - a[1]), bbox[1]] : // bottom
+                    edge & 2 ? [bbox[2], a[1] + (b[1] - a[1]) * (bbox[2] - a[0]) / (b[0] - a[0])] : // right
+                    edge & 1 ? [bbox[0], a[1] + (b[1] - a[1]) * (bbox[0] - a[0]) / (b[0] - a[0])] : null; // left
+            }
+            
+            // Sutherland-Hodgeman polygon clipping algorithm
+            function clipLine(points, bbox) {
+                var len = points.length,
+                    codeA = bitCode(points[0], bbox),
+                    part = [],
+                    i, a, b, codeB, lastCode;
+            
+                var result = [];
+            
+                for (i = 1; i < len; i++) {
+                    a = points[i - 1];
+                    b = points[i];
+                    codeB = lastCode = bitCode(b, bbox);
+            
+                    while (true) {
+            
+                        if (!(codeA | codeB)) { // accept
+                            part.push(a);
+                            if (codeB !== lastCode) { // segment went outside
+                                part.push(b);
+                                if (i < len - 1) { // start a new line
+                                    result.push(part);
+                                    part = [];
+                                }
+                            } else if (i === len - 1) {
+                                part.push(b);
+                            }
+                            break;
+                        } else if (codeA & codeB) { // trivial reject
+                            break;
+                        } else if (codeA) { // a outside, intersect with clip edge
+                            a = intersect(a, b, codeA, bbox);
+                            codeA = bitCode(a, bbox);
+                        } else { // b outside
+                            b = intersect(a, b, codeB, bbox);
+                            codeB = bitCode(b, bbox);
+                        }
+                    }
+                    codeA = lastCode;
+                }
+            
+                if (part.length) result.push(part);
+            
+                return result;
+            }
+
             function findMaxInHough() {
                 var max = 0;
                 var bestRho = 0;
@@ -348,8 +319,11 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.closePath();
 
             if(line){
-                console.log(line, clipLine(line))
-                line = clipLine(line);
+                console.log(line, clipLine(
+                    [[line.x1, line.y1], [line.x2, line.y2]], // line
+                    [20, 20, width, height])                  // bbox
+                )
+                //line = clipLine(line);
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = Math.max(2,(width/25)|0);
