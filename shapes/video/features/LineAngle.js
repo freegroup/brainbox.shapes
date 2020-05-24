@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.223_856",
+   VERSION: "2.0.224_859",
 
    init:function(attr, setter, getter)
    {
@@ -322,11 +322,19 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.closePath();
 
             if(line){
-                console.log(line, JSON.stringify(clipLine(
-                    [[line.x1, line.y1], [line.x2, line.y2]], // line
-                    [0, 0, width, height]))                  // bbox
-                )
-                //line = clipLine(line);
+                line = {
+                    x1:line.x1 + width / 2, 
+                    y1:line.y1 + height / 2,
+                    x2:line.x2 + width / 2, 
+                    y2:line.y2 + height / 2
+                }
+                    
+    
+                line2 = clipLine(line);
+                if(line2 && line2.length>0){
+                    line2 = line2[0]
+                    console.log(line, line2)
+                }
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = Math.max(2,(width/25)|0);
