@@ -120,7 +120,7 @@ video_quality_Blur = video_quality_Blur.extend({
      **/
     onStop:function( context )
     {
-        this.worker.terminate();
+        if(this.worker) this.worker.terminate();
         delete this.worker;
         delete this.tmpContext;
         delete this.tmpCanvas;

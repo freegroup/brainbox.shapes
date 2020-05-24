@@ -7,7 +7,7 @@
 var video_quality_Blur = CircuitFigure.extend({
 
    NAME: "video_quality_Blur",
-   VERSION: "2.0.213_838",
+   VERSION: "2.0.214_839",
 
    init:function(attr, setter, getter)
    {
@@ -213,7 +213,7 @@ video_quality_Blur = video_quality_Blur.extend({
      **/
     onStop:function( context )
     {
-        this.worker.terminate();
+        if(this.worker) this.worker.terminate();
         delete this.worker;
         delete this.tmpContext;
         delete this.tmpCanvas;

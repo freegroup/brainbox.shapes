@@ -7,7 +7,7 @@
 var video_filter_Roberts = CircuitFigure.extend({
 
    NAME: "video_filter_Roberts",
-   VERSION: "2.0.213_838",
+   VERSION: "2.0.214_839",
 
    init:function(attr, setter, getter)
    {
@@ -238,7 +238,7 @@ video_filter_Roberts = video_filter_Roberts.extend({
      **/
     onStop:function( context )
     {
-        this.worker.terminate();
+        if(this.worker) this.worker.terminate();
         delete this.worker;
         delete this.tmpContext;
         delete this.tmpCanvas;
