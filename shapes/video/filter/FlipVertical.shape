@@ -66,8 +66,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 7961.848001618233,
-      "y": 8014.660266559116,
+      "x": 7965.848001618233,
+      "y": 8015.660266559116,
       "width": 54.828125,
       "height": 21.375,
       "alpha": 1,
@@ -84,10 +84,10 @@
       "stroke": 0,
       "radius": 0,
       "dasharray": null,
-      "text": "Flip Horizontal",
+      "text": "Flip Vertical",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
-      "fontSize": 11,
+      "fontSize": 12,
       "fontColor": "rgba(8,8,8,1)",
       "fontFamily": null,
       "editor": "LabelInplaceEditor",
@@ -397,7 +397,7 @@
     {
       "type": "shape_designer.figure.ExtLine",
       "id": "ec7a6711-0d3b-6ca5-d21e-7479a5f0a829",
-      "alpha": 1,
+      "alpha": 0.5,
       "selectable": true,
       "draggable": true,
       "angle": 0,
@@ -412,12 +412,12 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7999.2930989800125,
-          "y": 7961.4744925440145
+          "x": 7964.952234980009,
+          "y": 7988.475324544017
         },
         {
-          "x": 7999.4608711400115,
-          "y": 8010.906986624004
+          "x": 8034.850311140015,
+          "y": 7987.576170624008
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -425,6 +425,9 @@
       "filters": [
         {
           "name": "shape_designer.filter.StrokeFilter"
+        },
+        {
+          "name": "shape_designer.filter.OpacityFilter"
         }
       ]
     },
@@ -446,16 +449,16 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 8016.696832000003,
-          "y": 7985.620992000003
+          "x": 7983.754623999995,
+          "y": 7973.300224
         },
         {
-          "x": 7999.919616000004,
-          "y": 8000.825344000009
+          "x": 7965.142399999993,
+          "y": 7987.980288000009
         },
         {
-          "x": 7979.996672000003,
-          "y": 7985.620992000002
+          "x": 7983.4924799999935,
+          "y": 8002.660352
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -487,16 +490,16 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 8009.094656000003,
-          "y": 7981.591680000003
+          "x": 7975.366015999995,
+          "y": 7972.416640000005
         },
         {
-          "x": 8020.104704000003,
-          "y": 7983.6888320000035
+          "x": 7986.113920000006,
+          "y": 7971.368064000005
         },
         {
-          "x": 8016.434688000003,
-          "y": 7993.912448000003
+          "x": 7982.821391359998,
+          "y": 7981.444879360005
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
@@ -525,16 +528,16 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 7980.845920000006,
-          "y": 7994.572416000003
+          "x": 7976.739552000009,
+          "y": 8004.2717440000015
         },
         {
-          "x": 7977.700191999996,
-          "y": 7984.086656000003
+          "x": 7985.652447999999,
+          "y": 8004.271744000006
         },
         {
-          "x": 7986.875231999999,
-          "y": 7981.465215999995
+          "x": 7983.293151999998,
+          "y": 7995.096703999999
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
