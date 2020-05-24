@@ -7,7 +7,7 @@
 var video_quality_Brighter = CircuitFigure.extend({
 
    NAME: "video_quality_Brighter",
-   VERSION: "2.0.224_857",
+   VERSION: "2.0.225_860",
 
    init:function(attr, setter, getter)
    {

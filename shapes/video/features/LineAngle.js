@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.224_857",
+   VERSION: "2.0.225_860",
 
    init:function(attr, setter, getter)
    {
@@ -208,7 +208,9 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
             
             // Sutherland-Hodgeman polygon clipping algorithm
-            function clipLine(points, bbox) {
+            function clipLine(line) {
+                var points = [[line.x1, line.y1],[line.x2, line.y2]];
+                var bbox = [0,0, width, height];
                 var len = points.length,
                     codeA = bitCode(points[0], bbox),
                     part = [],
@@ -329,21 +331,11 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     y2:line.y2 + height / 2
                 }
                     
-                console.log(line, JSON.stringify(clipLine(
-                    [[line.x1, line.y1], [line.x2, line.y2]], // line
-                    [0, 0, width, height]))                  // bbox
-                )
-                line2 = clipLine(line);
-                if(line2.length>0){
+    
+                line2 = clipLine();
+                if(line2 && line2.length>0){
                     line2 = line2[0]
-                    if(line2.length>0) line2 = line2[0]
-                    ctx.beginPath();
-                    ctx.strokeStyle = 'rgba(0,0,255,1)';
-                    ctx.lineWidth = Math.max(2,(width/25)|0);
-                    ctx.moveTo(line2[0][0] + width / 2, line2.y1 + height / 2);
-                    ctx.lineTo(line2.x2 + width / 2, line2.y2 + height / 2);
-                    ctx.stroke();
-                    ctx.closePath();
+                    console.log(line, line2)
                 }
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
