@@ -81,6 +81,44 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 return Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI;
             }
             
+            function clipLine({x1, y1, x2, y2}){
+                var offset = 30;
+                var edgeLeft = offset;
+                var edgeRight= width-offset;
+                var edgeTop = offset;
+                var edgeBottom = height-offset;
+                
+                var t0 = 0.0;    
+                var t1 = 1.0;
+                var xdelta = x2-x1;
+                var ydelta = y2-y1;
+                var p,q,r;
+            
+                for(var edge=0; edge<4; edge++) {   // Traverse through left, right, bottom, top edges.
+                    if (edge===0) {  p = -xdelta;    q = -(edgeLeft-x1);  }
+                    if (edge===1) {  p = xdelta;     q =  (edgeRight-x1); }
+                    if (edge===2) {  p = -ydelta;    q = -(edgeBottom-y1);}
+                    if (edge===3) {  p = ydelta;     q =  (edgeTop-y1);   }   
+                    r = q/p;
+                    if(p===0 && q<0) return {x1, y1, x2, y2};   // Don't draw line at all. (parallel line outside)
+            
+                    if(p<0) {
+                        if(r>t1) return {x1, y1, x2, y2};         // Don't draw line at all.
+                        else if(r>t0) t0=r;            // Line is clipped!
+                    } else if(p>0) {
+                        if(r<t0) return {x1, y1, x2, y2};      // Don't draw line at all.
+                        else if(r<t1) t1=r;         // Line is clipped!
+                    }
+                }
+            
+                return {
+                    x1:  x1 + t0*xdelta,
+                    y1 : y1 + t0*ydelta,
+                    x2 : x1 + t1*xdelta,
+                    y2 : y1 + t1*ydelta
+                }
+            
+            }
             function findMaxInHough() {
                 var max = 0;
                 var bestRho = 0;
@@ -147,6 +185,8 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.closePath();
 
             if(line){
+                console.log(line, clipLine(line))
+                line = clipLine(line);
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = Math.max(2,(width/25)|0);
