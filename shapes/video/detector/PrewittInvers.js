@@ -7,7 +7,7 @@
 var video_detector_PrewittInvers = CircuitFigure.extend({
 
    NAME: "video_detector_PrewittInvers",
-   VERSION: "2.0.187_774",
+   VERSION: "2.0.188_776",
 
    init:function(attr, setter, getter)
    {
