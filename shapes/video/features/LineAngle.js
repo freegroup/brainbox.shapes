@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.217_844",
+   VERSION: "2.0.218_845",
 
    init:function(attr, setter, getter)
    {
@@ -176,23 +176,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
            
             function getAngle({x1, y1, x2, y2}) {
-                let length = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-                let angle = -(180 / Math.PI) * Math.asin((y1 - y2) / length)
-            
-                if (angle < 0) {
-                  if (x2 < x1) {
-                    angle = Math.abs(angle) + 180
-                  }
-                  else {
-                    angle = 360 - Math.abs(angle)
-                  }
-                }
-                else {
-                  if (x2 < x1) {
-                    angle = 180 - angle
-                  }
-                }
-                return angle
+                return Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI;
             }
             
             function findMaxInHough() {
