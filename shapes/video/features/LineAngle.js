@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.224_858",
+   VERSION: "2.0.225_861",
 
    init:function(attr, setter, getter)
    {
@@ -208,7 +208,9 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
             
             // Sutherland-Hodgeman polygon clipping algorithm
-            function clipLine(points, bbox) {
+            function clipLine(line) {
+                var points = [[line.x1, line.y1],[line.x2, line.y2]];
+                var bbox = [0,0, width, height];
                 var len = points.length,
                     codeA = bitCode(points[0], bbox),
                     part = [],
@@ -331,7 +333,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     
     
                 line2 = clipLine(line);
-                if(line2.length>0){
+                if(line2 && line2.length>0){
                     line2 = line2[0]
                     console.log(line, line2)
                 }
