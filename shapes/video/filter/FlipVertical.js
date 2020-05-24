@@ -4,25 +4,25 @@
 // created with http://www.draw2d.org
 //
 //
-var video_filter_FlipHorizontal = CircuitFigure.extend({
+var video_filter_FlipVertical = CircuitFigure.extend({
 
-   NAME: "video_filter_FlipHorizontal",
+   NAME: "video_filter_FlipVertical",
    VERSION: "2.0.190_782",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80.35023911823282,height:80},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.22465535911579},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9597980148700479, y: 49.886999999999944 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.7473000305823 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 99.88775500953986, y: 49.886999999999944 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.7473000305823 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -32,8 +32,8 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80.35023911823282;
-      this.originalHeight= 80;
+      this.originalWidth = 80;
+      this.originalHeight= 80.22465535911579;
       return shape;
    },
 
@@ -42,7 +42,7 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80.35023911823282,0 L80.35023911823282,80 L0,80");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.22465535911579 L0,80.22465535911579");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -52,8 +52,8 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Flip Horizontal');
-       shape.attr({"x":6.037739118232821,"y":67.91215535911579,"text-anchor":"start","text":"Flip Horizontal","font-family":"\"Arial\"","font-size":11,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Flip Vertical');
+       shape.attr({"x":10.037739118232821,"y":69.22465535911579,"text-anchor":"start","text":"Flip Vertical","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
@@ -72,22 +72,22 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
        shape.data("name","TOP_Body");
        
        // Line
-       shape = this.canvas.paper.path('M39.48283648001234 4.038881344014044L39.65060864001134,53.47137542400378');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M5.141972480008917 31.03971334401649L75.0400486400149,30.140559424007733');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":0.5});
        shape.data("name","Line");
        
        // Line
-       shape = this.canvas.paper.path('M56.886569500003134 28.18538080000235L48.497961500003385,35.787556800005405Q40.109353500003635,43.38973280000846 30.147881500003223, 35.78755680000495L20.18640950000281,28.18538080000144');
+       shape = this.canvas.paper.path('M23.944361499994557 15.864612799999122L14.63824949999389,23.204644800003734Q5.332137499993223,30.544676800008347 14.507177499993304, 37.884708800003864L23.682217499993385,45.22474079999938');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(112,150,255,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
        // Line
-       shape = this.canvas.paper.path('M49.28439350000281 24.156068800002686L60.294441500002904,26.253220800002964L56.62442550000287,36.476836800002275');
+       shape = this.canvas.paper.path('M15.555753499995262 14.981028800004424L26.30365750000601,13.932452800004285L23.01112885999828,24.009268160004467');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(112,150,255,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
        // Line
-       shape = this.canvas.paper.path('M21.035657500005982 37.13680480000221L17.88992949999556,26.651044800002637L27.06496949999928,24.02960479999456');
+       shape = this.canvas.paper.path('M16.929289500008963 46.836132800000996L25.842185499998777,46.836132800005544L23.482889499998237,37.66109279999819');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(112,150,255,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
@@ -108,7 +108,7 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_filter_FlipHorizontal = video_filter_FlipHorizontal.extend({
+video_filter_FlipVertical = video_filter_FlipVertical.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
