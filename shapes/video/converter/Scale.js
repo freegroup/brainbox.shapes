@@ -7,7 +7,7 @@
 var video_converter_Scale = CircuitFigure.extend({
 
    NAME: "video_converter_Scale",
-   VERSION: "2.0.200_800",
+   VERSION: "2.0.201_801",
 
    init:function(attr, setter, getter)
    {
@@ -97,6 +97,11 @@ var video_converter_Scale = CircuitFigure.extend({
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
+       // width_height
+       shape = this.canvas.paper.text(0,0,'w x h');
+       shape.attr({"x":43.136293579453195,"y":57.17550000000119,"text-anchor":"start","text":"w x h","font-family":"\"Arial\"","font-size":9,"stroke":"#000000","fill":"#EB213C","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","width_height");
+       
        // Line
        shape = this.canvas.paper.path('M9.377490534403478 57.12910056640976L5.757806182406057,57.53049545921385L0.4075520000042161,64.0115340000084');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
@@ -152,6 +157,15 @@ video_converter_Scale = video_converter_Scale.extend({
         if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
             var factor = this.getInputPort("input_port2").getValue();
             var imageData = this.imageToData(img);
+            var w = imageData.width;
+            var h = imageData.height;
+            // map factor from 0-5 => 1-10
+            factor = 9/5*factor+1;
+
+            w = parseInt(w / factor);
+            h = parseInt(h / factor);
+            this.layerAttr("width_height", {"text": w+":"+h});
+            
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
@@ -176,9 +190,6 @@ video_converter_Scale = video_converter_Scale.extend({
             var width = imageData.width;
             var height = imageData.height;
             
-            // map factor from 0-5 => 1-10
-            factor = 9/5*factor+1;
-
             width = width / factor;
             height = height / factor;
             

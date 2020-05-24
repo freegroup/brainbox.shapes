@@ -38,6 +38,15 @@ video_converter_Scale = video_converter_Scale.extend({
         if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
             var factor = this.getInputPort("input_port2").getValue();
             var imageData = this.imageToData(img);
+            var w = imageData.width;
+            var h = imageData.height;
+            // map factor from 0-5 => 1-10
+            factor = 9/5*factor+1;
+
+            w = parseInt(w / factor);
+            h = parseInt(h / factor);
+            this.layerAttr("width_height", {"text": w+":"+h});
+            
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
@@ -62,9 +71,6 @@ video_converter_Scale = video_converter_Scale.extend({
             var width = imageData.width;
             var height = imageData.height;
             
-            // map factor from 0-5 => 1-10
-            factor = 9/5*factor+1;
-
             width = width / factor;
             height = height / factor;
             
