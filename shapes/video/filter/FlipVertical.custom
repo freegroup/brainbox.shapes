@@ -64,14 +64,14 @@ video_filter_FlipVertical = video_filter_FlipVertical.extend({
             
             var dst = new Uint8ClampedArray(width*height*4);
             for (var y=0; y<height; y++) {
-              for (var x=0; x<width; x++) {
-                var off = (y*width+x)*4;
-                var dstOff = (y*width+(width-x-1))*4;
-                dst[dstOff  ] = pixels[off];
-                dst[dstOff+1] = pixels[off+1];
-                dst[dstOff+2] = pixels[off+2];
-                dst[dstOff+3] = pixels[off+3];
-              }
+                for (var x=0; x<width; x++) {
+                  var off = (y*width+x)*4;
+                  var dstOff = ((height-y-1)*width+x)*4;
+                  dst[dstOff  ] = pixels[off  ];
+                  dst[dstOff+1] = pixels[off+1];
+                  dst[dstOff+2] = pixels[off+2];
+                  dst[dstOff+3] = pixels[off+3];
+                }
             }
             imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
