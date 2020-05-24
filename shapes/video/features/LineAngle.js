@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.216_843",
+   VERSION: "2.0.217_844",
 
    init:function(attr, setter, getter)
    {
@@ -175,6 +175,26 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 }
             }
            
+            function getAngle({x1, y1, x2, y2}) {
+                let length = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+                let angle = -(180 / Math.PI) * Math.asin((y1 - y2) / length)
+            
+                if (angle < 0) {
+                  if (x2 < x1) {
+                    angle = Math.abs(angle) + 180
+                  }
+                  else {
+                    angle = 360 - Math.abs(angle)
+                  }
+                }
+                else {
+                  if (x2 < x1) {
+                    angle = 180 - angle
+                  }
+                }
+                return angle
+            }
+            
             function findMaxInHough() {
                 var max = 0;
                 var bestRho = 0;
@@ -248,6 +268,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.lineTo(line.x2 + width / 2, line.y2 + height / 2);
                 ctx.stroke();
                 ctx.closePath();
+                console.log(getAngle(line));
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, line}, [imageData.data.buffer]);
