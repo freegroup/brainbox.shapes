@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_detector_PrewittInvers = CircuitFigure.extend({
+var video_filter_PrewittInvers = CircuitFigure.extend({
 
-   NAME: "video_detector_PrewittInvers",
-   VERSION: "2.0.211_836",
+   NAME: "video_filter_PrewittInvers",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -103,7 +103,7 @@ var video_detector_PrewittInvers = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_detector_PrewittInvers = video_detector_PrewittInvers.extend({
+video_filter_PrewittInvers = video_filter_PrewittInvers.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

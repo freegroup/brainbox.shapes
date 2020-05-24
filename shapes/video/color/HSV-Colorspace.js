@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_converter_HSV_Colorspace = CircuitFigure.extend({
+var video_color_HSV_Colorspace = CircuitFigure.extend({
 
-   NAME: "video_converter_HSV_Colorspace",
-   VERSION: "2.0.211_836",
+   NAME: "video_color_HSV_Colorspace",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -124,7 +124,7 @@ var video_converter_HSV_Colorspace = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_converter_HSV_Colorspace = video_converter_HSV_Colorspace.extend({
+video_color_HSV_Colorspace = video_color_HSV_Colorspace.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

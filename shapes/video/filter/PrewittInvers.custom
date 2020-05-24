@@ -10,7 +10,7 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_detector_PrewittInvers = video_detector_PrewittInvers.extend({
+video_filter_PrewittInvers = video_filter_PrewittInvers.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

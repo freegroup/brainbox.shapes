@@ -4,25 +4,25 @@
 // created with http://www.draw2d.org
 //
 //
-var video_geometry_FlipVertical = CircuitFigure.extend({
+var video_filter_Embose = CircuitFigure.extend({
 
-   NAME: "video_geometry_FlipVertical",
+   NAME: "video_filter_Embose",
    VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.22465535911579},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.87877759999992},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.7473000305823 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.34495943717131 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.7473000305823 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.34495943717131 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -33,7 +33,7 @@ var video_geometry_FlipVertical = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 80.22465535911579;
+      this.originalHeight= 80.87877759999992;
       return shape;
    },
 
@@ -42,7 +42,7 @@ var video_geometry_FlipVertical = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.22465535911579 L0,80.22465535911579");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.87877759999992 L0,80.87877759999992");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -52,14 +52,24 @@ var video_geometry_FlipVertical = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Flip Vertical');
-       shape.attr({"x":10.037739118232821,"y":69.22465535911579,"text-anchor":"start","text":"Flip Vertical","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Edge');
+       shape.attr({"x":21.228799999999865,"y":68.37877759999992,"text-anchor":"start","text":"Edge","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
-       shape = this.canvas.paper.path('M4.315424000003077,7.770740800002386Q4.315424000003077,3.770740800002386 8.315424000003077, 3.770740800002386L71.31542400000308,3.770740800002386Q75.31542400000308,3.770740800002386 75.31542400000308, 7.770740800002386L75.31542400000308,49.770740800002386Q75.31542400000308,53.770740800002386 71.31542400000308, 53.770740800002386L8.315424000003077,53.770740800002386Q4.315424000003077,53.770740800002386 4.315424000003077, 49.770740800002386L4.315424000003077,7.770740800002386');
+       shape = this.canvas.paper.path('M4.315424000003077,7.770740800002386Q4.315424000003077,3.770740800002386 8.315424000003077, 3.770740800002386L71.31542400000308,3.770740800002386Q75.31542400000308,3.770740800002386 75.31542400000308, 7.770740800002386L75.31542400000308,51.770740800002386Q75.31542400000308,55.770740800002386 71.31542400000308, 55.770740800002386L8.315424000003077,55.770740800002386Q4.315424000003077,55.770740800002386 4.315424000003077, 51.770740800002386L4.315424000003077,7.770740800002386');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(237,237,237,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
+       
+       // Shadow
+       shape = this.canvas.paper.path('M37.31898911823282,49.08107850869237Q37.31898911823282,51.08107850869237 39.31888395146733, 51.10158840878765L49.319094284998314,51.20414545902051Q51.31898911823282,51.224655359115786 50.90607867073568, 49.267743260336765L48.31286185049548,36.977675520356634Q47.89995140299834,35.02076342157761 47.84167307749067, 34.43069753144073L47.84167307749067,34.43069753144073Q47.783394751982996,33.840631641303844 47.6103305328902, 33.268494604651096L47.6103305328902,33.268494604651096Q47.43726631379741,32.69635756799835 47.154674669841825, 32.15953347917139L47.154674669841825,32.15953347917139Q46.87208302588624,31.622709390344426 46.48855036117084, 31.137509377641436L46.48855036117084,31.137509377641436Q46.105017696455434,30.652309364938446 45.6321974569214, 30.23347598521468L45.6321974569214,30.23347598521468Q45.15937721738737,29.814642605490917 44.61163580675429, 29.474901899055112L44.61163580675429,29.474901899055112Q44.06389439612121,29.135161192619307 43.45787465998001, 28.884836008916864L43.45787465998001,28.884836008916864Q42.8518549238388,28.63451082521442 42.205970465211976, 28.48120716828589L42.205970465211976,28.48120716828589Q41.56008600658515,28.327903511357363 40.89396169791462, 28.276279435236574L40.89396169791462,28.276279435236574Q40.22783738924409,28.224655359115786 39.5617130805731, 28.276279435236574L39.5617130805731,28.276279435236574Q38.89558877190211,28.327903511357363 38.24970431327529, 28.48120716828589L38.24970431327529,28.48120716828589Q37.603819854648464,28.63451082521442 37.46140448644064, 28.693337545011218L37.46140448644064,28.693337545011218Q37.31898911823282,28.752164264808016 37.31898911823282, 30.752164264808016L37.31898911823282,49.08107850869237');
+       shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":2,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Shadow");
+       
+       // TOP_Circle
+       shape = this.canvas.paper.path('M38.67362344960475 24.54496882107196L38.98139389101925 24.629850218838328L40.415416481778266 24.75898431823407L41.84943907253819 24.629850218838328L43.239889612527804 24.246371594914308L44.54451996569151 23.620200250402377L45.723689598924466 22.77036208474601L46.74157003960863 21.72267900056977L47.567233505626064 20.50898431823407L48.175592630367646 19.16615553650263L48.548162729673095 17.734993828403276L48.67362344960475 16.25898431823407L48.548162729673095 14.782974808064864L48.175592630367646 13.351813099965511L47.567233505626064 12.00898431823407L46.74157003960863 10.79528963589837L45.723689598924466 9.747606551722129L44.54451996569151 8.897768386065763L43.239889612527804 8.271597041553832L41.84943907253819 7.888118417629812L40.415416481778266 7.75898431823407L38.98139389101925 7.888118417629812L38.67362344960475 7.972999815396179L38.67362344960475 24.54496882107196Z');
+       shape.attr({"stroke":"rgba(255,255,255,1)","stroke-width":2,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","TOP_Circle");
        
        // TOP_Circle
        shape = this.canvas.paper.ellipse();
@@ -72,23 +82,8 @@ var video_geometry_FlipVertical = CircuitFigure.extend({
        shape.data("name","TOP_Body");
        
        // Line
-       shape = this.canvas.paper.path('M5.141972480008917 31.03971334401649L75.0400486400149,30.140559424007733');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":0.5});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M23.944361499994557 15.864612799999122L14.63824949999389,23.204644800003734Q5.332137499993223,30.544676800008347 14.507177499993304, 37.884708800003864L23.682217499993385,45.22474079999938');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(112,150,255,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M15.555753499995262 14.981028800004424L26.30365750000601,13.932452800004285L23.01112885999828,24.009268160004467');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(112,150,255,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M16.929289500008963 46.836132800000996L25.842185499998777,46.836132800005544L23.482889499998237,37.66109279999819');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(112,150,255,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M38.69640448001155 4.038881344014044L38.864176640010555,55.044239424005355');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(26,12,112,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
 
@@ -108,7 +103,7 @@ var video_geometry_FlipVertical = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
+video_filter_Embose = video_filter_Embose.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -133,7 +128,7 @@ video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing ===false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
@@ -150,26 +145,48 @@ video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
      **/
     onStart:function( context )
     {
-        this.progressing = false;
-        
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
             var imageData = event.data;
-            var pixels = imageData.data;
-            var width  = imageData.width;
-            var height = imageData.height;
-            
-            var dst = new Uint8ClampedArray(width*height*4);
-            for (var y=0; y<height; y++) {
-                for (var x=0; x<width; x++) {
-                  var off = (y*width+x)*4;
-                  var dstOff = ((height-y-1)*width+x)*4;
-                  dst[dstOff  ] = pixels[off  ];
-                  dst[dstOff+1] = pixels[off+1];
-                  dst[dstOff+2] = pixels[off+2];
-                  dst[dstOff+3] = pixels[off+3];
+            var opaque = true;
+            var weights =[  1,   1,  1,  
+                            1, 0.7, -1,  
+                           -1,  -1, -1 ];
+            var side     = Math.round(Math.sqrt(weights.length));
+            var halfSide = Math.floor(side/2);
+
+            var src = imageData.data;
+            var sw = imageData.width;
+            var sh = imageData.height;
+            var w = sw;
+            var h = sh;
+            var dst = new Uint8ClampedArray(w*h*4);
+            var alphaFac = opaque ? 1 : 0;
+
+            for (var y=0; y < h; y++) {
+              for (var x=0; x < w; x++) {
+                var sy = y;
+                var sx = x;
+                var dstOff = (y*w+x)*4;
+                var r=0, g=0, b=0, a=0;
+                for (var cy=0; cy<side; cy++) {
+                  for (var cx=0; cx<side; cx++) {
+                    var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
+                    var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
+                    var srcOff = (scy*sw+scx)*4;
+                    var wt = weights[cy*side+cx];
+                    r += src[srcOff] * wt;
+                    g += src[srcOff+1] * wt;
+                    b += src[srcOff+2] * wt;
+                    a += src[srcOff+3] * wt;
+                  }
                 }
+                dst[dstOff] = r;
+                dst[dstOff+1] = g;
+                dst[dstOff+2] = b;
+                dst[dstOff+3] = a + alphaFac*(255-a);
+              }
             }
             imageData.data.set(dst);
             self.postMessage(imageData, [imageData.data.buffer]);
@@ -178,11 +195,13 @@ video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
-            this.processing = false;
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
-            image.onload = () => { this.getOutputPort("output_port1").setValue(image);};
+            image.onload = () => { 
+                this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
+            };
             image.src = this.tmpCanvas.toDataURL();
         };
 
@@ -207,7 +226,7 @@ video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
-        this.progressing = false;
+        this.processing = false;
     },
     
 

@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_converter_Luminance = CircuitFigure.extend({
+var video_color_Luminance = CircuitFigure.extend({
 
-   NAME: "video_converter_Luminance",
-   VERSION: "2.0.211_836",
+   NAME: "video_color_Luminance",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -108,7 +108,7 @@ var video_converter_Luminance = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_converter_Luminance = video_converter_Luminance.extend({
+video_color_Luminance = video_color_Luminance.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

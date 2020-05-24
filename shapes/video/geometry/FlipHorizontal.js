@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_filter_FlipHorizontal = CircuitFigure.extend({
+var video_geometry_FlipHorizontal = CircuitFigure.extend({
 
-   NAME: "video_filter_FlipHorizontal",
-   VERSION: "2.0.211_836",
+   NAME: "video_geometry_FlipHorizontal",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -108,7 +108,7 @@ var video_filter_FlipHorizontal = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_filter_FlipHorizontal = video_filter_FlipHorizontal.extend({
+video_geometry_FlipHorizontal = video_geometry_FlipHorizontal.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

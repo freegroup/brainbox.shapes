@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_converter_Scale = CircuitFigure.extend({
+var video_geometry_Scale = CircuitFigure.extend({
 
-   NAME: "video_converter_Scale",
-   VERSION: "2.0.211_836",
+   NAME: "video_geometry_Scale",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -134,7 +134,7 @@ var video_converter_Scale = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_converter_Scale = video_converter_Scale.extend({
+video_geometry_Scale = video_geometry_Scale.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

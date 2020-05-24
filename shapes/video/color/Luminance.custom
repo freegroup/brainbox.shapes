@@ -10,7 +10,7 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_converter_Luminance = video_converter_Luminance.extend({
+video_color_Luminance = video_color_Luminance.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

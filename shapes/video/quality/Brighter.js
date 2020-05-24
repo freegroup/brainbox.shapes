@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_filter_Brighter = CircuitFigure.extend({
+var video_quality_Brighter = CircuitFigure.extend({
 
-   NAME: "video_filter_Brighter",
-   VERSION: "2.0.211_836",
+   NAME: "video_quality_Brighter",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -124,7 +124,7 @@ var video_filter_Brighter = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_filter_Brighter = video_filter_Brighter.extend({
+video_quality_Brighter = video_quality_Brighter.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

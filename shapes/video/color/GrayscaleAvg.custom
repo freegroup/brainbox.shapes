@@ -10,7 +10,7 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_converter_GrayscaleAvg = video_converter_GrayscaleAvg.extend({
+video_color_GrayscaleAvg = video_color_GrayscaleAvg.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

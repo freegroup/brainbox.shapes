@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_detector_Object = CircuitFigure.extend({
+var video_features_Object = CircuitFigure.extend({
 
-   NAME: "video_detector_Object",
-   VERSION: "2.0.211_836",
+   NAME: "video_features_Object",
+   VERSION: "2.0.212_837",
 
    init:function(attr, setter, getter)
    {
@@ -103,7 +103,7 @@ var video_detector_Object = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_detector_Object = video_detector_Object.extend({
+video_features_Object = video_features_Object.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
