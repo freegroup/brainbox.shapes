@@ -7,28 +7,28 @@
 var video_converter_Scale = CircuitFigure.extend({
 
    NAME: "video_converter_Scale",
-   VERSION: "2.0.199_797",
+   VERSION: "2.0.200_800",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80.43880200000422,height:84.12910056640976},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:83.12910056640976},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8647716807119048, y: 48.126034543826854 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 48.70496579913834 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // input_port2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8647716807119048, y: 77.8389528672162 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 78.77531513189668 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port2");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.3093158697166, y: 48.14029833592497 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 48.71940117726351 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -38,8 +38,8 @@ var video_converter_Scale = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80.43880200000422;
-      this.originalHeight= 84.12910056640976;
+      this.originalWidth = 80;
+      this.originalHeight= 83.12910056640976;
       return shape;
    },
 
@@ -48,7 +48,7 @@ var video_converter_Scale = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80.43880200000422,0 L80.43880200000422,84.12910056640976 L0,84.12910056640976");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,83.12910056640976 L0,83.12910056640976");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -63,8 +63,8 @@ var video_converter_Scale = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'WhiteBlack');
-       shape.attr({"x":5.407552000004216,"y":72.12910056640976,"text-anchor":"start","text":"WhiteBlack","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Scale');
+       shape.attr({"x":23.407552000004216,"y":71.12910056640976,"text-anchor":"start","text":"Scale","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -72,10 +72,10 @@ var video_converter_Scale = CircuitFigure.extend({
        shape.attr({"rx":8,"ry":8,"cx":38.136293579453195,"cy":17.499523579457673,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
-       // Label
-       shape = this.canvas.paper.text(0,0,'threshold');
-       shape.attr({"x":12,"y":57.59737500000119,"text-anchor":"start","text":"threshold","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
+       // factor_label
+       shape = this.canvas.paper.text(0,0,'factor');
+       shape.attr({"x":12,"y":57.59737500000119,"text-anchor":"start","text":"factor","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","factor_label");
        
        // Rectangle
        shape = this.canvas.paper.path('M28.136293579453195 49.8799680000011L49.136293579453195 49.8799680000011L47.66478056057895 35.49000926909139L47.26481464287099 34.55069784112129L46.61172166499273 33.6693617814999L45.72534552659636 32.87278004043219L44.63261831811906 32.18515635102449L43.366742002848696 31.627383811124673L41.96617959205287 31.216410057117173L40.47348646586943 30.96472231855296L38.9340173495948 30.8799680000011L37.394548233321984 30.96472231855296L35.90185510713491 31.216410057117173L34.50129269633908 31.627383811124673L33.23541638106508 32.18515635102449L32.142689172593236 32.87278004043219L31.256313034195045 33.6693617814999L30.603220056320424 34.55069784112129L30.203254138608827 35.49000926909139Z');
@@ -149,14 +149,14 @@ video_converter_Scale = video_converter_Scale.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        var threshold = this.getInputPort("input_port2").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
+            var factor = this.getInputPort("input_port2").getValue();
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
             this.processing = true;
-            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
+            this.worker.postMessage({imageData, factor}, [imageData.data.buffer]);
         }
     },
 
@@ -171,14 +171,21 @@ video_converter_Scale = video_converter_Scale.extend({
         //
         var workerFunction = function(event){
             var imageData = event.data.imageData;
-            var threshold = event.data.threshold;
-            // map offset from 0-5 => 0-255
-            threshold = 255/5*threshold;
             var pixels = imageData.data;
-            for( let x = 0; x < pixels.length; x += 4 ) {
-                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
-                pixels[x] = pixels[x+1] = pixels[x+2] = lum>threshold?255:0;
-            }
+            var factor = event.data.factor;
+            var width = imageData.width;
+            var height = imageData.height;
+            
+            // map factor from 0-5 => 1-10
+            factor = 9/5*factor+1;
+
+            width = width / factor;
+            height = height / factor;
+            
+            var canvas = new OffscreenCanvas(width, height);
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(imageData, 0, 0, width, height);
+            imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
