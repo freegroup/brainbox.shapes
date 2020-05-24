@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.222_854",
+   VERSION: "2.0.223_856",
 
    init:function(attr, setter, getter)
    {
@@ -214,6 +214,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     part = [],
                     i, a, b, codeB, lastCode;
             
+                console.log("codeA", codeA)
                 var result = [];
             
                 for (i = 1; i < len; i++) {
@@ -236,6 +237,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                             }
                             break;
                         } else if (codeA & codeB) { // trivial reject
+                            console.log("trivial - reject")
                             break;
                         } else if (codeA) { // a outside, intersect with clip edge
                             a = intersect(a, b, codeA, bbox);
@@ -273,10 +275,10 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     var a = self.cosTable[bestTheta];
                     var b = self.sinTable[bestTheta];
 
-                    var x1 = a * bestRho + 1000 * (-b);
-                    var y1 = b * bestRho + 1000 * ( a);
-                    var x2 = a * bestRho - 1000 * (-b);
-                    var y2 = b * bestRho - 1000 * ( a);
+                    var x1 = (a * bestRho + 1000 * (-b))|0;
+                    var y1 = (b * bestRho + 1000 * ( a))|0;
+                    var x2 = (a * bestRho - 1000 * (-b))|0;
+                    var y2 = (b * bestRho - 1000 * ( a))|0;
                     // return a line with P1(x1,y1) and P2(x2,y2)
                     return {x1,y1, x2,y2};
                 }
@@ -299,6 +301,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     }
                 }
             }
+            
             for (var index=0; index<pixels.length; index+=4) {
                 // because we NEED a black/white image we can just use the RED part
                 // if the RGBA color
@@ -319,9 +322,9 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.closePath();
 
             if(line){
-                console.log(line, clipLine(
+                console.log(line, JSON.stringify(clipLine(
                     [[line.x1, line.y1], [line.x2, line.y2]], // line
-                    [20, 20, width, height])                  // bbox
+                    [0, 0, width, height]))                  // bbox
                 )
                 //line = clipLine(line);
                 ctx.beginPath();
