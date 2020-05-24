@@ -7,7 +7,7 @@
 var video_converter_Invert = CircuitFigure.extend({
 
    NAME: "video_converter_Invert",
-   VERSION: "2.0.188_776",
+   VERSION: "2.0.189_777",
 
    init:function(attr, setter, getter)
    {

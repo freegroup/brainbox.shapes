@@ -7,7 +7,7 @@
 var video_filter_FlipHorizontal = CircuitFigure.extend({
 
    NAME: "video_filter_FlipHorizontal",
-   VERSION: "2.0.188_776",
+   VERSION: "2.0.189_777",
 
    init:function(attr, setter, getter)
    {
@@ -164,7 +164,19 @@ video_filter_FlipHorizontal = video_filter_FlipHorizontal.extend({
             var pixels = imageData.data;
             var width  = imageData.width;
             var height = imageData.height;
-
+            
+            var dst = new Uint8ClampedArray(width*height*4);
+            for (var y=0; y<height; y++) {
+              for (var x=0; x<width; x++) {
+                var off = (y*width+x)*4;
+                var dstOff = (y*width+(width-x-1))*4;
+                dst[dstOff  ] = pixels[off];
+                dst[dstOff+1] = pixels[off+1];
+                dst[dstOff+2] = pixels[off+2];
+                dst[dstOff+3] = pixels[off+3];
+              }
+            }
+            imageData.data.set(dstX);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
