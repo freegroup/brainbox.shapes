@@ -7,7 +7,7 @@
 var video_geometry_FlipHorizontal = CircuitFigure.extend({
 
    NAME: "video_geometry_FlipHorizontal",
-   VERSION: "2.0.219_846",
+   VERSION: "2.0.220_850",
 
    init:function(attr, setter, getter)
    {

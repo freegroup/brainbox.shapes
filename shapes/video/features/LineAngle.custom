@@ -82,15 +82,16 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
             
             function clipLine({x1, y1, x2, y2}){
-                var edgeLeft = 10;
-                var edgeRight= width-10;
-                var edgeTop = 10;
-                var edgeBottom = height-10;
+                var offset = 30;
+                var edgeLeft = offset;
+                var edgeRight= width-offset;
+                var edgeTop = offset;
+                var edgeBottom = height-offset;
                 
                 var t0 = 0.0;    
                 var t1 = 1.0;
-                var xdelta = x1src-x0src;
-                var ydelta = y1src-y0src;
+                var xdelta = x2-x1;
+                var ydelta = y2-y1;
                 var p,q,r;
             
                 for(var edge=0; edge<4; edge++) {   // Traverse through left, right, bottom, top edges.
@@ -99,13 +100,22 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     if (edge===2) {  p = -ydelta;    q = -(edgeBottom-y1);}
                     if (edge===3) {  p = ydelta;     q =  (edgeTop-y1);   }   
                     r = q/p;
-                    if(p===0 && q<0) return {x1, y1, x2, y2};   // Don't draw line at all. (parallel line outside)
+                    if(p===0 && q<0) {
+                        console.log("parallel outside")
+                        return {x1, y1, x2, y2}
+                    };   // Don't draw line at all. (parallel line outside)
             
                     if(p<0) {
-                        if(r>t1) return {x1, y1, x2, y2};         // Don't draw line at all.
+                        if(r>t1) {
+                            console.log("Don't draw line at all.")
+                            return {x1, y1, x2, y2};
+                        }// Don't draw line at all.
                         else if(r>t0) t0=r;            // Line is clipped!
                     } else if(p>0) {
-                        if(r<t0) return {x1, y1, x2, y2};      // Don't draw line at all.
+                        if(r<t0) {
+                            console.log("Don't draw line at all. 2",p)
+                            return {x1, y1, x2, y2};
+                        }// Don't draw line at all.
                         else if(r<t1) t1=r;         // Line is clipped!
                     }
                 }
@@ -184,6 +194,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.closePath();
 
             if(line){
+                console.log(line, clipLine(line))
                 line = clipLine(line);
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
