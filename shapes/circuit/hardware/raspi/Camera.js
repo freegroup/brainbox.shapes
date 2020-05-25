@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_Camera",
-   VERSION: "2.0.237_895",
+   VERSION: "2.0.238_897",
 
    init:function(attr, setter, getter)
    {
@@ -163,25 +163,12 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
      **/
     calculate:function( context)
     {
-        this.getInputPorts().each(function(index,port){
-            if(port.hasChangedValue() && port.getConnections().getSize()>0){
-                hardware.camera.pwm(port.getName(), port.getValue());
-            }
-        });
     },
     
-    getRequiredHardware: function(){
-      return {
-        raspi: true,
-        arduino: false
-      }
-    },
     
     onStart: function(context ){
+        debugger
         hardware.camera.start();
-        hardware.camera.on("capture", (event)=>{
-            console.log(event)
-        })
     },
     
     
