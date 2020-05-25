@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.234_890",
+   VERSION: "2.0.235_891",
 
    init:function(attr, setter, getter)
    {
@@ -157,8 +157,6 @@ video_features_LineAngle = video_features_LineAngle.extend({
             var pixels    = imageData.data;
             var width     = imageData.width;
             var height    = imageData.height;
-            var previewWidth = 300;
-            var previewHeight= previewWidth + (height/width);
             var angles    = 360;
             var rhoMax    = Math.sqrt(width*width + height*height);
             var accum     = Array(angles);
@@ -336,14 +334,14 @@ video_features_LineAngle = video_features_LineAngle.extend({
 
             var line = houghAccCalled?findMaxInHough():null;
             
-            var canvas = new OffscreenCanvas(previewWidth, previewHeight);
+            var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.fillStyle = 'rgba(255,255,255,1)';
             ctx.beginPath();
-            ctx.fillRect(0,0,previewWidth, previewHeight);
+            ctx.fillRect(0,0, width, height);
             ctx.closePath();
             
-            line = clipLine(line,previewWidth, previewHeight)
+            line = clipLine(line,width, height)
             
             if(line){
                 var stroke = Math.max(2,(width/25)|0);
@@ -372,7 +370,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.fillStyle = "#d0d0d0";
                 ctx.fillText(""+getAngle(line)+"°" , 0, 0);
             }
-            imageData = ctx.getImageData(0, 0, previewWidth, previewHeight);
+            imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, line}, [imageData.data.buffer]);
         };
         
