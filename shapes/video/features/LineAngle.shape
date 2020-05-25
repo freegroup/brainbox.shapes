@@ -84,7 +84,7 @@
       "stroke": 0,
       "radius": 0,
       "dasharray": null,
-      "text": "Line Detect",
+      "text": "Line Angle",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
       "fontSize": 14,
@@ -491,6 +491,44 @@
         },
         {
           "name": "shape_designer.filter.OpacityFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtPort",
+      "id": "ae22d42a-35d7-3857-958b-785089f32ff8",
+      "x": 8035,
+      "y": 8020,
+      "width": 10,
+      "height": 10,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "angle",
+        "type": "Output",
+        "direction": 1,
+        "fanout": 20
+      },
+      "cssClass": "shape_designer_figure_ExtPort",
+      "ports": [],
+      "bgColor": "rgba(55,177,222,1)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 1,
+      "dasharray": null,
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FanoutFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortDirectionFilter"
+        },
+        {
+          "name": "shape_designer.filter.PortTypeFilter"
         }
       ]
     }
