@@ -7,7 +7,7 @@
 var video_WebCam = CircuitFigure.extend({
 
    NAME: "video_WebCam",
-   VERSION: "2.0.231_883",
+   VERSION: "2.0.232_887",
 
    init:function(attr, setter, getter)
    {

@@ -78,7 +78,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
            
             function getAngle({x1, y1, x2, y2}) {
-                return (Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI)|0;
+                return 180-(Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI)|0;
             }
 
             function getFont() {
@@ -146,7 +146,6 @@ video_features_LineAngle = video_features_LineAngle.extend({
                             }
                             break;
                         } else if (codeA & codeB) { // trivial reject
-                            console.log("trivial - reject")
                             break;
                         } else if (codeA) { // a outside, intersect with clip edge
                             a = intersect(a, b, codeA, bbox);
@@ -269,10 +268,8 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.closePath();
 
                 ctx.font = getFont();
-                ctx..textBaseline = "top";
+                ctx.textBaseline = "top";
                 ctx.strokeText(""+getAngle(line)+"°" , 0, 0);
-
-                console.log(getAngle(line));
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, line}, [imageData.data.buffer]);
