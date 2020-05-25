@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_hardware_raspi_ServoWrite = CircuitFigure.extend({
+var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
-   NAME: "circuit_hardware_raspi_ServoWrite",
+   NAME: "circuit_hardware_raspi_Camera",
    VERSION: "2.0.237_895",
 
    init:function(attr, setter, getter)
@@ -148,7 +148,7 @@ var circuit_hardware_raspi_ServoWrite = CircuitFigure.extend({
  *
  *
  */
-circuit_hardware_raspi_ServoWrite = circuit_hardware_raspi_ServoWrite.extend({
+circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
@@ -165,7 +165,7 @@ circuit_hardware_raspi_ServoWrite = circuit_hardware_raspi_ServoWrite.extend({
     {
         this.getInputPorts().each(function(index,port){
             if(port.hasChangedValue() && port.getConnections().getSize()>0){
-                hardware.raspi.pwm(port.getName(), port.getValue());
+                hardware.camera.pwm(port.getName(), port.getValue());
             }
         });
     },
@@ -175,6 +175,18 @@ circuit_hardware_raspi_ServoWrite = circuit_hardware_raspi_ServoWrite.extend({
         raspi: true,
         arduino: false
       }
+    },
+    
+    onStart: function(context ){
+        hardware.camera.start();
+        hardware.camera.on("capture", (event)=>{
+            console.log(event)
+        })
+    },
+    
+    
+    onStop: function(context){
+        hardware.camera.stop();
     }
     
 });
