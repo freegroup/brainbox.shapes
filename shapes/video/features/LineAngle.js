@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.234_890",
+   VERSION: "2.0.235_892",
 
    init:function(attr, setter, getter)
    {
@@ -26,6 +26,12 @@ var video_features_LineAngle = CircuitFigure.extend({
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
+     port.setMaxFanOut(20);
+     // angle
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100, y: 81.20509416759656 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("angle");
      port.setMaxFanOut(20);
    },
 
@@ -52,8 +58,8 @@ var video_features_LineAngle = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Line Detect');
-       shape.attr({"x":4.3266039182290115,"y":68.04423942400535,"text-anchor":"start","text":"Line Detect","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#000000","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Line Angle');
+       shape.attr({"x":4.3266039182290115,"y":68.04423942400535,"text-anchor":"start","text":"Line Angle","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#000000","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // PictureFrame
@@ -157,8 +163,6 @@ video_features_LineAngle = video_features_LineAngle.extend({
             var pixels    = imageData.data;
             var width     = imageData.width;
             var height    = imageData.height;
-            var previewWidth = 300;
-            var previewHeight= previewWidth + (height/width);
             var angles    = 360;
             var rhoMax    = Math.sqrt(width*width + height*height);
             var accum     = Array(angles);
@@ -336,14 +340,14 @@ video_features_LineAngle = video_features_LineAngle.extend({
 
             var line = houghAccCalled?findMaxInHough():null;
             
-            var canvas = new OffscreenCanvas(previewWidth, previewHeight);
+            var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.fillStyle = 'rgba(255,255,255,1)';
             ctx.beginPath();
-            ctx.fillRect(0,0,previewWidth, previewHeight);
+            ctx.fillRect(0,0, width, height);
             ctx.closePath();
             
-            line = clipLine(line,previewWidth, previewHeight)
+            line = clipLine(line,width, height)
             
             if(line){
                 var stroke = Math.max(2,(width/25)|0);
@@ -372,7 +376,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.fillStyle = "#d0d0d0";
                 ctx.fillText(""+getAngle(line)+"°" , 0, 0);
             }
-            imageData = ctx.getImageData(0, 0, previewWidth, previewHeight);
+            imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, line}, [imageData.data.buffer]);
         };
         
