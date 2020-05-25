@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.232_886",
+   VERSION: "2.0.233_889",
 
    init:function(attr, setter, getter)
    {
@@ -176,7 +176,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
            
             function getAngle({x1, y1, x2, y2}) {
-                return (Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI)|0;
+                return 180-(Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI)|0;
             }
 
             function getFont() {
@@ -367,7 +367,8 @@ video_features_LineAngle = video_features_LineAngle.extend({
 
                 ctx.font = getFont();
                 ctx.textBaseline = "top";
-                ctx.strokeText(""+getAngle(line)+"°" , 0, 0);
+                ctx.fillStyle = "#d0d0d0";
+                ctx.fillText(""+getAngle(line)+"°" , 0, 0);
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, line}, [imageData.data.buffer]);
