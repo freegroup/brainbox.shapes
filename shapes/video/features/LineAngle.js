@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.229_874",
+   VERSION: "2.0.230_878",
 
    init:function(attr, setter, getter)
    {
@@ -176,7 +176,13 @@ video_features_LineAngle = video_features_LineAngle.extend({
             }
            
             function getAngle({x1, y1, x2, y2}) {
-                return Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI;
+                return (Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI)|0;
+            }
+
+            function getFont() {
+                var ratio = 0.3;   // calc ratio
+                var size = width * ratio;   // get font size based on current width
+                return (size|0) + 'px sans-serif'; // set font
             }
             
             // Clipping helper
@@ -289,12 +295,13 @@ video_features_LineAngle = video_features_LineAngle.extend({
                     var x2 = (a * bestRho - 1000 * (-b))|0;
                     var y2 = (b * bestRho - 1000 * ( a))|0;
                     // return a line with P1(x1,y1) and P2(x2,y2)
-                    return {
-                        x1:x1 + width / 2, 
-                        y1:y1 + height / 2,
-                        x2:x2 + width / 2, 
-                        y2:y2 + height / 2
-                    };
+                    // startpoint is ALWAYS on the downside
+                    if(y1<y2){
+                        return {x1:x2 + width / 2,  y1:y2 + height / 2, x2:x1 + width / 2,  y2:y1 + height / 2 };
+                    }
+                    else{
+                        return {x1:x1 + width / 2,  y1:y1 + height / 2, x2:x2 + width / 2,  y2:y2 + height / 2 };
+                    }
                 }
                 return null;
             }
@@ -358,6 +365,9 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.fillStyle = '#00FF00';
                 ctx.fill();
                 ctx.closePath();
+
+                ctx.font = getFont();
+                ctx.strokeText(""+getAngle(line), 0, 0);
 
                 console.log(getAngle(line));
             }
