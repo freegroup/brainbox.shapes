@@ -84,7 +84,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
             function getFont() {
                 var ratio = 0.3;   // calc ratio
                 var size = width * ratio;   // get font size based on current width
-                return (size|0) + 'px sans-serif'; // set font
+                return "normal 100 "+ (size|0) + "px Verdana"; // set font
             }
             
             // Clipping helper
@@ -269,7 +269,8 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.closePath();
 
                 ctx.font = getFont();
-                ctx.strokeText(""+getAngle(line), 0, height);
+                ctx..textBaseline = "top";
+                ctx.strokeText(""+getAngle(line)+"° " , 0, 0);
 
                 console.log(getAngle(line));
             }
