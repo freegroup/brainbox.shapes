@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.235_892",
+   VERSION: "2.0.236_893",
 
    init:function(attr, setter, getter)
    {
@@ -27,11 +27,11 @@ var video_features_LineAngle = CircuitFigure.extend({
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
      port.setMaxFanOut(20);
-     // angle
+     // output_angle
      port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100, y: 81.20509416759656 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("angle");
+     port.setName("output_angle");
      port.setMaxFanOut(20);
    },
 
@@ -181,8 +181,9 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 }
             }
            
-            function getAngle({x1, y1, x2, y2}) {
-                return 180-(Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI)|0;
+            function getAngle(line) {
+                if(!line) return null;
+                return 180-(Math.atan2(line.y1 - line.y2, line.x1 - line.x2) * 180 / Math.PI)|0;
             }
 
             function getFont() {
@@ -348,7 +349,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
             ctx.closePath();
             
             line = clipLine(line,width, height)
-            
+            angle = getAngle(line);
             if(line){
                 var stroke = Math.max(2,(width/25)|0);
                 ctx.beginPath();
@@ -374,21 +375,24 @@ video_features_LineAngle = video_features_LineAngle.extend({
                 ctx.font = getFont();
                 ctx.textBaseline = "top";
                 ctx.fillStyle = "#d0d0d0";
-                ctx.fillText(""+getAngle(line)+"°" , 0, 0);
+                ctx.fillText(""+angle+"°" , 0, 0);
             }
             imageData = ctx.getImageData(0, 0, width, height);
-            self.postMessage({imageData, line}, [imageData.data.buffer]);
+            self.postMessage({imageData, angle}, [imageData.data.buffer]);
         };
         
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
             var imageData = event.data.imageData;
-            var line = event.data.line;
+            var angle = event.data.angle;
+            // map the angle [0..180] to [0..5]
+            angle = 5/180*angle;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => { 
                 this.getOutputPort("output_port1").setValue(image);
+                this.getOutputPort("output_angle").setValue(angle);
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
