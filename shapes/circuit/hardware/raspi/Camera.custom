@@ -55,13 +55,13 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
     
     onStart: function(context ){
         this.processing = false;
-        hardware.camera.start();
+        hardware.camera.start(this.attr("userData.ipAddress"));
     },
     
     
     onStop: function(context){
         this.processing = false;
-        hardware.camera.stop();
+        hardware.camera.stop(this.attr("userData.ipAddress"));
     },
     
     getPersistentAttributes: function () 
@@ -87,6 +87,16 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+    },
+    
+    getParameterSettings: function () {
+        return [{
+                name: "ipAddress",
+                label: "IP-Address of the MJPEG Web Camera",
+                property: {
+                    type: "string"
+                }
+            }]
     }
     
 });
