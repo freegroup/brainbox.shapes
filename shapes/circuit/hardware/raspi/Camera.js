@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_Camera",
-   VERSION: "2.0.241_904",
+   VERSION: "2.0.242_906",
 
    init:function(attr, setter, getter)
    {
@@ -16,11 +16,11 @@ var circuit_hardware_raspi_Camera = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.125},attr), setter, getter);
      var port;
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.72506249999515, y: 49.921996879875195 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.7890625, y: 49.921996879875195 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
-     port.setMaxFanOut(1);
+     port.setMaxFanOut(20);
    },
 
    createShapeElement : function()
