@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_Camera",
-   VERSION: "2.0.244_912",
+   VERSION: "2.0.245_917",
 
    init:function(attr, setter, getter)
    {
@@ -97,9 +97,6 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
         });
         this.img.hitTest = ()=>false;
         this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3,y:3}));
-
-        
-        this.processing = false;
         
         this.attr({resizeable:false});
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
@@ -118,26 +115,20 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
      **/
     calculate:function( context)
     {
-        if(this.processing === false){
-            var image = new Image();
-            image.onload = () => {
-                this.getOutputPort("output_port1").setValue(image);
-                this.processing = false;
-            };
-            this.processing = true;
-            image.src = hardware.camera.image(this.attr("userData.ipAddress"));
-        }
+        var image = new Image();
+        image.onload = () => {
+            this.getOutputPort("output_port1").setValue(image);
+        };
+        image.src = hardware.camera.image(this.attr("userData.ipAddress"));
     },
     
     
     onStart: function(context ){
-        this.processing = false;
         hardware.camera.start(this.attr("userData.ipAddress"));
     },
     
     
     onStop: function(context){
-        this.processing = false;
         hardware.camera.stop(this.attr("userData.ipAddress"));
     },
     
