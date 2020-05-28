@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_Camera",
-   VERSION: "2.0.244_912",
+   VERSION: "2.0.245_913",
 
    init:function(attr, setter, getter)
    {
