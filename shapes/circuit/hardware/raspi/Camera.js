@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_Camera",
-   VERSION: "2.0.242_906",
+   VERSION: "2.0.243_910",
 
    init:function(attr, setter, getter)
    {
@@ -122,6 +122,7 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
             var image = new Image();
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
+                console.log("ip camera",image)
                 this.processing = false;
             };
             this.processing = true;
