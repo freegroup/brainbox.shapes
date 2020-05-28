@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_hardware_raspi_ServoWrite = circuit_hardware_raspi_ServoWrite.extend({
+hardware_raspi_ServoWrite = hardware_raspi_ServoWrite.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

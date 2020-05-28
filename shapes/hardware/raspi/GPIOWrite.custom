@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_hardware_raspi_GPIOWrite = circuit_hardware_raspi_GPIOWrite.extend({
+hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
