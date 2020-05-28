@@ -48,7 +48,8 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
                 this.processing = false;
             };
             this.processing = true;
-            image.src = hardware.camera.image();
+            debugger
+            image.src = hardware.camera.image(this.attr("userData.ipAddress"));
         }
     },
     
