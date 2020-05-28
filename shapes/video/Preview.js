@@ -7,7 +7,7 @@
 var video_Preview = CircuitFigure.extend({
 
    NAME: "video_Preview",
-   VERSION: "2.0.245_917",
+   VERSION: "2.0.246_918",
 
    init:function(attr, setter, getter)
    {
