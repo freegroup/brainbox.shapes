@@ -55,6 +55,7 @@ video_Preview = video_Preview.extend({
     {
         var image = this.getInputPort("input_port1").getValue();
         if (image instanceof HTMLImageElement) {
+            console.log("set imag ein preview")
             this.img.attr("path", image.src);
             this.getOutputPort("output_port1").setValue(image);
         }

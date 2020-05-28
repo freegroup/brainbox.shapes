@@ -7,7 +7,7 @@
 var video_Preview = CircuitFigure.extend({
 
    NAME: "video_Preview",
-   VERSION: "2.0.242_906",
+   VERSION: "2.0.243_907",
 
    init:function(attr, setter, getter)
    {
@@ -133,6 +133,7 @@ video_Preview = video_Preview.extend({
     {
         var image = this.getInputPort("input_port1").getValue();
         if (image instanceof HTMLImageElement) {
+            console.log("set imag ein preview")
             this.img.attr("path", image.src);
             this.getOutputPort("output_port1").setValue(image);
         }
