@@ -7,7 +7,7 @@
 var video_geometry_Scale = CircuitFigure.extend({
 
    NAME: "video_geometry_Scale",
-   VERSION: "2.0.242_906",
+   VERSION: "2.0.243_911",
 
    init:function(attr, setter, getter)
    {
@@ -159,6 +159,7 @@ video_geometry_Scale = video_geometry_Scale.extend({
     {
         var img = this.getInputPort("input_port1").getValue();
         if(img instanceof HTMLImageElement && this.processing ===false){
+            console.log("rescale image")
             this.processing = true;
             var factor = this.getInputPort("input_port2").getValue();
 
