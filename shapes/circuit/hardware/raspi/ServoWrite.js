@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_ServoWrite = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_ServoWrite",
-   VERSION: "2.0.240_901",
+   VERSION: "2.0.241_904",
 
    init:function(attr, setter, getter)
    {

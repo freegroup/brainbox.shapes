@@ -7,7 +7,7 @@
 var circuit_hardware_raspi_Camera = CircuitFigure.extend({
 
    NAME: "circuit_hardware_raspi_Camera",
-   VERSION: "2.0.240_901",
+   VERSION: "2.0.241_904",
 
    init:function(attr, setter, getter)
    {
@@ -125,7 +125,7 @@ circuit_hardware_raspi_Camera = circuit_hardware_raspi_Camera.extend({
                 this.processing = false;
             };
             this.processing = true;
-            image.src = hardware.camera.image();
+            image.src = hardware.camera.image(this.attr("userData.ipAddress"));
         }
     },
     
