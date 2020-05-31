@@ -7,7 +7,7 @@
 var hardware_raspi_SunFounder = CircuitFigure.extend({
 
    NAME: "hardware_raspi_SunFounder",
-   VERSION: "2.0.248_922",
+   VERSION: "2.0.249_925",
 
    init:function(attr, setter, getter)
    {
@@ -94,6 +94,15 @@ hardware_raspi_SunFounder = hardware_raspi_SunFounder.extend({
      **/
     calculate:function( context)
     {
+        let port_pwm   = this.getInputPort("input_motor1_pwm")
+        let port_onoff = this.getInputPort("input_motor1_onoff")
+        if(port_pwm.hasChangedValue()){
+            hardware.pca9685.pwm(4, port_pwm.getValue());
+        }
+        
+        if(port_onoff.hasChangedValue()){
+            hardware.pca9685.set(4, port_onoff.getValue());
+        }
     },
 
 

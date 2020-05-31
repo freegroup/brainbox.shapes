@@ -7,7 +7,7 @@
 var video_color_Luminance = CircuitFigure.extend({
 
    NAME: "video_color_Luminance",
-   VERSION: "2.0.248_922",
+   VERSION: "2.0.249_925",
 
    init:function(attr, setter, getter)
    {
