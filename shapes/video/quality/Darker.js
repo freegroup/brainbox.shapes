@@ -7,7 +7,7 @@
 var video_quality_Darker = CircuitFigure.extend({
 
    NAME: "video_quality_Darker",
-   VERSION: "2.0.248_921",
+   VERSION: "2.0.249_923",
 
    init:function(attr, setter, getter)
    {

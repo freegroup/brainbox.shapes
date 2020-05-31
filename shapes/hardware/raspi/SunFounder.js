@@ -7,21 +7,33 @@
 var hardware_raspi_SunFounder = CircuitFigure.extend({
 
    NAME: "hardware_raspi_SunFounder",
-   VERSION: "2.0.248_921",
+   VERSION: "2.0.249_923",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:10,height:10},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:90,height:84},attr), setter, getter);
      var port;
+     // input_motor1_pwm
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 0, y: 31.81818099248977 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_motor1_pwm");
+     port.setMaxFanOut(1);
+     // input_motor1_onoff
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 0, y: 78.46320016043526 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_motor1_onoff");
+     port.setMaxFanOut(1);
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 10;
-      this.originalHeight= 10;
+      this.originalWidth = 90;
+      this.originalHeight= 84;
       return shape;
    },
 
@@ -30,9 +42,24 @@ var hardware_raspi_SunFounder = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L10,0 L10,10 L0,10");
+       shape = this.canvas.paper.path("M0,0 L90,0 L90,84 L0,84");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0 0L90 0L90 84L0 84Z');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'pwm');
+       shape.attr({"x":13,"y":25.352272033691406,"text-anchor":"start","text":"pwm","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'enable');
+       shape.attr({"x":13,"y":61.499996185302734,"text-anchor":"start","text":"enable","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
        
 
        return this.canvas.paper.setFinish();
@@ -67,6 +94,12 @@ hardware_raspi_SunFounder = hardware_raspi_SunFounder.extend({
      **/
     calculate:function( context)
     {
+        let port_pwm   = this.getInputPort("input_motor1_pwm")
+        let port_onoff = this.getInputPort("input_motor1_onoff")
+        hardware.pca9685.pwm(4, port_pwm.getValue());
+        if(port_onoff.hasChnagedValue()){
+             hardware.pca9685.set(4, port_onoff.getValue());
+        }
     },
 
 
