@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685Servo = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Servo",
-   VERSION: "2.0.266_967",
+   VERSION: "2.0.267_969",
 
    init:function(attr, setter, getter)
    {
@@ -154,9 +154,9 @@ hardware_raspi_PCA9685Servo = hardware_raspi_PCA9685Servo.extend({
     },
 
     toServoPWM: function(pwm){
-        // 2%-12% for a full servo range. We must map 0-5 values to the 0.1..0.51 to this range
+        // 4%-14% for a full servo range. We must map 0-5 values to the 0.1..0.51 to this range
         //
-        return (pwm/10.0)+0.1
+        return (pwm/10.0)+0.2;
     },
     
     /**
