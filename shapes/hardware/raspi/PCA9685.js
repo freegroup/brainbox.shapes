@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685 = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685",
-   VERSION: "2.0.257_944",
+   VERSION: "2.0.258_946",
 
    init:function(attr, setter, getter)
    {
@@ -88,7 +88,20 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-         // your special code here
+        this.gpioPin = "0"
+        this.on("change:userData.channel",(emitter, event)=>{
+            this.layerAttr("channelLabel", {text: "PWM channel "+event.value})
+            this.channel = event.value;
+        });
+        this.on("added",(emitter, event)=>{
+             this.layerAttr("channelLabel", {text: this.attr("userData.channel")})
+        });
+        this.attr("userData.channel",this.channel)
+        
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -102,11 +115,11 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
         let port_pwm   = this.getInputPort("input_motor1_pwm")
         let port_onoff = this.getInputPort("input_motor1_onoff")
         if(port_pwm.hasChangedValue()){
-            hardware.pca9685.pwm(4, port_pwm.getValue());
+            hardware.pca9685.pwm(parseInt(this.channel), port_pwm.getValue());
         }
         
         if(port_onoff.hasChangedValue()){
-            hardware.pca9685.set(4, port_onoff.getValue());
+            hardware.pca9685.set(parseInt(this.channel), port_onoff.getValue());
         }
     },
 
@@ -117,6 +130,11 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
      **/
     onStart:function( context )
     {
+        let port_pwm   = this.getInputPort("input_motor1_pwm")
+        let port_onoff = this.getInputPort("input_motor1_onoff")
+
+        hardware.pca9685.pwm(parseInt(this.channel), port_pwm.getValue());
+        hardware.pca9685.set(parseInt(this.channel), port_onoff.getValue());
     },
 
     /**
@@ -125,6 +143,8 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
      **/
     onStop:function( context )
     {
+        // be save - switch off the channel.
+        hardware.pca9685.set(parseInt(this.channel), 0);
     },
 
     /**
@@ -135,8 +155,49 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
     getRequiredHardware: function(){
       return {
         raspi: false,
-        arduino: false
+        arduino: false,
+        pca9685: true
       }
+    },
+    
+        
+        
+    setPersistentAttributes: function (memento) 
+    {
+        this._super(memento);
+
+        this.channel = this.attr("userData.channel");
+    },
+    
+    
+    getParameterSettings: function () {
+        return [
+            {
+                name: "channel",
+                label: "The PCA9685 Channel to use",
+                property: {
+                    type: "enum",
+                    values: [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15"
+                    ]
+                }
+            }];
     }
+
 
 });
