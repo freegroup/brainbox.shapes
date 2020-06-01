@@ -7,7 +7,7 @@
 var video_filter_Roberts = CircuitFigure.extend({
 
    NAME: "video_filter_Roberts",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {

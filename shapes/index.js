@@ -7,7 +7,7 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -311,7 +311,7 @@ circuit_74LSXX_74LS90 = circuit_74LSXX_74LS90.extend({
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -481,7 +481,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -797,7 +797,7 @@ circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 var circuit_digital_buttons_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLow",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -908,7 +908,7 @@ circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1073,7 +1073,7 @@ circuit_digital_buttons_HighLowArray = circuit_digital_buttons_HighLowArray.exte
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1189,7 +1189,7 @@ circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1373,7 +1373,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1612,7 +1612,7 @@ circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1774,7 +1774,7 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
 var circuit_digital_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_Led",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1863,7 +1863,7 @@ circuit_digital_display_Led = circuit_digital_display_Led.extend({
 var circuit_digital_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_DFlipFlop",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -1996,7 +1996,7 @@ circuit_digital_flipflop_DFlipFlop = circuit_digital_flipflop_DFlipFlop.extend({
 var circuit_digital_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKFlipFlop",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -2159,7 +2159,7 @@ circuit_digital_flipflop_JKFlipFlop = circuit_digital_flipflop_JKFlipFlop.extend
 var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKRFlipFlop",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -2340,7 +2340,7 @@ circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.exte
 var circuit_digital_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_SRFlipFlop",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -2482,7 +2482,7 @@ circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -2604,7 +2604,7 @@ circuit_digital_flipflop_TFlipFlop = circuit_digital_flipflop_TFlipFlop.extend({
 var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_AND",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -2736,7 +2736,7 @@ circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
 var circuit_digital_gate_DIN40700_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NAND",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -2873,7 +2873,7 @@ circuit_digital_gate_DIN40700_NAND = circuit_digital_gate_DIN40700_NAND.extend({
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3020,7 +3020,7 @@ circuit_digital_gate_DIN40700_NOR = circuit_digital_gate_DIN40700_NOR.extend({
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3162,7 +3162,7 @@ circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XNOR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3309,7 +3309,7 @@ circuit_digital_gate_DIN40700_XNOR = circuit_digital_gate_DIN40700_XNOR.extend({
 var circuit_digital_gate_DIN40700_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XOR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3461,7 +3461,7 @@ circuit_digital_gate_DIN40700_XOR = circuit_digital_gate_DIN40700_XOR.extend({
 var circuit_digital_gate_IEC60617_12_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_AND",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3559,7 +3559,7 @@ circuit_digital_gate_IEC60617_12_AND = circuit_digital_gate_IEC60617_12_AND.exte
 var circuit_digital_gate_IEC60617_12_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NAND",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3662,7 +3662,7 @@ circuit_digital_gate_IEC60617_12_NAND = circuit_digital_gate_IEC60617_12_NAND.ex
 var circuit_digital_gate_IEC60617_12_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3770,7 +3770,7 @@ circuit_digital_gate_IEC60617_12_NOR = circuit_digital_gate_IEC60617_12_NOR.exte
 var circuit_digital_gate_IEC60617_12_NOT = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOT",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3867,7 +3867,7 @@ circuit_digital_gate_IEC60617_12_NOT = circuit_digital_gate_IEC60617_12_NOT.exte
 var circuit_digital_gate_IEC60617_12_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_OR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -3970,7 +3970,7 @@ circuit_digital_gate_IEC60617_12_OR = circuit_digital_gate_IEC60617_12_OR.extend
 var circuit_digital_gate_IEC60617_12_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XNOR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4073,7 +4073,7 @@ circuit_digital_gate_IEC60617_12_XNOR = circuit_digital_gate_IEC60617_12_XNOR.ex
 var circuit_digital_gate_IEC60617_12_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XOR",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4171,7 +4171,7 @@ circuit_digital_gate_IEC60617_12_XOR = circuit_digital_gate_IEC60617_12_XOR.exte
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4276,7 +4276,7 @@ circuit_digital_pulse_10hz = circuit_digital_pulse_10hz.extend({
 var circuit_digital_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_1hz",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4381,7 +4381,7 @@ circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 var circuit_digital_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_50hz",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4484,7 +4484,7 @@ circuit_digital_pulse_50hz = circuit_digital_pulse_50hz.extend({
 var circuit_digital_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_Delay",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4655,7 +4655,7 @@ circuit_digital_pulse_Delay = circuit_digital_pulse_Delay.extend({
 var circuit_digital_signal_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_High",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4737,7 +4737,7 @@ circuit_digital_signal_High = circuit_digital_signal_High.extend({
 var circuit_digital_signal_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_Low",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -4820,7 +4820,7 @@ circuit_digital_signal_Low = circuit_digital_signal_Low.extend({
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -5108,7 +5108,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "hardware_arduino_Arduino",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -5602,7 +5602,7 @@ hardware_arduino_Arduino = hardware_arduino_Arduino.extend({
 var hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "hardware_arduino_Led",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -5706,69 +5706,27 @@ hardware_arduino_Led = hardware_arduino_Led.extend({
 var hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIORead",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:106.25999999999931,height:259.5},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:92.86816376471506,height:22.015625},attr), setter, getter);
      var port;
-     // gpio_9
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 27.028901734104174 }));
+     // input_port1
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.76604011183862, y: 48.69320666572149 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_9");
-     port.setMaxFanOut(20);
-     // gpio_10
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 36.80154142581888 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_10");
-     port.setMaxFanOut(20);
-     // gpio_11
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 45.96548169556837 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_11");
-     port.setMaxFanOut(20);
-     // gpio_12
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 55.202764932562395 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_12");
-     port.setMaxFanOut(20);
-     // gpio_13
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 63.99802504816965 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_13");
-     port.setMaxFanOut(20);
-     // gpio_14
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 73.60308285163777 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_14");
-     port.setMaxFanOut(20);
-     // gpio_15
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 83.00871868978798 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_15");
-     port.setMaxFanOut(20);
-     // gpio_16
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 87.92923019009974, y: 91.9045568400768 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("gpio_16");
-     port.setMaxFanOut(20);
+     port.setName("input_port1");
+     port.setMaxFanOut(1);
    },
 
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 106.25999999999931;
-      this.originalHeight= 259.5;
+      this.originalWidth = 92.86816376471506;
+      this.originalHeight= 22.015625;
       return shape;
    },
 
@@ -5777,139 +5735,19 @@ var hardware_raspi_GPIORead = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L106.25999999999931,0 L106.25999999999931,259.5 L0,259.5");
+       shape = this.canvas.paper.path("M0,0 L92.86816376471506,0 L92.86816376471506,22.015625 L0,22.015625");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M92.80000000000018,48Q92.80000000000018,46 94.80000000000018, 46L104.25999999999931,46Q106.25999999999931,46 106.25999999999931, 44L106.25999999999931,2Q106.25999999999931,0 104.25999999999931, 0L3.259999999999309,0Q1.2599999999993088,0 1.2599999999993088, 2L1.2599999999993088,44Q1.2599999999993088,46 1.2481969268556656, 47.99996517156282L0.01180307314364315,257.50003482843715Q0,259.5 2, 259.5L90.80000000000018,259.5Q92.80000000000018,259.5 92.80000000000018, 257.5L92.80000000000018,48');
+       shape = this.canvas.paper.path('M76.71240381176462,20.991988261509352Q78.71238776471182,21 80.34590543888363, 19.84604159166446L91.23464609054325,12.153958408335539Q92.86816376471506,11 91.23464609054325, 9.846041591664461L80.34590543888363,2.153958408335539Q78.71238776471182,1 76.71238776471182, 1L2,1Q0,1 0.018799149951687133, 2.9999116460386688L0.16624367357946118,18.68551555396138Q0.18504282353114831,20.68542720000005 2.1850267764783524, 20.693438938490697L76.71240381176462,20.991988261509352');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":15.5,"ry":16.5,"cx":38.170060244195156,"cy":69.39887499999895,"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M43.7540802441963 60.10502500000075L32.612960244196074 60.10502500000075L32.612960244196074 50.274625000000015L43.7540802441963 50.274625000000015Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M30.924815107439827,83.68742174721956Q30.44116155235497,81.3212085643172 34.100936005324, 80.53730360715826L34.100936005324,80.53730360715826Q37.76071045829303,79.75339864999933 40.99098818166158, 80.42978257348068L40.99098818166158,80.42978257348068Q44.22126590503012,81.10616649696203 44.417113074612644, 83.57990071354197L44.417113074612644,83.57990071354197Q44.612960244195165,86.05363493012192 40.89821187939515, 87.32220267578214L40.89821187939515,87.32220267578214Q37.18346351459513,88.59077042144236 34.29596608855991, 87.32220267578214L34.29596608855991,87.32220267578214Q31.408468662524683,86.05363493012192 30.924815107439827, 83.68742174721956L30.924815107439827,83.68742174721956');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M55.454185189036075,52.684774099766635Q53.73373458284732,56.295874999999796 49.735464341347935, 56.17825240038364L45.68415489113734,56.05906947361764Q41.685884649637956,55.941446874001485 41.43963219243122, 51.949034103843616L41.389325437402675,51.133426684208615Q41.14307298019594,47.141013914050745 43.55925976809294, 45.0772128335384L43.55925976809294,45.0772128335384Q45.97544655598995,43.01341175302605 48.92850425588631, 42.426005680511935L48.92850425588631,42.426005680511935Q51.88156195578267,41.83859960799782 55.85059327786345, 42.3353796039132L56.16077573811711,42.374203293834874Q60.12980706019789,42.87098328975026 58.409356454009135, 46.48208418998342L55.454185189036075,52.684774099766635');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":2,"fill":"rgba(107,142,35,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":5.5,"ry":5.5,"cx":38.112960244196074,"cy":75.10027499999978,"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":4,"ry":4.5,"cx":43.032460244196045,"cy":65.82042499999989,"stroke":"none","stroke-width":0,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":4,"ry":4.5,"cx":34.532460244196045,"cy":65.32042499999989,"stroke":"none","stroke-width":0,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M40.840568662524674,49.09992905405352Q39.215568662524674,52.84992905405397 35.215568662523765, 54.572902027026885L35.215568662523765,54.572902027026885Q31.215568662522855,56.295874999999796 28.87181866252422, 55.383712837837265L28.87181866252422,55.383712837837265Q26.528068662525584,54.471550675674735 24.93431866252513, 52.54587499999889L24.93431866252513,52.54587499999889Q23.340568662524674,50.62019932432304 21.903068662524674, 46.87019932432304L21.903068662524674,46.87019932432304Q20.465568662524674,43.12019932432304 26.340568662524674, 42.20803716216142L26.340568662524674,42.20803716216142Q32.215568662524674,41.295874999999796 37.340568662524674, 43.32290202702643L37.340568662524674,43.32290202702643Q42.465568662524674,45.349929054053064 40.840568662524674, 49.09992905405352L40.840568662524674,49.09992905405352');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":2,"fill":"rgba(107,142,35,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M23.028826620608925,74.00072237161612Q23.592084578693175,69.60027499999978 27.74146188256418, 71.61934036716548L27.74146188256418,71.61934036716548Q31.890839186435187,73.63840573433117 32.17820392447993, 77.51343261639249L32.17820392447993,77.51343261639249Q32.465568662524674,81.38845949845381 29.711728774439507, 81.9943672492268L29.711728774439507,81.9943672492268Q26.95788888635434,82.60027499999978 24.711728774439507, 80.50072237161612L24.711728774439507,80.50072237161612Q22.465568662524674,78.40116974323246 23.028826620608925, 74.00072237161612L23.028826620608925,74.00072237161612');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M44.9096011962024,76.51260111401734Q45.730557192046945,73.35769425824037 49.652081781261586, 72.28416780326324L49.652081781261586,72.28416780326324Q53.57360637047623,71.21064134828612 53.500811374411114, 72.1127998494685L53.500811374411114,72.1127998494685Q53.428016378346,73.01495835065089 52.77048831127104, 77.0617839245524L52.77048831127104,77.0617839245524Q52.112960244196074,81.10860949845392 47.98473082138935, 81.8863159410671L47.98473082138935,81.8863159410671Q43.85650139858262,82.66402238368028 43.97257329947024, 81.1657651767373L43.97257329947024,81.1657651767373Q44.08864520035786,79.66750796979431 44.9096011962024, 76.51260111401734L44.9096011962024,76.51260111401734');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M47.176218202280324,63.22087237161668Q47.739476160364575,58.82042499999989 51.88885346423558, 60.83949036716558L51.88885346423558,60.83949036716558Q56.03823076810659,62.858555734331276 56.32559550615133, 66.7335826163926L56.32559550615133,66.7335826163926Q56.612960244196074,70.60860949845392 53.85912035611091, 71.2145172492269L53.85912035611091,71.2145172492269Q51.10528046802574,71.82042499999989 48.85912035611091, 69.72087237161668L48.85912035611091,69.72087237161668Q46.612960244196074,67.62131974323347 47.176218202280324, 63.22087237161668L47.176218202280324,63.22087237161668');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M41.095718202280295,55.945338564964004Q41.658976160364546,52.89887499999895 45.80835346423555, 54.29668948495964L45.80835346423555,54.29668948495964Q49.95773076810656,55.69450396992033 50.2450955061513, 58.37721488827083L50.2450955061513,58.37721488827083Q50.532460244196045,61.05992580662132 47.77862035611088, 61.47940040331014L47.77862035611088,61.47940040331014Q45.02478046802571,61.89887499999895 42.77862035611088, 60.445338564964004L42.77862035611088,60.445338564964004Q40.532460244196045,58.991802129929056 41.095718202280295, 55.945338564964004L41.095718202280295,55.945338564964004');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M24.078253400769427,60.15928806953707Q27.69093813901418,57.82042499999989 29.30628473824345, 59.66769167532493L29.30628473824345,59.66769167532493Q30.921631337472718,61.51495835064998 29.87755621375709, 65.8624316352716L29.87755621375709,65.8624316352716Q28.83348109004146,70.20990491989323 25.65014447235535, 70.98761136250687L25.65014447235535,70.98761136250687Q22.46680785466924,71.7653178051205 21.466188258596958, 67.13173447209738L21.466188258596958,67.13173447209738Q20.465568662524674,62.49815113907425 24.078253400769427, 60.15928806953707L24.078253400769427,60.15928806953707');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M33.3067026991057,52.55345494670701Q36.814328147936976,51.89887499999895 38.8067026991057, 52.95862738455435L38.8067026991057,52.95862738455435Q40.79907725027442,54.01837976910974 39.288205691313124, 56.51246751600229L39.288205691313124,56.51246751600229Q37.777334132351825,59.006555262894835 33.24738487274044, 59.667463496247365L33.24738487274044,59.667463496247365Q28.717435613129055,60.328371729599894 29.25825643170174, 56.76820331150748L29.25825643170174,56.76820331150748Q29.799077250274422,53.20803489341506 33.3067026991057, 52.55345494670701L33.3067026991057,52.55345494670701');
-       shape.attr({"stroke":"rgba(0,0,0,1)","stroke-width":1,"fill":"rgba(179,0,59,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'9');
-       shape.attr({"x":70.67006024419516,"y":70.10027499999978,"text-anchor":"start","text":"9","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'10');
-       shape.attr({"x":65.57360637047532,"y":95.5,"text-anchor":"start","text":"10","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'11');
-       shape.attr({"x":66.57360637047532,"y":119.3588749999999,"text-anchor":"start","text":"11","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'12');
-       shape.attr({"x":66.67006024419516,"y":142.3588749999999,"text-anchor":"start","text":"12","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'13');
-       shape.attr({"x":66.67006024419516,"y":165.7332749999996,"text-anchor":"start","text":"13","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'14');
-       shape.attr({"x":66.57360637047532,"y":189.50137499999983,"text-anchor":"start","text":"14","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'15');
-       shape.attr({"x":67.57360637047532,"y":215.5,"text-anchor":"start","text":"15","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'16');
-       shape.attr({"x":67.57360637047532,"y":238.05374999999913,"text-anchor":"start","text":"16","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'Read GPIO');
-       shape.attr({"x":8.433599999999387,"y":20.0078125,"text-anchor":"start","text":"Read GPIO","font-family":"\"Arial\"","font-size":18,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Line
-       shape = this.canvas.paper.path('M53.863852052198126 48.47225227999843L52.30737205219884,49.31412773599868Q50.75089205219956,50.156003191998934 49.55103049750114, 51.75610701661679L48.20626024419653,53.549457272001746');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M37.39282024419663 52.04527500000131L36.25773672419655,50.4769985199996Q35.12265320419647,48.90872203999788 33.04804558819524, 47.47466328799874L30.973437972194006,46.04060453599959');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
+       // gpioPinLabel
+       shape = this.canvas.paper.text(0,0,'GPIO Pin#');
+       shape.attr({"x":26.362832874986452,"y":11.0078125,"text-anchor":"start","text":"GPIO Pin#","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","gpioPinLabel");
        
 
        return this.canvas.paper.setFinish();
@@ -5929,7 +5767,35 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-         // your special code here
+         this.raspiIcon = "data:image/png;base64,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"
+
+        this.img = new draw2d.shape.basic.Image({
+            width: this.getHeight()/5*3, 
+            height: this.getHeight()/5*4,
+            selectable: false,
+            deleteable: false,
+            resizeable:false,
+            draggable: false,
+            path: this.raspiIcon
+        });
+        this.img.hitTest = ()=>false;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+
+        this.gpioPin = "gpio_5"
+        this.on("change:userData.gpioPin",(emitter, event)=>{
+            this.layerAttr("gpioPinLabel", {text: event.value})
+            this.gpioPin = event.value;
+        });
+        this.on("added",(emitter, event)=>{
+             this.layerAttr("gpioPinLabel", {text: this.attr("userData.gpioPin")})
+        });
+        this.attr("userData.gpioPin",this.gpioPin)
+        
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+
     },
 
     /**
@@ -5937,19 +5803,88 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
      *  loop
      *  @required
      **/
-    calculate:function(context)
+    calculate:function( context)
     {
-        this.getOutputPorts().each(function(index,port){
-            port.setValue(hardware.raspi.get(port.getName()));
-        });
+        var port = this.getInputPort("output_port1");
+        if(port.hasChangedValue()){
+            hardware.raspi.set(this.gpioPin, port.getValue());
+        }
     },
     
+
+    /**
+     *  Called if the simulation mode is starting
+     *  @required
+     **/
+    onStart:function( context )
+    {
+        var port = this.getInputPort("output_port1");
+        hardware.raspi.mode(this.gpioPin, "INPUT");
+        hardware.raspi.set(this.gpioPin, port.getValue());
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     *  @required
+     **/
+    onStop:function( context )
+    {
+    },
+    
+  
     getRequiredHardware: function(){
       return {
         raspi: true,
         arduino: false
-      }
+      };
+    },
+        
+        
+    setPersistentAttributes: function (memento) 
+    {
+        this._super(memento);
+
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
+        this.img.hitTest = ()=>false;
+
+        this.gpioPin = this.attr("userData.gpioPin");
+    },
+    
+    
+    getParameterSettings: function () {
+        return [
+            {
+                name: "gpioPin",
+                label: "The RaspberryPI GPIO Pin",
+                property: {
+                    type: "enum",
+                    values: [
+                        "gpio_5",
+                        "gpio_6",
+                        "gpio_7",
+                        "gpio_8",
+                        "gpio_9",
+                        "gpio_10",
+                        "gpio_11",
+                        "gpio_12",
+                        "gpio_13",
+                        "gpio_16",
+                        "gpio_17",
+                        "gpio_18",
+                        "gpio_19",
+                        "gpio_20",
+                        "gpio_21",
+                        "gpio_22",
+                        "gpio_23",
+                        "gpio_24",
+                        "gpio_25",
+                        "gpio_26",
+                        "gpio_27",
+                    ]
+                }
+            }];
     }
+
     
 });
 
@@ -5963,16 +5898,16 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
 var hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIOWrite",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:102,height:40},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:90,height:22.015625},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.0685528330637215, y: 51.120943200000966 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.344359877472218, y: 49.96451383960255 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
@@ -5982,8 +5917,8 @@ var hardware_raspi_GPIOWrite = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 102;
-      this.originalHeight= 40;
+      this.originalWidth = 90;
+      this.originalHeight= 22.015625;
       return shape;
    },
 
@@ -5992,18 +5927,18 @@ var hardware_raspi_GPIOWrite = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L102,0 L102,40 L0,40");
+       shape = this.canvas.paper.path("M0,0 L90,0 L90,22.015625 L0,22.015625");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M100.00004997224927,39.98586187778298Q102,40 102, 38L102,2Q102,0 100, 0L14.79262719999224,0Q12.79262719999224,0 11.71496046107449, 1.6848247386094428L1.077666738917749,18.315175261390557Q0,20 1.1146436703779372, 21.660593113344266L11.887698729615785,37.710261286656745Q13.002342399993722,39.37085440000101 15.00229242774445, 39.38499252221803L100.00004997224927,39.98586187778298');
+       shape = this.canvas.paper.path('M88.0000160470528,20.967186981509105Q90,20.975198719999753 90, 18.975198719999753L90,2.975198719999753Q90,0.9751987199997529 88, 0.9751987199997529L13.28761223528818,0.9751987199997529Q11.28761223528818,0.9751987199997529 9.790593909516895, 2.301447615307472L1.4970183257712844,9.648949824692034Q0,10.975198719999753 1.5282300564805649, 12.265358746690012L9.944425002338763,19.370465893309543Q11.472655058819328,20.660625919999802 13.472639011766532, 20.66863765849045L88.0000160470528,20.967186981509105');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // gpioPinLabel
-       shape = this.canvas.paper.text(0,0,'1');
-       shape.attr({"x":7.890076110275004,"y":19.524801280000247,"text-anchor":"start","text":"1","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'GPIO Pin#');
+       shape.attr({"x":9.390076110275004,"y":11.0078125,"text-anchor":"start","text":"GPIO Pin#","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","gpioPinLabel");
        
 
@@ -6036,7 +5971,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
             path: this.raspiIcon
         });
         this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:5}));
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:3}));
 
         this.gpioPin = "gpio_5"
         this.on("change:userData.gpioPin",(emitter, event)=>{
@@ -6155,7 +6090,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
 var hardware_raspi_ServoWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_ServoWrite",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -6337,7 +6272,7 @@ hardware_raspi_ServoWrite = hardware_raspi_ServoWrite.extend({
 var hardware_raspi_SunFounder = CircuitFigure.extend({
 
    NAME: "hardware_raspi_SunFounder",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -6477,7 +6412,7 @@ hardware_raspi_SunFounder = hardware_raspi_SunFounder.extend({
 var math_Mean = CircuitFigure.extend({
 
    NAME: "math_Mean",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -6636,7 +6571,7 @@ math_Mean = math_Mean.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -6760,7 +6695,7 @@ messaging_HiveMQ = messaging_HiveMQ.extend({
 var signal_SignalSource = CircuitFigure.extend({
 
    NAME: "signal_SignalSource",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -6924,7 +6859,7 @@ signal_SignalSource = signal_SignalSource.extend({
 var signal_SignalTarget = CircuitFigure.extend({
 
    NAME: "signal_SignalTarget",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -7098,7 +7033,7 @@ signal_SignalTarget = signal_SignalTarget.extend({
 var video_color_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_color_BlackWhite",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -7357,7 +7292,7 @@ video_color_BlackWhite = video_color_BlackWhite.extend({
 var video_color_Grayscale = CircuitFigure.extend({
 
    NAME: "video_color_Grayscale",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -7594,7 +7529,7 @@ video_color_Grayscale = video_color_Grayscale.extend({
 var video_color_GrayscaleAvg = CircuitFigure.extend({
 
    NAME: "video_color_GrayscaleAvg",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -7831,7 +7766,7 @@ video_color_GrayscaleAvg = video_color_GrayscaleAvg.extend({
 var video_color_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_color_HSV_Colorspace",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -8119,7 +8054,7 @@ video_color_HSV_Colorspace = video_color_HSV_Colorspace.extend({
 var video_color_Invert = CircuitFigure.extend({
 
    NAME: "video_color_Invert",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -8357,7 +8292,7 @@ video_color_Invert = video_color_Invert.extend({
 var video_color_Luminance = CircuitFigure.extend({
 
    NAME: "video_color_Luminance",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -8599,7 +8534,7 @@ video_color_Luminance = video_color_Luminance.extend({
 var video_color_WhiteBlack = CircuitFigure.extend({
 
    NAME: "video_color_WhiteBlack",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -8856,7 +8791,7 @@ video_color_WhiteBlack = video_color_WhiteBlack.extend({
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -9318,7 +9253,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
 var video_features_Object = CircuitFigure.extend({
 
    NAME: "video_features_Object",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -9679,7 +9614,7 @@ video_features_Object = video_features_Object.extend({
 var video_filter_Embose = CircuitFigure.extend({
 
    NAME: "video_filter_Embose",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -9947,7 +9882,7 @@ video_filter_Embose = video_filter_Embose.extend({
 var video_filter_Prewitt = CircuitFigure.extend({
 
    NAME: "video_filter_Prewitt",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -10223,7 +10158,7 @@ video_filter_Prewitt = video_filter_Prewitt.extend({
 var video_filter_PrewittInvers = CircuitFigure.extend({
 
    NAME: "video_filter_PrewittInvers",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -10507,7 +10442,7 @@ video_filter_PrewittInvers = video_filter_PrewittInvers.extend({
 var video_filter_Roberts = CircuitFigure.extend({
 
    NAME: "video_filter_Roberts",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -10794,7 +10729,7 @@ video_filter_Roberts = video_filter_Roberts.extend({
 var video_filter_RobertsInvers = CircuitFigure.extend({
 
    NAME: "video_filter_RobertsInvers",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -11081,7 +11016,7 @@ video_filter_RobertsInvers = video_filter_RobertsInvers.extend({
 var video_filter_Sobel = CircuitFigure.extend({
 
    NAME: "video_filter_Sobel",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -11370,7 +11305,7 @@ video_filter_Sobel = video_filter_Sobel.extend({
 var video_filter_SobelInvers = CircuitFigure.extend({
 
    NAME: "video_filter_SobelInvers",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -11659,7 +11594,7 @@ video_filter_SobelInvers = video_filter_SobelInvers.extend({
 var video_geometry_FlipHorizontal = CircuitFigure.extend({
 
    NAME: "video_geometry_FlipHorizontal",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -11908,7 +11843,7 @@ video_geometry_FlipHorizontal = video_geometry_FlipHorizontal.extend({
 var video_geometry_FlipVertical = CircuitFigure.extend({
 
    NAME: "video_geometry_FlipVertical",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -12157,7 +12092,7 @@ video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
 var video_geometry_Scale = CircuitFigure.extend({
 
    NAME: "video_geometry_Scale",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -12364,7 +12299,7 @@ video_geometry_Scale = video_geometry_Scale.extend({
 var video_IPCamera = CircuitFigure.extend({
 
    NAME: "video_IPCamera",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -12536,7 +12471,7 @@ video_IPCamera = video_IPCamera.extend({
 var video_Preview = CircuitFigure.extend({
 
    NAME: "video_Preview",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -12729,7 +12664,7 @@ video_Preview = video_Preview.extend({
 var video_quality_Blur = CircuitFigure.extend({
 
    NAME: "video_quality_Blur",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -12990,7 +12925,7 @@ video_quality_Blur = video_quality_Blur.extend({
 var video_quality_Brighter = CircuitFigure.extend({
 
    NAME: "video_quality_Brighter",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -13250,7 +13185,7 @@ video_quality_Brighter = video_quality_Brighter.extend({
 var video_quality_Contrast = CircuitFigure.extend({
 
    NAME: "video_quality_Contrast",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -13523,7 +13458,7 @@ video_quality_Contrast = video_quality_Contrast.extend({
 var video_quality_Darker = CircuitFigure.extend({
 
    NAME: "video_quality_Darker",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -13772,7 +13707,7 @@ video_quality_Darker = video_quality_Darker.extend({
 var video_quality_GaussBlur = CircuitFigure.extend({
 
    NAME: "video_quality_GaussBlur",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -14304,7 +14239,7 @@ video_quality_GaussBlur = video_quality_GaussBlur.extend({
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -14582,7 +14517,7 @@ video_quality_Histogram = video_quality_Histogram.extend({
 var video_quality_Sharpen = CircuitFigure.extend({
 
    NAME: "video_quality_Sharpen",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -14846,7 +14781,7 @@ video_quality_Sharpen = video_quality_Sharpen.extend({
 var video_WebCam = CircuitFigure.extend({
 
    NAME: "video_WebCam",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -15054,7 +14989,7 @@ video_WebCam = video_WebCam.extend({
 var widget_HighLow = CircuitFigure.extend({
 
    NAME: "widget_HighLow",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
@@ -15165,7 +15100,7 @@ widget_HighLow = widget_HighLow.extend({
 var widget_PushButton = CircuitFigure.extend({
 
    NAME: "widget_PushButton",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_940",
 
    init:function(attr, setter, getter)
    {
