@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685 = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685",
-   VERSION: "2.0.258_945",
+   VERSION: "2.0.259_948",
 
    init:function(attr, setter, getter)
    {
@@ -15,17 +15,17 @@ var hardware_raspi_PCA9685 = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:103,height:80},attr), setter, getter);
      var port;
-     // input_motor1_pwm
+     // input_channel_pwm
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 0, y: 26.015090042113798 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("input_motor1_pwm");
+     port.setName("input_channel_pwm");
      port.setMaxFanOut(1);
-     // input_motor1_onoff
+     // input_channel_onoff
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 0, y: 75.73036016845663 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
-     port.setName("input_motor1_onoff");
+     port.setName("input_channel_onoff");
      port.setMaxFanOut(1);
    },
 
@@ -51,10 +51,10 @@ var hardware_raspi_PCA9685 = CircuitFigure.extend({
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
-       // Label
+       // channelLabel
        shape = this.canvas.paper.text(0,0,'pwm');
        shape.attr({"x":11.5,"y":21.714972033691083,"text-anchor":"start","text":"pwm","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
+       shape.data("name","channelLabel");
        
        // Label
        shape = this.canvas.paper.text(0,0,'enable');
@@ -88,7 +88,20 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-         // your special code here
+        this.gpioPin = "0"
+        this.on("change:userData.channel",(emitter, event)=>{
+            this.layerAttr("", {text: "PWM channel "+event.value})
+            this.channel = event.value;
+        });
+        this.on("added",(emitter, event)=>{
+             this.layerAttr("channelLabel", {text: this.attr("userData.channel")})
+        });
+        this.attr("userData.channel",this.channel)
+        
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
     },
 
     /**
@@ -99,14 +112,14 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
      **/
     calculate:function( context)
     {
-        let port_pwm   = this.getInputPort("input_motor1_pwm")
-        let port_onoff = this.getInputPort("input_motor1_onoff")
+        let port_pwm   = this.getInputPort("input_channel_pwm");
+        let port_onoff = this.getInputPort("input_channel_onoff");
         if(port_pwm.hasChangedValue()){
-            hardware.pca9685.pwm(4, port_pwm.getValue());
+            hardware.pca9685.pwm(parseInt(this.channel), port_pwm.getValue());
         }
         
         if(port_onoff.hasChangedValue()){
-            hardware.pca9685.set(4, port_onoff.getValue());
+            hardware.pca9685.set(parseInt(this.channel), port_onoff.getValue());
         }
     },
 
@@ -117,6 +130,11 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
      **/
     onStart:function( context )
     {
+        let port_pwm   = this.getInputPort("input_channel_pwm");
+        let port_onoff = this.getInputPort("input_channel_onoff");
+
+        hardware.pca9685.pwm(parseInt(this.channel), port_pwm.getValue());
+        hardware.pca9685.set(parseInt(this.channel), port_onoff.getValue());
     },
 
     /**
@@ -125,6 +143,8 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
      **/
     onStop:function( context )
     {
+        // be save - switch off the channel.
+        hardware.pca9685.set(parseInt(this.channel), 0);
     },
 
     /**
@@ -137,7 +157,16 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
         raspi: false,
         arduino: false,
         pca9685: true
-      }
+      };
+    },
+    
+        
+        
+    setPersistentAttributes: function (memento) 
+    {
+        this._super(memento);
+
+        this.channel = this.attr("userData.channel");
     },
     
     
