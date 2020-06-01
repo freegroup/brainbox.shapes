@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685Servo = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Servo",
-   VERSION: "2.0.264_965",
+   VERSION: "2.0.265_966",
 
    init:function(attr, setter, getter)
    {
@@ -67,8 +67,8 @@ var hardware_raspi_PCA9685Servo = CircuitFigure.extend({
        shape.data("name","Label");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Motor Driver');
-       shape.attr({"x":35.89059999999972,"y":39.40582203369104,"text-anchor":"start","text":"Motor Driver","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Servo Driver');
+       shape.attr({"x":35.89059999999972,"y":39.40582203369104,"text-anchor":"start","text":"Servo Driver","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
 
