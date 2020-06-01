@@ -7,16 +7,16 @@
 var hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIOWrite",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_937",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:102,height:40},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:90,height:22},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.0685528330637215, y: 51.120943200000966 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.344359877472218, y: 50.00000000000001 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
@@ -26,8 +26,8 @@ var hardware_raspi_GPIOWrite = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 102;
-      this.originalHeight= 40;
+      this.originalWidth = 90;
+      this.originalHeight= 22;
       return shape;
    },
 
@@ -36,18 +36,18 @@ var hardware_raspi_GPIOWrite = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L102,0 L102,40 L0,40");
+       shape = this.canvas.paper.path("M0,0 L90,0 L90,22 L0,22");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M100.00004997224927,39.98586187778298Q102,40 102, 38L102,2Q102,0 100, 0L14.79262719999224,0Q12.79262719999224,0 11.71496046107449, 1.6848247386094428L1.077666738917749,18.315175261390557Q0,20 1.1146436703779372, 21.660593113344266L11.887698729615785,37.710261286656745Q13.002342399993722,39.37085440000101 15.00229242774445, 39.38499252221803L100.00004997224927,39.98586187778298');
+       shape = this.canvas.paper.path('M88.0000160470528,20.967186981509105Q90,20.975198719999753 90, 18.975198719999753L90,2.975198719999753Q90,0.9751987199997529 88, 0.9751987199997529L13.28761223528818,0.9751987199997529Q11.28761223528818,0.9751987199997529 9.790593909516895, 2.301447615307472L1.4970183257712844,9.648949824692034Q0,10.975198719999753 1.5282300564805649, 12.265358746690012L9.944425002338763,19.370465893309543Q11.472655058819328,20.660625919999802 13.472639011766532, 20.66863765849045L88.0000160470528,20.967186981509105');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // gpioPinLabel
        shape = this.canvas.paper.text(0,0,'1');
-       shape.attr({"x":7.890076110275004,"y":19.524801280000247,"text-anchor":"start","text":"1","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":9.390076110275004,"y":11,"text-anchor":"start","text":"1","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","gpioPinLabel");
        
 
@@ -80,7 +80,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
             path: this.raspiIcon
         });
         this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:5}));
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:3}));
 
         this.gpioPin = "gpio_5"
         this.on("change:userData.gpioPin",(emitter, event)=>{

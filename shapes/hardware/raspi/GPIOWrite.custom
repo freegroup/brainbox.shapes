@@ -23,7 +23,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
             path: this.raspiIcon
         });
         this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:5}));
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:3}));
 
         this.gpioPin = "gpio_5"
         this.on("change:userData.gpioPin",(emitter, event)=>{
