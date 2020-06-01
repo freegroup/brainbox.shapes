@@ -4,9 +4,9 @@
 // created with http://www.draw2d.org
 //
 //
-var hardware_raspi_SunFounder = CircuitFigure.extend({
+var hardware_raspi_PCA9685 = CircuitFigure.extend({
 
-   NAME: "hardware_raspi_SunFounder",
+   NAME: "hardware_raspi_PCA9685",
    VERSION: "2.0.257_943",
 
    init:function(attr, setter, getter)
@@ -78,7 +78,7 @@ var hardware_raspi_SunFounder = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-hardware_raspi_SunFounder = hardware_raspi_SunFounder.extend({
+hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
