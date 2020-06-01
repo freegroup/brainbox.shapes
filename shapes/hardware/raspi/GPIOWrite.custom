@@ -11,7 +11,23 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-         // your special code here
+        this.img = new draw2d.shape.basic.Image({
+            width: this.getHeight(), 
+            height: this.getHeight(),
+            selectable: false,
+            deleteable: false,
+            resizeable:false,
+            draggable: false,
+            path: this.TRANSPARENT_PIXEL
+        });
+        this.img.hitTest = ()=>false;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:this.getWidth()-this.getHeight, y:0}));
+
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+
     },
 
     /**
