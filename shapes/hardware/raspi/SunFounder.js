@@ -7,7 +7,7 @@
 var hardware_raspi_SunFounder = CircuitFigure.extend({
 
    NAME: "hardware_raspi_SunFounder",
-   VERSION: "2.0.261_955",
+   VERSION: "2.0.262_956",
 
    init:function(attr, setter, getter)
    {
