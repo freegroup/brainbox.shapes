@@ -7,7 +7,7 @@
 var video_geometry_Scale = CircuitFigure.extend({
 
    NAME: "video_geometry_Scale",
-   VERSION: "2.0.253_933",
+   VERSION: "2.0.254_935",
 
    init:function(attr, setter, getter)
    {
