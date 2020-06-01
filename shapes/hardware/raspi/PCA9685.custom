@@ -62,8 +62,40 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
     getRequiredHardware: function(){
       return {
         raspi: false,
-        arduino: false
+        arduino: false,
+        pca9685: true
       }
+    },
+    
+    
+    getParameterSettings: function () {
+        return [
+            {
+                name: "channel",
+                label: "The PCA9685 Channel to use",
+                property: {
+                    type: "enum",
+                    values: [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15"
+                    ]
+                }
+            }];
     }
+
 
 });
