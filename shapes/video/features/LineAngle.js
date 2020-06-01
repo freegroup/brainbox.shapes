@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.258_945",
+   VERSION: "2.0.259_949",
 
    init:function(attr, setter, getter)
    {
