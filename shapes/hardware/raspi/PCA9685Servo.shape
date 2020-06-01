@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "0765e6e3-b959-80ac-b2ab-e1a631a6b58a",
-      "x": 7955,
-      "y": 7958,
+      "x": 7948.5,
+      "y": 7960,
       "width": 103,
       "height": 80,
       "alpha": 1,
@@ -28,20 +28,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7955,
-          "y": 7958
+          "x": 7948.5,
+          "y": 7960
         },
         {
-          "x": 8058,
-          "y": 7958
+          "x": 8051.5,
+          "y": 7960
         },
         {
-          "x": 8058,
-          "y": 8038
+          "x": 8051.5,
+          "y": 8040
         },
         {
-          "x": 7955,
-          "y": 8038
+          "x": 7948.5,
+          "y": 8040
         }
       ],
       "blur": 0,
@@ -66,8 +66,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "481a25a9-9aff-52c2-c424-1584acb2fb94",
-      "x": 7950,
-      "y": 7975.812072033691,
+      "x": 7943.5,
+      "y": 7977.812072033691,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -104,8 +104,8 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "9974e199-257f-590a-d51a-4da9d8d8b20e",
-      "x": 7950,
-      "y": 8013.584288134765,
+      "x": 7943.5,
+      "y": 8015.584288134765,
       "width": 10,
       "height": 10,
       "alpha": 1,
@@ -142,9 +142,9 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "31005848-ca47-4443-19e8-a1b9dd6682c8",
-      "x": 7962,
-      "y": 7970.027472033691,
-      "width": 29.125,
+      "x": 7955.5,
+      "y": 7972.027472033691,
+      "width": 32.46875,
       "height": 21.375,
       "alpha": 1,
       "selectable": true,
@@ -182,8 +182,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "5c5a044a-ccfd-c6a9-6750-d789654bc261",
-      "x": 7961,
-      "y": 8007.896788134765,
+      "x": 7954.5,
+      "y": 8009.896788134765,
       "width": 38.03125,
       "height": 21.375,
       "alpha": 1,
@@ -222,9 +222,9 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "831c90d4-2b62-6af5-0fb0-cc123967d6e7",
-      "x": 8010.062475,
-      "y": 7997.344212033691,
-      "width": 28.34375,
+      "x": 8003.562475,
+      "y": 7999.344212033691,
+      "width": 50.8125,
       "height": 21.1875,
       "alpha": 1,
       "selectable": true,
@@ -262,9 +262,9 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "1d0f2e00-786f-da35-912b-895cac293306",
-      "x": 7986.8906,
-      "y": 7986.812072033691,
-      "width": 50.8125,
+      "x": 7980.3906,
+      "y": 7988.812072033691,
+      "width": 63.15625,
       "height": 21.1875,
       "alpha": 1,
       "selectable": true,
@@ -280,7 +280,7 @@
       "stroke": 0,
       "radius": 0,
       "dasharray": null,
-      "text": "Motor Driver",
+      "text": "Servo Driver",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
       "fontSize": 10,
