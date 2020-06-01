@@ -7,7 +7,7 @@
 var video_IPCamera = CircuitFigure.extend({
 
    NAME: "video_IPCamera",
-   VERSION: "2.0.255_936",
+   VERSION: "2.0.256_941",
 
    init:function(attr, setter, getter)
    {
