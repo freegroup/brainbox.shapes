@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var circuit_digital_buttons_PushButton = CircuitFigure.extend({
+var widget_PushButton = CircuitFigure.extend({
 
-   NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "2.0.250_927",
+   NAME: "widget_PushButton",
+   VERSION: "2.0.251_928",
 
    init:function(attr, setter, getter)
    {
@@ -78,7 +78,7 @@ var circuit_digital_buttons_PushButton = CircuitFigure.extend({
  *
  *
  */
-circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
+widget_PushButton = widget_PushButton.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);

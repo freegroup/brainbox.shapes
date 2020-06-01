@@ -6,7 +6,7 @@
  *
  *
  */
-circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
+widget_HighLow = widget_HighLow.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
