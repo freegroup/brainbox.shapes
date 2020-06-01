@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685 = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685",
-   VERSION: "2.0.263_957",
+   VERSION: "2.0.264_963",
 
    init:function(attr, setter, getter)
    {
@@ -16,7 +16,7 @@ var hardware_raspi_PCA9685 = CircuitFigure.extend({
      this._super( $.extend({stroke:0, bgColor:null, width:103,height:80},attr), setter, getter);
      var port;
      // input_channel_pwm
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 0, y: 26.015090042113798 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 0, y: 28.515090042113798 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_channel_pwm");
@@ -47,23 +47,28 @@ var hardware_raspi_PCA9685 = CircuitFigure.extend({
        shape.data("name","BoundingBox");
        
        // Rectangle
-       shape = this.canvas.paper.path('M0 0L103 0L103 80L0 80Z');
+       shape = this.canvas.paper.path('M0,5Q0,0 5, 0L98,0Q103,0 103, 5L103,75Q103,80 98, 80L5,80Q0,80 0, 75L0,5');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // channelLabel
-       shape = this.canvas.paper.text(0,0,'pwm');
-       shape.attr({"x":11.5,"y":21.714972033691083,"text-anchor":"start","text":"pwm","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'PWM');
+       shape.attr({"x":11,"y":22.714972033691083,"text-anchor":"start","text":"PWM","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","channelLabel");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'enable');
-       shape.attr({"x":10,"y":60.46497203369108,"text-anchor":"start","text":"enable","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'on/off');
+       shape.attr({"x":10,"y":60.5842881347653,"text-anchor":"start","text":"on/off","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Label
        shape = this.canvas.paper.text(0,0,'PCA9865');
-       shape.attr({"x":11,"y":40.31207203369104,"text-anchor":"start","text":"PCA9865","font-family":"\"Arial\"","font-size":19,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":46.21872499999972,"y":50.59332203369104,"text-anchor":"start","text":"PCA9865","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'Motor Driver');
+       shape.attr({"x":35.89059999999972,"y":34.959422033691226,"text-anchor":"start","text":"Motor Driver","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
 
