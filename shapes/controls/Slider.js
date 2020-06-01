@@ -19,8 +19,9 @@ var controls_Slider = draw2d.shape.widget.Slider.extend({
         this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
 
         this.on("change:value", (element, event) => {
-            var value = parseInt(event.value); // 0..100
-            value = 5 / 100 * value;             // 0..5
+            let value = parseInt(event.value); // 0..100
+            value = 5.0 / 100.0 * value;       // 0..5
+            console.log(value)
             this.getOutputPort(0).setValue(value);
         });
 
