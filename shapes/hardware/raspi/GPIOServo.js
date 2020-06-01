@@ -7,7 +7,7 @@
 var hardware_raspi_GPIOServo = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIOServo",
-   VERSION: "2.0.265_966",
+   VERSION: "2.0.266_967",
 
    init:function(attr, setter, getter)
    {
