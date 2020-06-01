@@ -62,6 +62,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
      **/
     onStart:function( context )
     {
+        var port = this.getInputPort("input_port1");
         hardware.raspi.mode(this.gpioPin, "OUTPUT");
         hardware.raspi.set(this.gpioPin, port.getValue());
     },

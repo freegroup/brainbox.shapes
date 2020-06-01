@@ -7,7 +7,7 @@
 var hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIOWrite",
-   VERSION: "2.0.254_935",
+   VERSION: "2.0.255_936",
 
    init:function(attr, setter, getter)
    {
@@ -119,6 +119,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
      **/
     onStart:function( context )
     {
+        var port = this.getInputPort("input_port1");
         hardware.raspi.mode(this.gpioPin, "OUTPUT");
         hardware.raspi.set(this.gpioPin, port.getValue());
     },
