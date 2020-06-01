@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685 = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685",
-   VERSION: "2.0.259_950",
+   VERSION: "2.0.260_953",
 
    init:function(attr, setter, getter)
    {
@@ -88,13 +88,13 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
 
-        this.gpioPin = "0"
+        this.channel = "0"
         this.on("change:userData.channel",(emitter, event)=>{
-            this.layerAttr("", {text: "PWM channel "+event.value})
+            this.layerAttr("channelLabel", {text: "PWM channel "+event.value})
             this.channel = event.value;
         });
         this.on("added",(emitter, event)=>{
-             this.layerAttr("channelLabel", {text: this.attr("userData.channel")})
+             this.layerAttr("channelLabel", {text:  "PWM channel "+this.attr("userData.channel")})
         });
         this.attr("userData.channel",this.channel)
         
@@ -133,8 +133,8 @@ hardware_raspi_PCA9685 = hardware_raspi_PCA9685.extend({
         let port_pwm   = this.getInputPort("input_channel_pwm");
         let port_onoff = this.getInputPort("input_channel_onoff");
 
-        hardware.pca9685.pwm(parseInt(this.channel), port_pwm.getValue());
         hardware.pca9685.set(parseInt(this.channel), port_onoff.getValue());
+        hardware.pca9685.pwm(parseInt(this.channel), port_pwm.getValue());
     },
 
     /**
