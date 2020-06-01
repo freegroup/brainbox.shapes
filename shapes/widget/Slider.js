@@ -37,6 +37,20 @@ var controls_Slider = draw2d.shape.widget.Slider.extend({
     },
 
 
+    onPanning: function (dx, dy, dx2, dy2) {
+        // calculate the current position of the mouse pos
+        //
+        let thumbW2 = this.slideBoundingBox.w / 2
+        let width = this.getWidth()
+        let sliderWidth = width - this.padding.left - this.padding.right
+
+        let figurePos = Math.min(width, Math.max(0, this.panningX + dx))
+        let sliderPos = Math.min(width - this.padding.left - this.padding.right, figurePos)
+
+        this.setValue(100 / sliderWidth * sliderPos)
+    },
+
+
     getPersistentAttributes: function ()
     {
         let memento = this._super()
