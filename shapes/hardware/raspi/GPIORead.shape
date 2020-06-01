@@ -79,7 +79,7 @@
       "draggable": true,
       "angle": 0,
       "userData": {
-        "name": "input_port1",
+        "name": "output_port1",
         "type": "Output",
         "direction": 1,
         "fanout": 1
