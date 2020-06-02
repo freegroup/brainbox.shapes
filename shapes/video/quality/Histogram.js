@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.278_993",
+   VERSION: "2.0.279_995",
 
    init:function(attr, setter, getter)
    {
@@ -92,6 +92,7 @@ video_quality_Histogram = video_quality_Histogram.extend({
         this.tmpContext = null;
         this.processing = false;
         
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth()-6, 
             height: this.getHeight()/4*3-6,
@@ -230,11 +231,8 @@ video_quality_Histogram = video_quality_Histogram.extend({
            }
            catch(exc){
                console.log(exc)
-               
            }
-           
         };
-
 
         // convert a js function to a WebWorker
         //
