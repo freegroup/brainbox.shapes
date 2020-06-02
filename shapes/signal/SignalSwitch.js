@@ -7,34 +7,34 @@
 var signal_SignalSwitch = CircuitFigure.extend({
 
    NAME: "signal_SignalSwitch",
-   VERSION: "2.0.288_1014",
+   VERSION: "2.0.289_1016",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:40,height:80},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:40,height:84},attr), setter, getter);
      var port;
      // input_port3
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.4395000000004075, y: 85.40862500000003 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.4395000000004075, y: 81.34154761904765 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port3");
      port.setMaxFanOut(20);
      // input_port2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.4395000000004075, y: 48.75 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.4395000000004075, y: 46.42857142857143 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port2");
      port.setMaxFanOut(20);
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.4395000000004075, y: 13.090745231628489 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.4395000000004075, y: 12.467376411074751 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.18416287231412, y: 31.980624999999918 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.18416287231412, y: 30.457738095238017 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -45,7 +45,7 @@ var signal_SignalSwitch = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 40;
-      this.originalHeight= 80;
+      this.originalHeight= 84;
       return shape;
    },
 
@@ -54,7 +54,7 @@ var signal_SignalSwitch = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L40,0 L40,80 L0,80");
+       shape = this.canvas.paper.path("M0,0 L40,0 L40,84 L0,84");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -65,18 +65,23 @@ var signal_SignalSwitch = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Selector');
-       shape.attr({"x":5,"y":68.3125,"text-anchor":"start","text":"Selector","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":5,"y":73.3125,"text-anchor":"start","text":"Selector","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
-       // up_line
+       // Label
+       shape = this.canvas.paper.text(0,0,'Signal');
+       shape.attr({"x":6.5,"y":62.6875,"text-anchor":"start","text":"Signal","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // high
        shape = this.canvas.paper.path('M35.0014546875027 23.937916406248405L5.0260546874969805,12.308116406252338');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","up_line");
+       shape.data("name","high");
        
-       // down_line
+       // low
        shape = this.canvas.paper.path('M34.92365468750086 26.972316406244317L5.275854687495666,38.43831640625194');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","down_line");
+       shape.data("name","low");
        
 
        return this.canvas.paper.setFinish();
@@ -111,8 +116,26 @@ signal_SignalSwitch = signal_SignalSwitch.extend({
      **/
     calculate:function( context)
     {
-        let inValue = this.getInputPort("input_port1").getValue();
-        this.getOutputPort("output_port1").setValue(5-inValue);
+        let inValue1 = this.getInputPort("input_port1").getValue();
+        let inValue2 = this.getInputPort("input_port2").getValue();
+        let inValue3 = this.getInputPort("input_port3").getBooleanValue();
+        if(inValue3 === true){
+            this.getOutputPort("output_port1").setValue(inValue1);
+        }
+        else{
+            this.getOutputPort("output_port1").setValue(inValue2);
+        }
+        
+        if(this.getInputPort("input_port3").hasChangedValue()){
+            this.layerShow("low" , !inValue3, 100);
+            this.layerShow("high",  inValue3, 100);
+        }
+    },
+    
+    onStart:function(context){
+        let inValue3 = this.getInputPort("input_port3").getBooleanValue();
+        this.layerShow("low" , !inValue3, 100);
+        this.layerShow("high",  inValue3, 100);
     }
 
 });
