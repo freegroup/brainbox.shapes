@@ -1,60 +1,3 @@
-// Generated Code for the Draw2D touch HTML5 lib.
-// File will be generated if you save the *.shape file.
-//
-// created with http://www.draw2d.org
-//
-//
-var hardware_raspi_GPIOWrite = CircuitFigure.extend({
-
-   NAME: "hardware_raspi_GPIOWrite",
-   VERSION: "2.0.271_977",
-
-   init:function(attr, setter, getter)
-   {
-     var _this = this;
-
-     this._super( $.extend({stroke:0, bgColor:null, width:90,height:22.015625},attr), setter, getter);
-     var port;
-     // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -2.344359877472218, y: 49.96451383960255 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input_port1");
-     port.setMaxFanOut(1);
-   },
-
-   createShapeElement : function()
-   {
-      var shape = this._super();
-      this.originalWidth = 90;
-      this.originalHeight= 22.015625;
-      return shape;
-   },
-
-   createSet: function()
-   {
-       this.canvas.paper.setStart();
-       var shape = null;
-       // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L90,0 L90,22.015625 L0,22.015625");
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
-       shape.data("name","BoundingBox");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M88.0000160470528,20.967186981509105Q90,20.975198719999753 90, 18.975198719999753L90,2.975198719999753Q90,0.9751987199997529 88, 0.9751987199997529L13.28761223528818,0.9751987199997529Q11.28761223528818,0.9751987199997529 9.790593909516895, 2.301447615307472L1.4970183257712844,9.648949824692034Q0,10.975198719999753 1.5282300564805649, 12.265358746690012L9.944425002338763,19.370465893309543Q11.472655058819328,20.660625919999802 13.472639011766532, 20.66863765849045L88.0000160470528,20.967186981509105');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // gpioPinLabel
-       shape = this.canvas.paper.text(0,0,'GPIO Pin#');
-       shape.attr({"x":9.390076110275004,"y":11.0078125,"text-anchor":"start","text":"GPIO Pin#","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","gpioPinLabel");
-       
-
-       return this.canvas.paper.setFinish();
-   }
-});
-
 /**
  * by 'Draw2D Shape Designer'
  *
@@ -63,7 +6,7 @@ var hardware_raspi_GPIOWrite = CircuitFigure.extend({
  *
  *
  */
-hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
+hardware_raspi_PWMWrite = hardware_raspi_PWMWrite.extend({
 
     init: function(attr, setter, getter){
          this._super(attr, setter, getter);
@@ -108,7 +51,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
     {
         var port = this.getInputPort("input_port1");
         if(port.hasChangedValue()){
-            hardware.raspi.set(this.gpioPin, port.getValue());
+            hardware.raspi.pwm(this.gpioPin, port.getValue());
         }
     },
     
@@ -121,7 +64,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
     {
         var port = this.getInputPort("input_port1");
         hardware.raspi.mode(this.gpioPin, "OUTPUT");
-        hardware.raspi.set(this.gpioPin, port.getValue());
+        hardware.raspi.pwm(this.gpioPin, port.getValue());
     },
 
     /**
@@ -133,7 +76,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
     },
     
     getLabel: function(pin){
-        return "GPIO "+pin.split("_")[1];
+        return "PWM "+pin.split("_")[1];
     },
     
     getRequiredHardware: function(){
