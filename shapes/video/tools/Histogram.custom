@@ -141,6 +141,7 @@ video_tools_Histogram = video_tools_Histogram.extend({
            }
            catch(exc){
               console.log(exc);
+              this.processing = false;
            }
         };
 

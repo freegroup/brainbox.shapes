@@ -7,7 +7,7 @@
 var video_tools_Histogram = CircuitFigure.extend({
 
    NAME: "video_tools_Histogram",
-   VERSION: "2.0.286_1010",
+   VERSION: "2.0.287_1012",
 
    init:function(attr, setter, getter)
    {
@@ -224,6 +224,7 @@ video_tools_Histogram = video_tools_Histogram.extend({
            }
            catch(exc){
               console.log(exc);
+              this.processing = false;
            }
         };
 
