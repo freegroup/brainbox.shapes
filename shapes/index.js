@@ -7,7 +7,7 @@
 var circuit_74LSXX_74LS90 = CircuitFigure.extend({
 
    NAME: "circuit_74LSXX_74LS90",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -311,7 +311,7 @@ circuit_74LSXX_74LS90 = circuit_74LSXX_74LS90.extend({
 var circuit_digital_alu_FullAdder = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -481,7 +481,7 @@ circuit_digital_alu_FullAdder = circuit_digital_alu_FullAdder.extend({
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -797,7 +797,7 @@ circuit_digital_alu_FullAdder4Bit = circuit_digital_alu_FullAdder4Bit.extend({
 var circuit_digital_buttons_HighLow = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLow",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -908,7 +908,7 @@ circuit_digital_buttons_HighLow = circuit_digital_buttons_HighLow.extend({
 var circuit_digital_buttons_HighLowArray = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_HighLowArray",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1073,7 +1073,7 @@ circuit_digital_buttons_HighLowArray = circuit_digital_buttons_HighLowArray.exte
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1189,7 +1189,7 @@ circuit_digital_buttons_PushButton = circuit_digital_buttons_PushButton.extend({
 var circuit_digital_counter_BCDCounter = CircuitFigure.extend({
 
    NAME: "circuit_digital_counter_BCDCounter",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1373,7 +1373,7 @@ circuit_digital_counter_BCDCounter = circuit_digital_counter_BCDCounter.extend({
 var circuit_digital_decoder_BCDto7Seg = CircuitFigure.extend({
 
    NAME: "circuit_digital_decoder_BCDto7Seg",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1612,7 +1612,7 @@ circuit_digital_decoder_BCDto7Seg = circuit_digital_decoder_BCDto7Seg.extend({
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1774,7 +1774,7 @@ circuit_digital_display_7Segment = circuit_digital_display_7Segment.extend({
 var circuit_digital_display_Led = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_Led",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1863,7 +1863,7 @@ circuit_digital_display_Led = circuit_digital_display_Led.extend({
 var circuit_digital_flipflop_DFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_DFlipFlop",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -1996,7 +1996,7 @@ circuit_digital_flipflop_DFlipFlop = circuit_digital_flipflop_DFlipFlop.extend({
 var circuit_digital_flipflop_JKFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKFlipFlop",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -2159,7 +2159,7 @@ circuit_digital_flipflop_JKFlipFlop = circuit_digital_flipflop_JKFlipFlop.extend
 var circuit_digital_flipflop_JKRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_JKRFlipFlop",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -2340,7 +2340,7 @@ circuit_digital_flipflop_JKRFlipFlop = circuit_digital_flipflop_JKRFlipFlop.exte
 var circuit_digital_flipflop_SRFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_SRFlipFlop",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -2482,7 +2482,7 @@ circuit_digital_flipflop_SRFlipFlop = circuit_digital_flipflop_SRFlipFlop.extend
 var circuit_digital_flipflop_TFlipFlop = CircuitFigure.extend({
 
    NAME: "circuit_digital_flipflop_TFlipFlop",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -2604,7 +2604,7 @@ circuit_digital_flipflop_TFlipFlop = circuit_digital_flipflop_TFlipFlop.extend({
 var circuit_digital_gate_DIN40700_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_AND",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -2736,7 +2736,7 @@ circuit_digital_gate_DIN40700_AND = circuit_digital_gate_DIN40700_AND.extend({
 var circuit_digital_gate_DIN40700_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NAND",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -2873,7 +2873,7 @@ circuit_digital_gate_DIN40700_NAND = circuit_digital_gate_DIN40700_NAND.extend({
 var circuit_digital_gate_DIN40700_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_NOR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3020,7 +3020,7 @@ circuit_digital_gate_DIN40700_NOR = circuit_digital_gate_DIN40700_NOR.extend({
 var circuit_digital_gate_DIN40700_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_OR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3162,7 +3162,7 @@ circuit_digital_gate_DIN40700_OR = circuit_digital_gate_DIN40700_OR.extend({
 var circuit_digital_gate_DIN40700_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XNOR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3309,7 +3309,7 @@ circuit_digital_gate_DIN40700_XNOR = circuit_digital_gate_DIN40700_XNOR.extend({
 var circuit_digital_gate_DIN40700_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_DIN40700_XOR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3461,7 +3461,7 @@ circuit_digital_gate_DIN40700_XOR = circuit_digital_gate_DIN40700_XOR.extend({
 var circuit_digital_gate_IEC60617_12_AND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_AND",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3559,7 +3559,7 @@ circuit_digital_gate_IEC60617_12_AND = circuit_digital_gate_IEC60617_12_AND.exte
 var circuit_digital_gate_IEC60617_12_NAND = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NAND",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3662,7 +3662,7 @@ circuit_digital_gate_IEC60617_12_NAND = circuit_digital_gate_IEC60617_12_NAND.ex
 var circuit_digital_gate_IEC60617_12_NOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3770,7 +3770,7 @@ circuit_digital_gate_IEC60617_12_NOR = circuit_digital_gate_IEC60617_12_NOR.exte
 var circuit_digital_gate_IEC60617_12_NOT = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_NOT",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3867,7 +3867,7 @@ circuit_digital_gate_IEC60617_12_NOT = circuit_digital_gate_IEC60617_12_NOT.exte
 var circuit_digital_gate_IEC60617_12_OR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_OR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -3970,7 +3970,7 @@ circuit_digital_gate_IEC60617_12_OR = circuit_digital_gate_IEC60617_12_OR.extend
 var circuit_digital_gate_IEC60617_12_XNOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XNOR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4073,7 +4073,7 @@ circuit_digital_gate_IEC60617_12_XNOR = circuit_digital_gate_IEC60617_12_XNOR.ex
 var circuit_digital_gate_IEC60617_12_XOR = CircuitFigure.extend({
 
    NAME: "circuit_digital_gate_IEC60617_12_XOR",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4171,7 +4171,7 @@ circuit_digital_gate_IEC60617_12_XOR = circuit_digital_gate_IEC60617_12_XOR.exte
 var circuit_digital_pulse_10hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_10hz",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4276,7 +4276,7 @@ circuit_digital_pulse_10hz = circuit_digital_pulse_10hz.extend({
 var circuit_digital_pulse_1hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_1hz",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4381,7 +4381,7 @@ circuit_digital_pulse_1hz = circuit_digital_pulse_1hz.extend({
 var circuit_digital_pulse_50hz = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_50hz",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4484,7 +4484,7 @@ circuit_digital_pulse_50hz = circuit_digital_pulse_50hz.extend({
 var circuit_digital_pulse_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_pulse_Delay",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4655,7 +4655,7 @@ circuit_digital_pulse_Delay = circuit_digital_pulse_Delay.extend({
 var circuit_digital_signal_High = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_High",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4737,7 +4737,7 @@ circuit_digital_signal_High = circuit_digital_signal_High.extend({
 var circuit_digital_signal_Low = CircuitFigure.extend({
 
    NAME: "circuit_digital_signal_Low",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -4820,7 +4820,7 @@ circuit_digital_signal_Low = circuit_digital_signal_Low.extend({
 var circuit_digital_timer_Delay = CircuitFigure.extend({
 
    NAME: "circuit_digital_timer_Delay",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -5108,7 +5108,7 @@ var documentation_Text = draw2d.shape.basic.Text.extend({
 var hardware_arduino_Arduino = CircuitFigure.extend({
 
    NAME: "hardware_arduino_Arduino",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -5602,7 +5602,7 @@ hardware_arduino_Arduino = hardware_arduino_Arduino.extend({
 var hardware_arduino_Led = CircuitFigure.extend({
 
    NAME: "hardware_arduino_Led",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -5709,7 +5709,7 @@ hardware_arduino_Led = hardware_arduino_Led.extend({
 var hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIOWrite",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -5906,7 +5906,7 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
 var hardware_raspi_PCA9685Motor = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Motor",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -6127,7 +6127,7 @@ hardware_raspi_PCA9685Motor = hardware_raspi_PCA9685Motor.extend({
 var hardware_raspi_PCA9685Servo = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Servo",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -6354,7 +6354,7 @@ hardware_raspi_PCA9685Servo = hardware_raspi_PCA9685Servo.extend({
 var hardware_raspi_PWMWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PWMWrite",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -6551,7 +6551,7 @@ hardware_raspi_PWMWrite = hardware_raspi_PWMWrite.extend({
 var math_Mean = CircuitFigure.extend({
 
    NAME: "math_Mean",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -6710,7 +6710,7 @@ math_Mean = math_Mean.extend({
 var messaging_HiveMQ = CircuitFigure.extend({
 
    NAME: "messaging_HiveMQ",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -6834,7 +6834,7 @@ messaging_HiveMQ = messaging_HiveMQ.extend({
 var signal_SignalSource = CircuitFigure.extend({
 
    NAME: "signal_SignalSource",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -6998,7 +6998,7 @@ signal_SignalSource = signal_SignalSource.extend({
 var signal_SignalTarget = CircuitFigure.extend({
 
    NAME: "signal_SignalTarget",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -7172,7 +7172,7 @@ signal_SignalTarget = signal_SignalTarget.extend({
 var video_color_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_color_BlackWhite",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -7431,7 +7431,7 @@ video_color_BlackWhite = video_color_BlackWhite.extend({
 var video_color_Grayscale = CircuitFigure.extend({
 
    NAME: "video_color_Grayscale",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -7668,7 +7668,7 @@ video_color_Grayscale = video_color_Grayscale.extend({
 var video_color_GrayscaleAvg = CircuitFigure.extend({
 
    NAME: "video_color_GrayscaleAvg",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -7905,7 +7905,7 @@ video_color_GrayscaleAvg = video_color_GrayscaleAvg.extend({
 var video_color_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_color_HSV_Colorspace",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -8193,7 +8193,7 @@ video_color_HSV_Colorspace = video_color_HSV_Colorspace.extend({
 var video_color_Invert = CircuitFigure.extend({
 
    NAME: "video_color_Invert",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -8431,7 +8431,7 @@ video_color_Invert = video_color_Invert.extend({
 var video_color_Luminance = CircuitFigure.extend({
 
    NAME: "video_color_Luminance",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -8673,7 +8673,7 @@ video_color_Luminance = video_color_Luminance.extend({
 var video_color_WhiteBlack = CircuitFigure.extend({
 
    NAME: "video_color_WhiteBlack",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -8930,7 +8930,7 @@ video_color_WhiteBlack = video_color_WhiteBlack.extend({
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -9392,7 +9392,7 @@ video_features_LineAngle = video_features_LineAngle.extend({
 var video_features_Object = CircuitFigure.extend({
 
    NAME: "video_features_Object",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -9753,7 +9753,7 @@ video_features_Object = video_features_Object.extend({
 var video_filter_Embose = CircuitFigure.extend({
 
    NAME: "video_filter_Embose",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -10021,7 +10021,7 @@ video_filter_Embose = video_filter_Embose.extend({
 var video_filter_Prewitt = CircuitFigure.extend({
 
    NAME: "video_filter_Prewitt",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -10297,7 +10297,7 @@ video_filter_Prewitt = video_filter_Prewitt.extend({
 var video_filter_PrewittInvers = CircuitFigure.extend({
 
    NAME: "video_filter_PrewittInvers",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -10581,7 +10581,7 @@ video_filter_PrewittInvers = video_filter_PrewittInvers.extend({
 var video_filter_Roberts = CircuitFigure.extend({
 
    NAME: "video_filter_Roberts",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -10868,7 +10868,7 @@ video_filter_Roberts = video_filter_Roberts.extend({
 var video_filter_RobertsInvers = CircuitFigure.extend({
 
    NAME: "video_filter_RobertsInvers",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -11155,7 +11155,7 @@ video_filter_RobertsInvers = video_filter_RobertsInvers.extend({
 var video_filter_Sobel = CircuitFigure.extend({
 
    NAME: "video_filter_Sobel",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -11444,7 +11444,7 @@ video_filter_Sobel = video_filter_Sobel.extend({
 var video_filter_SobelInvers = CircuitFigure.extend({
 
    NAME: "video_filter_SobelInvers",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -11733,7 +11733,7 @@ video_filter_SobelInvers = video_filter_SobelInvers.extend({
 var video_geometry_FlipHorizontal = CircuitFigure.extend({
 
    NAME: "video_geometry_FlipHorizontal",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -11982,7 +11982,7 @@ video_geometry_FlipHorizontal = video_geometry_FlipHorizontal.extend({
 var video_geometry_FlipVertical = CircuitFigure.extend({
 
    NAME: "video_geometry_FlipVertical",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -12231,7 +12231,7 @@ video_geometry_FlipVertical = video_geometry_FlipVertical.extend({
 var video_geometry_Scale = CircuitFigure.extend({
 
    NAME: "video_geometry_Scale",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -12435,375 +12435,10 @@ video_geometry_Scale = video_geometry_Scale.extend({
 // created with http://www.draw2d.org
 //
 //
-var video_IPCamera = CircuitFigure.extend({
-
-   NAME: "video_IPCamera",
-   VERSION: "2.0.281_1003",
-
-   init:function(attr, setter, getter)
-   {
-     var _this = this;
-
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.125},attr), setter, getter);
-     var port;
-     // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.7890625, y: 49.921996879875195 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("output_port1");
-     port.setMaxFanOut(20);
-   },
-
-   createShapeElement : function()
-   {
-      var shape = this._super();
-      this.originalWidth = 80;
-      this.originalHeight= 80.125;
-      return shape;
-   },
-
-   createSet: function()
-   {
-       this.canvas.paper.setStart();
-       var shape = null;
-       // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.125 L0,80.125");
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
-       shape.data("name","BoundingBox");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M79.9944352881578,16.18111752610946Q79.99426089739427,14.181117533712495 79.99426089739427, 12.181117533712495L79.99426089739427,2Q79.99426089739427,0 77.99427040266448, 0.006166116321677656L1.9999904947297864,0.2404620146918169Q0,0.24662813101349457 0.007528135284914805, 2.24661396275809L0.2926710777935708,78.0000141682554Q0.3001992130784856,80 2.3001992130784856, 80L78,80Q80,80 79.99982560923647, 78.00000000760303L79.9944352881578,16.18111752610946');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'NetworkCam');
-       shape.attr({"x":5.640625,"y":69.125,"text-anchor":"start","text":"NetworkCam","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M7.077599999998711,25.322299999999814Q7.077599999998711,21.322299999999814 11.07759999999871, 21.322299999999814L47.07759999999871,21.322299999999814Q51.07759999999871,21.322299999999814 51.07759999999871, 25.322299999999814L51.07759999999871,47.322299999999814Q51.07759999999871,51.322299999999814 47.07759999999871, 51.322299999999814L11.07759999999871,51.322299999999814Q7.077599999998711,51.322299999999814 7.077599999998711, 47.322299999999814L7.077599999998711,25.322299999999814');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M50.88073469083684,32.45000459669621Q50.86119999999755,30.450100000008206 52.560817500210284, 29.39591768514487L63.87798249978598,22.37648231486315Q65.57759999999871,21.322299999999814 65.57759999999871, 23.322299999999814L65.57759999999871,49.322299999999814Q65.57759999999871,51.322299999999814 63.91645483821974, 50.20847921033106L52.63054516177801,42.641120789660306Q50.96939999999904,41.527299999991556 50.949865309159755, 39.52739540330355L50.88073469083684,32.45000459669621');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":3,"ry":3,"cx":45.86119999999755,"cy":25.958674805342525,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'http://<address>:<port>');
-       shape.attr({"x":6.640625,"y":13.109375,"text-anchor":"start","text":"http://<address>:<port>","font-family":"\"Arial\"","font-size":6,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-
-       return this.canvas.paper.setFinish();
-   }
-});
-
-/**
- * by 'Draw2D Shape Designer'
- *
- * Custom JS code to tweak the standard behaviour of the generated
- * shape. add your custome code and event handler here.
- *
- *
- */
-video_IPCamera = video_IPCamera.extend({
-
-    init: function(attr, setter, getter){
-         this._super(attr, setter, getter);
-
-        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
-   
-        this.img = new draw2d.shape.basic.Image({
-            width: this.getWidth()-6, 
-            height: this.getHeight()/4*3 -6,
-            path: this.TRANSPARENT_PIXEL
-        });
-        this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3,y:3}));
-        
-        this.attr({resizeable:false});
-        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-        this.getOutputPort("output_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        });
-
-    },
-
-    /**
-     *  Called by the simulator for every calculation
-     *  loop
-     *  @required
-     **/
-    calculate:function( context)
-    {
-        var image = new Image();
-        image.onload = () => {
-            this.getOutputPort("output_port1").setValue(image);
-        };
-        image.src = hardware.camera.image(this.attr("userData.ipAddress"));
-    },
-    
-    
-    onStart: function(context ){
-        hardware.camera.start(this.attr("userData.ipAddress"));
-    },
-    
-    
-    onStop: function(context){
-        hardware.camera.stop(this.attr("userData.ipAddress"));
-    },
-    
-    getPersistentAttributes: function () 
-    {
-       let currentImage = this.img.attr("path");
-       this.img.attr("path", this.TRANSPARENT_PIXEL);
-    
-       let memento = this._super()
-    
-       this.img.attr("path", currentImage);
-
-       return memento
-    },
-    
-    setPersistentAttributes: function (memento) {
-        this._super(memento)
-        
-        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
-        this.img.hitTest = ()=>false
-        
-        this.getOutputPort("output_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-    },
-    
-    getParameterSettings: function () {
-        return [{
-                name: "ipAddress",
-                label: "IP-Address of the MJPEG Web Camera",
-                property: {
-                    type: "string"
-                }
-            }]
-    }
-    
-});
-
-
-// Generated Code for the Draw2D touch HTML5 lib.
-// File will be generated if you save the *.shape file.
-//
-// created with http://www.draw2d.org
-//
-//
-var video_Preview = CircuitFigure.extend({
-
-   NAME: "video_Preview",
-   VERSION: "2.0.281_1003",
-
-   init:function(attr, setter, getter)
-   {
-     var _this = this;
-
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80},attr), setter, getter);
-     var port;
-     // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 50 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input_port1");
-     port.setMaxFanOut(1);
-     // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 102.5, y: 50 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("output_port1");
-     port.setMaxFanOut(20);
-   },
-
-   createShapeElement : function()
-   {
-      var shape = this._super();
-      this.originalWidth = 80;
-      this.originalHeight= 80;
-      return shape;
-   },
-
-   createSet: function()
-   {
-       this.canvas.paper.setStart();
-       var shape = null;
-       // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80 L0,80");
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
-       shape.data("name","BoundingBox");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M0,3Q0,0 3, 0L77,0Q80,0 80, 3L80,77Q80,80 77, 80L3,80Q0,80 0, 77L0,3');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M3.5,5.508584000000155Q3.5,3.5085840000001554 5.5, 3.5085840000001554L74.5,3.5085840000001554Q76.5,3.5085840000001554 76.5, 5.508584000000155L76.5,53.508584000000155Q76.5,55.508584000000155 74.5, 55.508584000000155L5.5,55.508584000000155Q3.5,55.508584000000155 3.5, 53.508584000000155L3.5,5.508584000000155');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(240,243,243,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M30.936231463021613,35.76911304131136Q30.872197764576413,36.19697836850173 30.786098882288115, 36.19697836850173L30.786098882288115,36.19697836850173Q30.699999999999818,36.19697836850173 30.02542399975173, 39.120152537087876L28.228848000250217,46.90534583141388Q27.55427200000213,49.828520000000026 30.55427200000213, 49.828520000000026L49.845727999999326,49.828520000000026Q52.845727999999326,49.828520000000026 52.17115199975087, 46.90534583141397L50.374576000248275,39.12015253708779Q49.69999999999982,36.19697836850173 49.61390111771152, 36.19697836850173L49.61390111771152,36.19697836850173Q49.52780223542322,36.19697836850173 49.46376853697802, 35.76911304131136L49.46376853697802,35.76911304131136Q49.39973483853282,35.34124771412098 49.189009825240646, 34.881505982345516L49.189009825240646,34.881505982345516Q48.97828481194847,34.42176425057005 48.63419792766399, 33.99039830073025L48.63419792766399,33.99039830073025Q48.29011104337951,33.55903235089045 47.82311719396512, 33.1691490190874L47.82311719396512,33.1691490190874Q47.356123344550724,32.77926568728435 46.780411901811476, 32.44271138126396L46.780411901811476,32.44271138126396Q46.20470045907223,32.10615707524357 45.5377641238706, 31.833157827294144L45.5377641238706,31.833157827294144Q44.870827788668976,31.560158579344716 44.132931084064694, 31.35900933346511L44.132931084064694,31.35900933346511Q43.39503437946041,31.157860087585505 42.60859792342853, 31.03467266183179L42.60859792342853,31.03467266183179Q41.822161467396654,30.91148523607808 41.011080733698236, 30.870002618039052L41.011080733698236,30.870002618039052Q40.19999999999982,30.828520000000026 39.3889192663014, 30.870002618039052L39.3889192663014,30.870002618039052Q38.57783853260298,30.91148523607808 37.7914020765711, 31.03467266183179L37.7914020765711,31.03467266183179Q37.004965620539224,31.157860087585505 36.26706891593494, 31.35900933346511L36.26706891593494,31.35900933346511Q35.52917221133066,31.560158579344716 34.862235876129034, 31.833157827294144L34.862235876129034,31.833157827294144Q34.19529954092741,32.10615707524357 33.61958809818816, 32.44271138126396L33.61958809818816,32.44271138126396Q33.04387665544891,32.77926568728435 32.57688280603452, 33.1691490190874L32.57688280603452,33.1691490190874Q32.109888956620125,33.55903235089045 31.765802072335646, 33.99039830073025L31.765802072335646,33.99039830073025Q31.421715188051166,34.42176425057005 31.21099017475899, 34.881505982345516L31.21099017475899,34.881505982345516Q31.000265161466814,35.34124771412098 30.936231463021613, 35.76911304131136L30.936231463021613,35.76911304131136');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'Preview');
-       shape.attr({"x":15.5,"y":67.50858400000016,"text-anchor":"start","text":"Preview","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Circle
-       shape = this.canvas.paper.ellipse();
-       shape.attr({"rx":8,"ry":8.5,"cx":39.69999999999982,"cy":19.328520000000026,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-
-       return this.canvas.paper.setFinish();
-   }
-});
-
-/**
- * Generated Code for the Draw2D touch HTML5 lib.
- * File will be generated if you save the *.shape file.
- *
- * by 'Draw2D Shape Designer'
- *
- * Custom JS code to tweak the standard behaviour of the generated
- * shape. add your custom code and event handler here.
- *
- * Looks disconcerting - extending my own class. But this is a good method to
- * merge basic code and override them with custom methods.
- */
-video_Preview = video_Preview.extend({
-
-    init: function(attr, setter, getter){
-        this._super(attr, setter, getter);
-        
-        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
-        this.img = new draw2d.shape.basic.Image({
-            width: this.getWidth()-6, 
-            height: this.getHeight()/4*3-6,
-            selectable: false,
-            deleteable: false,
-            resizeable:false,
-            draggable: false,
-            path: this.TRANSPARENT_PIXEL
-        });
-        this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
-
-        this.getInputPort("input_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-        this.getOutputPort("output_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-        
-        this.attr({
-            resizeable:false
-        });
-        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-    },
-
-    /**
-     *  Called by the simulator for every calculation
-     *  loop
-     *  @param {Object} context context where objects can store or handover global variables to other objects.
-     *  @required
-     **/
-    calculate:function( context)
-    {
-        var image = this.getInputPort("input_port1").getValue();
-        if (image instanceof HTMLImageElement) {
-            this.img.attr("path", image.src);
-            this.getOutputPort("output_port1").setValue(image);
-        }
-    },
-
-
-    /**
-     *  Called if the simulation mode is starting
-     *  @required
-     **/
-    onStart:function( context )
-    {
-    },
-
-    /**
-     *  Called if the simulation mode is stopping
-     *  @required
-     **/
-    onStop:function( context )
-    {
-    },
-    
-  
-    getPersistentAttributes: function () 
-    {
-       let currentImage = this.img.attr("path");
-       this.img.attr("path", this.TRANSPARENT_PIXEL);
-    
-       let memento = this._super()
-    
-       this.img.attr("path", currentImage);
-
-       return memento
-    },
-
-    setPersistentAttributes: function (memento) 
-    {
-        this._super(memento);
-
-        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
-        this.remove(this.img);
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
-        this.img.hitTest = ()=>false;
-        
-        this.getInputPort("input_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-        this.getOutputPort("output_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-    }
-});
-
-
-// Generated Code for the Draw2D touch HTML5 lib.
-// File will be generated if you save the *.shape file.
-//
-// created with http://www.draw2d.org
-//
-//
 var video_quality_Blur = CircuitFigure.extend({
 
    NAME: "video_quality_Blur",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -13064,7 +12699,7 @@ video_quality_Blur = video_quality_Blur.extend({
 var video_quality_Brighter = CircuitFigure.extend({
 
    NAME: "video_quality_Brighter",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -13324,7 +12959,7 @@ video_quality_Brighter = video_quality_Brighter.extend({
 var video_quality_Contrast = CircuitFigure.extend({
 
    NAME: "video_quality_Contrast",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -13597,7 +13232,7 @@ video_quality_Contrast = video_quality_Contrast.extend({
 var video_quality_Darker = CircuitFigure.extend({
 
    NAME: "video_quality_Darker",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -13846,7 +13481,7 @@ video_quality_Darker = video_quality_Darker.extend({
 var video_quality_GaussBlur = CircuitFigure.extend({
 
    NAME: "video_quality_GaussBlur",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -14375,324 +14010,10 @@ video_quality_GaussBlur = video_quality_GaussBlur.extend({
 // created with http://www.draw2d.org
 //
 //
-var video_quality_Histogram = CircuitFigure.extend({
-
-   NAME: "video_quality_Histogram",
-   VERSION: "2.0.281_1003",
-
-   init:function(attr, setter, getter)
-   {
-     var _this = this;
-
-     this._super( $.extend({stroke:0, bgColor:null, width:81.13504999999986,height:80.87877759999992},attr), setter, getter);
-     var port;
-     // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9505139887140474, y: 49.34495943717131 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input_port1");
-     port.setMaxFanOut(20);
-     // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.92155116685083, y: 49.34495943717131 }));
-     port.setConnectionDirection(1);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("output_port1");
-     port.setMaxFanOut(20);
-   },
-
-   createShapeElement : function()
-   {
-      var shape = this._super();
-      this.originalWidth = 81.13504999999986;
-      this.originalHeight= 80.87877759999992;
-      return shape;
-   },
-
-   createSet: function()
-   {
-       this.canvas.paper.setStart();
-       var shape = null;
-       // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L81.13504999999986,0 L81.13504999999986,80.87877759999992 L0,80.87877759999992");
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
-       shape.data("name","BoundingBox");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M0,3Q0,0 3, 0L77,0Q80,0 80, 3L80,77Q80,80 77, 80L3,80Q0,80 0, 77L0,3');
-       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Label
-       shape = this.canvas.paper.text(0,0,'Histogram');
-       shape.attr({"x":4.228799999999865,"y":68.37877759999992,"text-anchor":"start","text":"Histogram","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M4.315424000003077,7.587841281771944Q4.315424000003077,3.5878412817719436 8.315424000003077, 3.5878412817719436L71.31542400000308,3.5878412817719436Q75.31542400000308,3.5878412817719436 75.31542400000308, 7.587841281771944L75.31542400000308,51.587841281771944Q75.31542400000308,55.587841281771944 71.31542400000308, 55.587841281771944L8.315424000003077,55.587841281771944Q4.315424000003077,55.587841281771944 4.315424000003077, 51.587841281771944L4.315424000003077,7.587841281771944');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M26.881109741784876,49.0014882001456Q30.763898999993216,48.04026628178235 33.19092321874905, 50.011182688028384L33.19092321874905,50.011182688028384Q35.61794743750488,51.98209909427442 39.60742605740177, 51.69216747925865L43.95100709885412,51.376501803042366Q47.940485718751006,51.0865701880266 48.957170984829936, 47.21793333898817L50.809730091343845,40.16867368745212Q51.826415357422775,36.30003683841369 54.61532928927137, 33.43264096746374L60.3467595279926,27.539924375003793Q63.1356734598412,24.672528504053844 64.6440145226967, 28.377242695203275L73.80708293714758,50.88312709062251Q75.31542400000308,54.587841281771944 71.31542400000308, 54.587841281771944L8.315424000003077,54.587841281771944Q4.315424000003077,54.587841281771944 8.198213258211418, 53.62661936340869L26.881109741784876,49.0014882001456');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,5,5,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Blue
-       shape = this.canvas.paper.path('M19.668557677951,50.01256520603322Q23.46607499998572,48.75603737552319 23.981302606081, 44.78935859927759L27.804895831405744,15.351948964267933Q28.320123437501024,11.385270188022332 30.150343500575005, 14.941995440374768L47.02364165567381,47.732416029423774Q48.853861718747794,51.28914128177621 49.91241655701927, 47.431750757811585L54.24723651914971,31.63559845613332Q55.305791357421185,27.778207932168698 56.32595992971813, 31.645927684697003L59.949680887541824,45.38437984527374Q60.96984945983877,49.252099597802044 64.7298452502696, 50.6168089646426L72.46880420956903,53.425703008681Q76.22879999999986,54.790412375521555 72.22879999999986, 54.790412375521555L9.228799999999865,54.790412375521555Q5.228799999999865,54.790412375521555 9.026317322034586, 53.533884545011524L19.668557677951,50.01256520603322');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,17,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Blue");
-       
-       // Green
-       shape = this.canvas.paper.path('M43.953306587033246,51.516137367703884Q47.940485718751006,51.196133349612865 48.957170984829936, 47.32749650057443L50.809730091343845,40.278236849038386Q51.826415357422775,36.409599999999955 53.995775125476655, 39.77023657611901L57.8871136917881,45.79845508951964Q60.05647345984198,49.1590916656387 63.816469250272824, 50.523801032479255L71.55542820957224,53.33269507651765Q75.31542400000308,54.69740444335821 71.31542400000308, 54.69740444335821L8.315424000003077,54.69740444335821Q4.315424000003077,54.69740444335821 8.302603131720836, 54.37740042526719L43.953306587033246,51.516137367703884');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,181,78,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Green");
-       
-
-       return this.canvas.paper.setFinish();
-   }
-});
-
-/**
- * Generated Code for the Draw2D touch HTML5 lib.
- * File will be generated if you save the *.shape file.
- *
- * by 'Draw2D Shape Designer'
- *
- * Custom JS code to tweak the standard behaviour of the generated
- * shape. add your custom code and event handler here.
- *
- * Looks disconcerting - extending my own class. But this is a good method to
- * merge basic code and override them with custom methods.
- */
-video_quality_Histogram = video_quality_Histogram.extend({
-
-    init: function(attr, setter, getter){
-        this._super(attr, setter, getter);
-        this.worker= null;
-        this.tmpCanvas = null;
-        this.tmpContext = null;
-        this.processing = false;
-        
-        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
-        this.img = new draw2d.shape.basic.Image({
-            width: this.getWidth()-6, 
-            height: this.getHeight()/4*3-6,
-            selectable: false,
-            deleteable: false,
-            resizeable:false,
-            draggable: false,
-            path: this.TRANSPARENT_PIXEL
-        });
-        this.img.hitTest = ()=>false;
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
-
-        this.getInputPort("input_port1").setSemanticGroup("Image");
-        this.getOutputPort("output_port1").setSemanticGroup("Image");
-        this.attr({
-            resizeable:false
-        });
-        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
-    },
-
-    /**
-     *  Called by the simulator for every calculation
-     *  loop
-     *  @param {Object} context context where objects can store or handover global variables to other objects.
-     *  @required
-     **/
-    calculate:function( context)
-    {
-        var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){
-            var imageData = this.imageToData(img);
-            // Push it to the WebWorker with "Transferable Objects"
-            // Passing data by reference instead of structure clone
-            //
-            this.processing = true;
-            this.worker.postMessage(imageData, [imageData.data.buffer]);
-        }
-    },
-
-
-    /**
-     *  Called if the simulation mode is starting
-     *  @required
-     **/
-    onStart:function( context )
-    {
-        // the method which runs as WebWorker
-        //
-        var workerFunction = function(event){
-            const  HISTOGRAM_SIZE = 256; // for 8-bit image
-            const  MAX_VALUE = 255;      // max value in 8-bit image
-
-            var imageData = event.data;
-            var pixels = imageData.data;
-            var width  = imageData.width;
-            var height = imageData.height;
-            var imageSize = width * height;
-            var histR  =  Array(HISTOGRAM_SIZE);
-            var histG  =  Array(HISTOGRAM_SIZE);
-            var histB  =  Array(HISTOGRAM_SIZE);
-            histR.fill(0);
-            histG.fill(0);
-            histB.fill(0);
-            
-            // collect the distribution of the RGB values 
-            //
-            for (var index=0; index < pixels.length; index+=4) {
-                histR[pixels[index  ]]++; // red
-                histG[pixels[index+1]]++; // green
-                histB[pixels[index+2]]++; // blue
-            }
-
-            var canvas = new OffscreenCanvas(width, height);
-            var ctx = canvas.getContext('2d');
-
-            let max = Math.max.apply(null, histR.concat(histG, histB))
-
-            function drawColorGraph (vals, color) {
-                const graphX = 0;
-                const graphY = height;
-
-                ctx.fillStyle = color;
-                ctx.beginPath();
-                ctx.moveTo(graphX, height);
-                for (let i = 0; i < vals.length; i++) {
-                  let val = vals[i];
-                  let drawHeight = Math.round((val / max) * height);
-                  let drawX = graphX + (width / (vals.length - 1)) * i;
-                  ctx.lineTo(drawX, graphY - drawHeight);
-                }
-                ctx.lineTo(graphX + width, graphY);
-                ctx.closePath();
-                ctx.fill();
-            }
-            
-            ctx.fillStyle = 'rgba(0,0,0,1)';
-            ctx.beginPath();
-            ctx.fillRect(0,0, width, height);
-            ctx.closePath();
- 
-            ctx.globalCompositeOperation = 'screen';
-    
-            drawColorGraph(histR, "#FF0000");
-            drawColorGraph(histG, "#00FF00");
-            drawColorGraph(histB, "#0000FF");
-            imageData = ctx.getImageData(0, 0, width, height);
-            self.postMessage(imageData, [imageData.data.buffer]);
-        };
-        
-        // the method which receives the WebWorker result
-        //
-       var receiverFunction = (event) => {
-           try{
-            var imageData = event.data;
-            this.tmpContext.putImageData(imageData,0,0);
-            var image = new Image();
-            image.onload = () => { 
-                this.getOutputPort("output_port1").setValue(image);
-                this.processing = false;
-            };
-            image.src = this.tmpCanvas.toDataURL();
-            this.img.attr("path", image.src);
-           }
-           catch(exc){
-               console.log(exc);
-           }
-        };
-
-        // convert a js function to a WebWorker
-        //
-        this.worker = this.createWorker(workerFunction);
-        this.worker.onmessage = receiverFunction;
-        this.processing = false;
-    },
-
-    /**
-     *  Called if the simulation mode is stopping
-     *  @required
-     **/
-    onStop:function( context )
-    {
-        if(this.worker) this.worker.terminate();
-        delete this.worker;
-        delete this.tmpContext;
-        delete this.tmpCanvas;
-        this.worker = null;
-        this.tmpCanvas = null;
-        this.tmpContext = null;
-        this.processing = false;
-    },
-    
-
-    /**
-     *  Helper function to dynamically create Web Workers.
-     */
-    createWorker: function(fn) {
-        var blob = new Blob(["self.onmessage = ", fn.toString()], {
-           type: "text/javascript"
-        });
-        var url = window.URL.createObjectURL(blob);
-        return new Worker(url);
-    },
-    
-    imageToData: function(image){
-        var width = image.naturalWidth;
-        var height= image.naturalHeight;
-
-        if(this.tmpContext !==null && this.tmpContext.width!== width){
-            delete this.tmpContext;
-            delete this.tmpCanvas;
-            this.tmpCanvas = null;
-            this.tmpContext = null;
-        }
-
-        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
-        //
-        if(this.tmpContext === null ) {
-            this.tmpCanvas = document.createElement('canvas');
-            this.tmpCanvas.width = width;
-            this.tmpCanvas.height = height;
-            this.tmpContext = this.tmpCanvas.getContext('2d');
-        }
-        this.tmpContext.drawImage(image, 0, 0, width, height);
-        return this.tmpContext.getImageData(0, 0, width, height);
-    },
-    
-    setPersistentAttributes: function (memento) 
-    {
-        this._super(memento);
-
-        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
-        this.remove(this.img);
-        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
-        this.img.hitTest = ()=>false;
-        
-        this.getInputPort("input_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-        this.getOutputPort("output_port1").attr({
-            semanticGroup:"Image",
-            bgColor:"#ff0000",
-            diameter:15
-        })
-    }
-});
-
-
-// Generated Code for the Draw2D touch HTML5 lib.
-// File will be generated if you save the *.shape file.
-//
-// created with http://www.draw2d.org
-//
-//
 var video_quality_HistogramAdjust = CircuitFigure.extend({
 
    NAME: "video_quality_HistogramAdjust",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -14965,7 +14286,7 @@ video_quality_HistogramAdjust = video_quality_HistogramAdjust.extend({
 var video_quality_Sharpen = CircuitFigure.extend({
 
    NAME: "video_quality_Sharpen",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -15226,10 +14547,182 @@ video_quality_Sharpen = video_quality_Sharpen.extend({
 // created with http://www.draw2d.org
 //
 //
-var video_WebCam = CircuitFigure.extend({
+var video_source_IPCamera = CircuitFigure.extend({
 
-   NAME: "video_WebCam",
-   VERSION: "2.0.281_1003",
+   NAME: "video_source_IPCamera",
+   VERSION: "2.0.282_1004",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.125},attr), setter, getter);
+     var port;
+     // output_port1
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.7890625, y: 49.921996879875195 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output_port1");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 80;
+      this.originalHeight= 80.125;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.125 L0,80.125");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M79.9944352881578,16.18111752610946Q79.99426089739427,14.181117533712495 79.99426089739427, 12.181117533712495L79.99426089739427,2Q79.99426089739427,0 77.99427040266448, 0.006166116321677656L1.9999904947297864,0.2404620146918169Q0,0.24662813101349457 0.007528135284914805, 2.24661396275809L0.2926710777935708,78.0000141682554Q0.3001992130784856,80 2.3001992130784856, 80L78,80Q80,80 79.99982560923647, 78.00000000760303L79.9944352881578,16.18111752610946');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'NetworkCam');
+       shape.attr({"x":5.640625,"y":69.125,"text-anchor":"start","text":"NetworkCam","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#BD2466","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M7.077599999998711,25.322299999999814Q7.077599999998711,21.322299999999814 11.07759999999871, 21.322299999999814L47.07759999999871,21.322299999999814Q51.07759999999871,21.322299999999814 51.07759999999871, 25.322299999999814L51.07759999999871,47.322299999999814Q51.07759999999871,51.322299999999814 47.07759999999871, 51.322299999999814L11.07759999999871,51.322299999999814Q7.077599999998711,51.322299999999814 7.077599999998711, 47.322299999999814L7.077599999998711,25.322299999999814');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M50.88073469083684,32.45000459669621Q50.86119999999755,30.450100000008206 52.560817500210284, 29.39591768514487L63.87798249978598,22.37648231486315Q65.57759999999871,21.322299999999814 65.57759999999871, 23.322299999999814L65.57759999999871,49.322299999999814Q65.57759999999871,51.322299999999814 63.91645483821974, 50.20847921033106L52.63054516177801,42.641120789660306Q50.96939999999904,41.527299999991556 50.949865309159755, 39.52739540330355L50.88073469083684,32.45000459669621');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Circle
+       shape = this.canvas.paper.ellipse();
+       shape.attr({"rx":3,"ry":3,"cx":45.86119999999755,"cy":25.958674805342525,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Circle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'http://<address>:<port>');
+       shape.attr({"x":6.640625,"y":13.109375,"text-anchor":"start","text":"http://<address>:<port>","font-family":"\"Arial\"","font-size":6,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custome code and event handler here.
+ *
+ *
+ */
+video_source_IPCamera = video_source_IPCamera.extend({
+
+    init: function(attr, setter, getter){
+         this._super(attr, setter, getter);
+
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+   
+        this.img = new draw2d.shape.basic.Image({
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3 -6,
+            path: this.TRANSPARENT_PIXEL
+        });
+        this.img.hitTest = ()=>false;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3,y:3}));
+        
+        this.attr({resizeable:false});
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        });
+
+    },
+
+    /**
+     *  Called by the simulator for every calculation
+     *  loop
+     *  @required
+     **/
+    calculate:function( context)
+    {
+        var image = new Image();
+        image.onload = () => {
+            this.getOutputPort("output_port1").setValue(image);
+        };
+        image.src = hardware.camera.image(this.attr("userData.ipAddress"));
+    },
+    
+    
+    onStart: function(context ){
+        hardware.camera.start(this.attr("userData.ipAddress"));
+    },
+    
+    
+    onStop: function(context){
+        hardware.camera.stop(this.attr("userData.ipAddress"));
+    },
+    
+    getPersistentAttributes: function () 
+    {
+       let currentImage = this.img.attr("path");
+       this.img.attr("path", this.TRANSPARENT_PIXEL);
+    
+       let memento = this._super()
+    
+       this.img.attr("path", currentImage);
+
+       return memento
+    },
+    
+    setPersistentAttributes: function (memento) {
+        this._super(memento)
+        
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image)
+        this.img.hitTest = ()=>false
+        
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+    },
+    
+    getParameterSettings: function () {
+        return [{
+                name: "ipAddress",
+                label: "IP-Address of the MJPEG Web Camera",
+                property: {
+                    type: "string"
+                }
+            }]
+    }
+    
+});
+
+
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
+var video_source_WebCam = CircuitFigure.extend({
+
+   NAME: "video_source_WebCam",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -15304,7 +14797,7 @@ var video_WebCam = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_WebCam = video_WebCam.extend({
+video_source_WebCam = video_source_WebCam.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -15434,10 +14927,517 @@ video_WebCam = video_WebCam.extend({
 // created with http://www.draw2d.org
 //
 //
+var video_tools_Histogram = CircuitFigure.extend({
+
+   NAME: "video_tools_Histogram",
+   VERSION: "2.0.282_1004",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:81.13504999999986,height:80.87877759999992},attr), setter, getter);
+     var port;
+     // input_port1
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9505139887140474, y: 49.34495943717131 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port1");
+     port.setMaxFanOut(20);
+     // output_port1
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 98.92155116685083, y: 49.34495943717131 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output_port1");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 81.13504999999986;
+      this.originalHeight= 80.87877759999992;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L81.13504999999986,0 L81.13504999999986,80.87877759999992 L0,80.87877759999992");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0,3Q0,0 3, 0L77,0Q80,0 80, 3L80,77Q80,80 77, 80L3,80Q0,80 0, 77L0,3');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'Histogram');
+       shape.attr({"x":4.228799999999865,"y":68.37877759999992,"text-anchor":"start","text":"Histogram","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M4.315424000003077,7.587841281771944Q4.315424000003077,3.5878412817719436 8.315424000003077, 3.5878412817719436L71.31542400000308,3.5878412817719436Q75.31542400000308,3.5878412817719436 75.31542400000308, 7.587841281771944L75.31542400000308,51.587841281771944Q75.31542400000308,55.587841281771944 71.31542400000308, 55.587841281771944L8.315424000003077,55.587841281771944Q4.315424000003077,55.587841281771944 4.315424000003077, 51.587841281771944L4.315424000003077,7.587841281771944');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M26.881109741784876,49.0014882001456Q30.763898999993216,48.04026628178235 33.19092321874905, 50.011182688028384L33.19092321874905,50.011182688028384Q35.61794743750488,51.98209909427442 39.60742605740177, 51.69216747925865L43.95100709885412,51.376501803042366Q47.940485718751006,51.0865701880266 48.957170984829936, 47.21793333898817L50.809730091343845,40.16867368745212Q51.826415357422775,36.30003683841369 54.61532928927137, 33.43264096746374L60.3467595279926,27.539924375003793Q63.1356734598412,24.672528504053844 64.6440145226967, 28.377242695203275L73.80708293714758,50.88312709062251Q75.31542400000308,54.587841281771944 71.31542400000308, 54.587841281771944L8.315424000003077,54.587841281771944Q4.315424000003077,54.587841281771944 8.198213258211418, 53.62661936340869L26.881109741784876,49.0014882001456');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,5,5,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Blue
+       shape = this.canvas.paper.path('M19.668557677951,50.01256520603322Q23.46607499998572,48.75603737552319 23.981302606081, 44.78935859927759L27.804895831405744,15.351948964267933Q28.320123437501024,11.385270188022332 30.150343500575005, 14.941995440374768L47.02364165567381,47.732416029423774Q48.853861718747794,51.28914128177621 49.91241655701927, 47.431750757811585L54.24723651914971,31.63559845613332Q55.305791357421185,27.778207932168698 56.32595992971813, 31.645927684697003L59.949680887541824,45.38437984527374Q60.96984945983877,49.252099597802044 64.7298452502696, 50.6168089646426L72.46880420956903,53.425703008681Q76.22879999999986,54.790412375521555 72.22879999999986, 54.790412375521555L9.228799999999865,54.790412375521555Q5.228799999999865,54.790412375521555 9.026317322034586, 53.533884545011524L19.668557677951,50.01256520603322');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,17,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Blue");
+       
+       // Green
+       shape = this.canvas.paper.path('M43.953306587033246,51.516137367703884Q47.940485718751006,51.196133349612865 48.957170984829936, 47.32749650057443L50.809730091343845,40.278236849038386Q51.826415357422775,36.409599999999955 53.995775125476655, 39.77023657611901L57.8871136917881,45.79845508951964Q60.05647345984198,49.1590916656387 63.816469250272824, 50.523801032479255L71.55542820957224,53.33269507651765Q75.31542400000308,54.69740444335821 71.31542400000308, 54.69740444335821L8.315424000003077,54.69740444335821Q4.315424000003077,54.69740444335821 8.302603131720836, 54.37740042526719L43.953306587033246,51.516137367703884');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,181,78,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Green");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * Generated Code for the Draw2D touch HTML5 lib.
+ * File will be generated if you save the *.shape file.
+ *
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custom code and event handler here.
+ *
+ * Looks disconcerting - extending my own class. But this is a good method to
+ * merge basic code and override them with custom methods.
+ */
+video_tools_Histogram = video_tools_Histogram.extend({
+
+    init: function(attr, setter, getter){
+        this._super(attr, setter, getter);
+        this.worker= null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
+        this.processing = false;
+        
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+        this.img = new draw2d.shape.basic.Image({
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3-6,
+            selectable: false,
+            deleteable: false,
+            resizeable:false,
+            draggable: false,
+            path: this.TRANSPARENT_PIXEL
+        });
+        this.img.hitTest = ()=>false;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+
+        this.getInputPort("input_port1").setSemanticGroup("Image");
+        this.getOutputPort("output_port1").setSemanticGroup("Image");
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+    },
+
+    /**
+     *  Called by the simulator for every calculation
+     *  loop
+     *  @param {Object} context context where objects can store or handover global variables to other objects.
+     *  @required
+     **/
+    calculate:function( context)
+    {
+        var img = this.getInputPort("input_port1").getValue();
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){
+            var imageData = this.imageToData(img);
+            // Push it to the WebWorker with "Transferable Objects"
+            // Passing data by reference instead of structure clone
+            //
+            this.processing = true;
+            this.worker.postMessage(imageData, [imageData.data.buffer]);
+        }
+    },
+
+
+    /**
+     *  Called if the simulation mode is starting
+     *  @required
+     **/
+    onStart:function( context )
+    {
+        // the method which runs as WebWorker
+        //
+        var workerFunction = function(event){
+            const  HISTOGRAM_SIZE = 256; // for 8-bit image
+            const  MAX_VALUE = 255;      // max value in 8-bit image
+
+            var imageData = event.data;
+            var pixels = imageData.data;
+            var width  = imageData.width;
+            var height = imageData.height;
+            var imageSize = width * height;
+            var histR  =  Array(HISTOGRAM_SIZE);
+            var histG  =  Array(HISTOGRAM_SIZE);
+            var histB  =  Array(HISTOGRAM_SIZE);
+            histR.fill(0);
+            histG.fill(0);
+            histB.fill(0);
+            
+            // collect the distribution of the RGB values 
+            //
+            for (var index=0; index < pixels.length; index+=4) {
+                histR[pixels[index  ]]++; // red
+                histG[pixels[index+1]]++; // green
+                histB[pixels[index+2]]++; // blue
+            }
+
+            var canvas = new OffscreenCanvas(width, height);
+            var ctx = canvas.getContext('2d');
+
+            let max = Math.max.apply(null, histR.concat(histG, histB))
+
+            function drawColorGraph (vals, color) {
+                const graphX = 0;
+                const graphY = height;
+
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.moveTo(graphX, height);
+                for (let i = 0; i < vals.length; i++) {
+                  let val = vals[i];
+                  let drawHeight = Math.round((val / max) * height);
+                  let drawX = graphX + (width / (vals.length - 1)) * i;
+                  ctx.lineTo(drawX, graphY - drawHeight);
+                }
+                ctx.lineTo(graphX + width, graphY);
+                ctx.closePath();
+                ctx.fill();
+            }
+            
+            ctx.fillStyle = 'rgba(0,0,0,1)';
+            ctx.beginPath();
+            ctx.fillRect(0,0, width, height);
+            ctx.closePath();
+ 
+            ctx.globalCompositeOperation = 'screen';
+    
+            drawColorGraph(histR, "#FF0000");
+            drawColorGraph(histG, "#00FF00");
+            drawColorGraph(histB, "#0000FF");
+            imageData = ctx.getImageData(0, 0, width, height);
+            self.postMessage(imageData, [imageData.data.buffer]);
+        };
+        
+        // the method which receives the WebWorker result
+        //
+       var receiverFunction = (event) => {
+           try{
+            var imageData = event.data;
+            this.tmpContext.putImageData(imageData,0,0);
+            var image = new Image();
+            image.onload = () => { 
+                this.getOutputPort("output_port1").setValue(image);
+                this.processing = false;
+            };
+            image.src = this.tmpCanvas.toDataURL();
+            this.img.attr("path", image.src);
+           }
+           catch(exc){
+               console.log(exc);
+           }
+        };
+
+        // convert a js function to a WebWorker
+        //
+        this.worker = this.createWorker(workerFunction);
+        this.worker.onmessage = receiverFunction;
+        this.processing = false;
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     *  @required
+     **/
+    onStop:function( context )
+    {
+        if(this.worker) this.worker.terminate();
+        delete this.worker;
+        delete this.tmpContext;
+        delete this.tmpCanvas;
+        this.worker = null;
+        this.tmpCanvas = null;
+        this.tmpContext = null;
+        this.processing = false;
+    },
+    
+
+    /**
+     *  Helper function to dynamically create Web Workers.
+     */
+    createWorker: function(fn) {
+        var blob = new Blob(["self.onmessage = ", fn.toString()], {
+           type: "text/javascript"
+        });
+        var url = window.URL.createObjectURL(blob);
+        return new Worker(url);
+    },
+    
+    imageToData: function(image){
+        var width = image.naturalWidth;
+        var height= image.naturalHeight;
+
+        if(this.tmpContext !==null && this.tmpContext.width!== width){
+            delete this.tmpContext;
+            delete this.tmpCanvas;
+            this.tmpCanvas = null;
+            this.tmpContext = null;
+        }
+
+        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
+        //
+        if(this.tmpContext === null ) {
+            this.tmpCanvas = document.createElement('canvas');
+            this.tmpCanvas.width = width;
+            this.tmpCanvas.height = height;
+            this.tmpContext = this.tmpCanvas.getContext('2d');
+        }
+        this.tmpContext.drawImage(image, 0, 0, width, height);
+        return this.tmpContext.getImageData(0, 0, width, height);
+    },
+    
+    setPersistentAttributes: function (memento) 
+    {
+        this._super(memento);
+
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
+        this.remove(this.img);
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+        this.img.hitTest = ()=>false;
+        
+        this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+    }
+});
+
+
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
+var video_tools_Preview = CircuitFigure.extend({
+
+   NAME: "video_tools_Preview",
+   VERSION: "2.0.282_1004",
+
+   init:function(attr, setter, getter)
+   {
+     var _this = this;
+
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80},attr), setter, getter);
+     var port;
+     // input_port1
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 50 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port1");
+     port.setMaxFanOut(1);
+     // output_port1
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 102.5, y: 50 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output_port1");
+     port.setMaxFanOut(20);
+   },
+
+   createShapeElement : function()
+   {
+      var shape = this._super();
+      this.originalWidth = 80;
+      this.originalHeight= 80;
+      return shape;
+   },
+
+   createSet: function()
+   {
+       this.canvas.paper.setStart();
+       var shape = null;
+       // BoundingBox
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,80 L0,80");
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
+       shape.data("name","BoundingBox");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M0,3Q0,0 3, 0L77,0Q80,0 80, 3L80,77Q80,80 77, 80L3,80Q0,80 0, 77L0,3');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M3.5,5.508584000000155Q3.5,3.5085840000001554 5.5, 3.5085840000001554L74.5,3.5085840000001554Q76.5,3.5085840000001554 76.5, 5.508584000000155L76.5,53.508584000000155Q76.5,55.508584000000155 74.5, 55.508584000000155L5.5,55.508584000000155Q3.5,55.508584000000155 3.5, 53.508584000000155L3.5,5.508584000000155');
+       shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(240,243,243,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Rectangle
+       shape = this.canvas.paper.path('M30.936231463021613,35.76911304131136Q30.872197764576413,36.19697836850173 30.786098882288115, 36.19697836850173L30.786098882288115,36.19697836850173Q30.699999999999818,36.19697836850173 30.02542399975173, 39.120152537087876L28.228848000250217,46.90534583141388Q27.55427200000213,49.828520000000026 30.55427200000213, 49.828520000000026L49.845727999999326,49.828520000000026Q52.845727999999326,49.828520000000026 52.17115199975087, 46.90534583141397L50.374576000248275,39.12015253708779Q49.69999999999982,36.19697836850173 49.61390111771152, 36.19697836850173L49.61390111771152,36.19697836850173Q49.52780223542322,36.19697836850173 49.46376853697802, 35.76911304131136L49.46376853697802,35.76911304131136Q49.39973483853282,35.34124771412098 49.189009825240646, 34.881505982345516L49.189009825240646,34.881505982345516Q48.97828481194847,34.42176425057005 48.63419792766399, 33.99039830073025L48.63419792766399,33.99039830073025Q48.29011104337951,33.55903235089045 47.82311719396512, 33.1691490190874L47.82311719396512,33.1691490190874Q47.356123344550724,32.77926568728435 46.780411901811476, 32.44271138126396L46.780411901811476,32.44271138126396Q46.20470045907223,32.10615707524357 45.5377641238706, 31.833157827294144L45.5377641238706,31.833157827294144Q44.870827788668976,31.560158579344716 44.132931084064694, 31.35900933346511L44.132931084064694,31.35900933346511Q43.39503437946041,31.157860087585505 42.60859792342853, 31.03467266183179L42.60859792342853,31.03467266183179Q41.822161467396654,30.91148523607808 41.011080733698236, 30.870002618039052L41.011080733698236,30.870002618039052Q40.19999999999982,30.828520000000026 39.3889192663014, 30.870002618039052L39.3889192663014,30.870002618039052Q38.57783853260298,30.91148523607808 37.7914020765711, 31.03467266183179L37.7914020765711,31.03467266183179Q37.004965620539224,31.157860087585505 36.26706891593494, 31.35900933346511L36.26706891593494,31.35900933346511Q35.52917221133066,31.560158579344716 34.862235876129034, 31.833157827294144L34.862235876129034,31.833157827294144Q34.19529954092741,32.10615707524357 33.61958809818816, 32.44271138126396L33.61958809818816,32.44271138126396Q33.04387665544891,32.77926568728435 32.57688280603452, 33.1691490190874L32.57688280603452,33.1691490190874Q32.109888956620125,33.55903235089045 31.765802072335646, 33.99039830073025L31.765802072335646,33.99039830073025Q31.421715188051166,34.42176425057005 31.21099017475899, 34.881505982345516L31.21099017475899,34.881505982345516Q31.000265161466814,35.34124771412098 30.936231463021613, 35.76911304131136L30.936231463021613,35.76911304131136');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'Preview');
+       shape.attr({"x":15.5,"y":67.50858400000016,"text-anchor":"start","text":"Preview","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Circle
+       shape = this.canvas.paper.ellipse();
+       shape.attr({"rx":8,"ry":8.5,"cx":39.69999999999982,"cy":19.328520000000026,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Circle");
+       
+
+       return this.canvas.paper.setFinish();
+   }
+});
+
+/**
+ * Generated Code for the Draw2D touch HTML5 lib.
+ * File will be generated if you save the *.shape file.
+ *
+ * by 'Draw2D Shape Designer'
+ *
+ * Custom JS code to tweak the standard behaviour of the generated
+ * shape. add your custom code and event handler here.
+ *
+ * Looks disconcerting - extending my own class. But this is a good method to
+ * merge basic code and override them with custom methods.
+ */
+video_tools_Preview = video_tools_Preview.extend({
+
+    init: function(attr, setter, getter){
+        this._super(attr, setter, getter);
+        
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+        this.img = new draw2d.shape.basic.Image({
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3-6,
+            selectable: false,
+            deleteable: false,
+            resizeable:false,
+            draggable: false,
+            path: this.TRANSPARENT_PIXEL
+        });
+        this.img.hitTest = ()=>false;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+
+        this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        
+        this.attr({
+            resizeable:false
+        });
+        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());
+    },
+
+    /**
+     *  Called by the simulator for every calculation
+     *  loop
+     *  @param {Object} context context where objects can store or handover global variables to other objects.
+     *  @required
+     **/
+    calculate:function( context)
+    {
+        var image = this.getInputPort("input_port1").getValue();
+        if (image instanceof HTMLImageElement) {
+            this.img.attr("path", image.src);
+            this.getOutputPort("output_port1").setValue(image);
+        }
+    },
+
+
+    /**
+     *  Called if the simulation mode is starting
+     *  @required
+     **/
+    onStart:function( context )
+    {
+    },
+
+    /**
+     *  Called if the simulation mode is stopping
+     *  @required
+     **/
+    onStop:function( context )
+    {
+    },
+    
+  
+    getPersistentAttributes: function () 
+    {
+       let currentImage = this.img.attr("path");
+       this.img.attr("path", this.TRANSPARENT_PIXEL);
+    
+       let memento = this._super()
+    
+       this.img.attr("path", currentImage);
+
+       return memento
+    },
+
+    setPersistentAttributes: function (memento) 
+    {
+        this._super(memento);
+
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
+        this.remove(this.img);
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+        this.img.hitTest = ()=>false;
+        
+        this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+    }
+});
+
+
+// Generated Code for the Draw2D touch HTML5 lib.
+// File will be generated if you save the *.shape file.
+//
+// created with http://www.draw2d.org
+//
+//
 var widget_HighLow = CircuitFigure.extend({
 
    NAME: "widget_HighLow",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -15548,7 +15548,7 @@ widget_HighLow = widget_HighLow.extend({
 var widget_PushButton = CircuitFigure.extend({
 
    NAME: "widget_PushButton",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {

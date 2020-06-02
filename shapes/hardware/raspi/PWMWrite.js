@@ -7,7 +7,7 @@
 var hardware_raspi_PWMWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PWMWrite",
-   VERSION: "2.0.281_1003",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {

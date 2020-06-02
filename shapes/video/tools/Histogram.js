@@ -4,10 +4,10 @@
 // created with http://www.draw2d.org
 //
 //
-var video_quality_Histogram = CircuitFigure.extend({
+var video_tools_Histogram = CircuitFigure.extend({
 
-   NAME: "video_quality_Histogram",
-   VERSION: "2.0.281_1003",
+   NAME: "video_tools_Histogram",
+   VERSION: "2.0.282_1004",
 
    init:function(attr, setter, getter)
    {
@@ -93,7 +93,7 @@ var video_quality_Histogram = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_quality_Histogram = video_quality_Histogram.extend({
+video_tools_Histogram = video_tools_Histogram.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);

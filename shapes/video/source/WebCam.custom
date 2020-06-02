@@ -10,7 +10,7 @@
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_WebCam = video_WebCam.extend({
+video_source_WebCam = video_source_WebCam.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
