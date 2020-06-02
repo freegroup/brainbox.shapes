@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.277_988",
+   VERSION: "2.0.278_992",
 
    init:function(attr, setter, getter)
    {
@@ -91,6 +91,19 @@ video_quality_Histogram = video_quality_Histogram.extend({
         this.tmpCanvas = null;
         this.tmpContext = null;
         this.processing = false;
+        
+        this.img = new draw2d.shape.basic.Image({
+            width: this.getWidth()-6, 
+            height: this.getHeight()/4*3-6,
+            selectable: false,
+            deleteable: false,
+            resizeable:false,
+            draggable: false,
+            path: this.TRANSPARENT_PIXEL
+        });
+        this.img.hitTest = ()=>false;
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
         this.attr({
@@ -203,6 +216,7 @@ video_quality_Histogram = video_quality_Histogram.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
+           try{
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
@@ -211,6 +225,14 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
+            console.log(image.src)
+            this.img.attr("path", image.src);
+           }
+           catch(exc){
+               console.log(exc)
+               
+           }
+           
         };
 
 
@@ -270,5 +292,26 @@ video_quality_Histogram = video_quality_Histogram.extend({
         }
         this.tmpContext.drawImage(image, 0, 0, width, height);
         return this.tmpContext.getImageData(0, 0, width, height);
+    },
+    
+    setPersistentAttributes: function (memento) 
+    {
+        this._super(memento);
+
+        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
+        this.remove(this.img);
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));
+        this.img.hitTest = ()=>false;
+        
+        this.getInputPort("input_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
+        this.getOutputPort("output_port1").attr({
+            semanticGroup:"Image",
+            bgColor:"#ff0000",
+            diameter:15
+        })
     }
 });
