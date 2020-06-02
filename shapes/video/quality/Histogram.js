@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.274_983",
+   VERSION: "2.0.275_984",
 
    init:function(attr, setter, getter)
    {
@@ -183,22 +183,36 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 histB[i] = sumB;
                 ++i;
             }
-    this._ctx.globalCompositeOperation = this.compositeOperation
-    if (!dontClear) {
-      this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height)
-    }
-    let max = Math.max.apply(null, data.red.concat(data.green, data.blue))
+            var canvas = new OffscreenCanvas(width, height);
+            var ctx = canvas.getContext('2d');
 
-    if (this.red) {
-      this._drawColorGraph(max, data.red, this.redColor)
-    }
-    if (this.green) {
-      this._drawColorGraph(max, data.green, this.greenColor)
-    }
-    if (this.blue) {
-      this._drawColorGraph(max, data.blue, this.blueColor)
-    }
+            ctx.globalCompositeOperation = 'screen';
+            
+            let max = Math.max(sumR, sumG, sumB);
+
+            function drawColorGraph (vals, color) {
+                const graphX = 0;
+                const graphY = height;
+            
+                let ctx = this._ctx
+                ctx.fillStyle = color
+                ctx.beginPath()
+                ctx.moveTo(graphX, height)
+                for (let i = 0; i < vals.length; i++) {
+                  let val = vals[i]
+                  let drawHeight = Math.round((val / max) * height)
+                  let drawX = graphX + (width / (vals.length - 1)) * i
+                  ctx.lineTo(drawX, graphY - drawHeight)
+                }
+                ctx.lineTo(graphX + width, graphY)
+                ctx.closePath()
+                ctx.fill()
+            }
     
+            drawColorGraph(histR, "#FF0000")
+            drawColorGraph(histG, "#00FF00")
+            drawColorGraph(histB, "#0000FF")
+            imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
