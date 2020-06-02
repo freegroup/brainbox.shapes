@@ -7,7 +7,7 @@
 var signal_SignalSwitch = CircuitFigure.extend({
 
    NAME: "signal_SignalSwitch",
-   VERSION: "2.0.288_1014",
+   VERSION: "2.0.289_1015",
 
    init:function(attr, setter, getter)
    {
@@ -68,15 +68,15 @@ var signal_SignalSwitch = CircuitFigure.extend({
        shape.attr({"x":5,"y":68.3125,"text-anchor":"start","text":"Selector","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
-       // up_line
+       // high
        shape = this.canvas.paper.path('M35.0014546875027 23.937916406248405L5.0260546874969805,12.308116406252338');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","up_line");
+       shape.data("name","high");
        
-       // down_line
+       // low
        shape = this.canvas.paper.path('M34.92365468750086 26.972316406244317L5.275854687495666,38.43831640625194');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","down_line");
+       shape.data("name","low");
        
 
        return this.canvas.paper.setFinish();
@@ -111,8 +111,26 @@ signal_SignalSwitch = signal_SignalSwitch.extend({
      **/
     calculate:function( context)
     {
-        let inValue = this.getInputPort("input_port1").getValue();
-        this.getOutputPort("output_port1").setValue(5-inValue);
+        let inValue1 = this.getInputPort("input_port1").getValue();
+        let inValue2 = this.getInputPort("input_port2").getValue();
+        let inValue3 = this.getInputPort("input_port3").getBooleanValue();
+        if(inValue3 === true){
+            this.getOutputPort("output_port1").setValue(inValue1);
+        }
+        else{
+            this.getOutputPort("output_port1").setValue(inValue2);
+        }
+        
+        if(this.getInputPort("input_port3").hasChangedValue()){
+            this.layerShow("low" , !inValue3, 100);
+            this.layerShow("high",  inValue3, 100);
+        }
+    },
+    
+    onStart:function(context){
+        let inValue3 = this.getInputPort("input_port3").getBooleanValue();
+        this.layerShow("low" , !inValue3, 100);
+        this.layerShow("high",  inValue3, 100);
     }
 
 });

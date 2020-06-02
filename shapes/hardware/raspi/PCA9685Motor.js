@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685Motor = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Motor",
-   VERSION: "2.0.288_1014",
+   VERSION: "2.0.289_1015",
 
    init:function(attr, setter, getter)
    {
