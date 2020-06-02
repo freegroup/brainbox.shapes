@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.278_994",
+   VERSION: "2.0.279_999",
 
    init:function(attr, setter, getter)
    {
@@ -92,6 +92,7 @@ video_quality_Histogram = video_quality_Histogram.extend({
         this.tmpContext = null;
         this.processing = false;
         
+        this.TRANSPARENT_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         this.img = new draw2d.shape.basic.Image({
             width: this.getWidth()-6, 
             height: this.getHeight()/4*3-6,
@@ -149,9 +150,9 @@ video_quality_Histogram = video_quality_Histogram.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var imageSize = width * height;
-            var histR  = new Uint32Array(HISTOGRAM_SIZE);
-            var histG  = new Uint32Array(HISTOGRAM_SIZE);
-            var histB  = new Uint32Array(HISTOGRAM_SIZE);
+            var histR  =  Array(HISTOGRAM_SIZE);
+            var histG  =  Array(HISTOGRAM_SIZE);
+            var histB  =  Array(HISTOGRAM_SIZE);
             histR.fill(0);
             histG.fill(0);
             histB.fill(0);
@@ -164,29 +165,12 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 histB[pixels[index+2]]++; // blue
             }
 
-            var sumR = 0;
-            var sumG = 0;
-            var sumB = 0;
-            var i = 0;
-            while(i < HISTOGRAM_SIZE)
-            {
-                // cumulative sum is used as LUT
-                sumR += histR[i];
-                sumG += histG[i];
-                sumB += histB[i];
-       
-                // build look-up table
-                histR[i] = sumR;
-                histG[i] = sumG;
-                histB[i] = sumB;
-                ++i;
-            }
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
 
             ctx.globalCompositeOperation = 'screen';
             
-            let max = Math.max(sumR, sumG, sumB);
+            let max = Math.max.apply(null, histR.concat(histG, histB))
 
             function drawColorGraph (vals, color) {
                 const graphX = 0;
@@ -225,11 +209,10 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
-            console.log(image.src)
             this.img.attr("path", image.src);
            }
            catch(exc){
-               console.log(exc)
+               console.log(exc);
            }
         };
 
