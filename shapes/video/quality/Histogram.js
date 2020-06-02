@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.277_990",
+   VERSION: "2.0.278_994",
 
    init:function(attr, setter, getter)
    {
@@ -216,6 +216,7 @@ video_quality_Histogram = video_quality_Histogram.extend({
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
+           try{
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
@@ -224,9 +225,13 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
+            console.log(image.src)
             this.img.attr("path", image.src);
+           }
+           catch(exc){
+               console.log(exc)
+           }
         };
-
 
         // convert a js function to a WebWorker
         //
