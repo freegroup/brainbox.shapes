@@ -7,7 +7,7 @@
 var video_quality_GaussBlur = CircuitFigure.extend({
 
    NAME: "video_quality_GaussBlur",
-   VERSION: "2.0.280_1001",
+   VERSION: "2.0.281_1003",
 
    init:function(attr, setter, getter)
    {
