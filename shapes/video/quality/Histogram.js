@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.279_995",
+   VERSION: "2.0.280_1001",
 
    init:function(attr, setter, getter)
    {
@@ -150,9 +150,9 @@ video_quality_Histogram = video_quality_Histogram.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var imageSize = width * height;
-            var histR  = new Uint32Array(HISTOGRAM_SIZE);
-            var histG  = new Uint32Array(HISTOGRAM_SIZE);
-            var histB  = new Uint32Array(HISTOGRAM_SIZE);
+            var histR  =  Array(HISTOGRAM_SIZE);
+            var histG  =  Array(HISTOGRAM_SIZE);
+            var histB  =  Array(HISTOGRAM_SIZE);
             histR.fill(0);
             histG.fill(0);
             histB.fill(0);
@@ -165,29 +165,10 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 histB[pixels[index+2]]++; // blue
             }
 
-            var sumR = 0;
-            var sumG = 0;
-            var sumB = 0;
-            var i = 0;
-            while(i < HISTOGRAM_SIZE)
-            {
-                // cumulative sum is used as LUT
-                sumR += histR[i];
-                sumG += histG[i];
-                sumB += histB[i];
-       
-                // build look-up table
-                histR[i] = sumR;
-                histG[i] = sumG;
-                histB[i] = sumB;
-                ++i;
-            }
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
 
-            ctx.globalCompositeOperation = 'screen';
-            
-            let max = Math.max(sumR, sumG, sumB);
+            let max = Math.max.apply(null, histR.concat(histG, histB))
 
             function drawColorGraph (vals, color) {
                 const graphX = 0;
@@ -206,6 +187,13 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 ctx.closePath();
                 ctx.fill();
             }
+            
+            ctx.fillStyle = 'rgba(255,255,255,1)';
+            ctx.beginPath();
+            ctx.fillRect(0,0, width, height);
+            ctx.closePath();
+ 
+            ctx.globalCompositeOperation = 'screen';
     
             drawColorGraph(histR, "#FF0000");
             drawColorGraph(histG, "#00FF00");
@@ -226,11 +214,10 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
-            console.log(image.src)
             this.img.attr("path", image.src);
            }
            catch(exc){
-               console.log(exc)
+               console.log(exc);
            }
         };
 
