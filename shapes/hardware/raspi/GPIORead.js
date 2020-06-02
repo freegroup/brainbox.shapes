@@ -7,7 +7,7 @@
 var hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIORead",
-   VERSION: "2.0.274_983",
+   VERSION: "2.0.275_985",
 
    init:function(attr, setter, getter)
    {
@@ -106,7 +106,7 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
      **/
     calculate:function( context)
     {
-        var port = this.getInputPort("output_port1");
+        var port = this.getOutputPort("output_port1");
         if(port.hasChangedValue()){
             hardware.raspi.set(this.gpioPin, port.getValue());
         }
@@ -122,7 +122,7 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
      **/
     onStart:function( context )
     {
-        var port = this.getInputPort("output_port1");
+        var port = this.getOutputPort("output_port1");
         hardware.raspi.mode(this.gpioPin, "INPUT");
         hardware.raspi.set(this.gpioPin, port.getValue());
     },
