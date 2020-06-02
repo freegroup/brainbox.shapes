@@ -14,7 +14,7 @@
       "userData": {
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            const  HISTOGRAM_SIZE = 256; // for 8-bit image\n            const  MAX_VALUE = 255;      // max value in 8-bit image\n\n            var imageData = event.data;\n            var pixels = imageData.data;\n            var width  = imageData.width;\n            var height = imageData.height;\n            var imageSize = width * height;\n            var histR  = new Uint32Array(HISTOGRAM_SIZE);\n            var histG  = new Uint32Array(HISTOGRAM_SIZE);\n            var histB  = new Uint32Array(HISTOGRAM_SIZE);\n            histR.fill(0);\n            histG.fill(0);\n            histB.fill(0);\n            \n            // collect the distribution of the RGB values \n            //\n            for (var index=0; index < pixels.length; index+=4) {\n                histR[pixels[index  ]]++; // red\n                histG[pixels[index+1]]++; // green\n                histB[pixels[index+2]]++; // blue\n            }\n\n            var sumR = 0;\n            var sumG = 0;\n            var sumB = 0;\n            var i = 0;\n            while(i < HISTOGRAM_SIZE)\n            {\n                // cumulative sum is used as LUT\n                sumR += histR[i];\n                sumG += histG[i];\n                sumB += histB[i];\n       \n                // build look-up table\n                histR[i] = sumR;\n                histG[i] = sumG;\n                histB[i] = sumB;\n                ++i;\n            }\n            var canvas = new OffscreenCanvas(width, height);\n            var ctx = canvas.getContext('2d');\n\n            ctx.globalCompositeOperation = 'screen';\n            \n            let max = Math.max(sumR, sumG, sumB);\n\n            function drawColorGraph (vals, color) {\n                const graphX = 0;\n                const graphY = height;\n\n                ctx.fillStyle = color;\n                ctx.beginPath();\n                ctx.moveTo(graphX, height);\n                for (let i = 0; i < vals.length; i++) {\n                  let val = vals[i];\n                  let drawHeight = Math.round((val / max) * height);\n                  let drawX = graphX + (width / (vals.length - 1)) * i;\n                  ctx.lineTo(drawX, graphY - drawHeight);\n                }\n                ctx.lineTo(graphX + width, graphY);\n                ctx.closePath();\n                ctx.fill();\n            }\n    \n            drawColorGraph(histR, \"#FF0000\");\n            drawColorGraph(histG, \"#00FF00\");\n            drawColorGraph(histB, \"#0000FF\");\n            imageData = ctx.getImageData(0, 0, width, height);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { \n                this.getOutputPort(\"output_port1\").setValue(image);\n                this.processing = false;\n            };\n            image.src = this.tmpCanvas.toDataURL();\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n        this.processing = false;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        if(this.worker) this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n\n        if(this.tmpContext !==null && this.tmpContext.width!== width){\n            delete this.tmpContext;\n            delete this.tmpCanvas;\n            this.tmpCanvas = null;\n            this.tmpContext = null;\n        }\n\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        \n        this.img = new draw2d.shape.basic.Image({\n            width: this.getWidth()-6, \n            height: this.getHeight()/4*3-6,\n            selectable: false,\n            deleteable: false,\n            resizeable:false,\n            draggable: false,\n            path: this.TRANSPARENT_PIXEL\n        });\n        this.img.hitTest = ()=>false;\n        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));\n\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing===false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            const  HISTOGRAM_SIZE = 256; // for 8-bit image\n            const  MAX_VALUE = 255;      // max value in 8-bit image\n\n            var imageData = event.data;\n            var pixels = imageData.data;\n            var width  = imageData.width;\n            var height = imageData.height;\n            var imageSize = width * height;\n            var histR  = new Uint32Array(HISTOGRAM_SIZE);\n            var histG  = new Uint32Array(HISTOGRAM_SIZE);\n            var histB  = new Uint32Array(HISTOGRAM_SIZE);\n            histR.fill(0);\n            histG.fill(0);\n            histB.fill(0);\n            \n            // collect the distribution of the RGB values \n            //\n            for (var index=0; index < pixels.length; index+=4) {\n                histR[pixels[index  ]]++; // red\n                histG[pixels[index+1]]++; // green\n                histB[pixels[index+2]]++; // blue\n            }\n\n            var sumR = 0;\n            var sumG = 0;\n            var sumB = 0;\n            var i = 0;\n            while(i < HISTOGRAM_SIZE)\n            {\n                // cumulative sum is used as LUT\n                sumR += histR[i];\n                sumG += histG[i];\n                sumB += histB[i];\n       \n                // build look-up table\n                histR[i] = sumR;\n                histG[i] = sumG;\n                histB[i] = sumB;\n                ++i;\n            }\n            var canvas = new OffscreenCanvas(width, height);\n            var ctx = canvas.getContext('2d');\n\n            ctx.globalCompositeOperation = 'screen';\n            \n            let max = Math.max(sumR, sumG, sumB);\n\n            function drawColorGraph (vals, color) {\n                const graphX = 0;\n                const graphY = height;\n\n                ctx.fillStyle = color;\n                ctx.beginPath();\n                ctx.moveTo(graphX, height);\n                for (let i = 0; i < vals.length; i++) {\n                  let val = vals[i];\n                  let drawHeight = Math.round((val / max) * height);\n                  let drawX = graphX + (width / (vals.length - 1)) * i;\n                  ctx.lineTo(drawX, graphY - drawHeight);\n                }\n                ctx.lineTo(graphX + width, graphY);\n                ctx.closePath();\n                ctx.fill();\n            }\n    \n            drawColorGraph(histR, \"#FF0000\");\n            drawColorGraph(histG, \"#00FF00\");\n            drawColorGraph(histB, \"#0000FF\");\n            imageData = ctx.getImageData(0, 0, width, height);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { \n                this.getOutputPort(\"output_port1\").setValue(image);\n                this.processing = false;\n            };\n            image.src = this.tmpCanvas.toDataURL();\n            this.img.attr(\"path\", image.src);\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n        this.processing = false;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        if(this.worker) this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n\n        if(this.tmpContext !==null && this.tmpContext.width!== width){\n            delete this.tmpContext;\n            delete this.tmpCanvas;\n            this.tmpCanvas = null;\n            this.tmpContext = null;\n        }\n\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    },\n    \n    setPersistentAttributes: function (memento) \n    {\n        this._super(memento);\n\n        this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);\n        this.remove(this.img);\n        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:3, y:3}));\n        this.img.hitTest = ()=>false;\n        \n        this.getInputPort(\"input_port1\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        })\n        this.getOutputPort(\"output_port1\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        })\n    }\n});",
         "markdown": "## Full Adder\n\nFull adder is developed to overcome the drawback of \nHalf Adder circuit. It can add two one-bit numbers \nA and B, and carry c. The full adder is a three \ninput and two output combinational circuit.\n\n\n\n|  A    |    B    |  Cin     |    S    |    C   |\n|:-----:|:-------:|:--------:|:--------:|:-------|\n|   0   |    0    |     0    |     0    |     0  |\n|   0   |    0    |     1    |     1    |     0  |\n|   0   |    1    |     0    |     1    |     0  |\n|   0   |    1    |     1    |     0    |     1  |\n|   1   |    0    |     0    |     0    |     1  |\n|   1   |    0    |     1    |     0    |     1  |\n|   1   |    1    |     0    |     0    |     1  |\n|   1   |    1    |     1    |     0    |     1  |\n",
         "type": "Output",
         "direction": 1
@@ -66,8 +66,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 7961.2288,
-      "y": 8016.8787776,
+      "x": 7960.2288,
+      "y": 8015.8787776,
       "width": 84.15625,
       "height": 21.375,
       "alpha": 1,
@@ -84,10 +84,10 @@
       "stroke": 0,
       "radius": 0,
       "dasharray": null,
-      "text": "Histogram Adjust",
+      "text": "Histogram",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
-      "fontSize": 9,
+      "fontSize": 16,
       "fontColor": "rgba(8,8,8,1)",
       "fontFamily": null,
       "editor": "LabelInplaceEditor",
@@ -234,197 +234,6 @@
         },
         {
           "name": "shape_designer.filter.RadiusFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.PolyCircle",
-      "id": "5f767493-26e4-fad9-cef3-1901c554622d",
-      "x": 7991.3355715182315,
-      "y": 7968.258984318234,
-      "width": 16.32885696353746,
-      "height": 16.32885696353746,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "TOP_Circle"
-      },
-      "cssClass": "shape_designer_figure_PolyCircle",
-      "ports": [],
-      "bgColor": "rgba(199,29,61,1)",
-      "color": "rgba(27,27,27,1)",
-      "stroke": 0,
-      "radius": 0,
-      "dasharray": null,
-      "blur": 0,
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.SizeFilter"
-        },
-        {
-          "name": "shape_designer.filter.FillColorFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.ExtPolygon",
-      "id": "29256ea5-e5e1-cb3c-5966-7f8958f98e5b",
-      "x": 7989.318989118233,
-      "y": 7988.724655359116,
-      "width": 22.081740799994805,
-      "height": 22.209715199999664,
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "TOP_Body"
-      },
-      "cssClass": "shape_designer_figure_PolyRect",
-      "ports": [],
-      "bgColor": "rgba(199,29,61,1)",
-      "color": "rgba(48,48,48,1)",
-      "stroke": 0,
-      "radius": 4,
-      "dasharray": null,
-      "vertices": [
-        {
-          "x": 7989.318989118233,
-          "y": 8010.724655359116
-        },
-        {
-          "x": 8011.400729918228,
-          "y": 8010.934370559115
-        },
-        {
-          "x": 8007.835571518231,
-          "y": 7995.287247730233
-        },
-        {
-          "x": 8007.714033542328,
-          "y": 7994.147665524218
-        },
-        {
-          "x": 8007.3531124845185,
-          "y": 7993.042708946877
-        },
-        {
-          "x": 8006.763774748507,
-          "y": 7992.005951544674
-        },
-        {
-          "x": 8005.963927063182,
-          "y": 7991.068894666658
-        },
-        {
-          "x": 8004.977872395722,
-          "y": 7990.260010311883
-        },
-        {
-          "x": 8003.835571518231,
-          "y": 7989.603876022162
-        },
-        {
-          "x": 8002.571732664836,
-          "y": 7989.120428105865
-        },
-        {
-          "x": 8001.224756939567,
-          "y": 7988.824355883299
-        },
-        {
-          "x": 7999.8355715182315,
-          "y": 7988.724655359116
-        },
-        {
-          "x": 7998.446386096895,
-          "y": 7988.824355883299
-        },
-        {
-          "x": 7997.099410371626,
-          "y": 7989.120428105865
-        },
-        {
-          "x": 7995.8355715182315,
-          "y": 7989.603876022162
-        },
-        {
-          "x": 7994.69327064074,
-          "y": 7990.260010311883
-        },
-        {
-          "x": 7993.70721597328,
-          "y": 7991.068894666658
-        },
-        {
-          "x": 7992.907368287955,
-          "y": 7992.005951544674
-        },
-        {
-          "x": 7992.318030551944,
-          "y": 7993.042708946877
-        },
-        {
-          "x": 7991.957109494134,
-          "y": 7994.147665524218
-        },
-        {
-          "x": 7991.8355715182315,
-          "y": 7995.287247730233
-        }
-      ],
-      "blur": 0,
-      "filters": [
-        {
-          "name": "shape_designer.filter.PositionFilter"
-        },
-        {
-          "name": "shape_designer.filter.SizeFilter"
-        },
-        {
-          "name": "shape_designer.filter.FillColorFilter"
-        },
-        {
-          "name": "shape_designer.filter.RadiusFilter"
-        }
-      ]
-    },
-    {
-      "type": "shape_designer.figure.ExtLine",
-      "id": "ec7a6711-0d3b-6ca5-d21e-7479a5f0a829",
-      "alpha": 1,
-      "selectable": true,
-      "draggable": true,
-      "angle": 0,
-      "userData": {
-        "name": "Line"
-      },
-      "cssClass": "shape_designer_figure_ExtLine",
-      "stroke": 1,
-      "color": "rgba(26,12,112,1)",
-      "outlineStroke": 0,
-      "outlineColor": "rgba(0,0,0,0)",
-      "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
-      "vertex": [
-        {
-          "x": 7999.696404480012,
-          "y": 7964.038881344014
-        },
-        {
-          "x": 7999.864176640011,
-          "y": 8015.044239424005
-        }
-      ],
-      "router": "draw2d.layout.connection.VertexRouter",
-      "radius": "",
-      "filters": [
-        {
-          "name": "shape_designer.filter.StrokeFilter"
         }
       ]
     },
