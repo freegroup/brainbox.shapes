@@ -7,7 +7,7 @@
 var hardware_raspi_GPIOWrite = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIOWrite",
-   VERSION: "2.0.267_969",
+   VERSION: "2.0.268_971",
 
    init:function(attr, setter, getter)
    {
@@ -146,6 +146,8 @@ hardware_raspi_GPIOWrite = hardware_raspi_GPIOWrite.extend({
         this._super(memento);
 
         this.img = this.getChildren().find( child => child instanceof draw2d.shape.basic.Image);
+        this.remove(this.img);
+        this.add(this.img, new draw2d.layout.locator.XYAbsPortLocator({x:68, y:3}));
         this.img.hitTest = ()=>false;
 
         this.gpioPin = this.attr("userData.gpioPin");
