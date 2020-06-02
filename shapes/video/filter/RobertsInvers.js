@@ -7,7 +7,7 @@
 var video_filter_RobertsInvers = CircuitFigure.extend({
 
    NAME: "video_filter_RobertsInvers",
-   VERSION: "2.0.279_995",
+   VERSION: "2.0.280_1000",
 
    init:function(attr, setter, getter)
    {
