@@ -7,7 +7,7 @@
 var hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIORead",
-   VERSION: "2.0.268_970",
+   VERSION: "2.0.269_973",
 
    init:function(attr, setter, getter)
    {
@@ -84,11 +84,11 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
 
         this.gpioPin = "gpio_5"
         this.on("change:userData.gpioPin",(emitter, event)=>{
-            this.layerAttr("gpioPinLabel", {text: event.value})
+            this.layerAttr("gpioPinLabel", {text: this.getLabel(event.value)})
             this.gpioPin = event.value;
         });
         this.on("added",(emitter, event)=>{
-             this.layerAttr("gpioPinLabel", {text: this.attr("userData.gpioPin")})
+             this.layerAttr("gpioPinLabel", {text: this.getLabel(this.attr("userData.gpioPin"))})
         });
         this.attr("userData.gpioPin",this.gpioPin)
         
@@ -112,7 +112,10 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
         }
     },
     
-
+    getLabel:function(pin){
+        return "GPIO "+pin.split("_")[1];
+    },
+    
     /**
      *  Called if the simulation mode is starting
      *  @required
