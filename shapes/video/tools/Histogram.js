@@ -7,7 +7,7 @@
 var video_tools_Histogram = CircuitFigure.extend({
 
    NAME: "video_tools_Histogram",
-   VERSION: "2.0.284_1006",
+   VERSION: "2.0.285_1008",
 
    init:function(attr, setter, getter)
    {
@@ -140,6 +140,7 @@ video_tools_Histogram = video_tools_Histogram.extend({
             this.processing = true;
             this.worker.postMessage(imageData, [imageData.data.buffer]);
         }
+        this.getOutputPort("output_port1").setValue(img);
     },
 
 
@@ -218,16 +219,11 @@ video_tools_Histogram = video_tools_Histogram.extend({
            try{
             var imageData = event.data;
             this.tmpContext.putImageData(imageData,0,0);
-            var image = new Image();
-            image.onload = () => { 
-                this.getOutputPort("output_port1").setValue(image);
-                this.processing = false;
-            };
-            image.src = this.tmpCanvas.toDataURL();
-            this.img.attr("path", image.src);
+            this.img.attr("path", this.tmpCanvas.toDataURL());
+            this.processing = false;
            }
            catch(exc){
-               console.log(exc);
+              console.log(exc);
            }
         };
 
