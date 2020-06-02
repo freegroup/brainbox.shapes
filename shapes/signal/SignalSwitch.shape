@@ -285,7 +285,7 @@
       "type": "shape_designer.figure.ExtLabel",
       "id": "9765b142-9c5b-0a96-8b2f-c8994b5c07ef",
       "x": 7981,
-      "y": 8037.625,
+      "y": 8042.625,
       "width": 28.34375,
       "height": 21.375,
       "alpha": 1,
@@ -303,6 +303,46 @@
       "radius": 0,
       "dasharray": null,
       "text": "Selector",
+      "outlineStroke": 0,
+      "outlineColor": "rgba(0,0,0,0)",
+      "fontSize": 8,
+      "fontColor": "rgba(8,8,8,1)",
+      "fontFamily": null,
+      "editor": "LabelInplaceEditor",
+      "filters": [
+        {
+          "name": "shape_designer.filter.PositionFilter"
+        },
+        {
+          "name": "shape_designer.filter.FontSizeFilter"
+        },
+        {
+          "name": "shape_designer.filter.FontColorFilter"
+        }
+      ]
+    },
+    {
+      "type": "shape_designer.figure.ExtLabel",
+      "id": "2a55218a-64f1-ad70-bcd8-fb8d7c2eb989",
+      "x": 7982.5,
+      "y": 8032,
+      "width": 44.828125,
+      "height": 21.375,
+      "alpha": 1,
+      "selectable": true,
+      "draggable": true,
+      "angle": 0,
+      "userData": {
+        "name": "Label"
+      },
+      "cssClass": "shape_designer_figure_ExtLabel",
+      "ports": [],
+      "bgColor": "rgba(0,0,0,0)",
+      "color": "rgba(27,27,27,1)",
+      "stroke": 0,
+      "radius": 0,
+      "dasharray": null,
+      "text": "Signal",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
       "fontSize": 8,
