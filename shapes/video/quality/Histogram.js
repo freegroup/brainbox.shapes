@@ -7,7 +7,7 @@
 var video_quality_Histogram = CircuitFigure.extend({
 
    NAME: "video_quality_Histogram",
-   VERSION: "2.0.273_982",
+   VERSION: "2.0.274_983",
 
    init:function(attr, setter, getter)
    {
@@ -151,10 +151,6 @@ video_quality_Histogram = video_quality_Histogram.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var imageSize = width * height;
-            var scale = MAX_VALUE / imageSize;    // scale factor ,so the values in LUT are from 0 to MAX_VALUE
-            var lutR   = new Uint8Array(HISTOGRAM_SIZE);
-            var lutG   = new Uint8Array(HISTOGRAM_SIZE);
-            var lutB   = new Uint8Array(HISTOGRAM_SIZE);
             var histR  = new Uint32Array(HISTOGRAM_SIZE);
             var histG  = new Uint32Array(HISTOGRAM_SIZE);
             var histB  = new Uint32Array(HISTOGRAM_SIZE);
@@ -182,18 +178,27 @@ video_quality_Histogram = video_quality_Histogram.extend({
                 sumB += histB[i];
        
                 // build look-up table
-                lutR[i] = (sumR * scale+0.5)|0;
-                lutG[i] = (sumG * scale+0.5)|0;
-                lutB[i] = (sumB * scale+0.5)|0;
+                histR[i] = sumR;
+                histG[i] = sumG;
+                histB[i] = sumB;
                 ++i;
             }
+    this._ctx.globalCompositeOperation = this.compositeOperation
+    if (!dontClear) {
+      this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height)
+    }
+    let max = Math.max.apply(null, data.red.concat(data.green, data.blue))
 
-            // re-map input pixels by using LUT
-            for (index=0; index < pixels.length; index+=4) {
-                pixels[index  ] = lutR[pixels[index  ]];
-                pixels[index+1] = lutG[pixels[index+1]];
-                pixels[index+2] = lutB[pixels[index+2]];
-            }
+    if (this.red) {
+      this._drawColorGraph(max, data.red, this.redColor)
+    }
+    if (this.green) {
+      this._drawColorGraph(max, data.green, this.greenColor)
+    }
+    if (this.blue) {
+      this._drawColorGraph(max, data.blue, this.blueColor)
+    }
+    
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
