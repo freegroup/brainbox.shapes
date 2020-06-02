@@ -49,10 +49,10 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
      **/
     calculate:function( context)
     {
-        var port = this.getInputPort("output_port1");
-        if(port.hasChangedValue()){
-            hardware.raspi.set(this.gpioPin, port.getValue());
-        }
+        var port = this.getOutputPort("output_port1");
+       
+        port.setValue(hardware.raspi.get(this.gpioPin);
+
     },
     
     getLabel:function(pin){
@@ -65,9 +65,6 @@ hardware_raspi_GPIORead = hardware_raspi_GPIORead.extend({
      **/
     onStart:function( context )
     {
-        var port = this.getInputPort("output_port1");
-        hardware.raspi.mode(this.gpioPin, "INPUT");
-        hardware.raspi.set(this.gpioPin, port.getValue());
     },
 
     /**
