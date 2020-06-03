@@ -1,14 +1,8 @@
-# Signal Inverter
+# Video Source Selector
 
-Sometimes it is necessary to invert an analog signal. This can be helpful, for example, if you want to reverse the direction of rotation of servos.
+You can toggle between two different video or image signals.
 
-A signal of 0 normally means 0° for a servo and a signal of 5 is converted to 180°. 
+Usefull to switch between different video processing pipelines if e.g.
+the light or image quality changes you can switch to a different video
+processing pipeline.
 
-Internally the module does nothing else but:
-
-```math
-output = 5-input
-
-```
-
-*Internally the maximum signal value is **5**.*
