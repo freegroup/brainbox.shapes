@@ -3,7 +3,7 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "44f577b5-f75e-21ec-1bf9-ebbd21a2016e",
-      "x": 7980,
+      "x": 7979.765625,
       "y": 7958,
       "width": 40,
       "height": 80,
@@ -15,7 +15,9 @@
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
         "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n         this._super(attr, setter, getter);\n\n        this.getOutputPort(\"output_port1\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        });\n        \n        this.getInputPort(\"input_port1\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        });\n        \n        this.getInputPort(\"input_port2\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        });\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        let inValue1 = this.getInputPort(\"input_port1\").getValue();\n        let inValue2 = this.getInputPort(\"input_port2\").getValue();\n        let inValue3 = this.getInputPort(\"input_port3\").getBooleanValue();\n        if(inValue3 === true){\n            this.getOutputPort(\"output_port1\").setValue(inValue1);\n        }\n        else{\n            this.getOutputPort(\"output_port1\").setValue(inValue2);\n        }\n        \n        if(this.getInputPort(\"input_port3\").hasChangedValue()){\n            this.layerShow(\"low\" , !inValue3, 100);\n            this.layerShow(\"high\",  inValue3, 100);\n        }\n    },\n    \n    onStart:function(context){\n        let inValue3 = this.getInputPort(\"input_port3\").getBooleanValue();\n        this.layerShow(\"low\" , !inValue3, 100);\n        this.layerShow(\"high\",  inValue3, 100);\n    },\n    \n    \n    setPersistentAttributes: function (memento) {\n        this._super(memento);\n        \n        this.getOutputPort(\"output_port1\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        });\n        \n        this.getInputPort(\"input_port1\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        });\n        \n        this.getInputPort(\"input_port2\").attr({\n            semanticGroup:\"Image\",\n            bgColor:\"#ff0000\",\n            diameter:15\n        });\n\n    },\n    \n\n});",
-        "markdown": "# Signal Inverter\n\nSometimes it is necessary to invert an analog signal. This can be helpful, for example, if you want to reverse the direction of rotation of servos.\n\nA signal of 0 normally means 0° for a servo and a signal of 5 is converted to 180°. \n\nInternally the module does nothing else but:\n\n```math\noutput = 5-input\n\n```\n\n*Internally the maximum signal value is **5**.*"
+        "markdown": "# Video Source Selector\n\nYou can toggle between two different video or image signals.\n\nUsefull to switch between different video processing pipelines if e.g.\nthe light or image quality changes you can switch to a different video\nprocessing pipeline.\n\n",
+        "type": "Output",
+        "direction": 1
       },
       "cssClass": "shape_designer_figure_PolyRect",
       "ports": [],
@@ -26,19 +28,19 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 7980,
+          "x": 7979.765625,
           "y": 7958
         },
         {
-          "x": 8020,
+          "x": 8019.765625,
           "y": 7958
         },
         {
-          "x": 8020,
+          "x": 8019.765625,
           "y": 8038
         },
         {
-          "x": 7980,
+          "x": 7979.765625,
           "y": 8038
         }
       ],
@@ -64,7 +66,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "18611acf-d8ec-bf89-1037-2a249d6979f8",
-      "x": 7974.0242,
+      "x": 7973.789825,
       "y": 8021.3269,
       "width": 10,
       "height": 10,
@@ -102,7 +104,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "53583d59-e9ee-3b0c-ee99-25edd2940481",
-      "x": 7974.0242,
+      "x": 7973.789825,
       "y": 7992,
       "width": 10,
       "height": 10,
@@ -140,7 +142,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "87a90558-b274-9310-9fed-90c857d2aa79",
-      "x": 7974.0242,
+      "x": 7973.789825,
       "y": 7963.472596185303,
       "width": 10,
       "height": 10,
@@ -178,7 +180,7 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "c19c1d24-8dd4-bccd-bcbd-4208fdb5636f",
-      "x": 8015.473665148926,
+      "x": 8015.239290148926,
       "y": 7978.5845,
       "width": 10,
       "height": 10,
@@ -231,11 +233,11 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 8015.001454687503,
+          "x": 8014.767079687503,
           "y": 7981.425916406249
         },
         {
-          "x": 7985.026054687497,
+          "x": 7984.791679687497,
           "y": 7969.796116406253
         }
       ],
@@ -265,11 +267,11 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 8014.923654687501,
+          "x": 8014.689279687501,
           "y": 7984.972316406244
         },
         {
-          "x": 7985.275854687496,
+          "x": 7985.041479687496,
           "y": 7996.438316406252
         }
       ],
@@ -284,7 +286,7 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "9765b142-9c5b-0a96-8b2f-c8994b5c07ef",
-      "x": 7983,
+      "x": 7982.765625,
       "y": 8020.625,
       "width": 44.828125,
       "height": 21.375,
@@ -324,7 +326,7 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "2a55218a-64f1-ad70-bcd8-fb8d7c2eb989",
-      "x": 7982.5,
+      "x": 7982.265625,
       "y": 8010,
       "width": 44.828125,
       "height": 21.375,
