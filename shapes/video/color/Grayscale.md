@@ -1,19 +1,24 @@
-## Full Adder
+## Grayscale Converter
 
-Full adder is developed to overcome the drawback of 
-Half Adder circuit. It can add two one-bit numbers 
-A and B, and carry c. The full adder is a three 
-input and two output combinational circuit.
+Converts any colors in the image to grayscale 
+equivalents. 
 
+Since red color has more wavelength of all the three colors, and 
+green is the color that has not only less wavelength then red color
+but also green is the color that gives more soothing effect to the 
+eyes.
 
+It means that we have to decrease the contribution of red color, 
+and increase the contribution of the green color, and put blue 
+color contribution in between these two.
 
-|  A    |    B    |  Cin     |    S    |    C   |
-|:-----:|:-------:|:--------:|:--------:|:-------|
-|   0   |    0    |     0    |     0    |     0  |
-|   0   |    0    |     1    |     1    |     0  |
-|   0   |    1    |     0    |     1    |     0  |
-|   0   |    1    |     1    |     0    |     1  |
-|   1   |    0    |     0    |     0    |     1  |
-|   1   |    0    |     1    |     0    |     1  |
-|   1   |    1    |     0    |     0    |     1  |
-|   1   |    1    |     1    |     0    |     1  |
+So the new equation that form is:
+
+```math
+
+average = 0.3*pixels[red] + 0.59*pixels[green] + 0.11*pixels[blue];
+
+pixels[red]  = average;
+pixels[green]= average;
+pixels[blue] = average;
+```
