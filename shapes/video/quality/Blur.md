@@ -1,19 +1,5 @@
-## Full Adder
+# Gaussian Blur Filter
 
-Full adder is developed to overcome the drawback of 
-Half Adder circuit. It can add two one-bit numbers 
-A and B, and carry c. The full adder is a three 
-input and two output combinational circuit.
-
-
-
-|  A    |    B    |  Cin     |    S    |    C   |
-|:-----:|:-------:|:--------:|:--------:|:-------|
-|   0   |    0    |     0    |     0    |     0  |
-|   0   |    0    |     1    |     1    |     0  |
-|   0   |    1    |     0    |     1    |     0  |
-|   0   |    1    |     1    |     0    |     1  |
-|   1   |    0    |     0    |     0    |     1  |
-|   1   |    0    |     1    |     0    |     1  |
-|   1   |    1    |     0    |     0    |     1  |
-|   1   |    1    |     1    |     0    |     1  |
+Executes a Guassian blur with the level parameter specifying the extent 
+of the blurring. It is a widely used effect in graphics software, typically 
+to **reduce image noise and reduce detail**.
