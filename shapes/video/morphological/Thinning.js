@@ -7,7 +7,7 @@
 var video_morphological_Thinning = CircuitFigure.extend({
 
    NAME: "video_morphological_Thinning",
-   VERSION: "2.0.326_1093",
+   VERSION: "2.0.327_1095",
 
    init:function(attr, setter, getter)
    {
@@ -211,8 +211,14 @@ video_morphological_Thinning = video_morphological_Thinning.extend({
 					applyMatrix(x, y, matrix, pixels, pixelsCopy);
 				}
 			}
+			
+            for(var i=0; i<pixels.length; i+=4){
+                pixels[i  ] = pixelsCopy[i]  +pixels[i  ]?255:pixels[i  ]; 
+                pixels[i+1] = pixelsCopy[i+1]+pixels[i+1]?255:pixels[i  ]; 
+                pixels[i+2] = pixelsCopy[i+2]+pixels[i+2]?255:pixels[i  ]; 
+            }
+            
 
-            pixels.set(pixelsCopy);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
