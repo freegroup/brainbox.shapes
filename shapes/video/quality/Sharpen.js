@@ -7,7 +7,7 @@
 var video_quality_Sharpen = CircuitFigure.extend({
 
    NAME: "video_quality_Sharpen",
-   VERSION: "2.0.311_1065",
+   VERSION: "2.0.312_1069",
 
    init:function(attr, setter, getter)
    {
