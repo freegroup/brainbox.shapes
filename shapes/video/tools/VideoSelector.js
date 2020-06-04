@@ -7,7 +7,7 @@
 var video_tools_VideoSelector = CircuitFigure.extend({
 
    NAME: "video_tools_VideoSelector",
-   VERSION: "2.0.305_1054",
+   VERSION: "2.0.306_1055",
 
    init:function(attr, setter, getter)
    {

@@ -7,7 +7,7 @@
 var video_color_Splitter = CircuitFigure.extend({
 
    NAME: "video_color_Splitter",
-   VERSION: "2.0.305_1054",
+   VERSION: "2.0.306_1055",
 
    init:function(attr, setter, getter)
    {
@@ -15,6 +15,12 @@ var video_color_Splitter = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.12910056640976},attr), setter, getter);
      var port;
+     // input_port2
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 88.6738137133109 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port2");
+     port.setMaxFanOut(20);
      // input_port1
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 50.528459340992306 }));
      port.setConnectionDirection(3);
@@ -22,28 +28,22 @@ var video_color_Splitter = CircuitFigure.extend({
      port.setName("input_port1");
      port.setMaxFanOut(1);
      // output_port3
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 88.6738137133109 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 64.88029895819727 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port3");
      port.setMaxFanOut(20);
      // output_port2
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 49.91944214679986 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 38.062980070742384 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port2");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 12.70844915020964 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 7.716504935529654 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
-     port.setMaxFanOut(20);
-     // input_port2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 88.6738137133109 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input_port2");
      port.setMaxFanOut(20);
    },
 
@@ -90,24 +90,19 @@ var video_color_Splitter = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M39.13421670400021,48.3799680000011Q39.13421670400021,52.3799680000011 43.13421670400021, 52.3799680000011L71.13421670400021,52.3799680000011Q75.13421670400021,52.3799680000011 75.13421670400021, 48.3799680000011L75.13421670400021,8.3799680000011Q75.13421670400021,4.379968000001099 71.13421670400021, 4.379968000001099L43.13421670400021,4.379968000001099Q39.13421670400021,4.379968000001099 39.13421670400021, 8.3799680000011L39.13421670400021,48.3799680000011');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M39.13421670400021 52.03330028320488L75.13421670400021 52.03330028320488L75.13421670400021 36.03330028320488L39.13421670400021 36.03330028320488L39.13421670400021 52.03330028320488Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M40.84867200000008 49.8799680000011L49.651728947199445 49.8799680000011L48.46050412239856 35.49000926909139L48.13672218901411 34.55069784112129L47.60802787358989 33.6693617814999L46.890485285362956 32.87278004043219L46.00589659279103 32.18515635102449L44.98113957566238 31.627383811124673L43.84735095739961 31.216410057117173L42.6389803314396 30.96472231855296L41.392743427790265 30.8799680000011L40.84867200000008 30.916969314093876L40.84867200000008 49.8799680000011Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M39 36.8799680000011L75 36.8799680000011L75 19.8799680000011L39 19.8799680000011L39 36.8799680000011Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,255,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
-       // Circle
-       shape = this.canvas.paper.path('M39.92918400000053 25.470542254553948L40.260442059450725 25.499523579457673L41.64962748078506 25.377985603554407L42.996603206054715 25.01706454574378L44.260442059450725 24.42772680973212L45.40274293694165 23.627879124409446L46.3887976044025 22.641824456950417L47.18864528972517 21.499523579457673L47.77798302573683 20.235684726063482L48.13890408354746 18.888709000792005L48.260442059450725 17.499523579457673L48.13890408354746 16.11033815812334L47.77798302573683 14.763362432851864L47.18864528972517 13.499523579457673L46.3887976044025 12.357222701964929L45.40274293694165 11.3711680345059L44.260442059450725 10.571320349183225L42.996603206054715 9.981982613171567L41.64962748078506 9.621061555360939L40.260442059450725 9.499523579457673L39.92918400000053 9.528504904361398L39.92918400000053 25.470542254553948Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Line
-       shape = this.canvas.paper.path('M39.586528000003455 5.1831660000025295L39.84867200000008,51.83221508800125');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
+       // Rectangle
+       shape = this.canvas.paper.path('M39 21.03330028320488L75 21.03330028320488L75 4.0333002832048805L39 4.0333002832048805L39 21.03330028320488Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
 
        return this.canvas.paper.setFinish();
