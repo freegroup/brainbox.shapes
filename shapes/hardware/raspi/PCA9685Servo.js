@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685Servo = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Servo",
-   VERSION: "2.0.341_1134",
+   VERSION: "2.0.342_1135",
 
    init:function(attr, setter, getter)
    {
@@ -135,7 +135,9 @@ hardware_raspi_PCA9685Servo = hardware_raspi_PCA9685Servo.extend({
             let pwm  = this.toServoPWM(port_pwm, port_damping);
             let onoff = port_onoff.getValue();
             if(onoff){
-                hardware.pca9685.set(parseInt(this.channel), onoff);
+                if(port_onoff.hasChangedValue()){
+                    hardware.pca9685.set(parseInt(this.channel), onoff);
+                }
                 hardware.pca9685.pwm(parseInt(this.channel), pwm);
             }
             else{
