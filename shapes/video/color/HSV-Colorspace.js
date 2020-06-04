@@ -7,7 +7,7 @@
 var video_color_HSV_Colorspace = CircuitFigure.extend({
 
    NAME: "video_color_HSV_Colorspace",
-   VERSION: "2.0.307_1057",
+   VERSION: "2.0.308_1061",
 
    init:function(attr, setter, getter)
    {
