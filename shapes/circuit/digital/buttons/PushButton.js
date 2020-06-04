@@ -7,7 +7,7 @@
 var circuit_digital_buttons_PushButton = CircuitFigure.extend({
 
    NAME: "circuit_digital_buttons_PushButton",
-   VERSION: "2.0.330_1103",
+   VERSION: "2.0.331_1104",
 
    init:function(attr, setter, getter)
    {
