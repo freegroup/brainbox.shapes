@@ -7,7 +7,7 @@
 var video_assemble_Stencil = CircuitFigure.extend({
 
    NAME: "video_assemble_Stencil",
-   VERSION: "2.0.315_1075",
+   VERSION: "2.0.316_1076",
 
    init:function(attr, setter, getter)
    {

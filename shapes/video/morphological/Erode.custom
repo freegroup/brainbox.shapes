@@ -57,27 +57,26 @@ video_morphological_Erode = video_morphological_Erode.extend({
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
+            var colorToCare = 0;
             var imageData = event.data;
             var pixels = imageData.data;
             var width  = imageData.width;
             var height = imageData.height;
+            var matrix = [
+                [1,1,1],
+                [1,1,1],
+                [1,1,1]
+            ]
+            var pixelsCopy = new Uint8ClampedArray(pixels);
+            pixelsCopy.set(pixels);
 
-            function createMatrix2D(rows, cols, value){
-            	var arr = new Array(rows);
-            	for(var i=0; i<arr.length; i++){
-            		arr[i] = new Array(cols);
-            		arr[i].fill(value);
-            	}
-            	return arr;
-            }
-            
             function applyMatrix(x,y,matrix,imgIn,imgOut){
         		var nx,ny;
         		var xC=parseInt(matrix[0].length/2);
         		var yC=parseInt(matrix.length/2);
         		var offset = (y*width+x)*4;
         		
-        		if(imgIn[offset]===0){
+        		if(imgIn[offset]===colorToCare){
         			for(var i=0; i<matrix.length; i++){
         				for(var j=0; j<matrix.length; j++){
         					if((i != yC || j != xC) && matrix[i][j]){
@@ -85,18 +84,14 @@ video_morphological_Erode = video_morphological_Erode.extend({
         						ny = y + (i-yC);
         						if(nx > 0 && nx < width && ny > 0 && ny < height){
                             		var outOffset = (ny*width+nx)*4;
-        							imgOut[outOffset]=0;
+        							imgOut[outOffset]=imgOut[outOffset+1]=imgOut[outOffset+2]=colorToCare;
         						}
         					}
         				}
         			}
         		}
         	}
-        	
-            var matrix = createMatrix2D(3,3,true);
-            var pixelsCopy = new Uint8ClampedArray(pixels);
-            pixelsCopy.set(pixels);
-            
+           
             for(var y=0; y<height; y++){
 				for(var x=0; x<width; x++){
 					applyMatrix(x, y, matrix, pixels, pixelsCopy);
