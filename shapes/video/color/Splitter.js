@@ -7,7 +7,7 @@
 var video_color_Splitter = CircuitFigure.extend({
 
    NAME: "video_color_Splitter",
-   VERSION: "2.0.303_1050",
+   VERSION: "2.0.304_1051",
 
    init:function(attr, setter, getter)
    {
@@ -182,6 +182,8 @@ video_color_Splitter = video_color_Splitter.extend({
         var workerFunction = function(event){
             var imageData = event.data.imageData;
             var threshold = event.data.threshold;
+            // map offset from 0-5 => 0-255
+            threshold = 255/5*threshold;
             var pixels = imageData.data;
             var w = imageData.width;
             var h = imageData.height;
@@ -194,11 +196,9 @@ video_color_Splitter = video_color_Splitter.extend({
             b.fill(255);
             
             for( let x = 0; x < pixels.length; x += 4 ) {
-                r[x]=r[x+1]=r[x+2] = pixels[x]>((pixels[x+1]+pixels[x+2])/3*2)?255:0;
-                
-                g[x]=g[x+1]=g[x+2] = pixels[x+1]>((pixels[x]+pixels[x+2])/3*2)?255:0;
-                
-                b[x]=b[x+1]=b[x+2] = pixels[x+2]>((pixels[x+1]+pixels[x])/3*2)?255:0;
+                r[x]=r[x+1]=r[x+2] = thresshold < (pixels[x]  -(pixels[x+1]+pixels[x+2]))?255:0;
+                g[x]=g[x+1]=g[x+2] = thresshold < (pixels[x+1]-(pixels[x]  +pixels[x+2]))?255:0;
+                b[x]=b[x+1]=b[x+2] = thresshold < (pixels[x+2]-(pixels[x+1]+pixels[x]))?255:0;
             }
             var imageDataR = new ImageData(r, w, h);
             var imageDataG = new ImageData(g, w, h);
