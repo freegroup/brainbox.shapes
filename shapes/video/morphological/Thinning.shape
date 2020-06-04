@@ -664,7 +664,7 @@
         "name": "Line"
       },
       "cssClass": "shape_designer_figure_ExtLine",
-      "stroke": 1,
+      "stroke": 2,
       "color": "rgba(255,255,255,1)",
       "outlineStroke": 0,
       "outlineColor": "rgba(0,0,0,0)",
