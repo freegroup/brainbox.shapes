@@ -7,7 +7,7 @@
 var video_morphological_Open = CircuitFigure.extend({
 
    NAME: "video_morphological_Open",
-   VERSION: "2.0.319_1083",
+   VERSION: "2.0.320_1084",
 
    init:function(attr, setter, getter)
    {
@@ -15,6 +15,12 @@ var video_morphological_Open = CircuitFigure.extend({
 
      this._super( $.extend({stroke:0, bgColor:null, width:80,height:80},attr), setter, getter);
      var port;
+     // input_port2
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 83.53700000000231 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port2");
+     port.setMaxFanOut(1);
      // input_port1
      port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.886999999999944 }));
      port.setConnectionDirection(3);
@@ -144,12 +150,16 @@ video_morphological_Open = video_morphological_Open.extend({
     {
         var img = this.getInputPort("input_port1").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
+            var iterations = 1;
+            if(this.getInputPort("input_port2").getConnections().lenght!==0){
+                iterations = Math.min(1,parseInt(this.getInputPort("input_port2").getValue()));
+            }
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
             this.processing = true;
-            this.worker.postMessage(imageData, [imageData.data.buffer]);
+            this.worker.postMessage({imageData, iterations}, [imageData.data.buffer]);
         }
     },
 
@@ -166,7 +176,8 @@ video_morphological_Open = video_morphological_Open.extend({
         //
         var workerFunction = function(event){
             var colorToCare = 0;
-            var imageData = event.data;
+            var iterations = event.data.iterations;
+            var imageData = event.data.imageData;
             var pixels = imageData.data;
             var width  = imageData.width;
             var height = imageData.height;
@@ -200,22 +211,25 @@ video_morphological_Open = video_morphological_Open.extend({
         		}
         	}
         	
-            // dilate
-            colorToCare = 0;
-            for(var y=0; y<height; y++){
-				for(var x=0; x<width; x++){
-					applyMatrix(x, y, matrix, pixels, pixelsCopy);
-				}
-			}
-			
-            // erode
-            pixels.set(pixelsCopy);
-            colorToCare = 255;
-            for(var y=0; y<height; y++){
-				for(var x=0; x<width; x++){
-					applyMatrix(x, y, matrix, pixels, pixelsCopy);
-				}
-			}
+        	for( var i = 0; i< iterations; i++){
+                // dilate
+                if(i!==0)pixels.set(pixelsCopy);
+                colorToCare = 0;
+                for(var y=0; y<height; y++){
+    				for(var x=0; x<width; x++){
+    					applyMatrix(x, y, matrix, pixels, pixelsCopy);
+    				}
+    			}
+    			
+                // erode
+                pixels.set(pixelsCopy);
+                colorToCare = 255;
+                for(var y=0; y<height; y++){
+    				for(var x=0; x<width; x++){
+    					applyMatrix(x, y, matrix, pixels, pixelsCopy);
+    				}
+    			}
+        	}
 
             pixels.set(pixelsCopy);
             self.postMessage(imageData, [imageData.data.buffer]);
