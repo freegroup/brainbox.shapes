@@ -23,13 +23,13 @@ var widget_Slider = draw2d.shape.widget.Slider.extend({
             value = 5.0 / 100.0 * value;       // 0..5
             this.getOutputPort(0).setValue(value);
         });
-
     },
 
     calculate: function (context) {
     },
 
     onStart: function (context) {
+        this.getOutputPort(0).setValue(this.getValue());
     },
 
     onStop: function (context) {
