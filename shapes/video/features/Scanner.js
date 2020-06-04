@@ -7,7 +7,7 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.332_1109",
+   VERSION: "2.0.333_1113",
 
    init:function(attr, setter, getter)
    {
@@ -163,7 +163,7 @@ video_features_Scanner = video_features_Scanner.extend({
             var pixels    = imageData.data;
             var width     = imageData.width;
             var height    = imageData.height;
-            var leftSide  = 0;
+            var leftSide  = width;
             var rightSide = 0;
             var position = 0;
             var matrix    = [ [1,1,1],
@@ -183,25 +183,37 @@ video_features_Scanner = video_features_Scanner.extend({
     						ny = y + (i-yC);
     						if(nx > 0 && nx < width && ny > 0 && ny < height){
                         		var outOffset = (ny*width+nx)*4;
-    							hit = hit && imgOut[outOffset]===0;
+    							hit = hit && pixels[outOffset]===0;
     						}
     					}
     				}
     			}
-    			return hit
+    			return hit;
             }
             
+            let bottom = height-(height/100*10);
+            for (let i=1; i<(width-1); i++){
+               if(checkMatrix(i,bottom)){
+                   leftSide = i;
+                   break;
+               }    
+            }
+            for (let i=(width-1); i>0; i--){
+               if(checkMatrix(i,bottom)){
+                   rightSide = i;
+                   break;
+               }    
+            }
             
-
-
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
 
-            ctx.textBaseline = "top";
-            ctx.fillStyle = "#d0d0d0";
-            ctx.fillText("+" , 0, 0);
-
+            if(leftSide <=rightSide){
+               ctx.textBaseline = "top";
+               ctx.fillStyle = "#00FF00";
+               ctx.fillText("+" , (leftSide+rightSide)/2, bottom);
+            }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, position}, [imageData.data.buffer]);
         };

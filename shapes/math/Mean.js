@@ -7,7 +7,7 @@
 var math_Mean = CircuitFigure.extend({
 
    NAME: "math_Mean",
-   VERSION: "2.0.332_1109",
+   VERSION: "2.0.333_1113",
 
    init:function(attr, setter, getter)
    {
