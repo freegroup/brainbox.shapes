@@ -7,7 +7,7 @@
 var widget_PushButton = CircuitFigure.extend({
 
    NAME: "widget_PushButton",
-   VERSION: "2.0.338_1129",
+   VERSION: "2.0.339_1132",
 
    init:function(attr, setter, getter)
    {

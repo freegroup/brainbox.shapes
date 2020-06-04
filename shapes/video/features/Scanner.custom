@@ -107,7 +107,7 @@ video_features_Scanner = video_features_Scanner.extend({
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
 
-            let position = -1;
+            let position = width/2;
             if(leftSide <=rightSide){
                 let length =  height/100*8;
                 position = parseInt((leftSide + rightSide )/2);
@@ -116,10 +116,10 @@ video_features_Scanner = video_features_Scanner.extend({
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = height/100*4;
                 ctx.moveTo(leftSide, bottom);
-                ctx.lineTo(rightSide,bottom-length);
+                ctx.lineTo(rightSide,bottom);
                 ctx.stroke();
-                ctx.moveTo(position, bottom+length);
-                ctx.lineTo(position,bottom);
+                ctx.moveTo(position,bottom-length);
+                ctx.lineTo(position,bottom+length);
                 ctx.stroke();
                 ctx.closePath();
             }
@@ -132,13 +132,13 @@ video_features_Scanner = video_features_Scanner.extend({
        var receiverFunction = (event) => {
             var imageData = event.data.imageData;
             var position = event.data.position;
-            // map the angle [0..180] to [0..5]
-            position = 5/180*position;
+            // map the width [0..width] to [0..5]
+            position = 5/imageData.width*position;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => { 
                 this.getOutputPort("output_port1").setValue(image);
-                this.getOutputPort("output_angle").setValue(position);
+                this.getOutputPort("output_port2").setValue(position);
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();

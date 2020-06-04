@@ -7,31 +7,31 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.338_1129",
+   VERSION: "2.0.339_1132",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.453125},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:83.453125},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.606028355020335 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 47.822774761280606 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.606028355020335 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 47.822774761280606 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
      port.setMaxFanOut(20);
-     // output_angle
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100, y: 80.79238687123713 }));
+     // output_port2
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100, y: 80.28459090058041 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
-     port.setName("output_angle");
+     port.setName("output_port2");
      port.setMaxFanOut(20);
    },
 
@@ -39,7 +39,7 @@ var video_features_Scanner = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 80.453125;
+      this.originalHeight= 83.453125;
       return shape;
    },
 
@@ -48,7 +48,7 @@ var video_features_Scanner = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.453125 L0,80.453125");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,83.453125 L0,83.453125");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -59,16 +59,16 @@ var video_features_Scanner = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Scanner');
-       shape.attr({"x":13.41088000000127,"y":68.453125,"text-anchor":"start","text":"Scanner","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#000000","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":14.41088000000127,"y":71.453125,"text-anchor":"start","text":"Scanner","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#000000","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // PictureFrame
-       shape = this.canvas.paper.path('M4.228799999999865,8.044239424005355Q4.228799999999865,4.0442394240053545 8.228799999999865, 4.0442394240053545L71.22879999999986,4.0442394240053545Q75.22879999999986,4.0442394240053545 75.22879999999986, 8.044239424005355L75.22879999999986,52.044239424005355Q75.22879999999986,56.044239424005355 71.22879999999986, 56.044239424005355L8.228799999999865,56.044239424005355Q4.228799999999865,56.044239424005355 4.228799999999865, 52.044239424005355L4.228799999999865,8.044239424005355');
+       shape = this.canvas.paper.path('M4.228799999999865,8.044239424005355Q4.228799999999865,4.0442394240053545 8.228799999999865, 4.0442394240053545L71.22879999999986,4.0442394240053545Q75.22879999999986,4.0442394240053545 75.22879999999986, 8.044239424005355L75.22879999999986,46.044239424005355Q75.22879999999986,50.044239424005355 71.22879999999986, 50.044239424005355L8.228799999999865,50.044239424005355Q4.228799999999865,50.044239424005355 4.228799999999865, 46.044239424005355L4.228799999999865,8.044239424005355');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","PictureFrame");
        
        // Rectangle
-       shape = this.canvas.paper.path('M31.532891359985115 4.463669824004683L56.27928495998003 4.0442394240053545L43.53908655998566 13.533852224002658L38.97778095998274 23.65261062400168L38.66320815998279 55.634178624000015L27.758017759986615 55.634178624000924Z');
+       shape = this.canvas.paper.path('M31.46390011292715 4.418223163842413L55.758017759986615 4.0442394240053545L43.250664818812766 12.505621537824481L38.77272364233795 21.527979261401924L38.46390011292624 50.044239424004445L27.758017759986615 50.044239424005355Z');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
@@ -76,6 +76,16 @@ var video_features_Scanner = CircuitFigure.extend({
        shape = this.canvas.paper.text(0,0,'+');
        shape.attr({"x":27.816251679999368,"y":37.225817212005495,"text-anchor":"start","text":"+","font-family":"\"Arial\"","font-size":16,"stroke":"#000000","fill":"#FF0000","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
+       
+       // Label
+       shape = this.canvas.paper.text(0,0,'position');
+       shape.attr({"x":35.17650500000127,"y":55.972099999999955,"text-anchor":"start","text":"position","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
+       // Line
+       shape = this.canvas.paper.path('M65.57327558593806 56.11871406249975L69.7862755859378,56.11871406249975L76.94837558593736,65.80861406250006');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
        
        // Line
        shape = this.canvas.paper.path('M73.05801775999316 39.18620217199896L40.84053967998898,38.858807612009514');
@@ -211,7 +221,7 @@ video_features_Scanner = video_features_Scanner.extend({
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
 
-            let position = -1;
+            let position = width/2;
             if(leftSide <=rightSide){
                 let length =  height/100*8;
                 position = parseInt((leftSide + rightSide )/2);
@@ -220,10 +230,10 @@ video_features_Scanner = video_features_Scanner.extend({
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
                 ctx.lineWidth = height/100*4;
                 ctx.moveTo(leftSide, bottom);
-                ctx.lineTo(rightSide,bottom-length);
+                ctx.lineTo(rightSide,bottom);
                 ctx.stroke();
-                ctx.moveTo(position, bottom+length);
-                ctx.lineTo(position,bottom);
+                ctx.moveTo(position,bottom-length);
+                ctx.lineTo(position,bottom+length);
                 ctx.stroke();
                 ctx.closePath();
             }
@@ -236,13 +246,13 @@ video_features_Scanner = video_features_Scanner.extend({
        var receiverFunction = (event) => {
             var imageData = event.data.imageData;
             var position = event.data.position;
-            // map the angle [0..180] to [0..5]
-            position = 5/180*position;
+            // map the width [0..width] to [0..5]
+            position = 5/imageData.width*position;
             this.tmpContext.putImageData(imageData,0,0);
             var image = new Image();
             image.onload = () => { 
                 this.getOutputPort("output_port1").setValue(image);
-                this.getOutputPort("output_angle").setValue(position);
+                this.getOutputPort("output_port2").setValue(position);
                 this.processing = false;
             };
             image.src = this.tmpCanvas.toDataURL();
