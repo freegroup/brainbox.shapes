@@ -7,7 +7,7 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.335_1119",
+   VERSION: "2.0.336_1121",
 
    init:function(attr, setter, getter)
    {
@@ -165,7 +165,7 @@ video_features_Scanner = video_features_Scanner.extend({
             var height    = imageData.height;
             var leftSide  = width;
             var rightSide = 0;
-            var position = 0;
+
             var matrix    = [ [1,1,1],
                               [1,1,1],
                               [1,1,1] ]; 
@@ -184,6 +184,7 @@ video_features_Scanner = video_features_Scanner.extend({
     						if(nx > 0 && nx < width && ny > 0 && ny < height){
                         		var outOffset = (ny*width+nx)*4;
     							hit = hit && pixels[outOffset]===0;
+    							if(hit === false) return false; // abort
     						}
     					}
     				}
@@ -209,6 +210,7 @@ video_features_Scanner = video_features_Scanner.extend({
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
 
+            let position = -1;
             if(leftSide <=rightSide){
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
@@ -217,6 +219,7 @@ video_features_Scanner = video_features_Scanner.extend({
                 ctx.lineTo(rightSide,bottom);
                 ctx.stroke();
                 ctx.closePath();
+                position = (leftSide + rightSide )/2
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, position}, [imageData.data.buffer]);
