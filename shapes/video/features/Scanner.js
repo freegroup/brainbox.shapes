@@ -7,7 +7,7 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.336_1121",
+   VERSION: "2.0.337_1123",
 
    init:function(attr, setter, getter)
    {
@@ -184,7 +184,10 @@ video_features_Scanner = video_features_Scanner.extend({
     						if(nx > 0 && nx < width && ny > 0 && ny < height){
                         		var outOffset = (ny*width+nx)*4;
     							hit = hit && pixels[outOffset]===0;
-    							if(hit === false) return false; // abort
+    							if(hit === false) {
+    							    console.log("abort",pixels[outOffset] )
+    							    return false; // abort
+    							}
     						}
     					}
     				}
@@ -205,7 +208,7 @@ video_features_Scanner = video_features_Scanner.extend({
                    break;
                }    
             }
-            
+            console.log(leftSide, rightSide, width);
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
