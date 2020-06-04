@@ -61,16 +61,12 @@ video_morphological_Erode = video_morphological_Erode.extend({
             var pixels = imageData.data;
             var width  = imageData.width;
             var height = imageData.height;
+            var matrix =[[0,  0,  1,  0,  0],  
+                         [0,  1,  1,  1,  0], 
+                         [1,  1,  1,  1,  1], 
+                         [0,  1,  1,  1,  0], 
+                         [0,  0,  1,  0,  0]];
 
-            function createMatrix2D(rows, cols, value){
-            	var arr = new Array(rows);
-            	for(var i=0; i<arr.length; i++){
-            		arr[i] = new Array(cols);
-            		arr[i].fill(value);
-            	}
-            	return arr;
-            }
-            
             function applyMatrix(x,y,matrix,imgIn,imgOut){
         		var nx,ny;
         		var xC=parseInt(matrix[0].length/2);
@@ -92,8 +88,7 @@ video_morphological_Erode = video_morphological_Erode.extend({
         			}
         		}
         	}
-        	
-            var matrix = createMatrix2D(3,3,true);
+
             var pixelsCopy = new Uint8ClampedArray(pixels);
             pixelsCopy.set(pixels);
             
