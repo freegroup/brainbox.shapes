@@ -7,7 +7,7 @@
 var circuit_digital_display_7Segment = CircuitFigure.extend({
 
    NAME: "circuit_digital_display_7Segment",
-   VERSION: "2.0.331_1104",
+   VERSION: "2.0.332_1108",
 
    init:function(attr, setter, getter)
    {

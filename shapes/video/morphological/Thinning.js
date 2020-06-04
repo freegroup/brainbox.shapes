@@ -7,7 +7,7 @@
 var video_morphological_Thinning = CircuitFigure.extend({
 
    NAME: "video_morphological_Thinning",
-   VERSION: "2.0.331_1104",
+   VERSION: "2.0.332_1108",
 
    init:function(attr, setter, getter)
    {
