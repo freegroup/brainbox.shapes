@@ -7,7 +7,7 @@
 var video_morphological_Thinning = CircuitFigure.extend({
 
    NAME: "video_morphological_Thinning",
-   VERSION: "2.0.325_1092",
+   VERSION: "2.0.326_1094",
 
    init:function(attr, setter, getter)
    {
@@ -52,8 +52,8 @@ var video_morphological_Thinning = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Dilate');
-       shape.attr({"x":21.76637911823309,"y":66.77074080000239,"text-anchor":"start","text":"Dilate","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Thinning');
+       shape.attr({"x":13.76637911823309,"y":66.77074080000239,"text-anchor":"start","text":"Thinning","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
@@ -176,13 +176,14 @@ video_morphological_Thinning = video_morphological_Thinning.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var matrix = [
-                [1,1,1],
-                [1,1,1],
-                [1,1,1]
-            ]
+                [0,0,1,0,0],
+                [0,1,1,1,0],
+                [1,1,1,1,1],
+                [0,1,1,1,0],
+                [0,0,1,0,0]
+            ];
             var pixelsCopy = new Uint8ClampedArray(pixels);
-            pixelsCopy.set(pixels);
-
+            
             function applyMatrix(x,y,matrix,imgIn,imgOut){
         		var nx,ny;
         		var xC=parseInt(matrix[0].length/2);
@@ -204,14 +205,20 @@ video_morphological_Thinning = video_morphological_Thinning.extend({
         			}
         		}
         	}
-           
+         
             for(var y=0; y<height; y++){
 				for(var x=0; x<width; x++){
 					applyMatrix(x, y, matrix, pixels, pixelsCopy);
 				}
 			}
+			
+            for(var i=0; i<pixels.length; i+=4){
+                pixels[i  ] = pixelsCopy[i]  -pixels[i  ]; 
+                pixels[i+1] = pixelsCopy[i+1]-pixels[i+1]; 
+                pixels[i+2] = pixelsCopy[i+2]-pixels[i+2]; 
+            }
+            
 
-            pixels.set(pixelsCopy);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
