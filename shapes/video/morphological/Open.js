@@ -7,22 +7,28 @@
 var video_morphological_Open = CircuitFigure.extend({
 
    NAME: "video_morphological_Open",
-   VERSION: "2.0.319_1083",
+   VERSION: "2.0.320_1085",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:86},attr), setter, getter);
      var port;
+     // input_port2
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 77.70883720930448 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port2");
+     port.setMaxFanOut(1);
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 49.886999999999944 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -0.9640000000001692, y: 46.40651162790693 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.886999999999944 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 46.40651162790693 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -33,7 +39,7 @@ var video_morphological_Open = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 80;
+      this.originalHeight= 86;
       return shape;
    },
 
@@ -42,7 +48,7 @@ var video_morphological_Open = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,80 L0,80");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,86 L0,86");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -53,7 +59,7 @@ var video_morphological_Open = CircuitFigure.extend({
        
        // Label
        shape = this.canvas.paper.text(0,0,'Open');
-       shape.attr({"x":21,"y":66,"text-anchor":"start","text":"Open","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.attr({"x":21,"y":74,"text-anchor":"start","text":"Open","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
@@ -81,6 +87,11 @@ var video_morphological_Open = CircuitFigure.extend({
        shape.attr({"rx":8.16442848176873,"ry":8.16442848176873,"cx":58.48341760000155,"cy":16.4234128000028,"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","TOP_Circle");
        
+       // Label
+       shape = this.canvas.paper.text(0,0,'Iterations');
+       shape.attr({"x":18.26300000000174,"y":60.503349999999955,"text-anchor":"start","text":"Iterations","font-family":"\"Arial\"","font-size":10,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
        // Line
        shape = this.canvas.paper.path('M39.64973648001251 5.040281344015057L39.81750864001151,52.63687542400294');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":3,"stroke-dasharray":null,"opacity":1});
@@ -98,6 +109,11 @@ var video_morphological_Open = CircuitFigure.extend({
        
        // Line
        shape = this.canvas.paper.path('M35.42956799999865 33.023104000002604L27.827392000001055,36.95526399999926');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+       // Line
+       shape = this.canvas.paper.path('M4.131800000001931 63.6728000000021L11.504600000002029,59.986400000002504L18.26300000000174,59.986400000002504');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
@@ -144,12 +160,16 @@ video_morphological_Open = video_morphological_Open.extend({
     {
         var img = this.getInputPort("input_port1").getValue();
         if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
+            var iterations = 1;
+            if(this.getInputPort("input_port2").getConnections().lenght!==0){
+                iterations = Math.min(1,parseInt(this.getInputPort("input_port2").getValue()));
+            }
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
             this.processing = true;
-            this.worker.postMessage(imageData, [imageData.data.buffer]);
+            this.worker.postMessage({imageData, iterations}, [imageData.data.buffer]);
         }
     },
 
@@ -166,7 +186,8 @@ video_morphological_Open = video_morphological_Open.extend({
         //
         var workerFunction = function(event){
             var colorToCare = 0;
-            var imageData = event.data;
+            var iterations = event.data.iterations;
+            var imageData = event.data.imageData;
             var pixels = imageData.data;
             var width  = imageData.width;
             var height = imageData.height;
@@ -200,22 +221,25 @@ video_morphological_Open = video_morphological_Open.extend({
         		}
         	}
         	
-            // dilate
-            colorToCare = 0;
-            for(var y=0; y<height; y++){
-				for(var x=0; x<width; x++){
-					applyMatrix(x, y, matrix, pixels, pixelsCopy);
-				}
-			}
-			
-            // erode
-            pixels.set(pixelsCopy);
-            colorToCare = 255;
-            for(var y=0; y<height; y++){
-				for(var x=0; x<width; x++){
-					applyMatrix(x, y, matrix, pixels, pixelsCopy);
-				}
-			}
+        	for( var i = 0; i< iterations; i++){
+                // dilate
+                if(i!==0)pixels.set(pixelsCopy);
+                colorToCare = 0;
+                for(var y=0; y<height; y++){
+    				for(var x=0; x<width; x++){
+    					applyMatrix(x, y, matrix, pixels, pixelsCopy);
+    				}
+    			}
+    			
+                // erode
+                pixels.set(pixelsCopy);
+                colorToCare = 255;
+                for(var y=0; y<height; y++){
+    				for(var x=0; x<width; x++){
+    					applyMatrix(x, y, matrix, pixels, pixelsCopy);
+    				}
+    			}
+        	}
 
             pixels.set(pixelsCopy);
             self.postMessage(imageData, [imageData.data.buffer]);
