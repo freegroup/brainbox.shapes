@@ -7,7 +7,7 @@
 var video_morphological_Open = CircuitFigure.extend({
 
    NAME: "video_morphological_Open",
-   VERSION: "2.0.322_1087",
+   VERSION: "2.0.323_1088",
 
    init:function(attr, setter, getter)
    {
@@ -193,9 +193,11 @@ video_morphological_Open = video_morphological_Open.extend({
             var width  = imageData.width;
             var height = imageData.height;
             var matrix = [
-                [1,1,1],
-                [1,1,1],
-                [1,1,1]
+                [1,1,1,1,1],
+                [1,1,1,1,1],
+                [1,1,1,1,1],
+                [1,1,1,1,1],
+                [1,1,1,1,1]
             ]
             var pixelsCopy = new Uint8ClampedArray(pixels);
             pixelsCopy.set(pixels);
