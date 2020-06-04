@@ -7,7 +7,7 @@
 var widget_HighLow = CircuitFigure.extend({
 
    NAME: "widget_HighLow",
-   VERSION: "2.0.333_1110",
+   VERSION: "2.0.334_1116",
 
    init:function(attr, setter, getter)
    {
