@@ -7,7 +7,7 @@
 var video_assemble_Stencil = CircuitFigure.extend({
 
    NAME: "video_assemble_Stencil",
-   VERSION: "2.0.308_1058",
+   VERSION: "2.0.309_1063",
 
    init:function(attr, setter, getter)
    {
@@ -134,7 +134,7 @@ video_assemble_Stencil = video_assemble_Stencil.extend({
     calculate:function( context)
     {
         var img     = this.getInputPort("input_port1").getValue();
-        var stencil = this.getInputPort("input_port1").getValue();
+        var stencil = this.getInputPort("input_port2").getValue();
         if((img instanceof HTMLImageElement) &&  (stencil instanceof HTMLImageElement) && this.worker!==null){
             var imageData   = this.imageToData(img);
             var stencilData = this.imageToData(stencil);
@@ -142,7 +142,7 @@ video_assemble_Stencil = video_assemble_Stencil.extend({
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            this.worker.postMessage({imageData, stencilData}, [imageData.data.buffer, stencil.data.buffer]);
+            this.worker.postMessage({imageData, stencilData}, [imageData.data.buffer, stencilData.data.buffer]);
         }
     },
 
@@ -161,15 +161,9 @@ video_assemble_Stencil = video_assemble_Stencil.extend({
 
             var pixels = imageData.data;
             var mask   = stencilData.data;
-
             for (index=0; index < pixels.length; index+=4) {
-                if(mask[index]===0){
-                    pixels[index]   = pixels[index];
-                    pixels[index+1] = pixels[index+1];
-                    pixels[index+2] = pixels[index+2];
-                    pixels[index+3] = pixels[index+3];
-                }
-                else{
+              
+                if(mask[index]!==0){
                     pixels[index]   = 255;
                     pixels[index+1] = 255;
                     pixels[index+2] = 255;
