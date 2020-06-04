@@ -7,7 +7,7 @@
 var video_morphological_Erode = CircuitFigure.extend({
 
    NAME: "video_morphological_Erode",
-   VERSION: "2.0.313_1072",
+   VERSION: "2.0.314_1073",
 
    init:function(attr, setter, getter)
    {
@@ -156,18 +156,19 @@ video_morphological_Erode = video_morphological_Erode.extend({
             
             function applyMatrix(x,y,matrix,imgIn,imgOut){
         		var nx,ny;
-        		var xC=matrix[0].length/2;
-        		var yC=matrix.length/2;
-        		var offset = (y*width+x)*4
+        		var xC=parseInt(matrix[0].length/2);
+        		var yC=parseInt(matrix.length/2);
+        		var offset = (y*width+x)*4;
         		
-        		if(imgIn[offset]===255){
+        		if(imgIn[offset]===0){
         			for(var i=0; i<matrix.length; i++){
         				for(var j=0; j<matrix.length; j++){
         					if((i != yC || j != xC) && matrix[i][j]){
         						nx = x + (j-xC);
         						ny = y + (i-yC);
         						if(nx > 0 && nx < width && ny > 0 && ny < height){
-        							imgOut[offset]=255;
+                            		var outOffset = (ny*width+nx)*4;
+        							imgOut[outOffset]=0;
         						}
         					}
         				}
@@ -175,7 +176,7 @@ video_morphological_Erode = video_morphological_Erode.extend({
         		}
         	}
         	
-            var matrix = createMatrix2D(6,6,true);
+            var matrix = createMatrix2D(3,3,true);
             var pixelsCopy = new Uint8ClampedArray(pixels);
             pixelsCopy.set(pixels);
             
@@ -185,7 +186,7 @@ video_morphological_Erode = video_morphological_Erode.extend({
 				}
 			}
 
-            imageData.data.set(pixelsCopy);
+            pixels.set(pixelsCopy);
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
