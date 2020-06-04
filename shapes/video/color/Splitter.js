@@ -7,7 +7,7 @@
 var video_color_Splitter = CircuitFigure.extend({
 
    NAME: "video_color_Splitter",
-   VERSION: "2.0.328_1100",
+   VERSION: "2.0.329_1101",
 
    init:function(attr, setter, getter)
    {

@@ -4,25 +4,31 @@
 // created with http://www.draw2d.org
 //
 //
-var video_color_Invert = CircuitFigure.extend({
+var video_color_JustBlack = CircuitFigure.extend({
 
-   NAME: "video_color_Invert",
+   NAME: "video_color_JustBlack",
    VERSION: "2.0.329_1101",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:82.12910056640976},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80.43880200000422,height:84.12910056640976},attr), setter, getter);
      var port;
      // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 49.29799513299382 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8647716807119048, y: 48.126034543826854 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
      port.setMaxFanOut(20);
+     // input_port2
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.8647716807119048, y: 77.8389528672162 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port2");
+     port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 49.31260627559365 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.3093158697166, y: 48.14029833592497 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -32,8 +38,8 @@ var video_color_Invert = CircuitFigure.extend({
    createShapeElement : function()
    {
       var shape = this._super();
-      this.originalWidth = 80;
-      this.originalHeight= 82.12910056640976;
+      this.originalWidth = 80.43880200000422;
+      this.originalHeight= 84.12910056640976;
       return shape;
    },
 
@@ -42,7 +48,7 @@ var video_color_Invert = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,82.12910056640976 L0,82.12910056640976");
+       shape = this.canvas.paper.path("M0,0 L80.43880200000422,0 L80.43880200000422,84.12910056640976 L0,84.12910056640976");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -52,13 +58,13 @@ var video_color_Invert = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M4.5,8.37996800000019Q4.5,4.37996800000019 8.5, 4.37996800000019L71.5,4.37996800000019Q75.5,4.37996800000019 75.5, 8.37996800000019L75.5,54.37996800000019Q75.5,58.37996800000019 71.5, 58.37996800000019L8.5,58.37996800000019Q4.5,58.37996800000019 4.5, 54.37996800000019L4.5,8.37996800000019');
+       shape = this.canvas.paper.path('M4.5,8.3799680000011Q4.5,4.379968000001099 8.5, 4.379968000001099L71.5,4.379968000001099Q75.5,4.379968000001099 75.5, 8.3799680000011L75.5,48.3799680000011Q75.5,52.3799680000011 71.5, 52.3799680000011L8.5,52.3799680000011Q4.5,52.3799680000011 4.5, 48.3799680000011L4.5,8.3799680000011');
        shape.attr({"stroke":"rgba(48,48,48,1)","stroke-width":1,"fill":"rgba(235,235,235,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Invert');
-       shape.attr({"x":22.407552000004216,"y":70.12910056640976,"text-anchor":"start","text":"Invert","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'WhiteBlack');
+       shape.attr({"x":5.407552000004216,"y":72.12910056640976,"text-anchor":"start","text":"WhiteBlack","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -66,28 +72,38 @@ var video_color_Invert = CircuitFigure.extend({
        shape.attr({"rx":8,"ry":8,"cx":38.136293579453195,"cy":17.499523579457673,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
+       // Label
+       shape = this.canvas.paper.text(0,0,'threshold');
+       shape.attr({"x":12,"y":57.59737500000119,"text-anchor":"start","text":"threshold","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape.data("name","Label");
+       
        // Rectangle
-       shape = this.canvas.paper.path('M28.136293579453195 49.87996800000019L49.136293579453195 49.87996800000019L47.66478056057986 35.49000926909048L47.26481464287099 34.55069784111947L46.61172166499273 33.6693617814999L45.725345526597266 32.87278004043128L44.63261831811997 32.18515635102358L43.366742002848696 31.627383811123764L41.96617959205287 31.216410057116263L40.47348646586943 30.96472231855114L38.934017349595706 30.87996800000019L37.394548233321075 30.96472231855114L35.901855107135816 31.216410057116263L34.50129269633908 31.627383811123764L33.23541638106508 32.18515635102358L32.14268917259233 32.87278004043128L31.256313034195045 33.6693617814999L30.603220056319515 34.55069784111947L30.203254138608827 35.49000926909048Z');
+       shape = this.canvas.paper.path('M28.136293579453195 49.8799680000011L49.136293579453195 49.8799680000011L47.66478056057895 35.49000926909139L47.26481464287099 34.55069784112129L46.61172166499273 33.6693617814999L45.72534552659636 32.87278004043219L44.63261831811906 32.18515635102449L43.366742002848696 31.627383811124673L41.96617959205287 31.216410057117173L40.47348646586943 30.96472231855296L38.9340173495948 30.8799680000011L37.394548233321984 30.96472231855296L35.90185510713491 31.216410057117173L34.50129269633908 31.627383811124673L33.23541638106508 32.18515635102449L32.142689172593236 32.87278004043219L31.256313034195045 33.6693617814999L30.603220056320424 34.55069784112129L30.203254138608827 35.49000926909139Z');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M39.42918400000053,53.87996800000019Q39.42918400000053,57.87996800000019 43.42918400000053, 57.87996800000019L71,57.87996800000019Q75,57.87996800000019 75, 53.87996800000019L75,8.87996800000019Q75,4.87996800000019 71, 4.87996800000019L43.42918400000053,4.87996800000019Q39.42918400000053,4.87996800000019 39.42918400000053, 8.87996800000019L39.42918400000053,53.87996800000019');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Rectangle");
-       
-       // Rectangle
-       shape = this.canvas.paper.path('M40.84867199999917 49.87996800000019L49.651728947198535 49.87996800000019L48.46050412239674 35.49000926909048L48.13672218901229 34.55069784111947L47.60802787358898 33.6693617814999L46.89048528536114 32.87278004043128L46.00589659279012 32.18515635102358L44.98113957566147 31.627383811123764L43.84735095739779 31.216410057116263L42.63898033143869 30.96472231855114L41.392743427790265 30.87996800000019L40.84867199999917 30.916969314092967L40.84867199999917 49.87996800000019Z');
+       shape = this.canvas.paper.path('M39.92918400000053,47.3799680000011Q39.92918400000053,51.3799680000011 43.92918400000053, 51.3799680000011L70.92918400000053,51.3799680000011Q74.92918400000053,51.3799680000011 74.92918400000053, 47.3799680000011L74.92918400000053,9.3799680000011Q74.92918400000053,5.379968000001099 70.92918400000053, 5.379968000001099L43.92918400000053,5.379968000001099Q39.92918400000053,5.379968000001099 39.92918400000053, 9.3799680000011L39.92918400000053,47.3799680000011');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
+       // Rectangle
+       shape = this.canvas.paper.path('M40.84867200000008 49.8799680000011L49.651728947199445 49.8799680000011L48.46050412239856 35.49000926909139L48.13672218901411 34.55069784112129L47.60802787358989 33.6693617814999L46.890485285362956 32.87278004043219L46.00589659279103 32.18515635102449L44.98113957566238 31.627383811124673L43.84735095739961 31.216410057117173L42.6389803314396 30.96472231855296L41.392743427790265 30.8799680000011L40.84867200000008 30.916969314093876L40.84867200000008 49.8799680000011Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
+       
        // Circle
-       shape = this.canvas.paper.path('M39.92918400000053 25.470542254553948L40.260442059449815 25.499523579457673L41.64962748078506 25.377985603555317L42.996603206054715 25.017064545744688L44.260442059449815 24.42772680973303L45.40274293694256 23.627879124409446L46.38879760440159 22.641824456950417L47.18864528972517 21.499523579457673L47.77798302573683 20.235684726062573L48.13890408354746 18.888709000792915L48.260442059449815 17.499523579457673L48.13890408354746 16.11033815812243L47.77798302573683 14.763362432852773L47.18864528972517 13.499523579457673L46.38879760440159 12.357222701964929L45.40274293694256 11.3711680345059L44.260442059449815 10.571320349182315L42.996603206054715 9.981982613170658L41.64962748078506 9.62106155536003L40.260442059449815 9.499523579457673L39.92918400000053 9.528504904361398L39.92918400000053 25.470542254553948Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(227,227,227,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M39.92918400000053 25.470542254553948L40.260442059450725 25.499523579457673L41.64962748078506 25.377985603554407L42.996603206054715 25.01706454574378L44.260442059450725 24.42772680973212L45.40274293694165 23.627879124409446L46.3887976044025 22.641824456950417L47.18864528972517 21.499523579457673L47.77798302573683 20.235684726063482L48.13890408354746 18.888709000792005L48.260442059450725 17.499523579457673L48.13890408354746 16.11033815812334L47.77798302573683 14.763362432851864L47.18864528972517 13.499523579457673L46.3887976044025 12.357222701964929L45.40274293694165 11.3711680345059L44.260442059450725 10.571320349183225L42.996603206054715 9.981982613171567L41.64962748078506 9.621061555360939L40.260442059450725 9.499523579457673L39.92918400000053 9.528504904361398L39.92918400000053 25.470542254553948Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
        // Line
-       shape = this.canvas.paper.path('M39.537952000005134 5.1831660000025295L40.00981120000051,58.45082679999632');
+       shape = this.canvas.paper.path('M9.377490534403478 57.12910056640976L5.757806182406057,57.53049545921385L0.4075520000042161,64.0115340000084');
+       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Line");
+       
+       // Line
+       shape = this.canvas.paper.path('M40.086528000003455 5.1831660000025295L40.34867200000008,52.369086000002426');
        shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Line");
        
@@ -108,7 +124,7 @@ var video_color_Invert = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_color_Invert = video_color_Invert.extend({
+video_color_JustBlack = video_color_JustBlack.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
@@ -133,13 +149,14 @@ video_color_Invert = video_color_Invert.extend({
     calculate:function( context)
     {
         var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null && this.processing ===false){
+        var threshold = this.getInputPort("input_port2").getValue();
+        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
             this.processing = true;
-            this.worker.postMessage( imageData, [imageData.data.buffer]);
+            this.worker.postMessage({imageData: imageData,threshold: threshold}, [imageData.data.buffer]);
         }
     },
 
@@ -153,12 +170,14 @@ video_color_Invert = video_color_Invert.extend({
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
-            var imageData = event.data;
+            var imageData = event.data.imageData;
+            var threshold = event.data.threshold;
+            // map offset from 0-5 => 0-255
+            threshold = 255/5*threshold;
             var pixels = imageData.data;
             for( let x = 0; x < pixels.length; x += 4 ) {
-                pixels[x]   = 255-pixels[x];
-                pixels[x+1] = 255-pixels[x+1];
-                pixels[x+2] = 255-pixels[x+2];
+                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
+                pixels[x] = pixels[x+1] = pixels[x+2] = lum>threshold?255:0;
             }
             self.postMessage(imageData, [imageData.data.buffer]);
         };
@@ -172,14 +191,14 @@ video_color_Invert = video_color_Invert.extend({
             image.onload = () => {
                 this.getOutputPort("output_port1").setValue(image);
                 this.processing = false;
-            }
+            };
             image.src = this.tmpCanvas.toDataURL();
         };
         
         // convert a js function to a WebWorker
         //
         this.worker = this.createWorker(workerFunction);
-        this.worker.onmessage = receiverFunction
+        this.worker.onmessage = receiverFunction;
         this.processing = false;
     },
 
@@ -196,7 +215,7 @@ video_color_Invert = video_color_Invert.extend({
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
-        this.processing = false;
+        this.progressing = false;
     },
     
 
