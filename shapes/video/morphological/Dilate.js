@@ -7,7 +7,7 @@
 var video_morphological_Dilate = CircuitFigure.extend({
 
    NAME: "video_morphological_Dilate",
-   VERSION: "2.0.324_1090",
+   VERSION: "2.0.325_1091",
 
    init:function(attr, setter, getter)
    {
@@ -52,8 +52,8 @@ var video_morphological_Dilate = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'Erode');
-       shape.attr({"x":21.76637911823309,"y":66.77074080000239,"text-anchor":"start","text":"Erode","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'Dilate');
+       shape.attr({"x":21.76637911823309,"y":66.77074080000239,"text-anchor":"start","text":"Dilate","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Rectangle
