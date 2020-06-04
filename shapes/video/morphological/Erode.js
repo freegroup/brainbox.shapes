@@ -7,7 +7,7 @@
 var video_morphological_Erode = CircuitFigure.extend({
 
    NAME: "video_morphological_Erode",
-   VERSION: "2.0.312_1069",
+   VERSION: "2.0.313_1072",
 
    init:function(attr, setter, getter)
    {
@@ -160,7 +160,7 @@ video_morphological_Erode = video_morphological_Erode.extend({
         		var yC=matrix.length/2;
         		var offset = (y*width+x)*4
         		
-        		if(imgIn[offset]){
+        		if(imgIn[offset]===255){
         			for(var i=0; i<matrix.length; i++){
         				for(var j=0; j<matrix.length; j++){
         					if((i != yC || j != xC) && matrix[i][j]){
@@ -175,7 +175,7 @@ video_morphological_Erode = video_morphological_Erode.extend({
         		}
         	}
         	
-            var matrix = createMatrix2D(3,3,true);
+            var matrix = createMatrix2D(6,6,true);
             var pixelsCopy = new Uint8ClampedArray(pixels);
             pixelsCopy.set(pixels);
             
