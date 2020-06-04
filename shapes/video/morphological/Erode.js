@@ -7,7 +7,7 @@
 var video_morphological_Erode = CircuitFigure.extend({
 
    NAME: "video_morphological_Erode",
-   VERSION: "2.0.337_1125",
+   VERSION: "2.0.338_1130",
 
    init:function(attr, setter, getter)
    {
