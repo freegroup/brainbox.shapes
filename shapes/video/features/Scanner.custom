@@ -87,7 +87,7 @@ video_features_Scanner = video_features_Scanner.extend({
     			return hit;
             }
             
-            let bottom = height - (height/100*30);
+            let bottom = height/100*80;
             for (let i=1; i<(width-1); i++){
                if(checkMatrix(i,bottom)){
                    leftSide = i;
@@ -108,15 +108,11 @@ video_features_Scanner = video_features_Scanner.extend({
             if(leftSide <=rightSide){
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
-                ctx.lineWidth = 2;
+                ctx.lineWidth = height/100*3;
                 ctx.moveTo(leftSide, bottom);
                 ctx.lineTo(rightSide,bottom);
                 ctx.stroke();
                 ctx.closePath();
-
-              // ctx.textBaseline = "top";
-              // ctx.fillStyle = "#00FF00";
-              // ctx.fillText("+" , (leftSide+rightSide)/2, bottom);
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, position}, [imageData.data.buffer]);
