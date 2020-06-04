@@ -7,7 +7,7 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.336_1121",
+   VERSION: "2.0.337_1127",
 
    init:function(attr, setter, getter)
    {
@@ -184,7 +184,9 @@ video_features_Scanner = video_features_Scanner.extend({
     						if(nx > 0 && nx < width && ny > 0 && ny < height){
                         		var outOffset = (ny*width+nx)*4;
     							hit = hit && pixels[outOffset]===0;
-    							if(hit === false) return false; // abort
+    							if(hit === false) {
+    							    return false; // abort
+    							}
     						}
     					}
     				}
@@ -192,20 +194,19 @@ video_features_Scanner = video_features_Scanner.extend({
     			return hit;
             }
             
-            let bottom = height/100*80;
-            for (let i=1; i<(width-1); i++){
+            let bottom = parseInt(height/100*80);
+            for (let i=2; i<(width-1); i++){
                if(checkMatrix(i,bottom)){
                    leftSide = i;
                    break;
                }    
             }
-            for (let i=(width-1); i>0; i--){
+            for (let i=(width-2); i>0; i--){
                if(checkMatrix(i,bottom)){
                    rightSide = i;
                    break;
                }    
             }
-            
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
@@ -214,7 +215,7 @@ video_features_Scanner = video_features_Scanner.extend({
             if(leftSide <=rightSide){
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
-                ctx.lineWidth = height/100*3;
+                ctx.lineWidth = height/100*4;
                 ctx.moveTo(leftSide, bottom);
                 ctx.lineTo(rightSide,bottom);
                 ctx.stroke();
