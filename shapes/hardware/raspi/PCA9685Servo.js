@@ -7,7 +7,7 @@
 var hardware_raspi_PCA9685Servo = CircuitFigure.extend({
 
    NAME: "hardware_raspi_PCA9685Servo",
-   VERSION: "2.0.326_1094",
+   VERSION: "2.0.327_1097",
 
    init:function(attr, setter, getter)
    {

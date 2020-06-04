@@ -7,7 +7,7 @@
 var video_morphological_Thinning = CircuitFigure.extend({
 
    NAME: "video_morphological_Thinning",
-   VERSION: "2.0.326_1094",
+   VERSION: "2.0.327_1097",
 
    init:function(attr, setter, getter)
    {
@@ -213,9 +213,7 @@ video_morphological_Thinning = video_morphological_Thinning.extend({
 			}
 			
             for(var i=0; i<pixels.length; i+=4){
-                pixels[i  ] = pixelsCopy[i]  -pixels[i  ]; 
-                pixels[i+1] = pixelsCopy[i+1]-pixels[i+1]; 
-                pixels[i+2] = pixelsCopy[i+2]-pixels[i+2]; 
+                pixels[i]=pixels[i+1]=pixels[i+2] = Math.min(255,pixelsCopy[i]+pixels[i]);
             }
             
 
