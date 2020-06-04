@@ -81,7 +81,6 @@ video_features_Scanner = video_features_Scanner.extend({
                         		var outOffset = (ny*width+nx)*4;
     							hit = hit && pixels[outOffset]===0;
     							if(hit === false) {
-    							    console.log("abort",pixels[outOffset] , x, y)
     							    return false; // abort
     							}
     						}
@@ -104,21 +103,25 @@ video_features_Scanner = video_features_Scanner.extend({
                    break;
                }    
             }
-            console.log(leftSide, rightSide, width);
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
 
             let position = -1;
             if(leftSide <=rightSide){
+                let length =  height/100*8;
+                position = parseInt((leftSide + rightSide )/2);
+                
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
-                ctx.lineWidth = height/100*3;
+                ctx.lineWidth = height/100*4;
                 ctx.moveTo(leftSide, bottom);
                 ctx.lineTo(rightSide,bottom);
                 ctx.stroke();
+                ctx.moveTo(position,bottom-length);
+                ctx.lineTo(position,bottom+length);
+                ctx.stroke();
                 ctx.closePath();
-                position = (leftSide + rightSide )/2
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, position}, [imageData.data.buffer]);

@@ -7,7 +7,7 @@
 var hardware_raspi_GPIORead = CircuitFigure.extend({
 
    NAME: "hardware_raspi_GPIORead",
-   VERSION: "2.0.337_1126",
+   VERSION: "2.0.338_1131",
 
    init:function(attr, setter, getter)
    {
