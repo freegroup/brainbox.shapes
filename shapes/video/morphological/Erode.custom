@@ -57,7 +57,7 @@ video_morphological_Erode = video_morphological_Erode.extend({
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
-            var colorToCare = 0;
+            var colorToCare = 255;
             var imageData = event.data;
             var pixels = imageData.data;
             var width  = imageData.width;
