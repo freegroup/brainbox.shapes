@@ -3,8 +3,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "e92ac7a1-d149-90c6-1281-23d32bf22f9d",
-      "x": 15920,
-      "y": 15920,
+      "x": 7960,
+      "y": 7960,
       "width": 80,
       "height": 80,
       "alpha": 1,
@@ -14,7 +14,7 @@
       "userData": {
         "name": "Rectangle",
         "baseClass": "draw2d.SetFigure",
-        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        this.progressing = false;\n        \n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data;\n            var pixels = imageData.data;\n            var width  = imageData.width;\n            var height = imageData.height;\n            var matrix =[[0,  0,  1,  0,  0],  \n                         [0,  1,  1,  1,  0], \n                         [1,  1,  1,  1,  1], \n                         [0,  1,  1,  1,  0], \n                         [0,  0,  1,  0,  0]];\n\n            function applyMatrix(x,y,matrix,imgIn,imgOut){\n        \t\tvar nx,ny;\n        \t\tvar xC=parseInt(matrix[0].length/2);\n        \t\tvar yC=parseInt(matrix.length/2);\n        \t\tvar offset = (y*width+x)*4;\n        \t\t\n        \t\tif(imgIn[offset]===0){\n        \t\t\tfor(var i=0; i<matrix.length; i++){\n        \t\t\t\tfor(var j=0; j<matrix.length; j++){\n        \t\t\t\t\tif((i != yC || j != xC) && matrix[i][j]){\n        \t\t\t\t\t\tnx = x + (j-xC);\n        \t\t\t\t\t\tny = y + (i-yC);\n        \t\t\t\t\t\tif(nx > 0 && nx < width && ny > 0 && ny < height){\n                            \t\tvar outOffset = (ny*width+nx)*4;\n        \t\t\t\t\t\t\timgOut[outOffset]=0;\n        \t\t\t\t\t\t}\n        \t\t\t\t\t}\n        \t\t\t\t}\n        \t\t\t}\n        \t\t}\n        \t}\n\n            var pixelsCopy = new Uint8ClampedArray(pixels);\n            pixelsCopy.set(pixels);\n            \n            for(var y=0; y<height; y++){\n\t\t\t\tfor(var x=0; x<width; x++){\n\t\t\t\t\tapplyMatrix(x, y, matrix, pixels, pixelsCopy);\n\t\t\t\t}\n\t\t\t}\n\n            pixels.set(pixelsCopy);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            this.processing = false;\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { this.getOutputPort(\"output_port1\").setValue(image);};\n            image.src = this.tmpCanvas.toDataURL();\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n        this.processing = false;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        if(this.worker) this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.progressing = false;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n\n        if(this.tmpContext !==null && this.tmpContext.width!== width){\n            delete this.tmpContext;\n            delete this.tmpCanvas;\n            this.tmpCanvas = null;\n            this.tmpContext = null;\n        }\n\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
+        "code": "/**\n * Generated Code for the Draw2D touch HTML5 lib.\n * File will be generated if you save the *.shape file.\n *\n * by 'Draw2D Shape Designer'\n *\n * Custom JS code to tweak the standard behaviour of the generated\n * shape. add your custom code and event handler here.\n *\n * Looks disconcerting - extending my own class. But this is a good method to\n * merge basic code and override them with custom methods.\n */\ntestShape = testShape.extend({\n\n    init: function(attr, setter, getter){\n        this._super(attr, setter, getter);\n        this.worker= null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.processing = false;\n        this.getInputPort(\"input_port1\").setSemanticGroup(\"Image\");\n        this.getOutputPort(\"output_port1\").setSemanticGroup(\"Image\");\n        this.attr({\n            resizeable:false\n        });\n        this.installEditPolicy(new draw2d.policy.figure.AntSelectionFeedbackPolicy());\n    },\n\n    /**\n     *  Called by the simulator for every calculation\n     *  loop\n     *  @param {Object} context context where objects can store or handover global variables to other objects.\n     *  @required\n     **/\n    calculate:function( context)\n    {\n        var img = this.getInputPort(\"input_port1\").getValue();\n        if(img instanceof HTMLImageElement && this.worker!==null && this.processing === false){\n            var imageData = this.imageToData(img);\n            // Push it to the WebWorker with \"Transferable Objects\"\n            // Passing data by reference instead of structure clone\n            //\n            this.processing = true;\n            this.worker.postMessage(imageData, [imageData.data.buffer]);\n        }\n    },\n\n\n    /**\n     *  Called if the simulation mode is starting\n     *  @required\n     **/\n    onStart:function( context )\n    {\n        this.progressing = false;\n        \n        // the method which runs as WebWorker\n        //\n        var workerFunction = function(event){\n            var imageData = event.data;\n            var pixels = imageData.data;\n            var width  = imageData.width;\n            var height = imageData.height;\n\n            function createMatrix2D(rows, cols, value){\n            \tvar arr = new Array(rows);\n            \tfor(var i=0; i<arr.length; i++){\n            \t\tarr[i] = new Array(cols);\n            \t\tarr[i].fill(value);\n            \t}\n            \treturn arr;\n            }\n            \n            function applyMatrix(x,y,matrix,imgIn,imgOut){\n        \t\tvar nx,ny;\n        \t\tvar xC=parseInt(matrix[0].length/2);\n        \t\tvar yC=parseInt(matrix.length/2);\n        \t\tvar offset = (y*width+x)*4;\n        \t\t\n        \t\tif(imgIn[offset]===0){\n        \t\t\tfor(var i=0; i<matrix.length; i++){\n        \t\t\t\tfor(var j=0; j<matrix.length; j++){\n        \t\t\t\t\tif((i != yC || j != xC) && matrix[i][j]){\n        \t\t\t\t\t\tnx = x + (j-xC);\n        \t\t\t\t\t\tny = y + (i-yC);\n        \t\t\t\t\t\tif(nx > 0 && nx < width && ny > 0 && ny < height){\n                            \t\tvar outOffset = (ny*width+nx)*4;\n        \t\t\t\t\t\t\timgOut[outOffset]=0;\n        \t\t\t\t\t\t}\n        \t\t\t\t\t}\n        \t\t\t\t}\n        \t\t\t}\n        \t\t}\n        \t}\n        \t\n            var matrix = createMatrix2D(3,3,true);\n            var pixelsCopy = new Uint8ClampedArray(pixels);\n            pixelsCopy.set(pixels);\n            \n            for(var y=0; y<height; y++){\n\t\t\t\tfor(var x=0; x<width; x++){\n\t\t\t\t\tapplyMatrix(x, y, matrix, pixels, pixelsCopy);\n\t\t\t\t}\n\t\t\t}\n\n            pixels.set(pixelsCopy);\n            self.postMessage(imageData, [imageData.data.buffer]);\n        };\n        \n        // the method which receives the WebWorker result\n        //\n       var receiverFunction = (event) => {\n            this.processing = false;\n            var imageData = event.data;\n            this.tmpContext.putImageData(imageData,0,0);\n            var image = new Image();\n            image.onload = () => { this.getOutputPort(\"output_port1\").setValue(image);};\n            image.src = this.tmpCanvas.toDataURL();\n        };\n\n\n        // convert a js function to a WebWorker\n        //\n        this.worker = this.createWorker(workerFunction);\n        this.worker.onmessage = receiverFunction;\n        this.processing = false;\n    },\n\n    /**\n     *  Called if the simulation mode is stopping\n     *  @required\n     **/\n    onStop:function( context )\n    {\n        if(this.worker) this.worker.terminate();\n        delete this.worker;\n        delete this.tmpContext;\n        delete this.tmpCanvas;\n        this.worker = null;\n        this.tmpCanvas = null;\n        this.tmpContext = null;\n        this.progressing = false;\n    },\n    \n\n    /**\n     *  Helper function to dynamically create Web Workers.\n     */\n    createWorker: function(fn) {\n        var blob = new Blob([\"self.onmessage = \", fn.toString()], {\n           type: \"text/javascript\"\n        });\n        var url = window.URL.createObjectURL(blob);\n        return new Worker(url);\n    },\n    \n    imageToData: function(image){\n        var width = image.naturalWidth;\n        var height= image.naturalHeight;\n\n        if(this.tmpContext !==null && this.tmpContext.width!== width){\n            delete this.tmpContext;\n            delete this.tmpCanvas;\n            this.tmpCanvas = null;\n            this.tmpContext = null;\n        }\n\n        // convert the HTMLImageElement to an ImageData object. Required for the WebWorker\n        //\n        if(this.tmpContext === null ) {\n            this.tmpCanvas = document.createElement('canvas');\n            this.tmpCanvas.width = width;\n            this.tmpCanvas.height = height;\n            this.tmpContext = this.tmpCanvas.getContext('2d');\n        }\n        this.tmpContext.drawImage(image, 0, 0, width, height);\n        return this.tmpContext.getImageData(0, 0, width, height);\n    }\n});",
         "markdown": "# Flip Horizontal\n\nA flip (mirror effect) is done by reversing the pixels horizontally or \nvertically.",
         "type": "Output",
         "direction": 1
@@ -28,20 +28,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15920,
-          "y": 15920
+          "x": 7960,
+          "y": 7960
         },
         {
-          "x": 16000,
-          "y": 15920
+          "x": 8040,
+          "y": 7960
         },
         {
-          "x": 16000,
-          "y": 16000
+          "x": 8040,
+          "y": 8040
         },
         {
-          "x": 15920,
-          "y": 16000
+          "x": 7960,
+          "y": 8040
         }
       ],
       "blur": 0,
@@ -66,8 +66,8 @@
     {
       "type": "shape_designer.figure.ExtLabel",
       "id": "08ecbf02-d0c7-c225-b373-3d46a828f568",
-      "x": 15954.640625,
-      "y": 15976.34375,
+      "x": 7977.766379118233,
+      "y": 8014.770740800002,
       "width": 71.9375,
       "height": 21.375,
       "alpha": 1,
@@ -106,10 +106,10 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "509f0f7f-9c3d-3b54-d79c-877493488fa7",
-      "x": 15991.25,
-      "y": 15991.25,
-      "width": 7.5,
-      "height": 7.5,
+      "x": 7954.2288,
+      "y": 7994.9096,
+      "width": 10,
+      "height": 10,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -144,10 +144,10 @@
     {
       "type": "shape_designer.figure.ExtPort",
       "id": "b832e06d-477d-4ffc-697b-d19504dc9aad",
-      "x": 15991.25,
-      "y": 15991.25,
-      "width": 7.5,
-      "height": 7.5,
+      "x": 8035.26005,
+      "y": 7994.9096,
+      "width": 10,
+      "height": 10,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -182,8 +182,8 @@
     {
       "type": "shape_designer.figure.PolyRect",
       "id": "67330ad1-a95f-151a-e910-9b17a569af3e",
-      "x": 15929,
-      "y": 15950,
+      "x": 7964.315424000003,
+      "y": 7963.770740800002,
       "width": 71,
       "height": 50,
       "alpha": 1,
@@ -202,20 +202,20 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15929,
-          "y": 15950
+          "x": 7964.315424000003,
+          "y": 7963.770740800002
         },
         {
-          "x": 16000,
-          "y": 15950
+          "x": 8035.315424000003,
+          "y": 7963.770740800002
         },
         {
-          "x": 16000,
-          "y": 16000
+          "x": 8035.315424000003,
+          "y": 8013.770740800002
         },
         {
-          "x": 15929,
-          "y": 16000
+          "x": 7964.315424000003,
+          "y": 8013.770740800002
         }
       ],
       "blur": 0,
@@ -240,8 +240,8 @@
     {
       "type": "shape_designer.figure.PolyCircle",
       "id": "5f767493-26e4-fad9-cef3-1901c554622d",
-      "x": 15983.671143036463,
-      "y": 15983.671143036463,
+      "x": 7991.3355715182315,
+      "y": 7968.258984318234,
       "width": 16.32885696353746,
       "height": 16.32885696353746,
       "alpha": 1,
@@ -274,10 +274,10 @@
     {
       "type": "shape_designer.figure.ExtPolygon",
       "id": "29256ea5-e5e1-cb3c-5966-7f8958f98e5b",
-      "x": 15977.918259200005,
-      "y": 15977.790284800001,
+      "x": 7988.818989118233,
+      "y": 7988.724655359116,
       "width": 22.081740799994805,
-      "height": 22.209715199998755,
+      "height": 22.209715199999664,
       "alpha": 1,
       "selectable": true,
       "draggable": true,
@@ -294,88 +294,88 @@
       "dasharray": null,
       "vertices": [
         {
-          "x": 15977.918259200005,
-          "y": 15999.790284800001
+          "x": 7988.818989118233,
+          "y": 8010.724655359116
         },
         {
-          "x": 16000,
-          "y": 16000
+          "x": 8010.900729918228,
+          "y": 8010.934370559115
         },
         {
-          "x": 15996.434841600003,
-          "y": 15984.352877171117
+          "x": 8007.335571518231,
+          "y": 7995.287247730233
         },
         {
-          "x": 15996.313303624102,
-          "y": 15983.213294965102
+          "x": 8007.214033542328,
+          "y": 7994.147665524218
         },
         {
-          "x": 15995.95238256629,
-          "y": 15982.108338387763
+          "x": 8006.8531124845185,
+          "y": 7993.042708946877
         },
         {
-          "x": 15995.36304483028,
-          "y": 15981.07158098556
+          "x": 8006.263774748507,
+          "y": 7992.005951544674
         },
         {
-          "x": 15994.563197144955,
-          "y": 15980.134524107543
+          "x": 8005.463927063182,
+          "y": 7991.068894666658
         },
         {
-          "x": 15993.577142477494,
-          "y": 15979.32563975277
+          "x": 8004.477872395722,
+          "y": 7990.260010311883
         },
         {
-          "x": 15992.434841600003,
-          "y": 15978.669505463047
+          "x": 8003.335571518231,
+          "y": 7989.603876022162
         },
         {
-          "x": 15991.171002746609,
-          "y": 15978.18605754675
+          "x": 8002.071732664836,
+          "y": 7989.120428105865
         },
         {
-          "x": 15989.82402702134,
-          "y": 15977.889985324186
+          "x": 8000.724756939567,
+          "y": 7988.824355883299
         },
         {
-          "x": 15988.434841600003,
-          "y": 15977.790284800001
+          "x": 7999.3355715182315,
+          "y": 7988.724655359116
         },
         {
-          "x": 15987.045656178667,
-          "y": 15977.889985324186
+          "x": 7997.946386096895,
+          "y": 7988.824355883299
         },
         {
-          "x": 15985.698680453399,
-          "y": 15978.18605754675
+          "x": 7996.599410371626,
+          "y": 7989.120428105865
         },
         {
-          "x": 15984.434841600003,
-          "y": 15978.669505463047
+          "x": 7995.3355715182315,
+          "y": 7989.603876022162
         },
         {
-          "x": 15983.292540722512,
-          "y": 15979.32563975277
+          "x": 7994.19327064074,
+          "y": 7990.260010311883
         },
         {
-          "x": 15982.306486055051,
-          "y": 15980.134524107543
+          "x": 7993.20721597328,
+          "y": 7991.068894666658
         },
         {
-          "x": 15981.506638369727,
-          "y": 15981.07158098556
+          "x": 7992.407368287955,
+          "y": 7992.005951544674
         },
         {
-          "x": 15980.917300633715,
-          "y": 15982.108338387763
+          "x": 7991.818030551944,
+          "y": 7993.042708946877
         },
         {
-          "x": 15980.556379575906,
-          "y": 15983.213294965102
+          "x": 7991.457109494134,
+          "y": 7994.147665524218
         },
         {
-          "x": 15980.434841600003,
-          "y": 15984.352877171117
+          "x": 7991.3355715182315,
+          "y": 7995.287247730233
         }
       ],
       "blur": 0,
@@ -412,12 +412,12 @@
       "policy": "draw2d.policy.line.VertexSelectionFeedbackPolicy",
       "vertex": [
         {
-          "x": 24413.53283648001,
-          "y": 24378.088881344014
+          "x": 7999.482836480012,
+          "y": 7964.038881344014
         },
         {
-          "x": 24413.70060864001,
-          "y": 24427.521375424003
+          "x": 7999.650608640011,
+          "y": 8013.471375424004
         }
       ],
       "router": "draw2d.layout.connection.VertexRouter",
