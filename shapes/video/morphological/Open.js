@@ -7,7 +7,7 @@
 var video_morphological_Open = CircuitFigure.extend({
 
    NAME: "video_morphological_Open",
-   VERSION: "2.0.323_1088",
+   VERSION: "2.0.324_1089",
 
    init:function(attr, setter, getter)
    {
@@ -164,7 +164,6 @@ video_morphological_Open = video_morphological_Open.extend({
             if(this.getInputPort("input_port2").getConnections().lenght!==0){
                 iterations = Math.min(1,parseInt(this.getInputPort("input_port2").getValue()));
             }
-            iterations = 10;
             var imageData = this.imageToData(img);
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
