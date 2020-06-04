@@ -7,7 +7,7 @@
 var video_color_Invert = CircuitFigure.extend({
 
    NAME: "video_color_Invert",
-   VERSION: "2.0.336_1121",
+   VERSION: "2.0.337_1125",
 
    init:function(attr, setter, getter)
    {
