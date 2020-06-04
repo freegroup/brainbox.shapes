@@ -81,7 +81,6 @@ video_features_Scanner = video_features_Scanner.extend({
                         		var outOffset = (ny*width+nx)*4;
     							hit = hit && pixels[outOffset]===0;
     							if(hit === false) {
-    							    console.log("abort",pixels[outOffset] )
     							    return false; // abort
     							}
     						}
@@ -91,34 +90,37 @@ video_features_Scanner = video_features_Scanner.extend({
     			return hit;
             }
             
-            let bottom = height/100*80;
-            for (let i=1; i<(width-1); i++){
+            let bottom = parseInt(height/100*80);
+            for (let i=2; i<(width-1); i++){
                if(checkMatrix(i,bottom)){
                    leftSide = i;
                    break;
                }    
             }
-            for (let i=(width-1); i>0; i--){
+            for (let i=(width-2); i>0; i--){
                if(checkMatrix(i,bottom)){
                    rightSide = i;
                    break;
                }    
             }
-            console.log(leftSide, rightSide, width);
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
             ctx.putImageData(imageData,0,0);
 
             let position = -1;
             if(leftSide <=rightSide){
+                let length =  height/100*8;
+                position = parseInt((leftSide + rightSide )/2);
+                
                 ctx.beginPath();
                 ctx.strokeStyle = 'rgba(255,0,0,1)';
-                ctx.lineWidth = height/100*3;
+                ctx.lineWidth = height/100*4;
                 ctx.moveTo(leftSide, bottom);
-                ctx.lineTo(rightSide,bottom);
+                ctx.lineTo(rightSide,bottom-length);
+                ctx.moveTo(position, bottom+length);
+                ctx.lineTo(position,bottom);
                 ctx.stroke();
                 ctx.closePath();
-                position = (leftSide + rightSide )/2
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, position}, [imageData.data.buffer]);
