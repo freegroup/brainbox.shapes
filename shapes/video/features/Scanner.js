@@ -7,7 +7,7 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.333_1110",
+   VERSION: "2.0.334_1115",
 
    init:function(attr, setter, getter)
    {
@@ -183,7 +183,7 @@ video_features_Scanner = video_features_Scanner.extend({
     						ny = y + (i-yC);
     						if(nx > 0 && nx < width && ny > 0 && ny < height){
                         		var outOffset = (ny*width+nx)*4;
-    							hit = hit && imgOut[outOffset]===0;
+    							hit = hit && pixels[outOffset]===0;
     						}
     					}
     				}
@@ -191,14 +191,15 @@ video_features_Scanner = video_features_Scanner.extend({
     			return hit;
             }
             
+            let bottom = height - (height/100*30);
             for (let i=1; i<(width-1); i++){
-               if(checkMatrix(i,30)){
+               if(checkMatrix(i,bottom)){
                    leftSide = i;
                    break;
                }    
             }
             for (let i=(width-1); i>0; i--){
-               if(checkMatrix(i,30)){
+               if(checkMatrix(i,bottom)){
                    rightSide = i;
                    break;
                }    
@@ -209,9 +210,17 @@ video_features_Scanner = video_features_Scanner.extend({
             ctx.putImageData(imageData,0,0);
 
             if(leftSide <=rightSide){
-               ctx.textBaseline = "top";
-               ctx.fillStyle = "#00FF00";
-               ctx.fillText("+" , (leftSide+rightSide)/2, 30);
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(255,0,0,1)';
+                ctx.lineWidth = stroke;
+                ctx.moveTo(leftSide, bottom);
+                ctx.lineTo(rightSide,bottom);
+                ctx.stroke();
+                ctx.closePath();
+
+              // ctx.textBaseline = "top";
+              // ctx.fillStyle = "#00FF00";
+              // ctx.fillText("+" , (leftSide+rightSide)/2, bottom);
             }
             imageData = ctx.getImageData(0, 0, width, height);
             self.postMessage({imageData, position}, [imageData.data.buffer]);
