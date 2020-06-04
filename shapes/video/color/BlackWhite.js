@@ -7,7 +7,7 @@
 var video_color_BlackWhite = CircuitFigure.extend({
 
    NAME: "video_color_BlackWhite",
-   VERSION: "2.0.304_1053",
+   VERSION: "2.0.305_1054",
 
    init:function(attr, setter, getter)
    {
