@@ -7,7 +7,7 @@
 var video_features_Scanner = CircuitFigure.extend({
 
    NAME: "video_features_Scanner",
-   VERSION: "2.0.340_1133",
+   VERSION: "2.0.341_1134",
 
    init:function(attr, setter, getter)
    {

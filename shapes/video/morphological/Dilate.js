@@ -7,7 +7,7 @@
 var video_morphological_Dilate = CircuitFigure.extend({
 
    NAME: "video_morphological_Dilate",
-   VERSION: "2.0.340_1133",
+   VERSION: "2.0.341_1134",
 
    init:function(attr, setter, getter)
    {
