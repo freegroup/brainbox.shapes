@@ -7,7 +7,7 @@
 var circuit_digital_alu_FullAdder4Bit = CircuitFigure.extend({
 
    NAME: "circuit_digital_alu_FullAdder4Bit",
-   VERSION: "2.0.331_1104",
+   VERSION: "2.0.332_1109",
 
    init:function(attr, setter, getter)
    {
