@@ -7,7 +7,7 @@
 var video_features_LineAngle = CircuitFigure.extend({
 
    NAME: "video_features_LineAngle",
-   VERSION: "2.0.331_1104",
+   VERSION: "2.0.332_1105",
 
    init:function(attr, setter, getter)
    {
@@ -169,23 +169,34 @@ video_features_LineAngle = video_features_LineAngle.extend({
                               [1,1,1],
                               [1,1,1] ]; 
                               
-            for (var index=0; index<pixels.length; index+=4) {
-                // because we NEED a black/white image we can just use the RED part
-                // if the RGBA color
-                if(pixels[index]<80){
-                    var x = (index/4) % width;
-                    var y = (index/4) / width;
-                    houghAcc(x,y);
-                }
+            function checkMatrix(x,y){
+        		var nx,ny;
+        		var xC=parseInt(matrix[0].length/2);
+        		var yC=parseInt(matrix.length/2);
+        		var offset = (y*width+x)*4;
+        		var hit = true;
+    			for(var i=0; i<matrix.length; i++){
+    				for(var j=0; j<matrix.length; j++){
+    					if((i != yC || j != xC) && matrix[i][j]){
+    						nx = x + (j-xC);
+    						ny = y + (i-yC);
+    						if(nx > 0 && nx < width && ny > 0 && ny < height){
+                        		var outOffset = (ny*width+nx)*4;
+    							hit = hit && imgOut[outOffset]===0;
+    						}
+    					}
+    				}
+    			}
+    			return hit
             }
+            
+            
+
 
             var canvas = new OffscreenCanvas(width, height);
             var ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'rgba(255,255,255,1)';
-            ctx.beginPath();
-            ctx.fillRect(0,0, width, height);
-            ctx.closePath();
-            
+            ctx.putImageData(imageData,0,0);
+
             ctx.textBaseline = "top";
             ctx.fillStyle = "#d0d0d0";
             ctx.fillText("+" , 0, 0);
