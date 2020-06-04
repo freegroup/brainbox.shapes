@@ -7,7 +7,7 @@
 var video_color_Splitter = CircuitFigure.extend({
 
    NAME: "video_color_Splitter",
-   VERSION: "2.0.302_1049",
+   VERSION: "2.0.303_1050",
 
    init:function(attr, setter, getter)
    {
@@ -189,17 +189,16 @@ video_color_Splitter = video_color_Splitter.extend({
             var r = new Uint8ClampedArray(pixels.length);
             var g = new Uint8ClampedArray(pixels.length);
             var b = new Uint8ClampedArray(pixels.length);
-            r.fill(0);
-            g.fill(0);
-            b.fill(0);
+            r.fill(255);
+            g.fill(255);
+            b.fill(255);
             
             for( let x = 0; x < pixels.length; x += 4 ) {
-                r[x]   = pixels[x];
-                r[x+3] = 255;
-                g[x]   = pixels[x+1];
-                g[x+3] = 255;
-                b[x]   = pixels[x+2];
-                b[x+3] = 255;
+                r[x]=r[x+1]=r[x+2] = pixels[x]>((pixels[x+1]+pixels[x+2])/3*2)?255:0;
+                
+                g[x]=g[x+1]=g[x+2] = pixels[x+1]>((pixels[x]+pixels[x+2])/3*2)?255:0;
+                
+                b[x]=b[x+1]=b[x+2] = pixels[x+2]>((pixels[x+1]+pixels[x])/3*2)?255:0;
             }
             var imageDataR = new ImageData(r, w, h);
             var imageDataG = new ImageData(g, w, h);
