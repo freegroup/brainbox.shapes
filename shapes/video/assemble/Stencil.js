@@ -7,7 +7,7 @@
 var video_assemble_Stencil = CircuitFigure.extend({
 
    NAME: "video_assemble_Stencil",
-   VERSION: "2.0.307_1057",
+   VERSION: "2.0.308_1062",
 
    init:function(attr, setter, getter)
    {
@@ -133,13 +133,16 @@ video_assemble_Stencil = video_assemble_Stencil.extend({
      **/
     calculate:function( context)
     {
-        var img = this.getInputPort("input_port1").getValue();
-        if(img instanceof HTMLImageElement && this.worker!==null){
-            var imageData = this.imageToData(img);
+        var img     = this.getInputPort("input_port1").getValue();
+        var stencil = this.getInputPort("input_port2").getValue();
+        if((img instanceof HTMLImageElement) &&  (stencil instanceof HTMLImageElement) && this.worker!==null){
+            var imageData   = this.imageToData(img);
+            var stencilData = this.imageToData(stencil);
+            
             // Push it to the WebWorker with "Transferable Objects"
             // Passing data by reference instead of structure clone
             //
-            this.worker.postMessage(imageData, [imageData.data.buffer]);
+            this.worker.postMessage({imageData, stencilData}, [imageData.data.buffer, stencilData.data.buffer]);
         }
     },
 
@@ -153,47 +156,22 @@ video_assemble_Stencil = video_assemble_Stencil.extend({
         // the method which runs as WebWorker
         //
         var workerFunction = function(event){
-            var imageData = event.data;
-            var opaque = false;
-            var weights =[  1/9, 1/9, 1/9,  
-                            1/9, 1/9, 1/9,  
-                            1/9, 1/9, 1/9 ];
-            var side = Math.round(Math.sqrt(weights.length));
-            var halfSide = Math.floor(side/2);
+            var imageData = event.data.imageData;
+            var stencilData = event.data.stencilData;
 
-            var src = imageData.data;
-            var sw = imageData.width;
-            var sh = imageData.height;
-            var w = sw;
-            var h = sh;
-            var dst = new Uint8ClampedArray(w*h*4);
-            var alphaFac = opaque ? 1 : 0;
-
-            for (var y=0; y < h; y++) {
-              for (var x=0; x < w; x++) {
-                var sy = y;
-                var sx = x;
-                var dstOff = (y*w+x)*4;
-                var r=0, g=0, b=0, a=0;
-                for (var cy=0; cy<side; cy++) {
-                  for (var cx=0; cx<side; cx++) {
-                    var scy = Math.min(sh-1, Math.max(0, sy + cy - halfSide));
-                    var scx = Math.min(sw-1, Math.max(0, sx + cx - halfSide));
-                    var srcOff = (scy*sw+scx)*4;
-                    var wt = weights[cy*side+cx];
-                    r += src[srcOff] * wt;
-                    g += src[srcOff+1] * wt;
-                    b += src[srcOff+2] * wt;
-                    a += src[srcOff+3] * wt;
-                  }
+            var pixels = imageData.data;
+            var mask   = stencilData.data;
+            console.log(mask)
+            for (index=0; index < pixels.length; index+=4) {
+              
+                if(mask[index]!==0){
+                    pixels[index]   = 255;
+                    pixels[index+1] = 255;
+                    pixels[index+2] = 255;
+                    pixels[index+3] = 255;
                 }
-                dst[dstOff] = r;
-                dst[dstOff+1] = g;
-                dst[dstOff+2] = b;
-                dst[dstOff+3] = a + alphaFac*(255-a);
-              }
             }
-            imageData.data.set(dst);
+
             self.postMessage(imageData, [imageData.data.buffer]);
         };
         
