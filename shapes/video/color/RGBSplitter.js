@@ -7,7 +7,7 @@
 var video_color_RGBSplitter = CircuitFigure.extend({
 
    NAME: "video_color_RGBSplitter",
-   VERSION: "2.0.320_1085",
+   VERSION: "2.0.321_1086",
 
    init:function(attr, setter, getter)
    {

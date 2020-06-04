@@ -7,7 +7,7 @@
 var video_morphological_Open = CircuitFigure.extend({
 
    NAME: "video_morphological_Open",
-   VERSION: "2.0.320_1085",
+   VERSION: "2.0.321_1086",
 
    init:function(attr, setter, getter)
    {
@@ -224,7 +224,7 @@ video_morphological_Open = video_morphological_Open.extend({
         	for( var i = 0; i< iterations; i++){
                 // dilate
                 if(i!==0)pixels.set(pixelsCopy);
-                colorToCare = 0;
+                colorToCare = 255;
                 for(var y=0; y<height; y++){
     				for(var x=0; x<width; x++){
     					applyMatrix(x, y, matrix, pixels, pixelsCopy);
@@ -233,7 +233,7 @@ video_morphological_Open = video_morphological_Open.extend({
     			
                 // erode
                 pixels.set(pixelsCopy);
-                colorToCare = 255;
+                colorToCare = 0;
                 for(var y=0; y<height; y++){
     				for(var x=0; x<width; x++){
     					applyMatrix(x, y, matrix, pixels, pixelsCopy);
