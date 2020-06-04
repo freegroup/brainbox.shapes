@@ -29,7 +29,8 @@ var widget_Slider = draw2d.shape.widget.Slider.extend({
     },
 
     onStart: function (context) {
-        this.getOutputPort(0).setValue(this.getValue());
+        let value = 5.0 / 100.0 * this.getValue();       // 0..5
+        this.getOutputPort(0).setValue(value);
     },
 
     onStop: function (context) {
