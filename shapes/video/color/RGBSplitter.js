@@ -4,31 +4,43 @@
 // created with http://www.draw2d.org
 //
 //
-var video_color_BlackWhite = CircuitFigure.extend({
+var video_color_RGBSplitter = CircuitFigure.extend({
 
-   NAME: "video_color_BlackWhite",
+   NAME: "video_color_RGBSplitter",
    VERSION: "2.0.306_1056",
 
    init:function(attr, setter, getter)
    {
      var _this = this;
 
-     this._super( $.extend({stroke:0, bgColor:null, width:80,height:84.12910056640976},attr), setter, getter);
+     this._super( $.extend({stroke:0, bgColor:null, width:80,height:80.12910056640976},attr), setter, getter);
      var port;
-     // input_port1
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 48.126034543826854 }));
-     port.setConnectionDirection(3);
-     port.setBackgroundColor("#37B1DE");
-     port.setName("input_port1");
-     port.setMaxFanOut(20);
      // input_port2
-     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 77.8389528672162 }));
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 88.6738137133109 }));
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port2");
      port.setMaxFanOut(20);
+     // input_port1
+     port = this.addPort(new DecoratedInputPort(), new draw2d.layout.locator.XYRelPortLocator({x: -1.875, y: 50.528459340992306 }));
+     port.setConnectionDirection(3);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("input_port1");
+     port.setMaxFanOut(1);
+     // output_port3
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 64.88029895819727 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output_port3");
+     port.setMaxFanOut(20);
+     // output_port2
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 38.062980070742384 }));
+     port.setConnectionDirection(1);
+     port.setBackgroundColor("#37B1DE");
+     port.setName("output_port2");
+     port.setMaxFanOut(20);
      // output_port1
-     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.86500000000024, y: 48.14029833592497 }));
+     port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 101.41777088000026, y: 7.716504935529654 }));
      port.setConnectionDirection(1);
      port.setBackgroundColor("#37B1DE");
      port.setName("output_port1");
@@ -39,7 +51,7 @@ var video_color_BlackWhite = CircuitFigure.extend({
    {
       var shape = this._super();
       this.originalWidth = 80;
-      this.originalHeight= 84.12910056640976;
+      this.originalHeight= 80.12910056640976;
       return shape;
    },
 
@@ -48,7 +60,7 @@ var video_color_BlackWhite = CircuitFigure.extend({
        this.canvas.paper.setStart();
        var shape = null;
        // BoundingBox
-       shape = this.canvas.paper.path("M0,0 L80,0 L80,84.12910056640976 L0,84.12910056640976");
+       shape = this.canvas.paper.path("M0,0 L80,0 L80,80.12910056640976 L0,80.12910056640976");
        shape.attr({"stroke":"none","stroke-width":0,"fill":"none"});
        shape.data("name","BoundingBox");
        
@@ -63,8 +75,8 @@ var video_color_BlackWhite = CircuitFigure.extend({
        shape.data("name","Rectangle");
        
        // Label
-       shape = this.canvas.paper.text(0,0,'BlackWhite');
-       shape.attr({"x":5.407552000004216,"y":72.12910056640976,"text-anchor":"start","text":"BlackWhite","font-family":"\"Arial\"","font-size":14,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
+       shape = this.canvas.paper.text(0,0,'RGB Splitter');
+       shape.attr({"x":6.407552000004216,"y":69.12910056640976,"text-anchor":"start","text":"RGB Splitter","font-family":"\"Arial\"","font-size":12,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
        shape.data("name","Label");
        
        // Circle
@@ -72,40 +84,25 @@ var video_color_BlackWhite = CircuitFigure.extend({
        shape.attr({"rx":8,"ry":8,"cx":38.136293579453195,"cy":17.499523579457673,"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Circle");
        
-       // Label
-       shape = this.canvas.paper.text(0,0,'threshold');
-       shape.attr({"x":12,"y":57.59737500000119,"text-anchor":"start","text":"threshold","font-family":"\"Arial\"","font-size":8,"stroke":"#000000","fill":"#080808","stroke-scale":true,"font-weight":"normal","stroke-width":0,"opacity":1});
-       shape.data("name","Label");
-       
        // Rectangle
        shape = this.canvas.paper.path('M28.136293579453195 49.8799680000011L49.136293579453195 49.8799680000011L47.66478056057895 35.49000926909139L47.26481464287099 34.55069784112129L46.61172166499273 33.6693617814999L45.72534552659636 32.87278004043219L44.63261831811906 32.18515635102449L43.366742002848696 31.627383811124673L41.96617959205287 31.216410057117173L40.47348646586943 30.96472231855296L38.9340173495948 30.8799680000011L37.394548233321984 30.96472231855296L35.90185510713491 31.216410057117173L34.50129269633908 31.627383811124673L33.23541638106508 32.18515635102449L32.142689172593236 32.87278004043219L31.256313034195045 33.6693617814999L30.603220056320424 34.55069784112129L30.203254138608827 35.49000926909139Z');
        shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(199,29,61,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M39.13421670400021,48.3799680000011Q39.13421670400021,52.3799680000011 43.13421670400021, 52.3799680000011L71.13421670400021,52.3799680000011Q75.13421670400021,52.3799680000011 75.13421670400021, 48.3799680000011L75.13421670400021,8.3799680000011Q75.13421670400021,4.379968000001099 71.13421670400021, 4.379968000001099L43.13421670400021,4.379968000001099Q39.13421670400021,4.379968000001099 39.13421670400021, 8.3799680000011L39.13421670400021,48.3799680000011');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M39.13421670400021 52.03330028320488L75.13421670400021 52.03330028320488L75.13421670400021 36.03330028320488L39.13421670400021 36.03330028320488L39.13421670400021 52.03330028320488Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,0,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
        // Rectangle
-       shape = this.canvas.paper.path('M40.84867200000008 49.8799680000011L49.651728947199445 49.8799680000011L48.46050412239856 35.49000926909139L48.13672218901411 34.55069784112129L47.60802787358989 33.6693617814999L46.890485285362956 32.87278004043219L46.00589659279103 32.18515635102449L44.98113957566238 31.627383811124673L43.84735095739961 31.216410057117173L42.6389803314396 30.96472231855296L41.392743427790265 30.8799680000011L40.84867200000008 30.916969314093876L40.84867200000008 49.8799680000011Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape = this.canvas.paper.path('M39 36.8799680000011L75 36.8799680000011L75 19.8799680000011L39 19.8799680000011L39 36.8799680000011Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(0,255,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
        shape.data("name","Rectangle");
        
-       // Circle
-       shape = this.canvas.paper.path('M39.92918400000053 25.470542254553948L40.260442059450725 25.499523579457673L41.64962748078506 25.377985603554407L42.996603206054715 25.01706454574378L44.260442059450725 24.42772680973212L45.40274293694165 23.627879124409446L46.3887976044025 22.641824456950417L47.18864528972517 21.499523579457673L47.77798302573683 20.235684726063482L48.13890408354746 18.888709000792005L48.260442059450725 17.499523579457673L48.13890408354746 16.11033815812334L47.77798302573683 14.763362432851864L47.18864528972517 13.499523579457673L46.3887976044025 12.357222701964929L45.40274293694165 11.3711680345059L44.260442059450725 10.571320349183225L42.996603206054715 9.981982613171567L41.64962748078506 9.621061555360939L40.260442059450725 9.499523579457673L39.92918400000053 9.528504904361398L39.92918400000053 25.470542254553948Z');
-       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,255,255,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Circle");
-       
-       // Line
-       shape = this.canvas.paper.path('M9.377490534403478 57.12910056640976L5.757806182406057,57.53049545921385L0.4075520000042161,64.0115340000084');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":1,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
-       
-       // Line
-       shape = this.canvas.paper.path('M39.586528000003455 5.1831660000025295L39.84867200000008,51.83221508800125');
-       shape.attr({"stroke-linecap":"round","stroke-linejoin":"round","stroke":"rgba(0,0,0,1)","stroke-width":2,"stroke-dasharray":null,"opacity":1});
-       shape.data("name","Line");
+       // Rectangle
+       shape = this.canvas.paper.path('M39 21.03330028320488L75 21.03330028320488L75 4.0333002832048805L39 4.0333002832048805L39 21.03330028320488Z');
+       shape.attr({"stroke":"none","stroke-width":0,"fill":"rgba(255,0,0,1)","dasharray":null,"stroke-dasharray":null,"opacity":1});
+       shape.data("name","Rectangle");
        
 
        return this.canvas.paper.setFinish();
@@ -124,16 +121,24 @@ var video_color_BlackWhite = CircuitFigure.extend({
  * Looks disconcerting - extending my own class. But this is a good method to
  * merge basic code and override them with custom methods.
  */
-video_color_BlackWhite = video_color_BlackWhite.extend({
+video_color_RGBSplitter = video_color_RGBSplitter.extend({
 
     init: function(attr, setter, getter){
         this._super(attr, setter, getter);
         this.worker= null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.tmpCanvasR = null;
+        this.tmpContextR = null;
+        this.tmpCanvasG = null;
+        this.tmpContextG = null;
+        this.tmpCanvasB = null;
+        this.tmpContextB = null;
         this.processing = false;
         this.getInputPort("input_port1").setSemanticGroup("Image");
         this.getOutputPort("output_port1").setSemanticGroup("Image");
+        this.getOutputPort("output_port2").setSemanticGroup("Image");
+        this.getOutputPort("output_port3").setSemanticGroup("Image");
         this.attr({
             resizeable:false
         });
@@ -175,32 +180,63 @@ video_color_BlackWhite = video_color_BlackWhite.extend({
             // map offset from 0-5 => 0-255
             threshold = 255/5*threshold;
             var pixels = imageData.data;
+            var w = imageData.width;
+            var h = imageData.height;
+            
+            var r = new Uint8ClampedArray(pixels.length);
+            var g = new Uint8ClampedArray(pixels.length);
+            var b = new Uint8ClampedArray(pixels.length);
+            r.fill(255);
+            g.fill(255);
+            b.fill(255);
+            
             for( let x = 0; x < pixels.length; x += 4 ) {
-
-                let lum = 0.2126 * pixels[x] + 0.7152 * pixels[x+1] + 0.0722 * pixels[x+2];
-                let value= lum>threshold?0:255;
-                pixels[x] = pixels[x+1] = pixels[x+2] = value;
+                r[x]=r[x+1]=r[x+2] = threshold < (pixels[x]  -((pixels[x+1]+pixels[x+2])/2))?0:255;
+                g[x]=g[x+1]=g[x+2] = threshold < (pixels[x+1]-((pixels[x]  +pixels[x+2])/2))?0:255;
+                b[x]=b[x+1]=b[x+2] = threshold < (pixels[x+2]-((pixels[x+1]+pixels[x])/2))?0:255;
             }
-            self.postMessage(imageData, [imageData.data.buffer]);
+            var imageDataR = new ImageData(r, w, h);
+            var imageDataG = new ImageData(g, w, h);
+            var imageDataB = new ImageData(b, w, h);
+            self.postMessage({imageDataR, imageDataG, imageDataB}, [imageDataR.data.buffer,imageDataG.data.buffer,imageDataB.data.buffer]);
         };
         
         // the method which receives the WebWorker result
         //
        var receiverFunction = (event) => {
-            var imageData = event.data;
-            this.tmpContext.putImageData(imageData,0,0);
-            var image = new Image();
-            image.onload = () => {
-                this.getOutputPort("output_port1").setValue(image);
+            var imageDataR = event.data.imageDataR;
+            var imageDataG = event.data.imageDataG;
+            var imageDataB = event.data.imageDataB;
+            this.tmpContextR.putImageData(imageDataR,0,0);
+            this.tmpContextG.putImageData(imageDataG,0,0);
+            this.tmpContextB.putImageData(imageDataB,0,0);
+            
+            var imageR = new Image();
+            imageR.onload = () => {
+                this.getOutputPort("output_port1").setValue(imageR);
                 this.processing = false;
-            }
-            image.src = this.tmpCanvas.toDataURL();
+            };
+            imageR.src = this.tmpCanvasR.toDataURL();
+            
+            var imageG = new Image();
+            imageG.onload = () => {
+                this.getOutputPort("output_port2").setValue(imageG);
+                this.processing = false;
+            };
+            imageG.src = this.tmpCanvasG.toDataURL();
+            
+            var imageB = new Image();
+            imageB.onload = () => {
+                this.getOutputPort("output_port3").setValue(imageB);
+                this.processing = false;
+            };
+            imageB.src = this.tmpCanvasB.toDataURL();
         };
         
         // convert a js function to a WebWorker
         //
         this.worker = this.createWorker(workerFunction);
-        this.worker.onmessage = receiverFunction
+        this.worker.onmessage = receiverFunction;
         this.processing = false;
     },
 
@@ -214,9 +250,21 @@ video_color_BlackWhite = video_color_BlackWhite.extend({
         delete this.worker;
         delete this.tmpContext;
         delete this.tmpCanvas;
+        delete this.tmpContextR;
+        delete this.tmpCanvasR;
+        delete this.tmpContextG;
+        delete this.tmpCanvasG;
+        delete this.tmpContextB;
+        delete this.tmpCanvasB;
         this.worker = null;
         this.tmpCanvas = null;
         this.tmpContext = null;
+        this.tmpCanvasR = null;
+        this.tmpContextR = null;
+        this.tmpCanvasG = null;
+        this.tmpContextG = null;
+        this.tmpCanvasB = null;
+        this.tmpContextB = null;
         this.progressing = false;
     },
     
@@ -239,8 +287,20 @@ video_color_BlackWhite = video_color_BlackWhite.extend({
         if(this.tmpContext !==null && this.tmpContext.width!== width){
             delete this.tmpContext;
             delete this.tmpCanvas;
+            delete this.tmpContextR;
+            delete this.tmpCanvasR;
+            delete this.tmpContextG;
+            delete this.tmpCanvasG;
+            delete this.tmpContextB;
+            delete this.tmpCanvasB;
             this.tmpCanvas = null;
             this.tmpContext = null;
+            this.tmpCanvasR = null;
+            this.tmpContextR = null;
+            this.tmpCanvasG = null;
+            this.tmpContextG = null;
+            this.tmpCanvasB = null;
+            this.tmpContextB = null;
         }
 
         // convert the HTMLImageElement to an ImageData object. Required for the WebWorker
@@ -250,6 +310,21 @@ video_color_BlackWhite = video_color_BlackWhite.extend({
             this.tmpCanvas.width = width;
             this.tmpCanvas.height = height;
             this.tmpContext = this.tmpCanvas.getContext('2d');
+
+            this.tmpCanvasR = document.createElement('canvas');
+            this.tmpCanvasR.width = width;
+            this.tmpCanvasR.height = height;
+            this.tmpContextR = this.tmpCanvasR.getContext('2d');
+
+            this.tmpCanvasG = document.createElement('canvas');
+            this.tmpCanvasG.width = width;
+            this.tmpCanvasG.height = height;
+            this.tmpContextG = this.tmpCanvasG.getContext('2d');
+
+            this.tmpCanvasB = document.createElement('canvas');
+            this.tmpCanvasB.width = width;
+            this.tmpCanvasB.height = height;
+            this.tmpContextB = this.tmpCanvasB.getContext('2d');
         }
         this.tmpContext.drawImage(image, 0, 0, width, height);
         return this.tmpContext.getImageData(0, 0, width, height);
