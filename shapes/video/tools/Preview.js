@@ -7,7 +7,7 @@
 var video_tools_Preview = CircuitFigure.extend({
 
    NAME: "video_tools_Preview",
-   VERSION: "2.0.344_1137",
+   VERSION: "2.0.345_1138",
 
    init:function(attr, setter, getter)
    {
@@ -110,12 +110,12 @@ video_tools_Preview = video_tools_Preview.extend({
             semanticGroup:"Image",
             bgColor:"#ff0000",
             diameter:15
-        })
+        });
         this.getOutputPort("output_port1").attr({
             semanticGroup:"Image",
             bgColor:"#ff0000",
             diameter:15
-        })
+        });
         
         this.attr({
             resizeable:false
@@ -161,11 +161,11 @@ video_tools_Preview = video_tools_Preview.extend({
        let currentImage = this.img.attr("path");
        this.img.attr("path", this.TRANSPARENT_PIXEL);
     
-       let memento = this._super()
+       let memento = this._super();
     
        this.img.attr("path", currentImage);
 
-       return memento
+       return memento;
     },
 
     setPersistentAttributes: function (memento) 
@@ -181,17 +181,22 @@ video_tools_Preview = video_tools_Preview.extend({
             semanticGroup:"Image",
             bgColor:"#ff0000",
             diameter:15
-        })
+        });
         this.getOutputPort("output_port1").attr({
             semanticGroup:"Image",
             bgColor:"#ff0000",
             diameter:15
-        })
+        });
     },
     
-    getContextMenu: function(){
+    getContextMenuEntries: function(){
         return {
               "expand": {name: "Expand Image"}
-        }
-    }
+        };
+    },
+    
+    executeContextMenuEntry: function(key, x, y){
+        alert(key);
+    },
+  
 });
