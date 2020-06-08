@@ -7,7 +7,7 @@
 var video_tools_Preview = CircuitFigure.extend({
 
    NAME: "video_tools_Preview",
-   VERSION: "2.0.345_1139",
+   VERSION: "2.0.346_1142",
 
    init:function(attr, setter, getter)
    {
@@ -196,7 +196,10 @@ video_tools_Preview = video_tools_Preview.extend({
     },
     
     executeContextMenuEntry: function(key, x, y){
-        window.open(this.img.attr("path"), "Image", "width=500, height=450");
+        var image = new Image();
+        image.src = this.img.attr("path");
+        var w = window.open("");
+        w.document.write(image.outerHTML);
     },
   
 });
