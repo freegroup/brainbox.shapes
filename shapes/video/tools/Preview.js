@@ -7,7 +7,7 @@
 var video_tools_Preview = CircuitFigure.extend({
 
    NAME: "video_tools_Preview",
-   VERSION: "2.0.343_1136",
+   VERSION: "2.0.344_1137",
 
    init:function(attr, setter, getter)
    {
@@ -187,5 +187,11 @@ video_tools_Preview = video_tools_Preview.extend({
             bgColor:"#ff0000",
             diameter:15
         })
+    },
+    
+    getContextMenu: function(){
+        return {
+              "expand": {name: "Expand Image"}
+        }
     }
 });
