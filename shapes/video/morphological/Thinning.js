@@ -7,7 +7,7 @@
 var video_morphological_Thinning = CircuitFigure.extend({
 
    NAME: "video_morphological_Thinning",
-   VERSION: "2.0.346_1142",
+   VERSION: "2.0.347_1143",
 
    init:function(attr, setter, getter)
    {
@@ -20,7 +20,7 @@ var video_morphological_Thinning = CircuitFigure.extend({
      port.setConnectionDirection(3);
      port.setBackgroundColor("#37B1DE");
      port.setName("input_port1");
-     port.setMaxFanOut(20);
+     port.setMaxFanOut(1);
      // output_port1
      port = this.addPort(new DecoratedOutputPort(), new draw2d.layout.locator.XYRelPortLocator({x: 100.32506249999983, y: 49.886999999999944 }));
      port.setConnectionDirection(1);
